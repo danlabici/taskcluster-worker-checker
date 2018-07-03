@@ -98,11 +98,12 @@ if __name__ == '__main__':
                         dest="worker_type",
                         help='Available options: gecko-t-osx-1010, gecko-t-linux-talos, gecko-t-win10-64-hw',
                         default='gecko-t-linux-talos',
-                        required=False)
+                        required=True)
 
-    parser.add_argument('-o', '--os-type', dest='os_type',
+    parser.add_argument('-o', '--os-type',
+                        dest='os_type',
                         default='LINUX',
-                        required=False)
+                        required=True)
 
     args = parser.parse_args()
     _wrkType = args.worker_type
@@ -110,6 +111,7 @@ if __name__ == '__main__':
 
     _missing_machines = missing_machines(_os_type, _wrkType)
     _generate_machine_list = generate_machine_lists(_wrkType)
+
     print("Control Number: {}".format(len(_generate_machine_list)))
-    print("Number from TC JSON: {}".format(len(_missing_machines)))
+    print("Number from TC JSON: {}".format(len(_generate_machine_list) - len(_missing_machines)))
     print(_missing_machines)
