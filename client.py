@@ -79,7 +79,13 @@ def generate_machine_lists(workertype):
 
     elif workertype == WINDOWS:
 
-        range_ms_windows = list(range(1, 279)) + list(range(301, 580))
+        range_ms_windows = list(range(16, 46)) + list(range(61, 91)) + \
+                         list(range(106, 136)) + list(range(151, 181)) + \
+                         list(range(196, 226)) + list(range(241, 271)) + \
+                         list(range(281, 299)) + list(range(316, 346)) + \
+                         list(range(361, 391)) + list(range(406, 436)) + \
+                         list(range(451, 481)) + list(range(496, 526)) + \
+                         list(range(541, 571)) + list(range(581, 601))
         ms_windows_name = "T-W1064-MS-{}"
         windows_machines = []
 
