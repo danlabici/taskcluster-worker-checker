@@ -6,11 +6,11 @@ If anything of value could be found here, maybe it would be the ranges for all O
 
 ## How to run:
 
-`python client.py -w gecko-t-osx-1010`
+`python3 client.py -w gecko-t-osx-1010`
 
-`python client.py -w gecko-t-linux-talos`
+`python3 client.py -w gecko-t-linux-talos`
 
-`python client.py -w gecko-t-win10-64-hw`
+`python3 client.py -w gecko-t-win10-64-hw`
 
 
 ## How does it work?
