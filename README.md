@@ -18,3 +18,6 @@ If anything of value could be found here, maybe it would be the ranges for all O
 2) We generate a **CONTROL** list of names in a set range (eg: t-linux64-ms-280)
 3) We get/parse the TC JSON for chosen worker-type
 4) We print the diff between ListA and ListB
+
+PS: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items". 
+You gotta love `set()` :D
