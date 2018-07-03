@@ -83,11 +83,11 @@ def generate_machine_lists(workertype):
 
 def missing_machines(input1, input2):
     if input1 == 'LINUX':
-        a = set(linux_api())
+        a = set(build_TC_worker_list(linux_api()))
     if input1 == 'WINDOWS':
-        a = set(windows_api())
+        a = set(build_TC_worker_list(windows_api()))
     if input1 == 'MACOSX':
-        a = set(mac_api())
+        a = set(build_TC_worker_list(mac_api()))
     missing_machines = [x for x in generate_machine_lists(input2) if x not in a]
     return missing_machines
 
