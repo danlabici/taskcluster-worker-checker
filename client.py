@@ -97,7 +97,7 @@ def generate_machine_lists(workertype):
 
     elif workertype == MACOSX:
 
-        range_ms_osx = list(range(5)) + list(range(10, 20))  # ToDo: Add real MacOS range.
+        range_ms_osx = list(range(20, 237)) + list(range(237, 473))  # ToDo: Add real MacOS range.
         ms_osx_name = "t-yosemite-r7-{}"
         osx_machines = []
 
