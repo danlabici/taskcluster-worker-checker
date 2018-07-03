@@ -47,7 +47,7 @@ def parse_taskcluster_json(workertype):
         if data["workers"] == []:
             # Not sure why but TC kinda fails at responding or I'm doing something wrong
             # Anyways if you keep at it, it will respond with the JSON data :D
-            print("Auth Failed")
+            print("Auth Failed. Retrying...")
             parse_taskcluster_json(workertype)
 
         else:
@@ -143,7 +143,7 @@ def main():
             print('Error found. Aborting ship!')
         # Retry to Auth problems
         if data["workers"] == []:
-            print("Auth Failed")
+            print("Auth Failed. Retrying...")
             parse_taskcluster_json(workertype)
         else:
             for workers in data['workers']:
