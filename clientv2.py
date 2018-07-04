@@ -67,9 +67,9 @@ class CheckWorkers():
     def missing_machines(self, input1):
         a = set(self.get_workers_list(input1))
         missing_machines = [x for x in self.generate_machine_lists(input1) if x not in a]
-        print("Control Number: {}".format(len(self.generate_machine_lists(input1))))
-        print("Number from TC JSON: {}".format(len(self.generate_machine_lists(input1)) - len(missing_machines)))
-        print(missing_machines)
+        print("\nControl Number: {}".format(len(self.generate_machine_lists(input1))))
+        print("Number from TC JSON: {}\n".format(len(self.generate_machine_lists(input1)) - len(missing_machines)))
+        print(missing_machines, "\n")
 
 if __name__ == '__main__':
     parser = ArgumentParser(
