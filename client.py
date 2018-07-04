@@ -145,7 +145,7 @@ def main():
     missing_machines = [x for x in generate_machine_lists(workertype) if x not in a]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
-    print("Total of missing server: {}".format(len(missing_machines)))
+    print("Total of missing server : {}".format(len(missing_machines)))
 
     if len(workersList) > len(generate_machine_lists(workertype)):
         print("!!! We got SCL3 Machines in the JSON body!!!! \n"
