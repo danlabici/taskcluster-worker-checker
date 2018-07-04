@@ -27,13 +27,13 @@ def parse_taskcluster_json(workertype):
     '''
     # Setup API URLs
 
-    if workertype == LINUX or "linux":
+    if (workertype == LINUX) or (workertype == "linux"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
 
-    elif workertype == WINDOWS or "win":
+    elif (workertype == WINDOWS) or (workertype == "win"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-win10-64-hw/workers"
 
-    elif workertype == MACOSX or "mac":
+    elif (workertype == MACOSX) or (workertype == "osx"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-osx-1010/workers"
 
     else:
@@ -61,7 +61,7 @@ def parse_taskcluster_json(workertype):
 
 
 def generate_machine_lists(workertype):
-    if workertype == LINUX or "linux":
+    if (workertype == LINUX) or (workertype == "linux"):
         global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
         mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
                      list(range(91, 106)) + list(range(136, 151)) + \
@@ -83,7 +83,7 @@ def generate_machine_lists(workertype):
 
         return linux_machines
 
-    if workertype == WINDOWS or "win":
+    if (workertype == WINDOWS) or (workertype == "win"):
         mdc1_range = list(range(16, 46)) + list(range(61, 91)) + \
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
@@ -103,7 +103,7 @@ def generate_machine_lists(workertype):
             windows_machines.append(ms_windows_name.format(digit_constructor))
         return windows_machines
 
-    if workertype == MACOSX or "mac":
+    if (workertype == MACOSX) or (workertype == "osx"):
         mdc2_range = list(range(21, 237))
         mdc1_range = list(range(237, 473))
 
@@ -145,7 +145,7 @@ def main():
     missing_machines = [x for x in generate_machine_lists(workertype) if x not in a]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
-    print("Total of missing server: {}".format(len(generate_machine_lists(workertype)) - len(workersList)))
+    print("Total of missing server: {}".format(len(missing_machines)))
 
     if len(workersList) > len(generate_machine_lists(workertype)):
         print("!!! We got SCL3 Machines in the JSON body!!!! \n"
@@ -153,19 +153,19 @@ def main():
 
     # Print each machine on a new line.
     for machine in missing_machines:
-        if workertype == LINUX or "linux":
+        if (workertype == LINUX) or (workertype == "linux"):
             if int(machine[-3:]) <= int(mdc1_range[-1]):
                 print("ssh {}@{}.releng.mdc1.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.releng.mdc2.mozilla.com".format(ldap, machine))
 
-        elif workertype == WINDOWS or "win":
+        if (workertype == WINDOWS) or (workertype == "win"):
             if int(machine[-3:]) <= int(mdc1_range[-1]):
                 print("ssh {}@{}.releng.mdc1.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.releng.mdc2.mozilla.com".format(ldap, machine))
 
-        elif workertype == MACOSX or "mac":
+        if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.releng.mdc1.mozilla.com".format(ldap, machine))
             else:

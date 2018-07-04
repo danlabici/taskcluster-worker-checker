@@ -8,7 +8,7 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 
 `python3 client.py -w win` or `python3 client.py -w gecko-t-win10-64-hw`
 
-`python3 client.py -w mac` or `python3 client.py -w gecko-t-osx-1010`
+`python3 client.py -w osx` or `python3 client.py -w gecko-t-osx-1010`
 
 ## How does it work?
 1) We ask the user which worker-type he's interested into.
