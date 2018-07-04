@@ -13,12 +13,11 @@ class CheckWorkers():
         self.missing_machines(self.param)
         
     def get_workers_list(self, val1):
-        try:
-            api = urllib.request.urlopen("https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/{}/workers".format(val1))
-            data = json.loads(api.read().decode())
-        except data['workers'] == []:
+        api = urllib.request.urlopen("https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/{}/workers".format(val1))
+        data = json.loads(api.read().decode())
+        if data['workers'] == []:
             print('Retrying....')
-            linux_api()
+            self.get_workers_list(self.param)
         for workers in data['workers']:
             workersList.append(workers['workerId'])
         return workersList
@@ -83,4 +82,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     _wrkType = args.worker_type
-    CheckWorkers(_wrkType)
+    wrkList = _wrkType.split(",")
+    for item in wrkList:
+        CheckWorkers(item)
