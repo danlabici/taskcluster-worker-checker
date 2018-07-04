@@ -11,7 +11,7 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 `python3 client.py -w osx` or `python3 client.py -w gecko-t-osx-1010`
 
 Or you can run this:
-`python client.py -w WORKER_TYPE -u LDAP_USERNAME | cat >> missing.txt`
+`python3 client.py -w WORKER_TYPE -u LDAP_USERNAME | cat >> missing.txt`
 To get an output like this:
 ```
 Servers that WE know  of: 200
