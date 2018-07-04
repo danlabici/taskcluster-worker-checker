@@ -10,6 +10,19 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 
 `python3 client.py -w osx` or `python3 client.py -w gecko-t-osx-1010`
 
+Or you can run this:
+`python client.py -w WORKER_TYPE -u LDAP_USERNAME | cat >> missing.txt`
+To get an output like this:
+```
+Servers that WE know  of: 200
+Servers that TC knows of: 197
+Total of missing server: 3
+ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
+ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
+ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
+```
+
+
 ## How does it work?
 1) We ask the user which worker-type he's interested into.
 1.a) We also give him the option to add his own Mozilla LDAP username.
