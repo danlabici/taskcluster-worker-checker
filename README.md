@@ -1,23 +1,40 @@
 # taskcluster-worker-checker
-## Ugly and rough script.
 
-This is still being developed and will be getting clearner and easier to read.
-If anything of value could be found here, maybe it would be the ranges for all OS types.
+This utility will check [TaskCluster](https://github.com/taskcluster) provisioner for [RelEng](https://github.com/mozilla-releng) hardware and will output in the terminal if any machine are missing.
 
-## How to run:
+## How to run the script:
 
-`python3 client.py -w gecko-t-osx-1010`
+`python3 client.py -w linux` or `python3 client.py -w gecko-t-linux-talos`
 
-`python3 client.py -w gecko-t-linux-talos`
+`python3 client.py -w win` or `python3 client.py -w gecko-t-win10-64-hw`
 
-`python3 client.py -w gecko-t-win10-64-hw`
-
+`python3 client.py -w mac` or `python3 client.py -w gecko-t-osx-1010`
 
 ## How does it work?
-1) We ask the user which worker-type hes interested into.
-2) We generate a **CONTROL** list of names in a set range (eg: t-linux64-ms-280)
-3) We get/parse the TC JSON for chosen worker-type
+1) We ask the user which worker-type he's interested into.
+1.a) We also give him the option to add his own Mozilla LDAP username.
+2) We generate a **CONTROL** list of names in a set `hard-coded` range. [ISSUE - Grab machines from ServiceNow](https://github.com/Akhliskun/taskcluster-worker-checker/issues/2)
+3) We get/parse the TC JSON for chosen worker-type. [ISSUE - Fix Failed JSON Responses](https://github.com/Akhliskun/taskcluster-worker-checker/issues/3)
 4) We print the diff between ListA and ListB
+4.1) We print the ssh command, including your LDAP if offered toward the server.
 
-PS: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items". 
+## Can I contribute?
+Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-worker-checker/issues). 
+Pick whichever you find fancy and make a PullRequest.
+**PLEASE** don't forget to select "`Allow edits from maintainers`" so we can have quicker merges!
+
+
+## The code Explained:
+`ignore_ms_{linux,windows,osx}` - Will be used to remove entries from the generated output. We don't want to see those!
+
+`parse_taskcluster_json(workertype)` - Function that will parse the json data from from TC based on the worker-type which you choose. Will return the formated data. (eg: t-linux64-ms-280)
+
+`generate_machine_lists(workertype)` - Function that will generate the control list. Better said, it will generate the machines which we know we should have in TC.
+
+`main()` - Will ask for arguments + return the data to you in a readable format.
+
+
+
+**PS**: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items". 
+
 You gotta love `set()` :D
