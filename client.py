@@ -161,9 +161,9 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
             if int(machine[-3:]) <= int(mdc1_range[-1]):
-                print("ssh {}@{}.releng.mdc1.mozilla.com".format(ldap, machine))
+                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))
             else:
-                print("ssh {}@{}.releng.mdc2.mozilla.com".format(ldap, machine))
+                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
