@@ -29,7 +29,7 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 2) We generate a **CONTROL** list of names in a set `hard-coded` range. [ISSUE - Grab machines from ServiceNow](https://github.com/Akhliskun/taskcluster-worker-checker/issues/2)
 3) We get/parse the TC JSON for chosen worker-type. [ISSUE - Fix Failed JSON Responses](https://github.com/Akhliskun/taskcluster-worker-checker/issues/3)
 4) We print the diff between ListA and ListB
-4.1) We print the ssh command, including your LDAP if offered toward the server.
+4.1) We print the ssh command, including your LDAP if offered.
 
 ## Can I contribute?
 Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-worker-checker/issues). 
