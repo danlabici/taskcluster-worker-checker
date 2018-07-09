@@ -167,10 +167,9 @@ def main():
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
-                print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-            else:
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
-
+            else:
+                print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
 
 if __name__ == '__main__':
     main()
