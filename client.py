@@ -11,7 +11,19 @@ import urllib.request, json
 # ToDo: Implement a function that checks if we have machines loaned.
 ignore_ms_linux = ["t-linux64-ms-279",  # :devidehex
                    "t-linux64-ms-280"]  # :dragrom
-ignore_ms_windows = []
+
+ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1064-MS-013", "T-W1064-MS-014",  # GW10 testing
+                     "T-W1064-MS-015", "T-W1064-MS-016", "T-W1064-MS-017", "T-W1064-MS-018", "T-W1064-MS-019",  # GW10 testing
+                     "T-W1064-MS-020", "T-W1064-MS-021", "T-W1064-MS-022", "T-W1064-MS-023", "T-W1064-MS-024",  # GW10 testing
+                     "T-W1064-MS-025", "T-W1064-MS-026", "T-W1064-MS-027", "T-W1064-MS-028", "T-W1064-MS-029",  # GW10 testing
+                     "T-W1064-MS-030", "T-W1064-MS-031", "T-W1064-MS-032", "T-W1064-MS-033", "T-W1064-MS-034",  # GW10 testing
+                     "T-W1064-MS-035", "T-W1064-MS-036", "T-W1064-MS-037", "T-W1064-MS-038", "T-W1064-MS-039",  # GW10 testing
+                     "T-W1064-MS-040", "T-W1064-MS-041", "T-W1064-MS-042", "T-W1064-MS-043", "T-W1064-MS-044",  # GW10 testing
+                     "T-W1064-MS-045", "T-W1064-MS-046", "T-W1064-MS-047", "T-W1064-MS-048", "T-W1064-MS-049",  # GW10 testing
+                     "T-W1064-MS-050", "T-W1064-MS-051", "T-W1064-MS-052", "T-W1064-MS-053", "T-W1064-MS-054",  # GW10 testing
+                     "T-W1064-MS-055", "T-W1064-MS-056", "T-W1064-MS-057", "T-W1064-MS-058", "T-W1064-MS-050",  # GW10 testing
+                     "T-W1064-MS-060"]  # GW10 testing
+
 ignore_ms_osx = ["t-yosemite-r7-380"]  # :dragrom
 workersList = []
 
@@ -128,8 +140,8 @@ def main():
     parser.add_argument("-w", "--worker-type",
                         dest="worker_type",
                         help="Available options: gecko-t-linux-talos, linux, gecko-t-win10-64-hw, win, gecko-t-osx-1010, mac",
-                        default=MACOSX,
-                        required=False)
+                        default=WINDOWS,
+                        required=True)
     parser.add_argument("-u", "--ldap-username",
                         dest="ldap_username",
                         help="Example: -u dlabici -- Don't include @mozilla.com!!",
@@ -144,7 +156,7 @@ def main():
 
     # Remove loaners from generated list
     if (workertype == LINUX) or (workertype == "linux"):
-        if ignore_ms_linux == []:
+        if not ignore_ms_linux:
             a = set(ignore_ms_linux)  # Mark workerlist to be compared to our list.
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
             print("\nNo loaners for LINUX machines\n")
@@ -154,7 +166,7 @@ def main():
             print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_linux), ignore_ms_linux))
 
     if (workertype == WINDOWS) or (workertype == "win"):
-        if ignore_ms_windows == []:
+        if not ignore_ms_windows:
             a = set(ignore_ms_windows)  # Mark workerlist to be compared to our list.
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
             print("\nNo loaners for WINDOWS machines\n")
@@ -164,7 +176,7 @@ def main():
             print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_windows), ignore_ms_windows))
 
     if (workertype == MACOSX) or (workertype == "osx"):
-        if ignore_ms_osx == []:
+        if not ignore_ms_osx:
             a = set(ignore_ms_osx)  # Mark workerlist to be compared to our list.
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
             print("\nNo loaners for WINDOWS machines\n")
