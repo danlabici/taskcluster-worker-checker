@@ -9,9 +9,10 @@ import urllib.request, json
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, etc.
 # ToDo: Implement a function that checks if we have machines loaned.
-ignore_ms_linux = None
-ignore_ms_windows = None
-ignore_ms_osx = None
+ignore_ms_linux = ["t-linux64-ms-279",  # :devidehex
+                   "t-linux64-ms-280"]  # :dragrom
+ignore_ms_windows = []
+ignore_ms_osx = ["t-yosemite-r7-380"]  # :dragrom
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -141,8 +142,40 @@ def main():
 
     parse_taskcluster_json(workertype)
 
-    a = set(workersList)  # Mark workerlist to be compared to our list.
-    missing_machines = [x for x in generate_machine_lists(workertype) if x not in a]
+    # Remove loaners from generated list
+    if (workertype == LINUX) or (workertype == "linux"):
+        if ignore_ms_linux == []:
+            a = set(ignore_ms_linux)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nNo loaners for LINUX machines\n")
+        else:
+            a = set(ignore_ms_linux)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_linux), ignore_ms_linux))
+
+    if (workertype == WINDOWS) or (workertype == "win"):
+        if ignore_ms_windows == []:
+            a = set(ignore_ms_windows)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nNo loaners for WINDOWS machines\n")
+        else:
+            a = set(ignore_ms_windows)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_windows), ignore_ms_windows))
+
+    if (workertype == MACOSX) or (workertype == "osx"):
+        if ignore_ms_osx == []:
+            a = set(ignore_ms_osx)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nNo loaners for WINDOWS machines\n")
+        else:
+            a = set(ignore_ms_osx)  # Mark workerlist to be compared to our list.
+            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_osx), ignore_ms_osx))
+
+    # Get the TC List of workers WITHOUT the loaners and make the diff.
+    b = set(workersList)
+    missing_machines = [x for x in workerlist_without_loaners if x not in b]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     print("Total of missing server : {}".format(len(missing_machines)))
@@ -164,6 +197,7 @@ def main():
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
+
 
 if __name__ == '__main__':
     main()
