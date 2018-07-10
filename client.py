@@ -127,8 +127,8 @@ def main():
     parser.add_argument("-w", "--worker-type",
                         dest="worker_type",
                         help="Available options: gecko-t-linux-talos, linux, gecko-t-win10-64-hw, win, gecko-t-osx-1010, mac",
-                        default=LINUX,
-                        required=True)
+                        default=MACOSX,
+                        required=False)
     parser.add_argument("-u", "--ldap-username",
                         dest="ldap_username",
                         help="Example: -u dlabici -- Don't include @mozilla.com!!",
@@ -154,16 +154,10 @@ def main():
     # Print each machine on a new line.
     for machine in missing_machines:
         if (workertype == LINUX) or (workertype == "linux"):
-            if int(machine[-3:]) <= int(mdc1_range[-1]):
-                print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-            else:
-                print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
+            print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-            if int(machine[-3:]) <= int(mdc1_range[-1]):
-                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))
-            else:
-                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, machine))
+            print("{}".format(machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
