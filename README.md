@@ -40,9 +40,9 @@ Pick whichever you find fancy and make a PullRequest.
 **PLEASE** don't forget to select "`Allow edits from maintainers`" so we can have quicker merges!
 
 ## Did I break anything?
-This repository is running TravisCI to check each commit and pull request to make sure every change added to the script is playing nice.
+This repository is running TravisCI to check each commit and pull request to make sure every change added to the script is playing nice. If you wanna check the status of a build, you can check our TravisCI repository page:
 
-If you wanna check the status of a build, you can check the our TravisCI repository page - [LAST BUILD](https://travis-ci.com/Akhliskun/taskcluster-worker-checker) for live logs or [BUILD HISTORY](https://travis-ci.com/Akhliskun/taskcluster-worker-checker/builds) page.
+[LAST BUILD](https://travis-ci.com/Akhliskun/taskcluster-worker-checker) for live logs or [BUILD HISTORY](https://travis-ci.com/Akhliskun/taskcluster-worker-checker/builds) page.
 
 ## The code Explained:
 `ignore_ms_{linux,windows,osx}` - Will be used to remove entries from the generated output. We don't want to see those!
