@@ -14,6 +14,9 @@ Or you can run this:
 `python3 client.py -w WORKER_TYPE -u LDAP_USERNAME | cat >> missing.txt`
 To get an output like this:
 ```
+Total of loaned machines: 2
+Name of machines loaned: [list_of_loaned_machines]
+
 Servers that WE know  of: 200
 Servers that TC knows of: 197
 Total of missing server: 3
@@ -36,6 +39,10 @@ Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-
 Pick whichever you find fancy and make a PullRequest.
 **PLEASE** don't forget to select "`Allow edits from maintainers`" so we can have quicker merges!
 
+## Did I break anything?
+This repository is running TravisCI to check each commit and pull request to make sure every change added to the script is playing nice.
+
+If you wanna check the status of a build, you can check the our TravisCI repository page - [LAST BUILD](https://travis-ci.com/Akhliskun/taskcluster-worker-checker) for live logs or [BUILD HISTORY](https://travis-ci.com/Akhliskun/taskcluster-worker-checker/builds) page.
 
 ## The code Explained:
 `ignore_ms_{linux,windows,osx}` - Will be used to remove entries from the generated output. We don't want to see those!
