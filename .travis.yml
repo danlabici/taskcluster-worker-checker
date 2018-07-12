@@ -1,0 +1,7 @@
+language: python
+python:
+ - "3.6"
+script:
+ - python3 client.py -w linux
+ - python3 client.py -w win
+ - python3 client.py -w osx -u root
