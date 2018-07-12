@@ -9,8 +9,8 @@ import urllib.request, json
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, etc.
 # ToDo: Implement a function that checks if we have machines loaned.
+
 ignore_ms_linux = ["t-linux64-ms-279",  # :devidehex
-                   "t-linux64-ms-280",  # :dragrom
                    "t-linux64-ms-580"]  # :dev machine for relops
 
 ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1064-MS-013", "T-W1064-MS-014",  # GW10 testing
