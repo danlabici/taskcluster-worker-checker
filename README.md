@@ -1,4 +1,4 @@
-# taskcluster-worker-checker
+# taskcluster-worker-checker [![Build Status](https://travis-ci.com/Akhliskun/taskcluster-worker-checker.svg?branch=master)](https://travis-ci.com/Akhliskun/taskcluster-worker-checker)
 
 This utility will check [TaskCluster](https://github.com/taskcluster) provisioner for [RelEng](https://github.com/mozilla-releng) hardware and will output in the terminal if any machine are missing.
 
