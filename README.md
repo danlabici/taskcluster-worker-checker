@@ -22,7 +22,7 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ```
 
-You can also add the `-v True` or `--verbose True` to example extra information such as loaned machines and machines that have known issues. 
+You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues. 
 Output example with -v/--verbose:
 ```
 Total of loaned machines: 1
