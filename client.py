@@ -178,7 +178,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
-                     list(range(271, ))
+                     list(range(271, 281))
 
         mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
                      list(range(391, 406)) + list(range(436, 451)) + \
@@ -199,7 +199,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(16, 46)) + list(range(61, 91)) + \
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
-                     list(range(, 299))
+                     list(range(281, 299))
         mdc2_range = list(range(316, 346)) + \
                      list(range(361, 391)) + list(range(406, 436)) + \
                      list(range(451, 481)) + list(range(496, 526)) + \
