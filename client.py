@@ -8,44 +8,122 @@ import urllib.request, json
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
+# IMPORTANT: Keep the following structure when adding new entries:
+#            Loaners: <Machine Name>: [<BUGZILLA LINK>, <Loaned To>]
+#            Problem Machines: <Machine Name>: [<BUGZILLA LINK>, <Last Bug Update - Date DD/MMM/YYYY>, <Status>]
 
-# Machines with known issues:
-# Linux
-linux_pxe = [] 
-linux_hdd = []  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
-linux_other_issues = ["t-linux64-ms-280"]  # Could be missing HPE RestfullAPI or any other problem.
-linux_all_problems = linux_pxe + linux_hdd + linux_other_issues  # DON'T EDIT THIS
- 
-# Windows
-windows_pxe = ["T-W1064-MS-281", "T-W1064-MS-338"] 
-windows_hdd = ["T-W1064-MS-071", "T-W1064-MS-261", "T-W1064-MS-291"]  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
-windows_other_issues = ["T-W1064-MS-072", "T-W1064-MS-130", "T-W1064-MS-177", "T-W1064-MS-178"]  # Could be missing HPE RestfullAPI or any other problem.
-windows_all_problems = windows_pxe + windows_hdd + windows_other_issues  # DON'T EDIT THIS! 
+machines_to_ignore = {
+    "linux": {
+        "loaner": {
+            "t-linux64-ms-280": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", ":dragrom"],
+            "t-linux64-ms-580": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", ":dev-env"]
+        },
+        "pxe_issues": {
+            # None at the moment
+        },
+        "hdd_issues": {
+            # None at the moment
+        },
+        "other_issues": {
+            # None at the moment
+        },
+    },
+    "windows": {
+        "loaner": { 
+            "T-W1064-MS-010": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-011": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-012": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-013": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-014": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-015": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-016": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-017": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-018": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-019": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-020": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-021": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-022": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-023": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-024": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-025": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-026": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-027": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-028": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-029": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-030": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-031": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-032": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-033": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-034": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-035": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-036": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-037": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-038": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-039": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-040": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-041": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-042": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-043": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-044": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-045": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-046": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-047": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-048": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-049": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-050": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-051": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-052": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-053": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-054": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-055": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-056": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-057": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-058": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-059": ["Dev-Environment", "No date", "Find Bug Comment"],
+            "T-W1064-MS-060": ["Dev-Environment", "No date", "Find Bug Comment"]
+        },
+        "pxe_issues": { 
+            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/ show_bug.cgi?id=1465753", "13.07.2018", "https://bugzilla.mozilla.org/ show_bug.cgi?id=1465753#c6"],
+            "T-W1064-MS-338": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+        },
+        "hdd_issues": { 
+            "T-W1064-MS-071": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475905", "15.07.2018", "New bug, no updates yet."],
+            "T-W1064-MS-261": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475906", "15.07.2018", "New bug, no updates yet."],
+            "T-W1064-MS-291": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475908", "15.07.2018", "New bug, no updates yet."]
+        },
+        "other_issues": { 
+            "T-W1064-MS-072": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "T-W1064-MS-130": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "T-W1064-MS-177": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "T-W1064-MS-178": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+        },
+    },
+    "osx": {
+        "loaner": { 
+            "t-yosemite-r7-380": ["Forever-Loaned", ":dragrom"]
+        },
+        "ssh_stdio": { 
+            "t-yosemite-r7-055": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-061": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-151": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-186": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-322": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-356": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+        },
+        "ssh_unresponsive": { 
+            "t-yosemite-r7-078": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-124": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-130": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-263": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-267": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+            "t-yosemite-r7-357": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+        },
+        "other_issues": { 
+            "t-yosemite-r7-442": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+        },
+    },
+}
 
-# OSX 
-osx_ssh_stdio = ["t-yosemite-r7-322", "t-yosemite-r7-356"]
-osx_ssh_unresponsive = ["t-yosemite-r7-078", "t-yosemite-r7-124", "t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
-                        "t-yosemite-r7-357"]
-osx_other_issues = ["t-yosemite-r7-442"]
-osx_all_problems = osx_ssh_stdio + osx_ssh_unresponsive + osx_other_issues
-
-# Loaners / Dev Machines
-ignore_ms_linux = ["t-linux64-ms-280",  # :dragrom
-                   "t-linux64-ms-580"]  # :dev machine for relops
-
-ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1064-MS-013", "T-W1064-MS-014",  # GW10 testing
-                     "T-W1064-MS-015", "T-W1064-MS-016", "T-W1064-MS-017", "T-W1064-MS-018", "T-W1064-MS-019",  # GW10 testing
-                     "T-W1064-MS-020", "T-W1064-MS-021", "T-W1064-MS-022", "T-W1064-MS-023", "T-W1064-MS-024",  # GW10 testing
-                     "T-W1064-MS-025", "T-W1064-MS-026", "T-W1064-MS-027", "T-W1064-MS-028", "T-W1064-MS-029",  # GW10 testing
-                     "T-W1064-MS-030", "T-W1064-MS-031", "T-W1064-MS-032", "T-W1064-MS-033", "T-W1064-MS-034",  # GW10 testing
-                     "T-W1064-MS-035", "T-W1064-MS-036", "T-W1064-MS-037", "T-W1064-MS-038", "T-W1064-MS-039",  # GW10 testing
-                     "T-W1064-MS-040", "T-W1064-MS-041", "T-W1064-MS-042", "T-W1064-MS-043", "T-W1064-MS-044",  # GW10 testing
-                     "T-W1064-MS-045", "T-W1064-MS-046", "T-W1064-MS-047", "T-W1064-MS-048", "T-W1064-MS-049",  # GW10 testing
-                     "T-W1064-MS-050", "T-W1064-MS-051", "T-W1064-MS-052", "T-W1064-MS-053", "T-W1064-MS-054",  # GW10 testing
-                     "T-W1064-MS-055", "T-W1064-MS-056", "T-W1064-MS-057", "T-W1064-MS-058", "T-W1064-MS-050",  # GW10 testing
-                     "T-W1064-MS-060"]  # GW10 testing
-
-ignore_ms_osx = ["t-yosemite-r7-380"]  # :dragrom
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -100,7 +178,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
-                     list(range(271, 281))
+                     list(range(271, ))
 
         mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
                      list(range(391, 406)) + list(range(436, 451)) + \
@@ -121,7 +199,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(16, 46)) + list(range(61, 91)) + \
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
-                     list(range(281, 299))
+                     list(range(, 299))
         mdc2_range = list(range(316, 346)) + \
                      list(range(361, 391)) + list(range(406, 436)) + \
                      list(range(451, 481)) + list(range(496, 526)) + \
