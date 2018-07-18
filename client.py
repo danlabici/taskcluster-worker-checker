@@ -8,14 +8,15 @@ import urllib.request, json
 
 
 def generate_win10_gw_testing(min_nr, max_nr):
+    all_hosts = {}
     for number in range(min_nr, max_nr):
-        generic_worker_win10 = {"T-W1064-MS-0{}".format(number): {
+        all_hosts.update({"T-W1064-MS-0{}".format(number): {
             "bug": "Dev-Environment",
             "date": "No date",
             "update": "Find Bug Comment"
             },
-        }
-        return generic_worker_win10
+        })
+    return all_hosts
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -40,7 +41,6 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            generate_win10_gw_testing(10, 61)
         },
         "pxe_issues": {
             "T-W1064-MS-281": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1465753", "13.07.2018",
@@ -87,6 +87,8 @@ machines_to_ignore = {
         },
     },
 }
+
+machines_to_ignore['windows']['loaner'] = generate_win10_gw_testing(10, 61)
 
 workersList = []
 
