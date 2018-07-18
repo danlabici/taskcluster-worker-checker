@@ -6,17 +6,27 @@ github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 from argparse import ArgumentParser
 import urllib.request, json
 
+
+def generate_win10_gw_testing(min_nr, max_nr):
+    for number in range(min_nr, max_nr):
+        generic_worker_win10 = {"T-W1064-MS-0{}".format(number): {
+            "bug": "Dev-Environment",
+            "date": "No date",
+            "update": "Find Bug Comment"
+            },
+        }
+        return generic_worker_win10
+
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
 # IMPORTANT: Keep the following structure when adding new entries:
 #            Loaners: <Machine Name>: [<BUGZILLA LINK>, <Loaned To>]
 #            Problem Machines: <Machine Name>: [<BUGZILLA LINK>, <Last Bug Update - Date DD/MMM/YYYY>, <Status>]
-
 machines_to_ignore = {
     "linux": {
         "loaner": {
-            "t-linux64-ms-280": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", ":dragrom"],
-            "t-linux64-ms-580": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", ":dev-env"]
+            "t-linux64-ms-280": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", "owner": ":dragrom"},
+            "t-linux64-ms-580": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", "owner": "dev-env"},
         },
         "pxe_issues": {
             # None at the moment
@@ -29,96 +39,50 @@ machines_to_ignore = {
         },
     },
     "windows": {
-        "loaner": { 
-            "T-W1064-MS-010": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-011": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-012": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-013": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-014": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-015": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-016": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-017": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-018": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-019": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-020": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-021": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-022": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-023": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-024": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-025": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-026": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-027": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-028": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-029": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-030": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-031": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-032": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-033": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-034": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-035": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-036": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-037": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-038": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-039": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-040": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-041": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-042": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-043": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-044": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-045": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-046": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-047": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-048": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-049": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-050": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-051": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-052": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-053": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-054": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-055": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-056": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-057": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-058": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-059": ["Dev-Environment", "No date", "Find Bug Comment"],
-            "T-W1064-MS-060": ["Dev-Environment", "No date", "Find Bug Comment"]
+        "loaner": {
+            generate_win10_gw_testing(10, 61)
         },
-        "pxe_issues": { 
-            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1465753", "13.07.2018", "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"],
+        "pxe_issues": {
+            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1465753", "13.07.2018",
+                               "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"],
             "T-W1064-MS-338": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
-        "hdd_issues": { 
-            "T-W1064-MS-071": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475905", "15.07.2018", "New bug, no updates yet."],
-            "T-W1064-MS-261": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475906", "15.07.2018", "New bug, no updates yet."],
-            "T-W1064-MS-291": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475908", "15.07.2018", "New bug, no updates yet."]
+        "hdd_issues": {
+            "T-W1064-MS-071": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475905", "15.07.2018",
+                               "New bug, no updates yet."],
+            "T-W1064-MS-261": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475906", "15.07.2018",
+                               "New bug, no updates yet."],
+            "T-W1064-MS-291": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475908", "15.07.2018",
+                               "New bug, no updates yet."]
         },
-        "other_issues": { 
-            "T-W1064-MS-072": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "T-W1064-MS-130": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "T-W1064-MS-177": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+        "other_issues": {
+            "T-W1064-MS-072": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "T-W1064-MS-130": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "T-W1064-MS-177": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
             "T-W1064-MS-178": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
     },
     "osx": {
-        "loaner": { 
+        "loaner": {
             "t-yosemite-r7-380": ["Forever-Loaned", ":dragrom"]
         },
-        "ssh_stdio": { 
-            "t-yosemite-r7-055": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-061": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-151": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-186": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-322": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+        "ssh_stdio": {
+            "t-yosemite-r7-055": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-061": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-151": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-186": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-322": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
             "t-yosemite-r7-356": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
-        "ssh_unresponsive": { 
-            "t-yosemite-r7-078": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-124": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-130": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-263": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
-            "t-yosemite-r7-267": ["", "15.07.2018", "New bug, no updates yet."], # TODO: Make bug!
+        "ssh_unresponsive": {
+            "t-yosemite-r7-078": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-124": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-130": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-263": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
+            "t-yosemite-r7-267": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
             "t-yosemite-r7-357": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
-        "other_issues": { 
+        "other_issues": {
             "t-yosemite-r7-442": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
     },
@@ -129,6 +93,16 @@ workersList = []
 LINUX = "gecko-t-linux-talos"
 WINDOWS = "gecko-t-win10-64-hw"
 MACOSX = "gecko-t-osx-1010"
+
+
+
+
+def get_all_keys(*args):
+    """Given a list of dictionaries, return a list of dictionary keys"""
+    all_keys = []
+    for d in args:
+        all_keys.extend(list(d.keys()))
+    return all_keys
 
 
 def parse_taskcluster_json(workertype):
@@ -251,7 +225,7 @@ def main():
                         dest="verbose_enabler",
                         help="Example: -v True",
                         default=False,
-                        required=False)                    
+                        required=False)
 
     args = parser.parse_args()
     workertype = args.worker_type
@@ -260,101 +234,63 @@ def main():
 
     parse_taskcluster_json(workertype)
 
-    # Remove loaners from generated list
+    # Remove machines from generated list
     if (workertype == LINUX) or (workertype == "linux"):
-        if not ignore_ms_linux:
-            a = set(ignore_ms_linux) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nNo loaners for LINUX machines\n")
-        else:
-            a = set(ignore_ms_linux) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_linux), ignore_ms_linux))
+        for platform in sorted(machines_to_ignore.keys()):
+            loaners = machines_to_ignore[platform]["loaner"]
+            pxe_hosts = machines_to_ignore[platform]["pxe_issues"]
+            hdd = machines_to_ignore[platform]["hdd_issues"]
+            other_issues = machines_to_ignore[platform]["other_issues"]
+            ignore_all = get_all_keys(loaners, pxe_hosts, hdd, other_issues)
+
+            print("Loaners:")
+            for loaner in sorted(loaners.keys()):
+                print(
+                    "Name: {} \t BUG: {} \t Owner: {}".format(loaner, loaners[loaner]['bug'], loaners[loaner]['owner']))
+
+            print("PXE Issues:")
+            if not pxe_hosts:
+                print("No PXE Issues")
+            else:
+                for pxe in sorted(pxe_hosts.keys()):
+                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(pxe, pxe_hosts[pxe]['bug'],
+                                                                                      pxe_hosts[pxe]['date'],
+                                                                                      pxe_hosts[pxe]['update']))
 
     if (workertype == WINDOWS) or (workertype == "win"):
         if not ignore_ms_windows:
-            a = set(ignore_ms_windows) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            a = set(ignore_ms_windows)
+            workers = [x for x in generate_machine_lists(workertype) if x not in a]
             if verbose:
                 print("\nNo loaners for WINDOWS machines\n")
         else:
-            a = set(ignore_ms_windows) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            a = set(ignore_ms_windows)
+            workers = [x for x in generate_machine_lists(workertype) if x not in a]
             if verbose:
-                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows), ignore_ms_windows))
+                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows),
+                                                                                               ignore_ms_windows))
 
     if (workertype == MACOSX) or (workertype == "osx"):
         if not ignore_ms_osx:
-            a = set(ignore_ms_osx) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            a = set(ignore_ms_osx)
+            workers = [x for x in generate_machine_lists(workertype) if x not in a]
             if verbose:
                 print("\nNo loaners for WINDOWS machines\n")
         else:
-            a = set(ignore_ms_osx) 
-            workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
+            a = set(ignore_ms_osx)
+            workers = [x for x in generate_machine_lists(workertype) if x not in a]
             if verbose:
-                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx), ignore_ms_osx))
-
-    
-    # Remove machines with known problems from generated list
-    if (workertype == LINUX) or (workertype == "linux"):
-        if not linux_all_problems:
-            b = set(linux_all_problems) 
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nNo LINUX machines with known issues.\n")
-        else:
-            b = set(linux_all_problems)
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nTotal of LINUX machines with known issues: {}".format(len(linux_all_problems)))
-                print("PXE issues:\n{}".format(linux_pxe))
-                print("HDD issues:\n{}".format(linux_hdd))
-                print("Other issues:\n{}".format(linux_other_issues))
-                print("\n")
-
-    if (workertype == WINDOWS) or (workertype == "win"):
-        if not windows_all_problems:
-            b = set(windows_all_problems)
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nNo WINDOWS machines with known issues.\n")
-        else:
-            b = set(windows_all_problems)
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nTotal of WINDOWS machines with known issues: {}".format(len(windows_all_problems)))
-                print("PXE issues:\n{}".format(windows_pxe))
-                print("HDD issues:\n{}".format(windows_hdd))
-                print("Other issues:\n{}".format(windows_other_issues))
-                print("\n")
-
-    if (workertype == MACOSX) or (workertype == "osx"):
-        if not osx_all_problems:
-            b = set(osx_all_problems) 
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nNo OSX machines with known issues.\n")
-        else:
-            b = set(osx_all_problems) 
-            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
-            if verbose:
-                print("\nTotal of OSX machines with known issues: {}".format(len(windows_all_problems)))
-                print("SSH STDIO issues:\n{}".format(osx_ssh_stdio))
-                print("SSH Unresponsive issues:\n{}".format(osx_ssh_unresponsive))
-                print("Other issues:\n{}".format(osx_other_issues))
-
+                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx),
+                                                                                               ignore_ms_osx))
 
     c = set(workersList)
-    missing_machines = [x for x in workerlist_without_loaners_and_problems if x not in c]
+    missing_machines = [x for x in workers_and_problems if x not in c]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     print("Total of missing server : {}".format(len(missing_machines)))
 
     if verbose:
-        if len(workerlist_without_loaners_and_problems) > len(generate_machine_lists(workertype)):
+        if len(workers_and_problems) > len(generate_machine_lists(workertype)):
             print("!!! We got SCL3 Machines in the JSON body!!!! \n"
                   "!!! Ignoring all SCL3, Only MDC{1-2} machines are shown!!!!")
 
