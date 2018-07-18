@@ -83,7 +83,7 @@ machines_to_ignore = {
             "T-W1064-MS-060": ["Dev-Environment", "No date", "Find Bug Comment"]
         },
         "pxe_issues": { 
-            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/ show_bug.cgi?id=1465753", "13.07.2018", "https://bugzilla.mozilla.org/ show_bug.cgi?id=1465753#c6"],
+            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1465753", "13.07.2018", "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"],
             "T-W1064-MS-338": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
         },
         "hdd_issues": { 
