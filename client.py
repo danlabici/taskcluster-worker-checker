@@ -137,8 +137,8 @@ def parse_taskcluster_json(workertype):
     :param workertype: gecko-t-linux-talos, gecko-t-win10-64-hw, gecko-t-osx-1010.
     :return: A JSON file containing all workers for a workertype selected at runtime.
     '''
-    # Setup API URLs
 
+    # Setup API URLs
     if (workertype == LINUX) or (workertype == "linux"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
 
@@ -174,7 +174,6 @@ def parse_taskcluster_json(workertype):
 
 def generate_machine_lists(workertype):
     if (workertype == LINUX) or (workertype == "linux"):
-        global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
         mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
@@ -216,6 +215,7 @@ def generate_machine_lists(workertype):
         return windows_machines
 
     if (workertype == MACOSX) or (workertype == "osx"):
+        global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
         mdc2_range = list(range(21, 237))
         mdc1_range = list(range(237, 473))
 
