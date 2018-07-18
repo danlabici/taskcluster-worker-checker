@@ -6,37 +6,22 @@ github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 from argparse import ArgumentParser
 import urllib.request, json
 
-
-def generate_win10_gw_testing(min_nr, max_nr):
-    all_hosts = {}
-    for number in range(min_nr, max_nr):
-        all_hosts.update({"T-W1064-MS-0{}".format(number): {
-            "bug": "Dev-Environment",
-            "date": "No date",
-            "update": "Find Bug Comment"
-            },
-        })
-    return all_hosts
-
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
-# IMPORTANT: Keep the following structure when adding new entries:
-#            Loaners: <Machine Name>: [<BUGZILLA LINK>, <Loaned To>]
-#            Problem Machines: <Machine Name>: [<BUGZILLA LINK>, <Last Bug Update - Date DD/MMM/YYYY>, <Status>]
 machines_to_ignore = {
     "linux": {
         "loaner": {
             "t-linux64-ms-280": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", "owner": ":dragrom"},
-            "t-linux64-ms-580": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", "owner": "dev-env"},
+            "t-linux64-ms-580": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", "owner": ":dev-env"}
         },
         "pxe_issues": {
-            # None at the moment
+            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
         },
         "hdd_issues": {
-            # None at the moment
+            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
         },
         "other_issues": {
-            # None at the moment
+            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
         },
     },
     "windows": {
@@ -88,15 +73,23 @@ machines_to_ignore = {
     },
 }
 
-machines_to_ignore['windows']['loaner'] = generate_win10_gw_testing(10, 61)
+
+def build_host_info(hostnames, **kwargs):
+    all_hosts = {}
+    for hostname in hostnames:
+        all_hosts.update({hostname: dict(kwargs)})
+    return all_hosts
+
+# Insert Windows 10 to 60 into the dictionary.
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", date="No date",
+                    update="Find Bug Comment"))
 
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
 WINDOWS = "gecko-t-win10-64-hw"
 MACOSX = "gecko-t-osx-1010"
-
-
 
 
 def get_all_keys(*args):
@@ -149,6 +142,7 @@ def parse_taskcluster_json(workertype):
 
 
 def generate_machine_lists(workertype):
+    global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
         mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
                      list(range(91, 106)) + list(range(136, 151)) + \
@@ -191,7 +185,7 @@ def generate_machine_lists(workertype):
         return windows_machines
 
     if (workertype == MACOSX) or (workertype == "osx"):
-        global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
+
         mdc2_range = list(range(21, 237))
         mdc1_range = list(range(237, 473))
 
@@ -238,61 +232,83 @@ def main():
 
     # Remove machines from generated list
     if (workertype == LINUX) or (workertype == "linux"):
-        for platform in sorted(machines_to_ignore.keys()):
-            loaners = machines_to_ignore[platform]["loaner"]
-            pxe_hosts = machines_to_ignore[platform]["pxe_issues"]
-            hdd = machines_to_ignore[platform]["hdd_issues"]
-            other_issues = machines_to_ignore[platform]["other_issues"]
-            ignore_all = get_all_keys(loaners, pxe_hosts, hdd, other_issues)
+        loaners = machines_to_ignore["linux"]["loaner"]
+        pxe_issues = machines_to_ignore["linux"]["pxe_issues"]
+        hdd_issues = machines_to_ignore["linux"]["hdd_issues"]
+        other_issues = machines_to_ignore["linux"]["other_issues"]
+        ignore_all = list(get_all_keys(loaners, pxe_issues, hdd_issues, other_issues))
 
-            print("Loaners:")
-            for loaner in sorted(loaners.keys()):
-                print(
-                    "Name: {} \t BUG: {} \t Owner: {}".format(loaner, loaners[loaner]['bug'], loaners[loaner]['owner']))
+        if verbose:
+            print("Linux Loaners:")
+            if not loaners:
+                print("No Linux Loaners")
+            else:
+                for machine in sorted(loaners.keys()):
+                    print("Name: {} \t BUG: {} \t Owner: {}".format(machine, loaners[machine]['bug'], loaners[machine]['owner']))
 
-            print("PXE Issues:")
-            if not pxe_hosts:
+            print("\nPXE Issues:")
+            if not pxe_issues:
                 print("No PXE Issues")
             else:
-                for pxe in sorted(pxe_hosts.keys()):
-                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(pxe, pxe_hosts[pxe]['bug'],
-                                                                                      pxe_hosts[pxe]['date'],
-                                                                                      pxe_hosts[pxe]['update']))
+                for pxe in sorted(pxe_issues.keys()):
+                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(pxe, pxe_issues[pxe]['bug'],
+                                                                                          pxe_issues[pxe]['date'],
+                                                                                          pxe_issues[pxe]['update']))
 
-    if (workertype == WINDOWS) or (workertype == "win"):
-        if not ignore_ms_windows:
-            a = set(ignore_ms_windows)
-            workers = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nNo loaners for WINDOWS machines\n")
-        else:
-            a = set(ignore_ms_windows)
-            workers = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows),
-                                                                                               ignore_ms_windows))
+            print("\nHDD Issues:")
+            if not hdd_issues:
+                print("No Linux with HDD Issues")
+            else:
+                for hdd in sorted(hdd_issues.keys()):
+                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(hdd, hdd_issues[hdd]['bug'],
+                                                                                      hdd_issues[hdd]['date'],
+                                                                                      hdd_issues[hdd]['update']))
 
-    if (workertype == MACOSX) or (workertype == "osx"):
-        if not ignore_ms_osx:
-            a = set(ignore_ms_osx)
-            workers = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nNo loaners for WINDOWS machines\n")
-        else:
-            a = set(ignore_ms_osx)
-            workers = [x for x in generate_machine_lists(workertype) if x not in a]
-            if verbose:
-                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx),
-                                                                                               ignore_ms_osx))
+            print("\nOther Issues:")
+            if not other_issues:
+                print("No Linux under Other Issues")
+            else:
+                for issue in sorted(other_issues.keys()):
+                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(issue, other_issues[issue]['bug'],
+                                                                                      other_issues[issue]['date'],
+                                                                                      other_issues[issue]['update']))
+        a = set(ignore_all)
+        workers = [x for x in generate_machine_lists(workertype) if x not in a]
+
+    # if (workertype == WINDOWS) or (workertype == "win"):
+    #     if not ignore_ms_windows:
+    #         a = set(ignore_ms_windows)
+    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
+    #         if verbose:
+    #             print("\nNo loaners for WINDOWS machines\n")
+    #     else:
+    #         a = set(ignore_ms_windows)
+    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
+    #         if verbose:
+    #             print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows),
+    #                                                                                            ignore_ms_windows))
+    #
+    # if (workertype == MACOSX) or (workertype == "osx"):
+    #     if not ignore_ms_osx:
+    #         a = set(ignore_ms_osx)
+    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
+    #         if verbose:
+    #             print("\nNo loaners for WINDOWS machines\n")
+    #     else:
+    #         a = set(ignore_ms_osx)
+    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
+    #         if verbose:
+    #             print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx),
+    #                                                                                            ignore_ms_osx))
 
     c = set(workersList)
-    missing_machines = [x for x in workers_and_problems if x not in c]
+    missing_machines = [x for x in workers if x not in c]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     print("Total of missing server : {}".format(len(missing_machines)))
 
     if verbose:
-        if len(workers_and_problems) > len(generate_machine_lists(workertype)):
+        if len(workers) > len(generate_machine_lists(workertype)):
             print("!!! We got SCL3 Machines in the JSON body!!!! \n"
                   "!!! Ignoring all SCL3, Only MDC{1-2} machines are shown!!!!")
 
