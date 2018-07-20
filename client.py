@@ -11,28 +11,43 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
+            "t-linux64-ms-240": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
             "t-linux64-ms-280": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", 
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
+            "t-linux64-ms-394": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
+            "t-linux64-ms-395": {
+                "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
 
             "t-linux64-ms-580": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", 
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573",
                 "owner": ":dev-env"
             },
         },
         "pxe_issues": {
             "No Issue": {
-                "bug": "No BUG", 
-                "date": "No Owner", 
+                "bug": "No BUG",
+                "date": "No Owner",
                 "update": "No Owner"
             },
         },
 
         "hdd_issues": {
             "No Issue": {
-                "bug": "No BUG", 
-                "date": "No Owner", 
+                "bug": "No BUG",
+                "date": "No Owner",
                 "update": "No Owner"
             },
         },
@@ -65,7 +80,25 @@ machines_to_ignore = {
     },
     "osx": {
         "loaner": {
-            "t-yosemite-r7-380": ["Forever-Loaned", ":dragrom"]
+            "t-yosemite-r7-100": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
+            "t-yosemite-r7-101": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
+            "t-yosemite-r7-380": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+
+            "t-yosemite-r7-394": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
         },
         "ssh_stdio": {
             "t-yosemite-r7-055": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
@@ -95,6 +128,7 @@ def build_host_info(hostnames, **kwargs):
     for hostname in hostnames:
         all_hosts.update({hostname: dict(kwargs)})
     return all_hosts
+
 
 # Insert Windows 10 to 60 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
@@ -260,7 +294,8 @@ def main():
                 print("No Linux Loaners")
             else:
                 for machine in sorted(loaners.keys()):
-                    print("Name: {} \t BUG: {} \t Owner: {}".format(machine, loaners[machine]['bug'], loaners[machine]['owner']))
+                    print("Name: {} \t BUG: {} \t Owner: {}".format(machine, loaners[machine]['bug'],
+                                                                    loaners[machine]['owner']))
 
             print("\nPXE Issues:")
             if not pxe_issues:
@@ -268,8 +303,8 @@ def main():
             else:
                 for pxe in sorted(pxe_issues.keys()):
                     print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(pxe, pxe_issues[pxe]['bug'],
-                                                                                          pxe_issues[pxe]['date'],
-                                                                                          pxe_issues[pxe]['update']))
+                                                                                      pxe_issues[pxe]['date'],
+                                                                                      pxe_issues[pxe]['update']))
 
             print("\nHDD Issues:")
             if not hdd_issues:
