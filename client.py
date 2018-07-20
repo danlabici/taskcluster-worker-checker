@@ -11,14 +11,30 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
-            "t-linux64-ms-280": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", "owner": ":dragrom"},
-            "t-linux64-ms-580": {"bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", "owner": ":dev-env"}
+            "t-linux64-ms-280": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464070", 
+                "owner": ":dragrom"
+            },
+
+            "t-linux64-ms-580": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573", 
+                "owner": ":dev-env"
+            },
         },
         "pxe_issues": {
-            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
+            "No Issue": {
+                "bug": "No BUG", 
+                "date": "No Owner", 
+                "update": "No Owner"
+            },
         },
+
         "hdd_issues": {
-            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
+            "No Issue": {
+                "bug": "No BUG", 
+                "date": "No Owner", 
+                "update": "No Owner"
+            },
         },
         "other_issues": {
             "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
