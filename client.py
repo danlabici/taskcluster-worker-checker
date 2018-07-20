@@ -13,7 +13,7 @@ import urllib.request, json
 # Linux
 linux_pxe = [] 
 linux_hdd = []  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
-linux_other_issues = ["t-linux64-ms-280"]  # Could be missing HPE RestfullAPI or any other problem.
+linux_other_issues = []  # Could be missing HPE RestfullAPI or any other problem.
 linux_all_problems = linux_pxe + linux_hdd + linux_other_issues  # DON'T EDIT THIS
  
 # Windows
@@ -30,7 +30,10 @@ osx_other_issues = ["t-yosemite-r7-442"]
 osx_all_problems = osx_ssh_stdio + osx_ssh_unresponsive + osx_other_issues
 
 # Loaners / Dev Machines
-ignore_ms_linux = ["t-linux64-ms-280",  # :dragrom
+ignore_ms_linux = ["t-linux64-ms-240",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-280",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-394",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-395",  # :dragrom // Staging Pool.
                    "t-linux64-ms-580"]  # :dev machine for relops
 
 ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1064-MS-013", "T-W1064-MS-014",  # GW10 testing
@@ -45,7 +48,10 @@ ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1
                      "T-W1064-MS-055", "T-W1064-MS-056", "T-W1064-MS-057", "T-W1064-MS-058", "T-W1064-MS-050",  # GW10 testing
                      "T-W1064-MS-060"]  # GW10 testing
 
-ignore_ms_osx = ["t-yosemite-r7-380"]  # :dragrom
+ignore_ms_osx = ["t-yosemite-r7-100",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-101",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-380",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-394"]  # :dragrom // Staging Pool.
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
