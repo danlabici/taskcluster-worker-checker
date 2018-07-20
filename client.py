@@ -5,6 +5,7 @@ github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 
 from argparse import ArgumentParser
 import urllib.request, json
+from prettytable import PrettyTable
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -39,43 +40,78 @@ machines_to_ignore = {
         "pxe_issues": {
             "No Issue": {
                 "bug": "No BUG",
-                "date": "No Owner",
-                "update": "No Owner"
+                "date": "No Date",
+                "update": "No Update"
             },
         },
-
         "hdd_issues": {
             "No Issue": {
                 "bug": "No BUG",
-                "date": "No Owner",
-                "update": "No Owner"
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "other_issues": {
-            "No Issue": {"bug": "No BUG", "date": "No Owner", "update": "No Owner"}
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
+            },
         },
     },
     "windows": {
         "loaner": {
         },
         "pxe_issues": {
-            "T-W1064-MS-281": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1465753", "13.07.2018",
-                               "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"],
-            "T-W1064-MS-338": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+            "T-W1064-MS-281": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753",
+                "date": "13.07.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"
+            },
+            "T-W1064-MS-338": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
         },
         "hdd_issues": {
-            "T-W1064-MS-071": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475905", "15.07.2018",
-                               "New bug, no updates yet."],
-            "T-W1064-MS-261": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475906", "15.07.2018",
-                               "New bug, no updates yet."],
-            "T-W1064-MS-291": ["https://bugzilla.mozilla.org/show_bug.cgi?id=1475908", "15.07.2018",
-                               "New bug, no updates yet."]
+            "T-W1064-MS-071": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475905",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-261": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475906",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-291": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
         },
         "other_issues": {
-            "T-W1064-MS-072": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "T-W1064-MS-130": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "T-W1064-MS-177": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "T-W1064-MS-178": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+            "T-W1064-MS-072": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-130": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-177": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-178": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
         },
     },
     "osx": {
@@ -101,23 +137,75 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-055": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-061": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-151": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-186": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-322": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-356": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+            "t-yosemite-r7-055": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-061": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-151": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-186": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-322": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-356": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            }
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-078": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-124": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-130": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-263": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-267": ["", "15.07.2018", "New bug, no updates yet."],  # TODO: Make bug!
-            "t-yosemite-r7-357": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+            "t-yosemite-r7-078": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-124": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-130": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-263": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-267": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-357": {  # TODO: Make bug!
+                "bug": "",
+                "date": "15.07.2018",
+                "update": "New bug, no updates yet."
+            },
         },
         "other_issues": {
-            "t-yosemite-r7-442": ["", "15.07.2018", "New bug, no updates yet."]  # TODO: Make bug!
+            "t-yosemite-r7-442": {
+                "bug":"",
+                "date":"15.07.2018",
+                "update": "New bug, no updates yet."
+            },  # TODO: Make bug!
         },
     },
 }
@@ -132,8 +220,7 @@ def build_host_info(hostnames, **kwargs):
 
 # Insert Windows 10 to 60 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", date="No date",
-                    update="Find Bug Comment"))
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
 
 workersList = []
 
@@ -260,7 +347,7 @@ def main():
                         dest="worker_type",
                         help="Available options: gecko-t-linux-talos, linux, gecko-t-win10-64-hw, win, gecko-t-osx-1010, mac",
                         default=WINDOWS,
-                        required=True)
+                        required=False)
     parser.add_argument("-u", "--ldap-username",
                         dest="ldap_username",
                         help="Example: -u dlabici -- Don't include @mozilla.com!!",
@@ -270,7 +357,7 @@ def main():
     parser.add_argument("-v", "--verbose",
                         dest="verbose_enabler",
                         help="Example: -v True",
-                        default=False,
+                        default=True,
                         required=False)
 
     args = parser.parse_args()
@@ -289,71 +376,157 @@ def main():
         ignore_all = list(get_all_keys(loaners, pxe_issues, hdd_issues, other_issues))
 
         if verbose:
-            print("Linux Loaners:")
+            print("\nLinux Loaners:")
             if not loaners:
                 print("No Linux Loaners")
             else:
+                table = PrettyTable()
+                table.field_names = ["Machine Name", "BUG ID", "Owner"]
                 for machine in sorted(loaners.keys()):
-                    print("Name: {} \t BUG: {} \t Owner: {}".format(machine, loaners[machine]['bug'],
-                                                                    loaners[machine]['owner']))
+                    table.add_row([machine, loaners[machine]['bug'], loaners[machine]['owner']])
+                print(table)
 
             print("\nPXE Issues:")
             if not pxe_issues:
                 print("No PXE Issues")
             else:
+                pxe_table = PrettyTable()
+                pxe_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
                 for pxe in sorted(pxe_issues.keys()):
-                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(pxe, pxe_issues[pxe]['bug'],
-                                                                                      pxe_issues[pxe]['date'],
-                                                                                      pxe_issues[pxe]['update']))
+                    pxe_table.add_row([pxe, pxe_issues[pxe]['bug'], pxe_issues[pxe]['date'], pxe_issues[pxe]['update']])
+                print(pxe_table)
 
             print("\nHDD Issues:")
             if not hdd_issues:
                 print("No Linux with HDD Issues")
             else:
+                hdd_table = PrettyTable()
+                hdd_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
                 for hdd in sorted(hdd_issues.keys()):
-                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(hdd, hdd_issues[hdd]['bug'],
-                                                                                      hdd_issues[hdd]['date'],
-                                                                                      hdd_issues[hdd]['update']))
+                    hdd_table.add_row([hdd, hdd_issues[hdd]['bug'], hdd_issues[hdd]['date'], hdd_issues[hdd]['update']])
+                print(hdd_table)
 
             print("\nOther Issues:")
             if not other_issues:
                 print("No Linux under Other Issues")
             else:
+                otherissues_table = PrettyTable()
+                otherissues_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
                 for issue in sorted(other_issues.keys()):
-                    print("Name: {} \t BUG: {} \t Date: {} \t Last Update: {}".format(issue, other_issues[issue]['bug'],
-                                                                                      other_issues[issue]['date'],
-                                                                                      other_issues[issue]['update']))
+                    otherissues_table.add_row(
+                        [issue, other_issues[issue]['bug'], other_issues[issue]['date'], other_issues[issue]['update']])
+                print(otherissues_table)
+
         a = set(ignore_all)
         workers = [x for x in generate_machine_lists(workertype) if x not in a]
 
-    # if (workertype == WINDOWS) or (workertype == "win"):
-    #     if not ignore_ms_windows:
-    #         a = set(ignore_ms_windows)
-    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
-    #         if verbose:
-    #             print("\nNo loaners for WINDOWS machines\n")
-    #     else:
-    #         a = set(ignore_ms_windows)
-    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
-    #         if verbose:
-    #             print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows),
-    #                                                                                            ignore_ms_windows))
-    #
-    # if (workertype == MACOSX) or (workertype == "osx"):
-    #     if not ignore_ms_osx:
-    #         a = set(ignore_ms_osx)
-    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
-    #         if verbose:
-    #             print("\nNo loaners for WINDOWS machines\n")
-    #     else:
-    #         a = set(ignore_ms_osx)
-    #         workers = [x for x in generate_machine_lists(workertype) if x not in a]
-    #         if verbose:
-    #             print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx),
-    #                                                                                            ignore_ms_osx))
+    if (workertype == WINDOWS) or (workertype == "win"):
+        loaners = machines_to_ignore["windows"]["loaner"]
+        pxe_issues = machines_to_ignore["windows"]["pxe_issues"]
+        hdd_issues = machines_to_ignore["windows"]["hdd_issues"]
+        other_issues = machines_to_ignore["windows"]["other_issues"]
+        ignore_all = list(get_all_keys(loaners, pxe_issues, hdd_issues, other_issues))
 
-    c = set(workersList)
-    missing_machines = [x for x in workers if x not in c]
+        if verbose:
+            print("\nWindows Loaners:")
+            if not loaners:
+                print("No Windows Loaners")
+            else:
+                table = PrettyTable()
+                table.field_names = ["Machine Name", "BUG ID", "Owner"]
+                for machine in sorted(loaners.keys()):
+                    table.add_row([machine, loaners[machine]['bug'], loaners[machine]['owner']])
+                print(table)
+
+            print("\nPXE Issues:")
+            if not pxe_issues:
+                print("No PXE Issues")
+            else:
+                pxe_table = PrettyTable()
+                pxe_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for pxe in sorted(pxe_issues.keys()):
+                    pxe_table.add_row([pxe, pxe_issues[pxe]['bug'], pxe_issues[pxe]['date'], pxe_issues[pxe]['update']])
+                print(pxe_table)
+
+            print("\nHDD Issues:")
+            if not hdd_issues:
+                print("No Windows with HDD Issues")
+            else:
+                hdd_table = PrettyTable()
+                hdd_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for hdd in sorted(hdd_issues.keys()):
+                    hdd_table.add_row([hdd, hdd_issues[hdd]['bug'], hdd_issues[hdd]['date'], hdd_issues[hdd]['update']])
+                print(hdd_table)
+
+            print("\nOther Issues:")
+            if not other_issues:
+                print("No Windows under Other Issues")
+            else:
+                otherissues_table = PrettyTable()
+                otherissues_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for issue in sorted(other_issues.keys()):
+                    otherissues_table.add_row(
+                        [issue, other_issues[issue]['bug'], other_issues[issue]['date'], other_issues[issue]['update']])
+                print(otherissues_table)
+
+        a = set(ignore_all)
+        workers = [x for x in generate_machine_lists(workertype) if x not in a]
+
+    if (workertype == MACOSX) or (workertype == "osx"):
+        loaners = machines_to_ignore["osx"]["loaner"]
+        ssh_stdio = machines_to_ignore["osx"]["ssh_stdio"]
+        ssh_unresponsive = machines_to_ignore["osx"]["ssh_unresponsive"]
+        other_issues = machines_to_ignore["osx"]["other_issues"]
+        ignore_all = list(get_all_keys(loaners, ssh_stdio, ssh_unresponsive, other_issues))
+
+        if verbose:
+            print("\nYosemite Loaners:")
+            if not loaners:
+                print("No Yosemite Loaners")
+            else:
+                table = PrettyTable()
+                table.field_names = ["Machine Name", "BUG ID", "Owner"]
+                for machine in sorted(loaners.keys()):
+                    table.add_row([machine, loaners[machine]['bug'], loaners[machine]['owner']])
+                print(table)
+
+            print("\nSSH-STDIO Issues:")
+            if not ssh_stdio:
+                print("No SSH-STDIO Issues")
+            else:
+                stdio_table = PrettyTable()
+                stdio_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for stdio in sorted(ssh_stdio.keys()):
+                    stdio_table.add_row([stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
+                print(stdio_table)
+
+            print("\nSSH-Unresponsive Issues:")
+            if not ssh_unresponsive:
+                print("No Yosemite with SSH Issues")
+            else:
+                unresponsive_table = PrettyTable()
+                unresponsive_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for unresponsite in sorted(ssh_unresponsive.keys()):
+                    unresponsive_table.add_row([unresponsite, ssh_unresponsive[unresponsite]['bug'], ssh_unresponsive[unresponsite]['date'], ssh_unresponsive[unresponsite]['update']])
+                print(unresponsive_table)
+
+            print("\nOther Issues:")
+            if not other_issues:
+                print("No yosemite under Other Issues")
+            else:
+                otherissues_table = PrettyTable()
+                otherissues_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for issue in sorted(other_issues.keys()):
+                    otherissues_table.add_row(
+                        [issue, other_issues[issue]['bug'], other_issues[issue]['date'], other_issues[issue]['update']])
+                print(otherissues_table)
+
+        a = set(ignore_all)
+        workers = [x for x in generate_machine_lists(workertype) if x not in a]
+
+    b = set(workersList)
+    missing_machines = [x for x in workers if x not in b]
+    print("\n")
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     print("Total of missing server : {}".format(len(missing_machines)))
