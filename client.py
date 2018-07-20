@@ -357,7 +357,7 @@ def main():
     parser.add_argument("-v", "--verbose",
                         dest="verbose_enabler",
                         help="Example: -v True",
-                        default=True,
+                        default=False,
                         required=False)
 
     args = parser.parse_args()
