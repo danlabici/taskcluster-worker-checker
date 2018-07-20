@@ -1,6 +1,8 @@
 language: python
 python:
  - "3.6"
+before_install:
+ - easy_install prettytable
 script:
  - python3 client.py -w linux
  - python3 client.py -w win
