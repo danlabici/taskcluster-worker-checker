@@ -75,6 +75,11 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
+            "T-W1064-MS-065": {  # TODO: Make bug!
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477426",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-071": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475905",
                 "date": "15.07.2018",
@@ -157,6 +162,11 @@ machines_to_ignore = {
                 "date": "15.07.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-201": {  # TODO: Make bug!
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-322": {  # TODO: Make bug!
                 "bug": "",
                 "date": "15.07.2018",
@@ -202,8 +212,8 @@ machines_to_ignore = {
         },
         "other_issues": {
             "t-yosemite-r7-442": {
-                "bug":"",
-                "date":"15.07.2018",
+                "bug": "",
+                "date": "15.07.2018",
                 "update": "New bug, no updates yet."
             },  # TODO: Make bug!
         },
@@ -497,7 +507,8 @@ def main():
                 stdio_table = PrettyTable()
                 stdio_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
                 for stdio in sorted(ssh_stdio.keys()):
-                    stdio_table.add_row([stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
+                    stdio_table.add_row(
+                        [stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
                 print(stdio_table)
 
             print("\nSSH-Unresponsive Issues:")
@@ -507,7 +518,9 @@ def main():
                 unresponsive_table = PrettyTable()
                 unresponsive_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
                 for unresponsite in sorted(ssh_unresponsive.keys()):
-                    unresponsive_table.add_row([unresponsite, ssh_unresponsive[unresponsite]['bug'], ssh_unresponsive[unresponsite]['date'], ssh_unresponsive[unresponsite]['update']])
+                    unresponsive_table.add_row(
+                        [unresponsite, ssh_unresponsive[unresponsite]['bug'], ssh_unresponsive[unresponsite]['date'],
+                         ssh_unresponsive[unresponsite]['update']])
                 print(unresponsive_table)
 
             print("\nOther Issues:")
