@@ -18,7 +18,7 @@ machines_to_ignore = {
             },
 
             "t-linux64-ms-280": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
             },
 
@@ -71,11 +71,11 @@ machines_to_ignore = {
             "T-W1064-MS-338": {  # TODO: Make bug!
                 "bug": "",
                 "date": "15.07.2018",
-                "update": "New bug, no updates yet."
+                "update": "MDC2 machine shows up as MDC1 and does prod jobs"
             },
         },
         "hdd_issues": {
-            "T-W1064-MS-065": {  # TODO: Make bug!
+            "T-W1064-MS-065": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477426",
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
@@ -97,24 +97,24 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-072": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "T-W1064-MS-072": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477644",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "T-W1064-MS-130": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "T-W1064-MS-130": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "T-W1064-MS-177": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "T-W1064-MS-177": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477654",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "T-W1064-MS-178": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "T-W1064-MS-178": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477656",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -142,39 +142,34 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-055": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-055": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476496",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-061": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-061": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476497",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-151": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-151": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476498",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-186": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-201": {  # TODO: Make bug!
+            "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-322": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-322": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475747",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-356": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-356": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477683",
+                "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             }
         },
