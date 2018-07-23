@@ -18,12 +18,12 @@ linux_all_problems = linux_pxe + linux_hdd + linux_other_issues  # DON'T EDIT TH
  
 # Windows
 windows_pxe = ["T-W1064-MS-281", "T-W1064-MS-338"] 
-windows_hdd = ["T-W1064-MS-071", "T-W1064-MS-261", "T-W1064-MS-291"]  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
+windows_hdd = ["T-W1064-MS-065", "T-W1064-MS-071", "T-W1064-MS-261", "T-W1064-MS-291"]  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
 windows_other_issues = ["T-W1064-MS-072", "T-W1064-MS-130", "T-W1064-MS-177", "T-W1064-MS-178"]  # Could be missing HPE RestfullAPI or any other problem.
 windows_all_problems = windows_pxe + windows_hdd + windows_other_issues  # DON'T EDIT THIS! 
 
 # OSX 
-osx_ssh_stdio = ["t-yosemite-r7-322", "t-yosemite-r7-356"]
+osx_ssh_stdio = ["t-yosemite-r7-201", "t-yosemite-r7-322", "t-yosemite-r7-356"]
 osx_ssh_unresponsive = ["t-yosemite-r7-078", "t-yosemite-r7-124", "t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
                         "t-yosemite-r7-357"]
 osx_other_issues = ["t-yosemite-r7-442"]
