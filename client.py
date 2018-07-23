@@ -194,6 +194,11 @@ machines_to_ignore = {
                 "date": "15.07.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-260": {  # TODO: Make bug!
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472842",
+                "date": "23.07.2018",
+                "update": "Asked DCOps to handle it."
+            },
             "t-yosemite-r7-263": {  # TODO: Make bug!
                 "bug": "",
                 "date": "15.07.2018",
