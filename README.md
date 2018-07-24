@@ -11,12 +11,9 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 `python3 client.py -w osx` or `python3 client.py -w gecko-t-osx-1010`
 
 Or you can run this:
-`python3 client.py -w WORKER_TYPE -u LDAP_USERNAME | cat >> missing.txt`
+`python3 client.py -w WORKER_TYPE -u LDAP_USERNAME > missing.txt`
 To get an output like this:
 ```
-Total of loaned machines: 2
-Name of machines loaned: [list_of_loaned_machines]
-
 Servers that WE know  of: 200
 Servers that TC knows of: 197
 Total of missing server: 3
@@ -25,6 +22,22 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ```
 
+You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues. 
+Output example with -v/--verbose:
+```
+Total of loaned machines: 1
+Name of machines loaned:
+[list_of_machines]
+
+
+Total of OSX machines with known issues: 9
+SSH STDIO issues:
+[list_of_machines]
+SSH Unresponsive issues:
+[list_of_machines]
+Other issues:
+[list_of_machines]
+```
 
 ## How does it work?
 1) We ask the user which worker-type he's interested into.

@@ -7,10 +7,33 @@ from argparse import ArgumentParser
 import urllib.request, json
 
 # Define machines that SHOULDN'T appear.
-# Example: Machine is dev-env, loaner, etc.
-# ToDo: Implement a function that checks if we have machines loaned.
+# Example: Machine is dev-env, loaner, or has known problems etc.
 
-ignore_ms_linux = ["t-linux64-ms-279",  # :devidehex
+# Machines with known issues:
+# Linux
+linux_pxe = [] 
+linux_hdd = []  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
+linux_other_issues = []  # Could be missing HPE RestfullAPI or any other problem.
+linux_all_problems = linux_pxe + linux_hdd + linux_other_issues  # DON'T EDIT THIS
+ 
+# Windows
+windows_pxe = ["T-W1064-MS-281", "T-W1064-MS-338"] 
+windows_hdd = ["T-W1064-MS-065", "T-W1064-MS-071", "T-W1064-MS-261", "T-W1064-MS-291"]  # Right after the re-image, the machine reports in PaperTrail that it has 0% space left.
+windows_other_issues = ["T-W1064-MS-072", "T-W1064-MS-130", "T-W1064-MS-177", "T-W1064-MS-178"]  # Could be missing HPE RestfullAPI or any other problem.
+windows_all_problems = windows_pxe + windows_hdd + windows_other_issues  # DON'T EDIT THIS! 
+
+# OSX 
+osx_ssh_stdio = ["t-yosemite-r7-201", "t-yosemite-r7-322", "t-yosemite-r7-356"]
+osx_ssh_unresponsive = ["t-yosemite-r7-078", "t-yosemite-r7-124", "t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
+                        "t-yosemite-r7-357"]
+osx_other_issues = ["t-yosemite-r7-442"]
+osx_all_problems = osx_ssh_stdio + osx_ssh_unresponsive + osx_other_issues
+
+# Loaners / Dev Machines
+ignore_ms_linux = ["t-linux64-ms-240",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-280",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-394",  # :dragrom // Staging Pool.
+                   "t-linux64-ms-395",  # :dragrom // Staging Pool.
                    "t-linux64-ms-580"]  # :dev machine for relops
 
 ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1064-MS-013", "T-W1064-MS-014",  # GW10 testing
@@ -25,7 +48,10 @@ ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1
                      "T-W1064-MS-055", "T-W1064-MS-056", "T-W1064-MS-057", "T-W1064-MS-058", "T-W1064-MS-050",  # GW10 testing
                      "T-W1064-MS-060"]  # GW10 testing
 
-ignore_ms_osx = ["t-yosemite-r7-380"]  # :dragrom
+ignore_ms_osx = ["t-yosemite-r7-100",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-101",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-380",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-394"]  # :dragrom // Staging Pool.
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -149,53 +175,116 @@ def main():
                         default="LDAP",
                         required=False)
 
+    parser.add_argument("-v", "--verbose",
+                        dest="verbose_enabler",
+                        help="Example: -v True",
+                        default=False,
+                        required=False)                    
+
     args = parser.parse_args()
     workertype = args.worker_type
     ldap = args.ldap_username
+    verbose = args.verbose_enabler
 
     parse_taskcluster_json(workertype)
 
     # Remove loaners from generated list
     if (workertype == LINUX) or (workertype == "linux"):
         if not ignore_ms_linux:
-            a = set(ignore_ms_linux)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_linux) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nNo loaners for LINUX machines\n")
+            if verbose:
+                print("\nNo loaners for LINUX machines\n")
         else:
-            a = set(ignore_ms_linux)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_linux) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_linux), ignore_ms_linux))
+            if verbose:
+                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_linux), ignore_ms_linux))
 
     if (workertype == WINDOWS) or (workertype == "win"):
         if not ignore_ms_windows:
-            a = set(ignore_ms_windows)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_windows) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nNo loaners for WINDOWS machines\n")
+            if verbose:
+                print("\nNo loaners for WINDOWS machines\n")
         else:
-            a = set(ignore_ms_windows)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_windows) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_windows), ignore_ms_windows))
+            if verbose:
+                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_windows), ignore_ms_windows))
 
     if (workertype == MACOSX) or (workertype == "osx"):
         if not ignore_ms_osx:
-            a = set(ignore_ms_osx)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_osx) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nNo loaners for WINDOWS machines\n")
+            if verbose:
+                print("\nNo loaners for WINDOWS machines\n")
         else:
-            a = set(ignore_ms_osx)  # Mark workerlist to be compared to our list.
+            a = set(ignore_ms_osx) 
             workerlist_without_loaners = [x for x in generate_machine_lists(workertype) if x not in a]
-            print("\nTotal of loaned machines: {} \nName of machines loaned: {}\n".format(len(ignore_ms_osx), ignore_ms_osx))
+            if verbose:
+                print("\nTotal of loaned machines: {} \nName of machines loaned:\n{}\n".format(len(ignore_ms_osx), ignore_ms_osx))
 
-    # Get the TC List of workers WITHOUT the loaners and make the diff.
-    b = set(workersList)
-    missing_machines = [x for x in workerlist_without_loaners if x not in b]
+    
+    # Remove machines with known problems from generated list
+    if (workertype == LINUX) or (workertype == "linux"):
+        if not linux_all_problems:
+            b = set(linux_all_problems) 
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nNo LINUX machines with known issues.\n")
+        else:
+            b = set(linux_all_problems)
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nTotal of LINUX machines with known issues: {}".format(len(linux_all_problems)))
+                print("PXE issues:\n{}".format(linux_pxe))
+                print("HDD issues:\n{}".format(linux_hdd))
+                print("Other issues:\n{}".format(linux_other_issues))
+                print("\n")
+
+    if (workertype == WINDOWS) or (workertype == "win"):
+        if not windows_all_problems:
+            b = set(windows_all_problems)
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nNo WINDOWS machines with known issues.\n")
+        else:
+            b = set(windows_all_problems)
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nTotal of WINDOWS machines with known issues: {}".format(len(windows_all_problems)))
+                print("PXE issues:\n{}".format(windows_pxe))
+                print("HDD issues:\n{}".format(windows_hdd))
+                print("Other issues:\n{}".format(windows_other_issues))
+                print("\n")
+
+    if (workertype == MACOSX) or (workertype == "osx"):
+        if not osx_all_problems:
+            b = set(osx_all_problems) 
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nNo OSX machines with known issues.\n")
+        else:
+            b = set(osx_all_problems) 
+            workerlist_without_loaners_and_problems = [x for x in workerlist_without_loaners if x not in b]
+            if verbose:
+                print("\nTotal of OSX machines with known issues: {}".format(len(windows_all_problems)))
+                print("SSH STDIO issues:\n{}".format(osx_ssh_stdio))
+                print("SSH Unresponsive issues:\n{}".format(osx_ssh_unresponsive))
+                print("Other issues:\n{}".format(osx_other_issues))
+
+
+    c = set(workersList)
+    missing_machines = [x for x in workerlist_without_loaners_and_problems if x not in c]
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     print("Total of missing server : {}".format(len(missing_machines)))
 
-    if len(workersList) > len(generate_machine_lists(workertype)):
-        print("!!! We got SCL3 Machines in the JSON body!!!! \n"
-              "!!! Ignoring all SCL3, Only MDC{1-2} machines are shown!!!!")
+    if verbose:
+        if len(workerlist_without_loaners_and_problems) > len(generate_machine_lists(workertype)):
+            print("!!! We got SCL3 Machines in the JSON body!!!! \n"
+                  "!!! Ignoring all SCL3, Only MDC{1-2} machines are shown!!!!")
 
     # Print each machine on a new line.
     for machine in missing_machines:
