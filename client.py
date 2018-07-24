@@ -23,7 +23,7 @@ windows_other_issues = ["T-W1064-MS-072", "T-W1064-MS-130", "T-W1064-MS-177", "T
 windows_all_problems = windows_pxe + windows_hdd + windows_other_issues  # DON'T EDIT THIS! 
 
 # OSX 
-osx_ssh_stdio = ["t-yosemite-r7-201", "t-yosemite-r7-322", "t-yosemite-r7-356"]
+osx_ssh_stdio = ["t-yosemite-r7-322", "t-yosemite-r7-356"]
 osx_ssh_unresponsive = ["t-yosemite-r7-078", "t-yosemite-r7-124", "t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
                         "t-yosemite-r7-357"]
 osx_other_issues = ["t-yosemite-r7-442"]
