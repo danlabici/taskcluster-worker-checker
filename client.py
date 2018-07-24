@@ -50,6 +50,7 @@ ignore_ms_windows = ["T-W1064-MS-010", "T-W1064-MS-011", "T-W1064-MS-012", "T-W1
 
 ignore_ms_osx = ["t-yosemite-r7-100",  # :dragrom // Staging Pool.
                  "t-yosemite-r7-101",  # :dragrom // Staging Pool.
+                 "t-yosemite-r7-201",  # :jwatkins // Host is moved and renamed as install2.test.releng.mdc..bug # 14771450
                  "t-yosemite-r7-380",  # :dragrom // Staging Pool.
                  "t-yosemite-r7-394"]  # :dragrom // Staging Pool.
 workersList = []
