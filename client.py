@@ -365,6 +365,7 @@ def main():
     verbose = args.verbose_enabler
 
     parse_taskcluster_json(workertype)
+    
     if verbose:
         from prettytable import PrettyTable
     

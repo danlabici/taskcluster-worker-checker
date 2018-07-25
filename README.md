@@ -18,7 +18,9 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 | `python client.py -w osx`  | `python3 client.py -w osx`  |
 
 If you preffer the output to be saved in a file, you can run the following command:
+
 `python client.py -w WORKER_TYPE -u LDAP_USERNAME > missing.txt`
+
 To get an output like this:
 ```
 Servers that WE know  of: 200
