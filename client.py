@@ -5,7 +5,6 @@ github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 
 from argparse import ArgumentParser
 import urllib.request, json
-from prettytable import PrettyTable
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -346,12 +345,12 @@ def main():
     parser.add_argument("-w", "--worker-type",
                         dest="worker_type",
                         help="Available options: gecko-t-linux-talos, linux, gecko-t-win10-64-hw, win, gecko-t-osx-1010, mac",
-                        default=WINDOWS,
+                        default=LINUX,
                         required=False)
     parser.add_argument("-u", "--ldap-username",
                         dest="ldap_username",
                         help="Example: -u dlabici -- Don't include @mozilla.com!!",
-                        default="LDAP",
+                        default="root",
                         required=False)
 
     parser.add_argument("-v", "--verbose",
@@ -376,6 +375,7 @@ def main():
         ignore_all = list(get_all_keys(loaners, pxe_issues, hdd_issues, other_issues))
 
         if verbose:
+            from prettytable import PrettyTable
             print("\nLinux Loaners:")
             if not loaners:
                 print("No Linux Loaners")

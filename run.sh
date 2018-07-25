@@ -9,5 +9,5 @@ hosts=${@:-$(echo rejh{1,2}.srv.releng.{mdc1,mdc2}.mozilla.com)}
 # 2. step through each with puppet
 
 for host in ${hosts}; do
-    ssh "${host}" "uptine"
+    ssh "${host}" "uptime"
 done
