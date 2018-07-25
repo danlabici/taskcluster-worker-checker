@@ -365,7 +365,9 @@ def main():
     verbose = args.verbose_enabler
 
     parse_taskcluster_json(workertype)
-
+    if verbose:
+        from prettytable import PrettyTable
+    
     # Remove machines from generated list
     if (workertype == LINUX) or (workertype == "linux"):
         loaners = machines_to_ignore["linux"]["loaner"]
@@ -375,7 +377,6 @@ def main():
         ignore_all = list(get_all_keys(loaners, pxe_issues, hdd_issues, other_issues))
 
         if verbose:
-            from prettytable import PrettyTable
             print("\nLinux Loaners:")
             if not loaners:
                 print("No Linux Loaners")
