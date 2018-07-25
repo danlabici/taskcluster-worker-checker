@@ -24,7 +24,7 @@ windows_all_problems = windows_pxe + windows_hdd + windows_other_issues  # DON'T
 
 # OSX 
 osx_ssh_stdio = ["t-yosemite-r7-322", "t-yosemite-r7-356"]
-osx_ssh_unresponsive = ["t-yosemite-r7-078", "t-yosemite-r7-124", "t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
+osx_ssh_unresponsive = ["t-yosemite-r7-130", "t-yosemite-r7-263", "t-yosemite-r7-267",
                         "t-yosemite-r7-357"]
 osx_other_issues = ["t-yosemite-r7-442"]
 osx_all_problems = osx_ssh_stdio + osx_ssh_unresponsive + osx_other_issues
