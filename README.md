@@ -2,16 +2,25 @@
 
 This utility will check [TaskCluster](https://github.com/taskcluster) provisioner for [RelEng](https://github.com/mozilla-releng) hardware and will output in the terminal if any machine are missing.
 
-## How to run the script:
+# How to run the script:
+## Instalation:
+1) Make sure you have PrettyTable installed on your system, by running:
 
-`python3 client.py -w linux` or `python3 client.py -w gecko-t-linux-talos`
+    `pip install prettytable` - Works on Linux, Mac, Windows if python is installed.
 
-`python3 client.py -w win` or `python3 client.py -w gecko-t-win10-64-hw`
+2) Clone clone the repository and run client.py
 
-`python3 client.py -w osx` or `python3 client.py -w gecko-t-osx-1010`
+## Running Client.py
+| Windows  | Linux/Mac OSX |
+| ------------- | ------------- |
+| `python client.py -w linux` | `python3 client.py -w linux` |
+| `python client.py -w win`  | `python3 client.py -w win`  |
+| `python client.py -w osx`  | `python3 client.py -w osx`  |
 
-Or you can run this:
-`python3 client.py -w WORKER_TYPE -u LDAP_USERNAME > missing.txt`
+If you preffer the output to be saved in a file, you can run the following command:
+
+`python client.py -w WORKER_TYPE -u LDAP_USERNAME > missing.txt`
+
 To get an output like this:
 ```
 Servers that WE know  of: 200
@@ -25,27 +34,47 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues. 
 Output example with -v/--verbose:
 ```
-Total of loaned machines: 1
-Name of machines loaned:
-[list_of_machines]
-
-
-Total of OSX machines with known issues: 9
-SSH STDIO issues:
-[list_of_machines]
-SSH Unresponsive issues:
-[list_of_machines]
-Other issues:
-[list_of_machines]
+Linux Loaners:
++------------------+---------------------------------------------------------------------+----------+
+|   Machine Name   |                                BUG ID                               |  Owner   |
++------------------+---------------------------------------------------------------------+----------+
+| t-linux64-ms-240 |                        Staging Pool - No Bug                        | :dragrom |
+| t-linux64-ms-280 | Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070 | :dragrom |
+| t-linux64-ms-394 |                        Staging Pool - No Bug                        | :dragrom |
+| t-linux64-ms-395 |                        Staging Pool - No Bug                        | :dragrom |
+| t-linux64-ms-580 |         https://bugzilla.mozilla.org/show_bug.cgi?id=1474573        | :dev-env |
++------------------+---------------------------------------------------------------------+----------+
+PXE Issues:
++--------------+--------+---------+-----------+
+| Machine Name | BUG ID |   Date  |   Update  |
++--------------+--------+---------+-----------+
+|   No Issue   | No BUG | No Date | No Update |
++--------------+--------+---------+-----------+
+HDD Issues:
++--------------+--------+---------+-----------+
+| Machine Name | BUG ID |   Date  |   Update  |
++--------------+--------+---------+-----------+
+|   No Issue   | No BUG | No Date | No Update |
++--------------+--------+---------+-----------+
+Other Issues:
++--------------+--------+---------+-----------+
+| Machine Name | BUG ID |   Date  |   Update  |
++--------------+--------+---------+-----------+
+|   No Issue   | No BUG | No Date | No Update |
++--------------+--------+---------+-----------+
+Servers that WE know  of: 200
+Servers that TC knows of: 195
+Total of missing server : 0
 ```
 
 ## How does it work?
-1) We ask the user which worker-type he's interested into.
-1.a) We also give him the option to add his own Mozilla LDAP username.
+1) Script will ask the user which worker-type he's interested into. Via run arguments.
+    
+    1.a) We also give the option to add his own Mozilla LDAP username. Making MacOSX workflow faster, by prefilling the ssh command with the needed information. 
 2) We generate a **CONTROL** list of names in a set `hard-coded` range. [ISSUE - Grab machines from ServiceNow](https://github.com/Akhliskun/taskcluster-worker-checker/issues/2)
 3) We get/parse the TC JSON for chosen worker-type. [ISSUE - Fix Failed JSON Responses](https://github.com/Akhliskun/taskcluster-worker-checker/issues/3)
 4) We print the diff between ListA and ListB
-4.1) We print the ssh command, including your LDAP if offered.
+4.1) We print the missing machines and ssh command, including your LDAP if offered.
 
 ## Can I contribute?
 Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-worker-checker/issues). 
@@ -58,7 +87,7 @@ This repository is running TravisCI to check each commit and pull request to mak
 [LAST BUILD](https://travis-ci.com/Akhliskun/taskcluster-worker-checker) for live logs or [BUILD HISTORY](https://travis-ci.com/Akhliskun/taskcluster-worker-checker/builds) page.
 
 ## The code Explained:
-`ignore_ms_{linux,windows,osx}` - Will be used to remove entries from the generated output. We don't want to see those!
+`machines_to_ignore = {}` - Will be used to remove entries from the generated output. We don't want to see those!
 
 `parse_taskcluster_json(workertype)` - Function that will parse the json data from from TC based on the worker-type which you choose. Will return the formated data. (eg: t-linux64-ms-280)
 
@@ -67,7 +96,4 @@ This repository is running TravisCI to check each commit and pull request to mak
 `main()` - Will ask for arguments + return the data to you in a readable format.
 
 
-
 **PS**: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items". 
-
-You gotta love `set()` :D
