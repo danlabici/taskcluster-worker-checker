@@ -141,16 +141,6 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-055": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476496",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-061": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476497",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
             "t-yosemite-r7-151": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476498",
                 "date": "23.07.2018",
@@ -159,6 +149,26 @@ machines_to_ignore = {
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-334": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478528",
+                "date": "27.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-349": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
+                "date": "27.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-350": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479065",
+                "date": "27.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-367": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
+                "date": "27.07.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -175,11 +185,21 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "t-yosemite-r7-272": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
+                "date": "27.07.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845#c14"
+            },
+            "t-yosemite-r7-322": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475747",
+                "date": "27.07.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475747#c4"
+            },    
             "t-yosemite-r7-442": {
                 "bug": "",
                 "date": "15.07.2018",
                 "update": "New bug, no updates yet."
-            },  # TODO: Make bug!
+            }, # TODO: Make bug!
         },
     },
 }
