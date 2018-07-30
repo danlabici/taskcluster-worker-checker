@@ -173,14 +173,19 @@ machines_to_ignore = {
             },
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-130": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-130": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474270",
+                "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-357": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
+            "t-yosemite-r7-334": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478528",
+                "date": "28.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-357": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474299",
+                "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -300,12 +305,15 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346)) + \
-                     list(range(361, 391)) + list(range(406, 436)) + \
-                     list(range(451, 481)) + list(range(496, 526)) + \
-                     list(range(541, 571)) + list(range(581, 601))
-
-        range_ms_windows = mdc1_range  # Ignoring MDC2 for now. ToDo: Do we have a BUG for mdc2 Win10?
+        mdc2_range = list(range(316, 346))
+        """ 
+        Leaving only chassis 8 from MDC2 as only they are doing prod jobs atm
+        + \
+        list(range(361, 391)) + list(range(406, 436)) + \
+        list(range(451, 481)) + list(range(496, 526)) + \
+        list(range(541, 571)) + list(range(581, 601))
+        """
+        range_ms_windows = mdc1_range + mdc2_range
 
         ms_windows_name = "T-W1064-MS-{}"
         windows_machines = []
@@ -360,10 +368,10 @@ def main():
     verbose = args.verbose_enabler
 
     parse_taskcluster_json(workertype)
-    
+
     if verbose:
         from prettytable import PrettyTable
-    
+
     # Remove machines from generated list
     if (workertype == LINUX) or (workertype == "linux"):
         loaners = machines_to_ignore["linux"]["loaner"]
@@ -549,6 +557,11 @@ def main():
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
+
+    # Print notification: Win machines from Chassis 8 have been added to production
+    print()
+    print('ATTENTION: W1064 WORKERS FROM CHASSIS 8(MDC2) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND '
+          'OPTION: GENERIC WORKER 10.10')
 
 
 if __name__ == '__main__':
