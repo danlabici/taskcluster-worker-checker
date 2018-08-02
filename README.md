@@ -6,16 +6,16 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 ## Instalation:
 1) Make sure you have PrettyTable installed on your system, by running:
 
-    `pip install prettytable` - Works on Linux, Mac, Windows if python is installed.
+    `pip install prettytable` - Works on Linux, Mac, Windows (if python is installed).
 
 2) Clone clone the repository and run client.py
 
 ## Running Client.py
 | Windows  | Linux/Mac OSX |
 | ------------- | ------------- |
-| `python client.py -w linux` | `python3 client.py -w linux` |
-| `python client.py -w win`  | `python3 client.py -w win`  |
-| `python client.py -w osx`  | `python3 client.py -w osx`  |
+| `python3 client.py -w linux` | `python3 client.py -w linux` |
+| `python3 client.py -w win`  | `python3 client.py -w win`  |
+| `python3 client.py -w osx`  | `python3 client.py -w osx`  |
 
 If you preffer the output to be saved in a file, you can run the following command:
 
@@ -66,6 +66,13 @@ Servers that WE know  of: 200
 Servers that TC knows of: 195
 Total of missing server : 0
 ```
+Also, if you want to generate for all machines you can run:
+
+`python3 client.py -w win && python3 client.py -w linux && python3 client.py -w osx`
+
+or verbose (Attention, this will generate a lot of output):
+
+`python3 client.py -w win -v True && python3 client.py -w linux -v True && python3 client.py -w osx -v True`
 
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into. Via run arguments.
