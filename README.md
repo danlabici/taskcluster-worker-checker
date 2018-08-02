@@ -74,8 +74,6 @@ or verbose (Attention, this will generate a lot of output):
 
 `python3 client.py -w win -v True && python3 client.py -w linux -v True && python3 client.py -w osx -v True`
 
-At the moment we are looking forward into adding an `-a` argument to generate the report for all machines, but until then, we are kindly suggesting using the above commands.
-
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into. Via run arguments.
     
