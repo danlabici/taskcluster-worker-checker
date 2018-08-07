@@ -141,6 +141,21 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-045": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-087": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480659",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-142": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "23.07.2018",
@@ -156,6 +171,11 @@ machines_to_ignore = {
             "t-yosemite-r7-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474270",
                 "date": "28.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-241": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477788",
+                "date": "01.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-381": {
