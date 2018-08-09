@@ -17,49 +17,50 @@ machines_to_ignore = {
             },
 
             "t-linux64-ms-571": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
 
             "t-linux64-ms-572": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
 
             "t-linux64-ms-573": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
 
             "t-linux64-ms-574": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
 
             "t-linux64-ms-575": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
              
             "t-linux64-ms-576": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
              
             "t-linux64-ms-577": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
              
             "t-linux64-ms-578": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
 
             "t-linux64-ms-579": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Relops development machines - No Bug",
                 "owner": ":relops dev"
             },
+                        
             "t-linux64-ms-280": {
                 "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
