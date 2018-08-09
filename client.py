@@ -257,6 +257,14 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
 
+# Insert Windows from chassis 14 into the loan dictionary
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
+
+# Insert Linux from chassis 14 into the loan dictionary
+machines_to_ignore['linux']['loaner'].update(
+    build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
+
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
