@@ -203,6 +203,11 @@ machines_to_ignore = {
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-137": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481919",
+                "date": "09.08.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481920"
+            },
             "t-yosemite-r7-142": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
                 "date": "06.08.2018",
