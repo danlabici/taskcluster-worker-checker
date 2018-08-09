@@ -203,6 +203,11 @@ machines_to_ignore = {
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-137": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481919",
+                "date": "09.08.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481920"
+            },
             "t-yosemite-r7-142": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
                 "date": "06.08.2018",
@@ -256,6 +261,14 @@ def build_host_info(hostnames, **kwargs):
 # Insert Windows 10 to 60 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
+
+# Insert Windows from chassis 14 into the loan dictionary
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
+
+# Insert Linux from chassis 14 into the loan dictionary
+machines_to_ignore['linux']['loaner'].update(
+    build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 workersList = []
 
