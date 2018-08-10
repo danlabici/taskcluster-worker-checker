@@ -233,12 +233,12 @@ machines_to_ignore = {
                 "date": "01.08.2018",
                 "update": "New bug, no updates yet."
             },
-             "t-yosemite-r7-433": {
+            "t-yosemite-r7-433": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475895",
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
-            
+
         },
         "other_issues": {
             "t-yosemite-r7-072": {
@@ -613,13 +613,18 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
             print("{}".format(machine))
-            print('W1064 WORKERS FROM CHASSIS 8(MDC2) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
+
+    # Add Windows 10 Warning!
+    if (workertype == WINDOWS) or (workertype == "win"):
+        print(
+            'W1064 WORKERS FROM CHASSIS 8 (316-345) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
+
 
 if __name__ == '__main__':
     main()
