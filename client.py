@@ -11,6 +11,7 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
+
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -60,6 +61,10 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
+            "T-W1064-MS-106": {
+                "bug": "No Bug",
+                "owner": "QA loaner"
+            },
         },
         "pxe_issues": {
             "T-W1064-MS-281": {
@@ -203,6 +208,11 @@ machines_to_ignore = {
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-137": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481919",
+                "date": "09.08.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481920"
+            },
             "t-yosemite-r7-142": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
                 "date": "06.08.2018",
@@ -223,12 +233,12 @@ machines_to_ignore = {
                 "date": "01.08.2018",
                 "update": "New bug, no updates yet."
             },
-             "t-yosemite-r7-433": {
+            "t-yosemite-r7-433": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475895",
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
-            
+
         },
         "other_issues": {
             "t-yosemite-r7-072": {
@@ -256,6 +266,22 @@ def build_host_info(hostnames, **kwargs):
 # Insert Windows 10 to 60 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
+
+# Insert Windows 61 to 90 into the dictionary.
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
+
+# Insert Windows 170 to 180 into the dictionary.
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(170, 181)], bug="Dev-Environment", owner="Q"))
+
+# Insert Windows from chassis 14 into the loan dictionary
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
+
+# Insert Linux from chassis 14 into the loan dictionary
+machines_to_ignore['linux']['loaner'].update(
+    build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 workersList = []
 
@@ -594,11 +620,12 @@ def main():
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
 
-    # Print notification: Win machines from Chassis 8 have been added to production
-    print()
-    print('ATTENTION: W1064 WORKERS FROM CHASSIS 8(MDC2) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND '
-          'OPTION: GENERIC WORKER 10.10')
+    # Add Windows 10 Warning!
+    if (workertype == WINDOWS) or (workertype == "win"):
+        print(
+            'W1064 WORKERS FROM CHASSIS 8 (316-345) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
 
 
 if __name__ == '__main__':
     main()
+    

@@ -8,7 +8,7 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 
     `pip install prettytable` - Works on Linux, Mac, Windows (if python is installed).
 
-2) Clone clone the repository and run client.py
+2) Clone the repository and run client.py
 
 ## Running Client.py
 | Windows  | Linux/Mac OSX |
