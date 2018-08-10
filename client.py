@@ -262,6 +262,10 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
 
+# Insert Windows 10 to 60 into the dictionary.
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
+
 # Insert Windows from chassis 14 into the loan dictionary
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
@@ -600,18 +604,13 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
             print("{}".format(machine))
+            print('W1064 WORKERS FROM CHASSIS 8(MDC2) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-
-    # Print notification: Win machines from Chassis 8 have been added to production
-    print()
-    print('ATTENTION: W1064 WORKERS FROM CHASSIS 8(MDC2) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND '
-          'OPTION: GENERIC WORKER 10.10')
-
 
 if __name__ == '__main__':
     main()
