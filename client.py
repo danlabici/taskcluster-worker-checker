@@ -11,6 +11,11 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
+            "t-linux64-ms-106": {
+                "bug": "No Bug",
+                "owner": "QA loaner"
+            },
+
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -262,7 +267,7 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
 
-# Insert Windows 10 to 60 into the dictionary.
+# Insert Windows 61 to 90 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
     build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
 
