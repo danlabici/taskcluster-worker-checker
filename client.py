@@ -11,10 +11,6 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
-            "t-linux64-ms-106": {
-                "bug": "No Bug",
-                "owner": "QA loaner"
-            },
 
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
@@ -65,6 +61,10 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
+            "T-W1064-MS-106": {
+                "bug": "No Bug",
+                "owner": "QA loaner"
+            },
         },
         "pxe_issues": {
             "T-W1064-MS-281": {
@@ -628,3 +628,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
