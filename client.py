@@ -265,11 +265,11 @@ def build_host_info(hostnames, **kwargs):
 
 # Insert Windows 10 to 60 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
 
 # Insert Windows 61 to 90 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
 
 # Insert Windows 170 to 180 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
@@ -320,11 +320,14 @@ def parse_taskcluster_json(workertype):
         print("Please run the script with the [client.py -h] to see the help docs!")
         exit(0)
 
-    with urllib.request.urlopen(apiUrl) as api:
+
+    with urllib.request.urlopen(apiUrl, timeout=10) as api:
         try:
             data = json.loads(api.read().decode())
+        
         except:
-            print("ERROR: Couldn't read and/or decode the JSON!")
+            print("TIMEOUT: JSON response didn't arive in 10 seconds!")
+            exit(0)
 
         try:
             if not data["workers"]:
