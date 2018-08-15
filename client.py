@@ -326,15 +326,19 @@ def parse_taskcluster_json(workertype):
         except:
             print("ERROR: Couldn't read and/or decode the JSON!")
 
-        if not data["workers"]:
-            # Not sure why but TC kinda fails at responding or I'm doing something wrong
-            # Anyways if you keep at it, it will respond with the JSON data :D
-            print("JSON Response Failed. Retrying...")
-            parse_taskcluster_json(workertype)
+        try:
+            if not data["workers"]:
+                # Not sure why but TC kinda fails at responding or I'm doing something wrong
+                # Anyways if you keep at it, it will respond with the JSON data :D
+                print("JSON Response Failed. Retrying...")
+                parse_taskcluster_json(workertype)
+            else:
+                for workers in data['workers']:
+                    workersList.append(workers['workerId'])
 
-        else:
-            for workers in data['workers']:
-                workersList.append(workers['workerId'])
+        except KeyboardInterrupt:
+            print("Application stopped via Keyboard Shortcut.")
+            exit(0)
 
     return workersList
 
