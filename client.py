@@ -263,21 +263,9 @@ def build_host_info(hostnames, **kwargs):
     return all_hosts
 
 
-# Insert Windows 10 to 60 into the dictionary.
+# Insert Windows 16 to 45 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
-
-# Insert Windows 61 to 90 into the dictionary.
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
-
-# Insert Windows 170 to 180 into the dictionary.
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(170, 181)], bug="Dev-Environment", owner="Q"))
-
-# Insert Windows from chassis 14 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(16, 46)], bug="Dev-Environment", owner="No Owner"))
 
 # Insert Linux from chassis 14 into the loan dictionary
 machines_to_ignore['linux']['loaner'].update(
