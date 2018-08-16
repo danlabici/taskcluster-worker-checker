@@ -193,9 +193,9 @@ machines_to_ignore = {
             },
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-045": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
-                "date": "06.08.2018",
+            "t-yosemite-r7-039": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-087": {
@@ -203,19 +203,34 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-092": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-110": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483748",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-113": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475452",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474270",
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-137": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481919",
-                "date": "09.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481920"
-            },
             "t-yosemite-r7-142": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
                 "date": "06.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-161": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483749",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-239": {
@@ -228,9 +243,19 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-381": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479249",
-                "date": "01.08.2018",
+            "t-yosemite-r7-284": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+             "t-yosemite-r7-306": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483094",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-378": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-433": {
