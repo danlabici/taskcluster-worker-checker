@@ -273,7 +273,7 @@ machines_to_ignore['windows']['loaner'].update(
 
 # Insert Windows 170 to 180 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(170, 181)], bug="Dev-Environment", owner="Q"))
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(170, 181)], bug="Dev-Environment", owner="Q"))
 
 # Insert Windows from chassis 14 into the loan dictionary
 machines_to_ignore['windows']['loaner'].update(
@@ -320,21 +320,28 @@ def parse_taskcluster_json(workertype):
         print("Please run the script with the [client.py -h] to see the help docs!")
         exit(0)
 
-    with urllib.request.urlopen(apiUrl) as api:
+
+    with urllib.request.urlopen(apiUrl, timeout=10) as api:
         try:
             data = json.loads(api.read().decode())
+        
         except:
-            print("ERROR: Couldn't read and/or decode the JSON!")
+            print("TIMEOUT: JSON response didn't arive in 10 seconds!")
+            exit(0)
 
-        if not data["workers"]:
-            # Not sure why but TC kinda fails at responding or I'm doing something wrong
-            # Anyways if you keep at it, it will respond with the JSON data :D
-            print("JSON Response Failed. Retrying...")
-            parse_taskcluster_json(workertype)
+        try:
+            if not data["workers"]:
+                # Not sure why but TC kinda fails at responding or I'm doing something wrong
+                # Anyways if you keep at it, it will respond with the JSON data :D
+                print("JSON Response Failed. Retrying...")
+                parse_taskcluster_json(workertype)
+            else:
+                for workers in data['workers']:
+                    workersList.append(workers['workerId'])
 
-        else:
-            for workers in data['workers']:
-                workersList.append(workers['workerId'])
+        except KeyboardInterrupt:
+            print("Application stopped via Keyboard Shortcut.")
+            exit(0)
 
     return workersList
 
