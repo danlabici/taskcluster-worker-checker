@@ -166,14 +166,29 @@ machines_to_ignore = {
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-201": {
+            "t-yosemite-r7-284": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
+                "date": "17.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
+                "date": "23.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-315": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1470063",
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-349": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
                 "date": "27.07.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-378": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -190,6 +205,11 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-092": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-108": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479247",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
@@ -218,6 +238,16 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-189": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-229": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475133",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-239": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
@@ -238,8 +268,18 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-349": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-378": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-426": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
@@ -322,7 +362,7 @@ def parse_taskcluster_json(workertype):
     with urllib.request.urlopen(apiUrl, timeout=10) as api:
         try:
             data = json.loads(api.read().decode())
-        
+
         except:
             print("TIMEOUT: JSON response didn't arive in 10 seconds!")
             exit(0)
@@ -373,7 +413,7 @@ def generate_machine_lists(workertype):
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
         mdc2_range = list(range(316, 346))
-        """ 
+        """
         Leaving only chassis 8 from MDC2 as only they are doing prod jobs atm
         + \
         list(range(361, 391)) + list(range(406, 436)) + \
@@ -633,4 +673,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
