@@ -126,21 +126,6 @@ machines_to_ignore = {
                 "date": "23.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477656#c1"
             },
-            "T-W1064-MS-316": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480775",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-326": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480779",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-340": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481161",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
         },
     },
     "osx": {
