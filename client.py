@@ -72,11 +72,6 @@ machines_to_ignore = {
                 "date": "13.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"
             },
-            "T-W1064-MS-338": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
-                "update": "MDC2 machine shows up as MDC1 and does prod jobs"
-            },
         },
         "hdd_issues": {
             "T-W1064-MS-065": {
@@ -101,6 +96,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-066": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484078",
+                "date": "17.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477644",
                 "date": "23.07.2018",
@@ -125,22 +125,7 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477655",
                 "date": "23.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477656#c1"
-            },
-            "T-W1064-MS-316": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480775",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-326": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480779",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-340": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481161",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
+            }
         },
     },
     "osx": {
