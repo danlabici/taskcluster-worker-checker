@@ -125,7 +125,7 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477655",
                 "date": "23.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477656#c1"
-            }
+            },
         },
     },
     "osx": {
