@@ -72,11 +72,6 @@ machines_to_ignore = {
                 "date": "13.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"
             },
-            "T-W1064-MS-338": {  # TODO: Make bug!
-                "bug": "",
-                "date": "15.07.2018",
-                "update": "MDC2 machine shows up as MDC1 and does prod jobs"
-            },
         },
         "hdd_issues": {
             "T-W1064-MS-065": {
@@ -101,6 +96,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-066": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484078",
+                "date": "17.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477644",
                 "date": "23.07.2018",
@@ -125,22 +125,7 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477655",
                 "date": "23.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477656#c1"
-            },
-            "T-W1064-MS-316": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480775",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-326": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480779",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-340": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481161",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
+            }
         },
     },
     "osx": {
@@ -193,9 +178,9 @@ machines_to_ignore = {
             },
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-045": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
-                "date": "06.08.2018",
+            "t-yosemite-r7-039": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-087": {
@@ -203,19 +188,34 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-092": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-110": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483748",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-113": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475452",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "t-yosemite-r7-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474270",
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-137": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481919",
-                "date": "09.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481920"
-            },
             "t-yosemite-r7-142": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
                 "date": "06.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-161": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483749",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-239": {
@@ -228,9 +228,19 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-381": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479249",
-                "date": "01.08.2018",
+            "t-yosemite-r7-284": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+             "t-yosemite-r7-306": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483094",
+                "date": "16.08.2018",
+                "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-378": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
+                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-433": {
@@ -263,21 +273,9 @@ def build_host_info(hostnames, **kwargs):
     return all_hosts
 
 
-# Insert Windows 10 to 60 into the dictionary.
+# Insert Windows 16 to 45 into the dictionary.
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(10, 61)], bug="Dev-Environment", owner="No Owner"))
-
-# Insert Windows 61 to 90 into the dictionary.
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(61, 91)], bug="Dev-Environment", owner="Markco"))
-
-# Insert Windows 170 to 180 into the dictionary.
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(170, 181)], bug="Dev-Environment", owner="Q"))
-
-# Insert Windows from chassis 14 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 601)], bug="Loaner for Relops", owner="No Owner"))
+    build_host_info(["T-W1064-MS-0{}".format(i) for i in range(16, 46)], bug="Dev-Environment", owner="No Owner"))
 
 # Insert Linux from chassis 14 into the loan dictionary
 machines_to_ignore['linux']['loaner'].update(
