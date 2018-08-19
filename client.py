@@ -139,6 +139,11 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+            
+            "t-yosemite-r7-253": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
+                "owner": ":bwc"
+            },
 
             "t-yosemite-r7-380": {
                 "bug": "Staging Pool - No Bug",
