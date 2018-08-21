@@ -134,11 +134,6 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
-            
-            "t-yosemite-r7-253": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
-                "owner": ":bwc"
-            },
 
             "t-yosemite-r7-380": {
                 "bug": "Staging Pool - No Bug",
@@ -151,36 +146,6 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-045": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-087": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480659",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-142": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
-                "date": "17.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-315": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1470063",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
             "t-yosemite-r7-349": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
                 "date": "27.07.2018",
@@ -193,26 +158,13 @@ machines_to_ignore = {
             },
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-039": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-087": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480659",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
+
             "t-yosemite-r7-092": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482649",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-108": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479247",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
+
             "t-yosemite-r7-110": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483748",
                 "date": "16.08.2018",
@@ -228,11 +180,6 @@ machines_to_ignore = {
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-142": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480655",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
             "t-yosemite-r7-161": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483749",
                 "date": "16.08.2018",
@@ -243,27 +190,19 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-229": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475133",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
+
             "t-yosemite-r7-239": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791#c10"
             },
-            "t-yosemite-r7-241": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477788",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
+
             "t-yosemite-r7-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
-             "t-yosemite-r7-306": {
+            "t-yosemite-r7-306": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483094",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
@@ -296,6 +235,12 @@ machines_to_ignore = {
                 "date": "01.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
             },
+
+            "t-yosemite-r7-201": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477843",
+                "update": "re-purposed"
+            },
+
             "t-yosemite-r7-272": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
                 "date": "27.07.2018",
@@ -357,7 +302,6 @@ def parse_taskcluster_json(workertype):
         print("ERROR: Unknown worker-type!")
         print("Please run the script with the [client.py -h] to see the help docs!")
         exit(0)
-
 
     with urllib.request.urlopen(apiUrl, timeout=10) as api:
         try:
