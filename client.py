@@ -106,11 +106,6 @@ machines_to_ignore = {
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "T-W1064-MS-151": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480380",
-                "date": "06.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480380#c1"
-            },
             "T-W1064-MS-177": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477654",
                 "date": "23.07.2018",
@@ -134,7 +129,7 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
-            
+
             "t-yosemite-r7-253": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
                 "owner": ":bwc"
