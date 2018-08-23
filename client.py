@@ -65,6 +65,810 @@ machines_to_ignore = {
                 "bug": "No Bug",
                 "owner": "QA loaner"
             },
+            "T-W1064-MS-316": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-317": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-318": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-319": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-320": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-321": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-322": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-323": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-324": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-325": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-326": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-327": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-327": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-328": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-329": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-330": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-331": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-332": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-333": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-334": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-335": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-336": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-337": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-338": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-339": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-340": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-341": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-342": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-343": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-344": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-345": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-361": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-362": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-363": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-364": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-365": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-366": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-367": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-368": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-369": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-370": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-371": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-372": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-373": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-374": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-375": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-376": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-377": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-378": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-379": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-380": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-381": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-382": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-383": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-384": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-385": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-386": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-387": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-388": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-389": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-390": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-406": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-407": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-408": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-409": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-410": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-411": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-412": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-413": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-414": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-415": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-416": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-417": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-418": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-419": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-420": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-421": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-422": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-423": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-424": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-425": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-426": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-427": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-428": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-429": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-430": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-431": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-432": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-433": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-434": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-435": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-451": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-452": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-453": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-454": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-455": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-456": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-457": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-458": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-459": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-460": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-461": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-462": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-463": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-464": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-465": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-466": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-467": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-468": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-469": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-470": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-471": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-472": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-473": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-474": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-475": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-476": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-477": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-478": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-479": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-480": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-496": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-497": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-498": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-499": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-500": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-501": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-502": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-503": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-504": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-505": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-506": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-507": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-508": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-509": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-510": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-511": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-512": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-513": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-514": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-515": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-516": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-517": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-518": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-519": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-520": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-521": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-522": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-523": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-524": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-525": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-541": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-542": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-543": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-544": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-545": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-546": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-547": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-548": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-549": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-550": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-551": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-552": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-553": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-554": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-555": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-556": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-557": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-558": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-559": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-560": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-561": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-562": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-563": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-564": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-565": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-566": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-567": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-568": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-569": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-570": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-581": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-582": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-583": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-584": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-585": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-586": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-587": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-588": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-589": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-590": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-591": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-592": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-593": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-594": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-595": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-596": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-597": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-598": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-599": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
+            "T-W1064-MS-600": {
+                "bug": "No Bug",
+                "owner": "markco"
+            },
         },
         "pxe_issues": {
             "T-W1064-MS-281": {
@@ -155,7 +959,7 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
                 "date": "27.07.2018",
                 "update": "New bug, no updates yet."
-            },   
+            },
         },
         "ssh_unresponsive": {
             "t-yosemite-r7-092": {
