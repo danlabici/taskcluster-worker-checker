@@ -565,18 +565,18 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-            print("{}".format(machine))
+            chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316,346)]
+
+            if machine in chassis8:
+                print("{}".format(machine), "- Reimage with Generic Worker 10.10 [SECOND OPTION]")
+            else:
+                print("{}".format(machine), "- Reimage with Default Generic Worker [FIRST OPTION]")
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-
-    # Add Windows 10 Warning!
-    if (workertype == WINDOWS) or (workertype == "win"):
-        print(
-            'W1064 WORKERS FROM CHASSIS 8 (316-345) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
 
 
 if __name__ == '__main__':
