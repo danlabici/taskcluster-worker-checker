@@ -565,6 +565,7 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
+
             chassis2 = ["T-W1064-MS-{}".format(i) for i in range(61,164)]
             chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316,346)]
             special_reimage = chassis2 + chassis8
