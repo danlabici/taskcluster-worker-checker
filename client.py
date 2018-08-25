@@ -11,7 +11,6 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
-
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -92,6 +91,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-116": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485213",
+                "date": "22.08.2018",
+                "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477644",
                 "date": "23.07.2018",
@@ -101,11 +105,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-151": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480380",
-                "date": "06.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480380#c1"
             },
             "T-W1064-MS-177": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477654",
@@ -142,11 +141,6 @@ machines_to_ignore = {
             "t-yosemite-r7-349": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
                 "date": "27.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-378": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
-                "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -211,12 +205,6 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-433": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475895",
-                "date": "06.08.2018",
-                "update": "New bug, no updates yet."
-            },
-
         },
         "other_issues": {
             "t-yosemite-r7-072": {
@@ -253,6 +241,10 @@ machines_to_ignore['windows']['loaner'].update(
 # Insert Linux from chassis 14 into the loan dictionary
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
+
+# Insert Windows 316 to 600 into the loan dictionary
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
 
 workersList = []
 
@@ -589,18 +581,20 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-            print("{}".format(machine))
+
+            chassis2 = ["T-W1064-MS-{}".format(i) for i in range(61,164)]
+            chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316,346)]
+            special_reimage = chassis2 + chassis8
+            if machine in special_reimage:
+                print("{}".format(machine), "- Reimage with Generic Worker 10.10 [SECOND OPTION]")
+            else:
+                print("{}".format(machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-
-    # Add Windows 10 Warning!
-    if (workertype == WINDOWS) or (workertype == "win"):
-        print(
-            'W1064 WORKERS FROM CHASSIS 8 (316-345) HAVE BEEN ADDED TO PRODUCTION. RE-IMAGE THESE WITH THE 2ND OPTION: GENERIC WORKER 10.10')
 
 
 if __name__ == '__main__':
