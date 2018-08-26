@@ -214,7 +214,7 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477843",
-                "date": "21.08.2018",
+                "date": "25.08.2018",
                 "update": "re-purposed"
             },
             "t-yosemite-r7-272": {
@@ -582,8 +582,8 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
 
-            chassis2 = ["T-W1064-MS-{}".format(i) for i in range(61,164)]
-            chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316,346)]
+            chassis2 = ["T-W1064-MS-{}".format(i) for i in range(61, 164)]
+            chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316, 346)]
             special_reimage = chassis2 + chassis8
             if machine in special_reimage:
                 print("{}".format(machine), "- Reimage with Generic Worker 10.10 [SECOND OPTION]")
