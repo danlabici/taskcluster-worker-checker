@@ -11,22 +11,27 @@ import urllib.request, json
 machines_to_ignore = {
     "linux": {
         "loaner": {
+
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
             "t-linux64-ms-280": {
                 "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
             },
+
             "t-linux64-ms-394": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
             "t-linux64-ms-395": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
             "t-linux64-ms-580": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573",
                 "owner": ":dev-env"
@@ -124,14 +129,22 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
             "t-yosemite-r7-101": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
+            "t-yosemite-r7-253": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
+                "owner": ":bwc"
+            },
+
             "t-yosemite-r7-380": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+
             "t-yosemite-r7-394": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -165,11 +178,6 @@ machines_to_ignore = {
                 "date": "28.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "t-yosemite-r7-161": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483749",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
             "t-yosemite-r7-189": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
@@ -179,26 +187,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791#c10"
-            },
-            "t-yosemite-r7-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484028",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-306": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483094",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-349": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-378": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483750",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
             },
             "t-yosemite-r7-426": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
@@ -211,11 +199,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
-            },
-            "t-yosemite-r7-201": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477843",
-                "date": "25.08.2018",
-                "update": "re-purposed"
             },
             "t-yosemite-r7-272": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
