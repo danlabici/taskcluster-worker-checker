@@ -67,23 +67,8 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
-            "T-W1064-MS-281": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753",
-                "date": "13.07.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1465753#c6"
-            },
         },
         "hdd_issues": {
-            "T-W1064-MS-065": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477426",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-071": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475905",
-                "date": "15.07.2018",
-                "update": "New bug, no updates yet."
-            },
             "T-W1064-MS-291": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
                 "date": "15.07.2018",
