@@ -146,16 +146,11 @@ machines_to_ignore = {
             "t-yosemite-r7-239": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791#c10"
+                "update": "Taken to the apple store"
             },
             "t-yosemite-r7-426": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
                 "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-457": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485006",
-                "date": "26.08.2018",
                 "update": "New bug, no updates yet."
             },
         },
@@ -168,12 +163,12 @@ machines_to_ignore = {
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "26.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150#c5"
+                "update": "host was renamed and repurposed"
             },
             "t-yosemite-r7-272": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
                 "date": "27.07.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845#c14"
+                "update": "brought to the apple store"
             }
         },
     },
@@ -235,7 +230,6 @@ def parse_taskcluster_json(workertype):
         print("ERROR: Unknown worker-type!")
         print("Please run the script with the [client.py -h] to see the help docs!")
         exit(0)
-
 
     with urllib.request.urlopen(apiUrl, timeout=10) as api:
         try:
@@ -535,13 +529,6 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-
-            chassis2 = ["T-W1064-MS-{}".format(i) for i in range(61,164)]
-            chassis8 = ["T-W1064-MS-{}".format(i) for i in range(316,346)]
-            special_reimage = chassis2 + chassis8
-            if machine in special_reimage:
-                print("{}".format(machine), "- Reimage with Generic Worker 10.10 [SECOND OPTION]")
-            else:
                 print("{}".format(machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
