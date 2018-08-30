@@ -76,11 +76,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-072": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477644",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
             "T-W1064-MS-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
