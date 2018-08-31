@@ -115,6 +115,16 @@ machines_to_ignore = {
                 "owner": ":bwc"
             },
 
+            "t-yosemite-r7-266": {
+                "bug": "1487818",
+                "owner": ":dividehex"
+            },
+
+            "t-yosemite-r7-276": {
+                "bug": "1487818",
+                "owner": ":dividehex"
+            },
+
             "t-yosemite-r7-380": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
