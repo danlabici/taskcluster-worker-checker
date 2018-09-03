@@ -158,6 +158,16 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
+            "t-yosemite-r7-280": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488184",
+                "date": "03.09.2018",
+                "update": "Taken to the apple store"
+            },
+            "t-yosemite-r7-349": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
+                "date": "03.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472866#c14"
+            },
             "t-yosemite-r7-426": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
                 "date": "16.08.2018",
