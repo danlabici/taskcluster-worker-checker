@@ -76,8 +76,8 @@ machines_to_ignore = {
         "hdd_issues": {
             "T-W1064-MS-291": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
-                "date": "15.07.2018",
-                "update": "New bug, no updates yet."
+                "date": "01.09.2018",
+                "update": "Waiting on Pmoore's suggestion"
             },
         },
         "other_issues": {
