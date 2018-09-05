@@ -61,10 +61,7 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "T-W1064-MS-106": {
-                "bug": "No Bug",
-                "owner": "QA loaner"
-            },
+            
         },
         "pxe_issues": {
             "No Issue": {
