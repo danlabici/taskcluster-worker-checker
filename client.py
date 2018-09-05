@@ -67,10 +67,10 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
-            "T-W1064-MS-160": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1487623",
-                "date": "31.08.2018",
-                "update": "New bug, no updates yet."
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "hdd_issues": {
