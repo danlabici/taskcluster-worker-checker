@@ -185,6 +185,11 @@ machines_to_ignore = {
                 "date": "01.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
             },
+            "t-yosemite-r7-175": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
+                "date": "04.09.2018",
+                "update": "van will check it next DC visit"
+            },
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "26.08.2018",
@@ -554,7 +559,7 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-                print("{}".format(machine))
+            print("{}".format(machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
