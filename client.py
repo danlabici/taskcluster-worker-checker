@@ -61,7 +61,7 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            
+
         },
         "pxe_issues": {
             "No Issue": {
@@ -73,8 +73,8 @@ machines_to_ignore = {
         "hdd_issues": {
             "T-W1064-MS-291": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
-                "date": "15.07.2018",
-                "update": "New bug, no updates yet."
+                "date": "01.09.2018",
+                "update": "Waiting on Pmoore's suggestion"
             },
         },
         "other_issues": {
@@ -162,8 +162,8 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-426": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
+                "date": "06.09.2018",
+                "update": "brought to apple store for repair"
             },
             "t-yosemite-r7-451": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
@@ -176,6 +176,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
+            },
+            "t-yosemite-r7-175": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
+                "date": "04.09.2018",
+                "update": "van will check it next DC visit"
             },
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
@@ -204,8 +209,8 @@ machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 # Insert Windows 316 to 600 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
+# machines_to_ignore['windows']['loaner'].update(
+#    build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
 
 workersList = []
 
@@ -305,7 +310,7 @@ def generate_machine_lists(workertype):
         list(range(451, 481)) + list(range(496, 526)) + \
         list(range(541, 571)) + list(range(581, 601))
         """
-        range_ms_windows = mdc1_range + mdc2_range
+        range_ms_windows = mdc1_range
 
         ms_windows_name = "T-W1064-MS-{}"
         windows_machines = []
@@ -542,7 +547,7 @@ def main():
             print("{}".format(machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-                print("{}".format(machine))
+            print("{}".format(machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
