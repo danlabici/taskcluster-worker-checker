@@ -208,8 +208,8 @@ machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 # Insert Windows 316 to 600 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
+#machines_to_ignore['windows']['loaner'].update(
+ #   build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
 
 workersList = []
 
