@@ -77,6 +77,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-020": {
+            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489725",
+            "date": "08.09.2018",
+            "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
@@ -305,7 +310,7 @@ def generate_machine_lists(workertype):
                      list(range(361, 391)) + list(range(406, 436)) + \
                      list(range(451, 481)) + list(range(496, 526)) + \
                      list(range(541, 571)) + list(range(581, 601))
-        
+
         range_ms_windows = mdc1_range + mdc2_range
 
         ms_windows_name = "T-W1064-MS-{}"
@@ -549,7 +554,7 @@ def main():
             if int(machine[-3:]) >= int(mdc2_range[0]):
                 pass
             else:
-                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))                
+                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
@@ -561,7 +566,7 @@ def main():
         for extra_mdc2 in workersList:
             if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
                 print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, extra_mdc2), "- SHUT DOWN THE MACHINE!")
-    
+
 
 if __name__ == '__main__':
     main()
