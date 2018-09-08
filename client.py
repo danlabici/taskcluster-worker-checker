@@ -549,7 +549,7 @@ def main():
             if int(machine[-3:]) >= int(mdc2_range[0]):
                 pass
             else:
-                print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))                
+                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))                
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
@@ -560,7 +560,7 @@ def main():
     if (workertype == WINDOWS) or (workertype == "win"):
         for extra_mdc2 in workersList:
             if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
-                print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, extra_mdc2), "- SHUT DOWN THE MACHINE!")
+                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, extra_mdc2), "- SHUT DOWN THE MACHINE!")
     
 
 if __name__ == '__main__':
