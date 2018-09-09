@@ -82,6 +82,11 @@ machines_to_ignore = {
             "date": "08.09.2018",
             "update": "New bug, no updates yet."
             },
+            "T-W1064-MS-028": {
+            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489867",
+            "date": "09.09.2018",
+            "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
