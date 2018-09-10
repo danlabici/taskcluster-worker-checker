@@ -61,7 +61,6 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-
         },
         "pxe_issues": {
             "No Issue": {
@@ -78,6 +77,16 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-020": {
+            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489725",
+            "date": "08.09.2018",
+            "update": "New bug, no updates yet."
+            },
+            "T-W1064-MS-028": {
+            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489867",
+            "date": "09.09.2018",
+            "update": "New bug, no updates yet."
+            },
             "T-W1064-MS-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
@@ -157,8 +166,8 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-349": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
-                "date": "03.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472866#c14"
+                "date": "08.09.2018",
+                "update": "needs trip to mdc1 to reinstall the mini"
             },
             "t-yosemite-r7-426": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
@@ -209,8 +218,8 @@ machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 # Insert Windows 316 to 600 into the loan dictionary
-# machines_to_ignore['windows']['loaner'].update(
-#    build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
+#machines_to_ignore['windows']['loaner'].update(
+ #   build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
 
 workersList = []
 
@@ -302,15 +311,12 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346))
-        """
-        Leaving only chassis 8 from MDC2 as only they are doing prod jobs atm
-        + \
-        list(range(361, 391)) + list(range(406, 436)) + \
-        list(range(451, 481)) + list(range(496, 526)) + \
-        list(range(541, 571)) + list(range(581, 601))
-        """
-        range_ms_windows = mdc1_range
+        mdc2_range = list(range(316, 346)) + \
+                     list(range(361, 391)) + list(range(406, 436)) + \
+                     list(range(451, 481)) + list(range(496, 526)) + \
+                     list(range(541, 571)) + list(range(581, 601))
+
+        range_ms_windows = mdc1_range + mdc2_range
 
         ms_windows_name = "T-W1064-MS-{}"
         windows_machines = []
@@ -345,7 +351,7 @@ def main():
     parser.add_argument("-w", "--worker-type",
                         dest="worker_type",
                         help="Available options: gecko-t-linux-talos, linux, gecko-t-win10-64-hw, win, gecko-t-osx-1010, mac",
-                        default=LINUX,
+                        default=WINDOWS,
                         required=False)
     parser.add_argument("-u", "--ldap-username",
                         dest="ldap_username",
@@ -544,16 +550,27 @@ def main():
     # Print each machine on a new line.
     for machine in missing_machines:
         if (workertype == LINUX) or (workertype == "linux"):
-            print("{}".format(machine))
+            if int(machine[-3:]) >= int(mdc2_range[0]):
+                print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
+            else:
+                print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-            print("{}".format(machine))
+            if int(machine[-3:]) >= int(mdc2_range[0]):
+                pass
+            else:
+                print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if int(machine[-3:]) <= int(mdc2_range[-1]):
                 print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
             else:
                 print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
+
+    if (workertype == WINDOWS) or (workertype == "win"):
+        for extra_mdc2 in workersList:
+            if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
+                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, extra_mdc2), "- SHUT DOWN THE MACHINE!")
 
 
 if __name__ == '__main__':
