@@ -540,8 +540,11 @@ def main():
     print("\n")
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
-    print("Total of missing server : {}".format(len(missing_machines)))
-
+    if (workertype == WINDOWS) or (workertype == "win"):
+        print("Total of missing server : {}".format(len(missing_machines) - len(mdc2_range)))
+    else:
+        print("Total of missing server : {}".format(len(missing_machines)))
+    
     if verbose:
         if len(workers) > len(generate_machine_lists(workertype)):
             print("!!! We got SCL3 Machines in the JSON body!!!! \n"
