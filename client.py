@@ -557,9 +557,9 @@ def main():
                     print(machine)
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
+                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('Administrator', machine))
                 else:
-                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
+                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('Administrator', machine))
 
 
         if (workertype == WINDOWS) or (workertype == "win"):
@@ -569,7 +569,7 @@ def main():
                 if verbose == "short":
                     print(machine)
                 else:
-                    print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format(ldap, machine))
+                    print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if verbose == "short":
@@ -583,7 +583,7 @@ def main():
     if (workertype == WINDOWS) or (workertype == "win"):
         for extra_mdc2 in workersList:
             if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
-                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format(ldap, extra_mdc2), "- SHUT DOWN THE MACHINE!")
+                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', extra_mdc2), "- SHUT DOWN THE MACHINE!")
 
 
 if __name__ == '__main__':
