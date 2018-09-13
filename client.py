@@ -77,16 +77,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-020": {
-            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489725",
-            "date": "08.09.2018",
-            "update": "New bug, no updates yet."
-            },
-            "T-W1064-MS-028": {
-            "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1489867",
-            "date": "09.09.2018",
-            "update": "New bug, no updates yet."
-            },
             "T-W1064-MS-130": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
                 "date": "23.07.2018",
@@ -144,11 +134,6 @@ machines_to_ignore = {
         "ssh_stdio": {
         },
         "ssh_unresponsive": {
-            "t-yosemite-r7-110": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1483748",
-                "date": "16.08.2018",
-                "update": "New bug, no updates yet."
-            },
             "t-yosemite-r7-189": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
@@ -158,21 +143,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
-            },
-            "t-yosemite-r7-280": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488184",
-                "date": "03.09.2018",
-                "update": "Taken to the apple store"
-            },
-            "t-yosemite-r7-349": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472865",
-                "date": "08.09.2018",
-                "update": "needs trip to mdc1 to reinstall the mini"
-            },
-            "t-yosemite-r7-426": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472868",
-                "date": "06.09.2018",
-                "update": "brought to apple store for repair"
             },
             "t-yosemite-r7-451": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
