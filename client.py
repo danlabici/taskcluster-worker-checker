@@ -82,11 +82,6 @@ machines_to_ignore = {
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-            "T-W1064-MS-177": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477654",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
         },
     },
     "osx": {
