@@ -402,16 +402,16 @@ def main():
                     hdd_table.add_row([hdd, hdd_issues[hdd]['bug'], hdd_issues[hdd]['date'], hdd_issues[hdd]['update']])
                 print(hdd_table)
 
-        print("\nSSH-STDIO Issues:")
-        if not ssh_stdio:
-            print("No SSH-STDIO Issues")
-        else:
-            stdio_table = PrettyTable()
-            stdio_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
-            for stdio in sorted(ssh_stdio.keys()):
-                stdio_table.add_row(
-                    [stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
-            print(stdio_table)
+            print("\nSSH-STDIO Issues:")
+            if not ssh_stdio:
+                print("No SSH-STDIO Issues")
+            else:
+                stdio_table = PrettyTable()
+                stdio_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for stdio in sorted(ssh_stdio.keys()):
+                    stdio_table.add_row(
+                        [stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
+                print(stdio_table)
 
             print("\nOther Issues:")
             if not other_issues:
