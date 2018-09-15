@@ -504,7 +504,7 @@ def main():
         print("Total of missing server : {}".format(len(missing_machines) - len(mdc2_range)))
     else:
         print("Total of missing server : {}".format(len(missing_machines)))
-    
+
     if verbose:
         if len(workers) > len(generate_machine_lists(workertype)):
             print("!!! We got SCL3 Machines in the JSON body!!!! \n"
@@ -517,9 +517,9 @@ def main():
                     print(machine)
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('Administrator', machine))
+                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
                 else:
-                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('Administrator', machine))
+                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
 
 
         if (workertype == WINDOWS) or (workertype == "win"):
