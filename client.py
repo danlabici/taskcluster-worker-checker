@@ -51,6 +51,23 @@ machines_to_ignore = {
                 "update": "No Update"
             },
         },
+        "ssh_stdio": {
+            "t-linux64-ms-274": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
+                "date": "15.09.2018",
+                "update": "New bug. No update"
+            },
+            "t-linux64-ms-278": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
+                "date": "15.09.2018",
+                "update": "New bug. No update"
+            },
+            "t-linux64-ms-308": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
+                "date": "15.09.2018",
+                "update": "New bug. No update"
+            },
+        },
         "other_issues": {
             "No Issue": {
                 "bug": "No BUG",
@@ -122,6 +139,16 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-271": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910",
+                "date": "15.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910#c1"
+            },
+            "t-yosemite-r7-385": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
+                "date": "15.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1470061#c2"
+            },
         },
         "ssh_unresponsive": {
             "t-yosemite-r7-189": {
@@ -338,6 +365,7 @@ def main():
     # Remove machines from generated list
     if (workertype == LINUX) or (workertype == "linux"):
         loaners = machines_to_ignore["linux"]["loaner"]
+        ssh_stdio = machines_to_ignore["linux"]["ssh_stdio"]
         pxe_issues = machines_to_ignore["linux"]["pxe_issues"]
         hdd_issues = machines_to_ignore["linux"]["hdd_issues"]
         other_issues = machines_to_ignore["linux"]["other_issues"]
@@ -353,6 +381,17 @@ def main():
                 for machine in sorted(loaners.keys()):
                     table.add_row([machine, loaners[machine]['bug'], loaners[machine]['owner']])
                 print(table)
+
+            print("\nSSH-STDIO Issues:")
+            if not ssh_stdio:
+                print("No SSH-STDIO Issues")
+            else:
+                stdio_table = PrettyTable()
+                stdio_table.field_names = ["Machine Name", "BUG ID", "Date", "Update"]
+                for stdio in sorted(ssh_stdio.keys()):
+                    stdio_table.add_row(
+                        [stdio, ssh_stdio[stdio]['bug'], ssh_stdio[stdio]['date'], ssh_stdio[stdio]['update']])
+                print(stdio_table)
 
             print("\nPXE Issues:")
             if not pxe_issues:
