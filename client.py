@@ -2,9 +2,15 @@
 This script will check for missing moonshots in TaskCluster.
 github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 """
-
-from argparse import ArgumentParser
-import urllib.request, json
+import os
+try:
+    from argparse import ArgumentParser
+    import urllib.request, json
+    import prettytable
+except ImportError:
+    print("Detected Missing Dependences! \n Trying Automated Installation.")
+    print("If installation fails, please run: pip install prettytable")
+    os.system("python -m pip install prettytable")
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
