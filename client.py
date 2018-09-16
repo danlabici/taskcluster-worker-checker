@@ -3,6 +3,7 @@ This script will check for missing moonshots in TaskCluster.
 github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 """
 import os
+
 try:
     from argparse import ArgumentParser
     import urllib.request, json
@@ -167,6 +168,16 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
+            "t-yosemite-r7-425": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
+                "date": "16.09.2018",
+                "update": "dhouse cc-ed"
+            },
+            "t-yosemite-r7-436": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
+                "date": "16.09.2018",
+                "update": "awaiting relops response"
+            },
             "t-yosemite-r7-451": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
                 "date": "01.09.2018",
@@ -211,8 +222,8 @@ machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
 # Insert Windows 316 to 600 into the loan dictionary
-#machines_to_ignore['windows']['loaner'].update(
- #   build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
+# machines_to_ignore['windows']['loaner'].update(
+#   build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
 
 workersList = []
 
@@ -559,13 +570,12 @@ def main():
     for machine in missing_machines:
         if (workertype == LINUX) or (workertype == "linux"):
             if verbose == "short":
-                    print(machine)
+                print(machine)
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
                 else:
                     print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
-
 
         if (workertype == WINDOWS) or (workertype == "win"):
             if int(machine[-3:]) >= int(mdc2_range[0]):
@@ -578,7 +588,7 @@ def main():
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if verbose == "short":
-                    print(machine)
+                print(machine)
             else:
                 if int(machine[-3:]) <= int(mdc2_range[-1]):
                     print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
@@ -588,7 +598,8 @@ def main():
     if (workertype == WINDOWS) or (workertype == "win"):
         for extra_mdc2 in workersList:
             if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
-                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', extra_mdc2), "- SHUT DOWN THE MACHINE!")
+                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', extra_mdc2),
+                      "- SHUT DOWN THE MACHINE!")
 
 
 if __name__ == '__main__':
