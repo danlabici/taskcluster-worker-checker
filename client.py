@@ -109,7 +109,7 @@ machines_to_ignore = {
               "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.09.2018",
-                "update": dhause - I created ticket RITM0259212 with QTS (see the DCOps bug)"
+                "update": "dhause: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
         },
     },
