@@ -11,11 +11,12 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 2) Clone the repository and run client.py
 
 ## Running Client.py
-| Windows  | Linux/Mac OSX |
-| ------------- | ------------- |
-| `python3 client.py -w linux` | `python3 client.py -w linux` |
-| `python3 client.py -w win`  | `python3 client.py -w win`  |
-| `python3 client.py -w osx`  | `python3 client.py -w osx`  |
+| Windows                         | Linux/Mac OSX                  |   
+| --------------------------------|--------------------------------|
+| `python3 client.py -w linux`    | `python3 client.py -w linux`   |
+| `python3 client.py -w linuxtw`  | `python3 client.py -w linuxtw` |
+| `python3 client.py -w win`      | `python3 client.py -w win`     |
+| `python3 client.py -w osx`      | `python3 client.py -w osx`     |
 
 If you preffer the output to be saved in a file, you can run the following command:
 
@@ -31,7 +32,7 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ```
 
-You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues. 
+You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues.
 Output example with -v/--verbose:
 ```
 Linux Loaners:
@@ -76,15 +77,15 @@ or verbose (Attention, this will generate a lot of output):
 
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into. Via run arguments.
-    
-    1.a) We also give the option to add his own Mozilla LDAP username. Making MacOSX workflow faster, by prefilling the ssh command with the needed information. 
+
+    1.a) We also give the option to add his own Mozilla LDAP username. Making MacOSX workflow faster, by prefilling the ssh command with the needed information.
 2) We generate a **CONTROL** list of names in a set `hard-coded` range. [ISSUE - Grab machines from ServiceNow](https://github.com/Akhliskun/taskcluster-worker-checker/issues/2)
 3) We get/parse the TC JSON for chosen worker-type. [ISSUE - Fix Failed JSON Responses](https://github.com/Akhliskun/taskcluster-worker-checker/issues/3)
 4) We print the diff between ListA and ListB
 4.1) We print the missing machines and ssh command, including your LDAP if offered.
 
 ## Can I contribute?
-Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-worker-checker/issues). 
+Yes! We have a couple of [Issues Open](https://github.com/Akhliskun/taskcluster-worker-checker/issues).
 Pick whichever you find fancy and make a PullRequest.
 **PLEASE** don't forget to select "`Allow edits from maintainers`" so we can have quicker merges!
 
@@ -103,4 +104,4 @@ This repository is running TravisCI to check each commit and pull request to mak
 `main()` - Will ask for arguments + return the data to you in a readable format.
 
 
-**PS**: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items". 
+**PS**: We only look at MDC1/MDC2, even if TC JSON comes with SCL3, we ignore the "extra items".
