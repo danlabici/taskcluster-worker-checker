@@ -251,7 +251,27 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
                 "date": "27.07.2018",
                 "update": "brought to the apple store"
-            }
+            },
+            "t-yosemite-r7-042": {
+                "bug": "No Bug",
+                "date": "18.08.2018",
+                "update": "Quarantined for Testing by DHouse"
+            },
+            "t-yosemite-r7-050": {
+                "bug": "No Bug",
+                "date": "18.08.2018",
+                "update": "Quarantined for Testing by DHouse"
+            },
+            "t-yosemite-r7-063": {
+                "bug": "No Bug",
+                "date": "18.08.2018",
+                "update": "Quarantined for Testing by DHouse"
+            },
+            "t-yosemite-r7-098": {
+                "bug": "No Bug",
+                "date": "18.08.2018",
+                "update": "Quarantined for Testing by DHouse"
+            },
         },
     },
 }
