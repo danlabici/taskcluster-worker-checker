@@ -298,7 +298,7 @@ def parse_taskcluster_json(workertype):
     # Setup API URLs
     if (workertype == LINUX) or (workertype == "linux"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
-        #apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos-tw/workers"
+
 
     elif (workertype == LINUXTW) or (workertype == "linuxtw"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos-tw/workers"
@@ -342,14 +342,14 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        #mdc1_range = (4, 145, 190, 230, 236)
+        mdc1_range = [4, 145, 190, 230 , 236]
 
         mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
                      list(range(391, 406)) + list(range(436, 451)) + \
                      list(range(481, 496)) + list(range(526, 541)) + \
                      list(range(571, 581))
 
-        range_ms_linux = mdc2_range
+        range_ms_linux = mdc1_range + mdc2_range
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
