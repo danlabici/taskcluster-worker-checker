@@ -163,7 +163,7 @@ machines_to_ignore = {
                 "date": "23.07.2018",
                 "update": "New bug, no updates yet."
             },
-              "T-W1064-MS-284": {
+            "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
@@ -224,6 +224,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
+            },
+            "t-yosemite-r7-229": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
+                "date": "17.08.2018",
+                "update": "Van to check it next DC visit"
             },
             "t-yosemite-r7-239": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
@@ -310,7 +315,7 @@ machines_to_ignore['linux']['loaner'].update(
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
-LINUXTW="gecko-t-linux-talos-tw"
+LINUXTW = "gecko-t-linux-talos-tw"
 WINDOWS = "gecko-t-win10-64-hw"
 MACOSX = "gecko-t-osx-1010"
 
@@ -377,7 +382,7 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        mdc1_range = [230 , 236]
+        mdc1_range = [230, 236]
 
         mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
                      list(range(391, 406)) + list(range(436, 451)) + \
@@ -399,7 +404,6 @@ def generate_machine_lists(workertype):
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
-
 
         range_ms_linux = mdc1_range
         ms_linux_name = "t-linux64-ms-{}"
