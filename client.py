@@ -74,6 +74,11 @@ machines_to_ignore = {
                 "date": "15.09.2018",
                 "update": "New bug. No update"
             },
+            "t-linux64-ms-358": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
+                "date": "20.09.2018",
+                "update": "New bug. No update"
+            },
         },
         "other_issues": {
             "No Issue": {
@@ -213,10 +218,25 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-225": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
+            },
             "t-yosemite-r7-271": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910",
                 "date": "15.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910#c1"
+            },
+            "t-yosemite-r7-365": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
+            },
+            "t-yosemite-r7-367": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
             },
             "t-yosemite-r7-385": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
