@@ -182,6 +182,11 @@ machines_to_ignore = {
                 "owner": ":dragrom"
             },
 
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492703",
+                "owner": ":dhouse"
+            },
+
             "t-yosemite-r7-253": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
                 "owner": ":bwc"
