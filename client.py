@@ -163,6 +163,11 @@ machines_to_ignore = {
                 "date": "25.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
+               "T-W1064-MS-217": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
+                "date": "20.09.2018",
+                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+            },
         },
     },
     "osx": {
