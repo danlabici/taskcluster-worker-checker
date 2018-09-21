@@ -223,11 +223,6 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
             },
-            "t-yosemite-r7-271": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910",
-                "date": "15.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910#c1"
-            },
             "t-yosemite-r7-365": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
                 "date": "20.09.2018",
@@ -237,11 +232,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
-            "t-yosemite-r7-385": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
-                "date": "15.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1470061#c2"
             },
         },
         "ssh_unresponsive": {
@@ -280,7 +270,7 @@ machines_to_ignore = {
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
+                "update": "requires on site visit"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
