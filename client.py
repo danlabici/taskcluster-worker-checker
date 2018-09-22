@@ -74,6 +74,11 @@ machines_to_ignore = {
                 "date": "15.09.2018",
                 "update": "New bug. No update"
             },
+            "t-linux64-ms-358": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
+                "date": "20.09.2018",
+                "update": "New bug. No update"
+            },
         },
         "other_issues": {
             "No Issue": {
@@ -158,14 +163,14 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-130": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1463754",
-                "date": "23.07.2018",
-                "update": "New bug, no updates yet."
-            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.09.2018",
+                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+            },
+               "T-W1064-MS-217": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
+                "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
         },
@@ -180,6 +185,11 @@ machines_to_ignore = {
             "t-yosemite-r7-101": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
+            },
+
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492703",
+                "owner": ":dhouse"
             },
 
             "t-yosemite-r7-253": {
@@ -208,15 +218,20 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-271": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910",
-                "date": "15.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490910#c1"
+            "t-yosemite-r7-225": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
             },
-            "t-yosemite-r7-385": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
-                "date": "15.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1470061#c2"
+            "t-yosemite-r7-365": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
+            },
+            "t-yosemite-r7-367": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
+                "date": "20.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
             },
         },
         "ssh_unresponsive": {
@@ -255,7 +270,7 @@ machines_to_ignore = {
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c1"
+                "update": "requires on site visit"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
