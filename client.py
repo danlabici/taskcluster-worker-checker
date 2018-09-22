@@ -168,7 +168,7 @@ machines_to_ignore = {
                 "date": "25.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
-               "T-W1064-MS-217": {
+            "T-W1064-MS-217": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
@@ -286,6 +286,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
                 "date": "27.07.2018",
                 "update": "brought to the apple store"
+            },
+            "t-yosemite-r7-384": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101#c4",
+                "date": "22.09.2018",
+                "update": "Van will check it next visit"
             },
             "t-yosemite-r7-042": {
                 "bug": "No Bug",
