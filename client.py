@@ -435,12 +435,12 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346)) + \
-                     list(range(361, 391)) + list(range(406, 436)) + \
+        mdc2_range = list(range(316, 346))
+        mdc2_range_down = list(range(361, 391)) + list(range(406, 436)) + \
                      list(range(451, 481)) + list(range(496, 526)) + \
                      list(range(541, 571)) + list(range(581, 601))
 
-        range_ms_windows = mdc1_range + mdc2_range
+        range_ms_windows = mdc1_range + mdc2_range + mdc2_range_down
 
         ms_windows_name = "T-W1064-MS-{}"
         windows_machines = []
@@ -741,7 +741,7 @@ def main():
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
     if (workertype == WINDOWS) or (workertype == "win"):
-        print("Total of missing server : {}".format(len(missing_machines) - len(mdc2_range)))
+        print("Total of missing server : {}".format(len(missing_machines) + len(mdc2_range)))
     else:
         print("Total of missing server : {}".format(len(missing_machines)))
 
@@ -785,12 +785,6 @@ def main():
                     print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
                 else:
                     print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-
-    if (workertype == WINDOWS) or (workertype == "win"):
-        for extra_mdc2 in workersList:
-            if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
-                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', extra_mdc2),
-                      "- SHUT DOWN THE MACHINE!")
 
 
 if __name__ == '__main__':
