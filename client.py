@@ -163,12 +163,17 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-036": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493467",
+                "date": "23.09.2018",
+                "update": "machine not picking up tasks/ markco is on it"
+            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
-                "date": "25.09.2018",
+                "date": "25.08.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
-            "T-W1064-MS-217": {
+               "T-W1064-MS-217": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
@@ -288,9 +293,9 @@ machines_to_ignore = {
                 "update": "brought to the apple store"
             },
             "t-yosemite-r7-384": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101#c4",
-                "date": "22.09.2018",
-                "update": "Van will check it next visit"
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
+                "date": "23.09.2018",
+                "update": "Van will check on his next DC visit"
             },
             "t-yosemite-r7-042": {
                 "bug": "No Bug",
@@ -402,14 +407,12 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        mdc1_range = [230, 236]
-
         mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
                      list(range(391, 406)) + list(range(436, 451)) + \
                      list(range(481, 496)) + list(range(526, 541)) + \
                      list(range(571, 581))
 
-        range_ms_linux = mdc1_range + mdc2_range
+        range_ms_linux = mdc2_range
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
@@ -440,10 +443,10 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346)) + \
-                     list(range(361, 391)) + list(range(406, 436)) + \
-                     list(range(451, 481)) + list(range(496, 526)) + \
-                     list(range(541, 571)) + list(range(581, 601))
+        mdc2_range = list(range(316, 346))   # + \
+                     # list(range(361, 391)) + list(range(406, 436)) + \
+                     # list(range(451, 481)) + list(range(496, 526)) + \
+                     # list(range(541, 571)) + list(range(581, 601))
 
         range_ms_windows = mdc1_range + mdc2_range
 
@@ -774,11 +777,11 @@ def main():
                     print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
 
         if (workertype == WINDOWS) or (workertype == "win"):
-            if int(machine[-3:]) >= int(mdc2_range[0]):
-                pass
+            if verbose == "short":
+                print(machine)
             else:
-                if verbose == "short":
-                    print(machine)
+                if int(machine[-3:]) >= int(mdc2_range[0]):
+                    print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
                 else:
                     print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
 
@@ -790,12 +793,6 @@ def main():
                     print("ssh {}@{}.test.releng.mdc2.mozilla.com".format(ldap, machine))
                 else:
                     print("ssh {}@{}.test.releng.mdc1.mozilla.com".format(ldap, machine))
-
-    if (workertype == WINDOWS) or (workertype == "win"):
-        for extra_mdc2 in workersList:
-            if int(extra_mdc2[-3:]) >= int(mdc2_range[0]):
-                print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', extra_mdc2),
-                      "- SHUT DOWN THE MACHINE!")
 
 
 if __name__ == '__main__':
