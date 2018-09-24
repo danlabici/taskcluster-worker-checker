@@ -147,11 +147,6 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "T-W1064-MS-052": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493631",
-                "date": "24.09.2018",
-                "owner": ":sfraser"
-            },
         },
         "pxe_issues": {
             "No Issue": {
