@@ -333,10 +333,6 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
-# Insert Windows 316 to 600 into the loan dictionary
-# machines_to_ignore['windows']['loaner'].update(
-#   build_host_info(["T-W1064-MS-{}".format(i) for i in range(316, 601)], bug="No bug", owner="markco"))
-
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -443,10 +439,10 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346))   # + \
-                     # list(range(361, 391)) + list(range(406, 436)) + \
-                     # list(range(451, 481)) + list(range(496, 526)) + \
-                     # list(range(541, 571)) + list(range(581, 601))
+        mdc2_range = list(range(316, 346))    + \
+                      list(range(361, 391)) + list(range(406, 436)) + \
+                      list(range(451, 481)) + list(range(496, 526)) + \
+                      list(range(541, 571)) + list(range(581, 601))
 
         range_ms_windows = mdc1_range + mdc2_range
 
@@ -748,10 +744,8 @@ def main():
     print("\n")
     print("Servers that WE know  of: {}".format(len(generate_machine_lists(workertype))))
     print("Servers that TC knows of: {}".format(len(workersList)))
-    if (workertype == WINDOWS) or (workertype == "win"):
-        print("Total of missing server : {}".format(len(missing_machines) - len(mdc2_range)))
-    else:
-        print("Total of missing server : {}".format(len(missing_machines)))
+
+    print("Total of missing server : {}".format(len(missing_machines)))
 
     if verbose:
         if len(workers) > len(generate_machine_lists(workertype)):
