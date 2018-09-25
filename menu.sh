@@ -2,7 +2,7 @@
 
 function _menuPrincipal()
 {
-    cat banner2.txt
+    cat Automation/banner.txt
     echo
     echo "Please choose an option :"
     echo
