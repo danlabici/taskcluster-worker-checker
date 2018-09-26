@@ -178,7 +178,7 @@ machines_to_ignore = {
                 "date": "25.08.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
-               "T-W1064-MS-217": {
+            "T-W1064-MS-217": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
@@ -464,10 +464,10 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346))    + \
-                      list(range(361, 391)) + list(range(406, 436)) + \
-                      list(range(451, 481)) + list(range(496, 526)) + \
-                      list(range(541, 571)) + list(range(581, 601))
+        mdc2_range = list(range(316, 346)) + \
+                     list(range(361, 391)) + list(range(406, 436)) + \
+                     list(range(451, 481)) + list(range(496, 526)) + \
+                     list(range(541, 571)) + list(range(581, 601))
 
         range_ms_windows = mdc1_range + mdc2_range
 
