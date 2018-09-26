@@ -168,6 +168,11 @@ machines_to_ignore = {
                 "date": "23.09.2018",
                 "update": "machine not picking up tasks/ markco is on it"
             },
+            "T-W1064-MS-125": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
+                "date": "26.09.2018",
+                "update": "powered off after green task. Food for markco"
+            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.08.2018",
