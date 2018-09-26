@@ -178,6 +178,26 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
+            "T-W1064-MS-471": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-474": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-599": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-600": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494013",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
         },
     },
     "osx": {
