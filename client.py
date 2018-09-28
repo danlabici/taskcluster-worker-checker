@@ -170,7 +170,7 @@ machines_to_ignore = {
              "T-W1064-MS-470": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
                 "date": "28.09.2018",
-                "update": "pxe network boot problems"             
+                "update": "No video on ILO. Asked Van to re-seat."             
             },
             "T-W1064-MS-471": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
