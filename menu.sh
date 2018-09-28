@@ -4,7 +4,6 @@ function _menuPrincipal()
 {
     cat Automation/banner.txt
     echo
-    echo "Please choose an option :"
     echo
     echo "1) Update checker"
     echo "2) Multiple machine search"
@@ -12,7 +11,7 @@ function _menuPrincipal()
     echo "4) Edit the taskcluster-worker-checker"
     echo "5) Quit"
     echo
-    echo -n "The selected option: "
+    echo -n "Please choose an option: "
 }
 
 function _submenu1()
