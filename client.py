@@ -99,6 +99,14 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+            "t-linux64-ms-394": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+            "t-linux64-ms-395": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
         },
         "pxe_issues": {
             "No Issue": {
@@ -108,10 +116,10 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
-            "No Issue": {
-                "bug": "No BUG",
-                "date": "No Date",
-                "update": "No Update"
+            "t-linux64-ms-308": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
+                "date": "28.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
             },
         },
         "ssh_stdio": {
@@ -453,7 +461,11 @@ def generate_machine_lists(workertype):
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        range_ms_linux = mdc1_range
+        mdc2_range_linuxtw = list(range(301, 316)) + list(range(346, 361)) + \
+                             list(range(391, 394)) + list(range(396, 406)) + \
+                             list(range(436, 451)) + list(range(481, 496))
+
+        range_ms_linux = mdc1_range + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
