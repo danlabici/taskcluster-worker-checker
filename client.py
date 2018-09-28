@@ -95,6 +95,10 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+            "t-linux64-ms-280": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
         },
         "pxe_issues": {
             "No Issue": {
@@ -111,37 +115,17 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-274": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-278": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
+                "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "other_issues": {
-            "t-linux64-ms-272": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-273": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-276": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-277": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
+                "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
     },
