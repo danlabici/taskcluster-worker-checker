@@ -178,6 +178,11 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
+            "T-W1064-MS-465": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
+                "date": "28.09.2018",
+                "update": "pxe network boot problems"
+            },
             "T-W1064-MS-471": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
                 "date": "26.09.2018",
@@ -265,6 +270,11 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-223": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482741",
+                "date": "28.09.2018",
+                "update": "New bug, no updates yet"
+            },
             "t-yosemite-r7-229": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
                 "date": "17.08.2018",
@@ -274,6 +284,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
+            },
+            "t-yosemite-r7-333": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
+                "date": "28.09.2018",
+                "update": "New bug, no updates yet"
             },
             "t-yosemite-r7-425": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
