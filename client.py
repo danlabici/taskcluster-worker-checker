@@ -95,6 +95,18 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+            "t-linux64-ms-280": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+            "t-linux64-ms-394": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
+            "t-linux64-ms-395": {
+                "bug": "Staging Pool - No Bug",
+                "owner": ":dragrom"
+            },
         },
         "pxe_issues": {
             "No Issue": {
@@ -104,44 +116,24 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
-            "No Issue": {
+            "t-linux64-ms-308": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
+                "date": "28.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
+            },
+        },
+        "ssh_stdio": {
+                "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
-        "ssh_stdio": {
-            "t-linux64-ms-274": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-278": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-        },
         "other_issues": {
-            "t-linux64-ms-272": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-273": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-276": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-277": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1464064",
-                "date": "17.09.2018",
-                "update": "New bug. No update"
+                "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
     },
@@ -182,6 +174,16 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+            },
+            "T-W1064-MS-465": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
+                "date": "28.09.2018",
+                "update": "pxe network boot problems"
+            },
+             "T-W1064-MS-470": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
+                "date": "28.09.2018",
+                "update": "No video on ILO. Asked Van to re-seat."             
             },
             "T-W1064-MS-471": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
@@ -270,6 +272,11 @@ machines_to_ignore = {
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
             },
+            "t-yosemite-r7-223": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482741",
+                "date": "28.09.2018",
+                "update": "New bug, no updates yet"
+            },
             "t-yosemite-r7-229": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
                 "date": "17.08.2018",
@@ -279,6 +286,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
+            },
+            "t-yosemite-r7-333": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
+                "date": "28.09.2018",
+                "update": "New bug, no updates yet"
             },
             "t-yosemite-r7-425": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
@@ -316,6 +328,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472845",
                 "date": "27.07.2018",
                 "update": "brought to the apple store"
+            },
+            "t-yosemite-r7-273": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112",
+                "date": "26.07.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112#c2"
             },
             "t-yosemite-r7-384": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
@@ -449,7 +466,11 @@ def generate_machine_lists(workertype):
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        range_ms_linux = mdc1_range
+        mdc2_range_linuxtw = list(range(301, 316)) + list(range(346, 361)) + \
+                             list(range(391, 394)) + list(range(396, 406)) + \
+                             list(range(436, 451)) + list(range(481, 496))
+
+        range_ms_linux = mdc1_range + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
