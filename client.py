@@ -165,6 +165,11 @@ machines_to_ignore = {
                 "date": "26.09.2018",
                 "update": "powered off after green task. Food for markco"
             },
+            "T-W1064-MS-258": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
+                "date": "30.09.2018",
+                "update": "do not touch"
+            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.08.2018",
