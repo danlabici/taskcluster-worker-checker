@@ -123,14 +123,14 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-                "No Issue": {
+            "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
         "other_issues": {
-                "No Issue": {
+            "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
@@ -160,12 +160,22 @@ machines_to_ignore = {
                 "date": "23.09.2018",
                 "update": "machine not picking up tasks/ markco is on it"
             },
+            "T-W1064-MS-125": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
+                "date": "26.09.2018",
+                "update": "powered off after green task. Food for markco"
+            },
+            "T-W1064-MS-258": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
+                "date": "30.09.2018",
+                "update": "do not touch"
+            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.08.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
-               "T-W1064-MS-217": {
+            "T-W1064-MS-217": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
@@ -175,10 +185,10 @@ machines_to_ignore = {
                 "date": "28.09.2018",
                 "update": "pxe network boot problems"
             },
-             "T-W1064-MS-470": {
+            "T-W1064-MS-470": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
                 "date": "28.09.2018",
-                "update": "No video on ILO. Asked Van to re-seat."             
+                "update": "No video on ILO. Asked Van to re-seat."
             },
             "T-W1064-MS-471": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
@@ -189,6 +199,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
                 "date": "26.09.2018",
                 "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494351#c2",
+                "date": "30.09.2018",
+                "update": "do not touch"
             },
             "T-W1064-MS-599": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
@@ -440,10 +455,12 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
-                     list(range(391, 406)) + list(range(436, 451)) + \
-                     list(range(481, 496)) + list(range(526, 541)) + \
+        mdc2_range = list(range(526, 541)) + \
                      list(range(571, 581))
+
+        #   list(range(301, 316)) + list(range(346, 361)) + \   All linux chassis (except 13) moved to talos-TW
+        #          list(range(391, 406)) + list(range(436, 451)) + \
+        #          list(range(481, 496)) +
 
         range_ms_linux = mdc2_range
         ms_linux_name = "t-linux64-ms-{}"
@@ -480,10 +497,10 @@ def generate_machine_lists(workertype):
                      list(range(106, 136)) + list(range(151, 181)) + \
                      list(range(196, 226)) + list(range(241, 271)) + \
                      list(range(281, 299))
-        mdc2_range = list(range(316, 346))    + \
-                      list(range(361, 391)) + list(range(406, 436)) + \
-                      list(range(451, 481)) + list(range(496, 526)) + \
-                      list(range(541, 571)) + list(range(581, 601))
+        mdc2_range = list(range(316, 346)) + \
+                     list(range(361, 391)) + list(range(406, 436)) + \
+                     list(range(451, 481)) + list(range(496, 526)) + \
+                     list(range(541, 571)) + list(range(581, 601))
 
         range_ms_windows = mdc1_range + mdc2_range
 
