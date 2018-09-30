@@ -200,6 +200,11 @@ machines_to_ignore = {
                 "date": "26.09.2018",
                 "update": "pxe network boot problems"
             },
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494351#c2",
+                "date": "30.09.2018",
+                "update": "do not touch"
+            },
             "T-W1064-MS-599": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
                 "date": "26.09.2018",
