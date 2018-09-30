@@ -180,6 +180,41 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
+            "T-W1064-MS-318": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            },
+            "T-W1064-MS-320": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495257",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            },
+            "T-W1064-MS-321": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482758",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            },
+            "T-W1064-MS-322": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480216",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            },
+            "T-W1064-MS-323": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495263",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            },
+            "T-W1064-MS-324": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480778",
+                "date": "30.09.2018",
+                "update": "New bug. No update"
+            }, 
+            "T-W1064-MS-345": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
+                "date": "30.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776#c2"
+            },        
             "T-W1064-MS-465": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
                 "date": "28.09.2018",
