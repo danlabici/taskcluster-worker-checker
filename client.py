@@ -139,6 +139,10 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
+            "T-W1064-MS-033": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495495",
+                "owner": "markco"
+            },
         },
         "pxe_issues": {
             "No Issue": {
