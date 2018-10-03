@@ -314,6 +314,11 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
             },
+            "t-yosemite-r7-323": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495914",
+                "date": "03.10.2018",
+                "update": "New bug. No updates"
+            },
         },
         "ssh_unresponsive": {
             "t-yosemite-r7-189": {
