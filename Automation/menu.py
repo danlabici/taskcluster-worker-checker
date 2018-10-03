@@ -1,3 +1,5 @@
+'''A basic version of the TWC menu. I'll improve it in the next shifts.'''
+
 import subprocess
 
 file = open("banner.txt","r")
@@ -6,7 +8,7 @@ for line in file:
 file.close()
 
 def menu():       #the menu. 8 options
-    print("\n1. Update checker. ")
+    print("\n1. Check for updates. ")
     print("2. Search for Linux. ")
     print("3. Search for Linux-TW. ")
     print("4. Search for Windows. ")
@@ -46,4 +48,4 @@ while True:     #the 'switch:case' method to choose an option
         print("Wrong option !")
     menu()
 
-'''A basic version of the TWC menu. I'll improve it in the next shifts.'''
+
