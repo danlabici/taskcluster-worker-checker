@@ -165,10 +165,10 @@ machines_to_ignore = {
                 "update": "machine not picking up tasks/ markco is on it"
             },
             "T-W1064-MS-116": {
-		"bug": "No Bug",
-		"date": "No Date",
-		"update": "machine not picking up tasks even after reimage"
-	    },
+                "bug": "No Bug",
+                "date": "No Date",
+                "update": "machine not picking up tasks even after reimage"
+            },
             "T-W1064-MS-125": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
                 "date": "26.09.2018",
@@ -218,12 +218,12 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480778",
                 "date": "30.09.2018",
                 "update": "New bug. No update"
-            }, 
+            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776#c2"
-            },        
+            },
             "T-W1064-MS-465": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
                 "date": "28.09.2018",
@@ -488,7 +488,7 @@ def parse_taskcluster_json(workertype):
             if not data["workers"]:
                 # Not sure why but TC kinda fails at responding or I'm doing something wrong
                 # Anyways if you keep at it, it will respond with the JSON data :D
-                print("JSON Response Failed. Retrying...")
+                print("Empty Worker List. Retrying...")
                 parse_taskcluster_json(workertype)
             else:
                 for workers in data['workers']:
