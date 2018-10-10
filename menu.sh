@@ -4,14 +4,15 @@ function _menuPrincipal()
 {
     cat Automation/banner.txt
     echo
+    #echo "Please choose an option :"
     echo
     echo "1) Update checker"
     echo "2) Multiple machine search"
     echo "3) Single machine search"
-    echo "4) Edit the taskcluster-worker-checker"
+    echo "4) Modify the checker and push the changes"
     echo "5) Quit"
     echo
-    echo -n "Please choose an option: "
+    echo -n "Please choose an option :"
 }
 
 function _submenu1()
@@ -35,24 +36,30 @@ function _submenu2()
     echo
     echo -n "Please choose an option: "
 }
+function _submenu3()
+{
+    echo
+    echo "1) Edit the taskcluster-worker-checker"
+    echo "2) Push changes to the repo"
+    echo "3) Back to the main menu"
+    echo
+    echo -n "Please choose an option: "
+}
 
 opc=0
 until [ $opc -eq 5 ]
 do
     case $opc in
         '1') git pull;;
-        '4') pluma client.py;;
         2)
             opc1=0
             until [ $opc1 -eq 3 ]
             do
                 case $opc1 in
-                    1)  clear
-                        echo "Loading the Loading message"
+                    1)  echo "Loading the Loading message"
                         python3 client.py -w win && python3 client.py -w osx && python3 client.py -w linux && python3 client.py -w linuxtw
                         ;;
-                    2)  clear
-                        echo "following the white rabbit.."
+                    2)  echo "following the white rabbit.."
                         python3 client.py -w win -v true && python3 client.py -w osx -v true && python3 client.py -w linux -v true && python3 client.py -w linuxtw -v true
                         ;;
                     3)
@@ -91,6 +98,27 @@ do
                         ;;
                 esac
                 read opc2
+            done
+            _menuPrincipal
+            ;;
+        4)
+          opc3=0
+          until [ $opc3 -eq 3 ]
+          do
+              case $opc3 in
+                  1) clear
+                    echo "Modify the taskcluster-worker-checker"
+                    pluma client.py
+                    ;;
+                  2) clear
+                    echo "Update the repository with the latest news"
+                    Automation/push.sh
+                    ;;
+                 *)
+                    _submenu3
+                    ;;
+                esac
+                read opc3
             done
             _menuPrincipal
             ;;
