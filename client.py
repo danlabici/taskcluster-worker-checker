@@ -206,6 +206,11 @@ machines_to_ignore = {
                 "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
+            "T-W1064-MS-262": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498852",
+                "date": "14.10.2018",
+                "update": "doesn't enter netboot"
+            },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
                 "date": "30.09.2018",
