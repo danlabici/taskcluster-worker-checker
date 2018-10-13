@@ -139,9 +139,26 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "no loaner": {
-                "bug": "No BUG",
-                "owner": "No Owner"
+
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-582": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-583": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-584": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-585": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "owner": ":markco"
             },
         },
         "pxe_issues": {
@@ -439,10 +456,6 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
-# Insert Windows from 581 to 585 chassis 14 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["t-linux64-ms-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
-    
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -537,8 +550,6 @@ def generate_machine_lists(workertype):
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
-
-
 
         range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
