@@ -139,9 +139,9 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "T-W1064-MS-033": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495495",
-                "owner": "markco"
+            "no loaner": {
+                "bug": "No BUG",
+                "owner": "No Owner"
             },
         },
         "pxe_issues": {
@@ -449,6 +449,10 @@ def build_host_info(hostnames, **kwargs):
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
 
+# Insert Windows from 581 to 585 chassis 14 into the loan dictionary
+machines_to_ignore['windows']['loaner'].update(
+    build_host_info(["t-linux64-ms-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
+    
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
@@ -519,7 +523,9 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        mdc2_range = list(range(526, 541)) + \
+        mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
+                     list(range(391, 406)) + list(range(436, 451)) + \
+                     list(range(481, 496)) + list(range(526, 541)) + \
                      list(range(571, 581))
 
         #   list(range(301, 316)) + list(range(346, 361)) + \   All linux chassis (except 13) moved to talos-TW
@@ -542,11 +548,9 @@ def generate_machine_lists(workertype):
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        mdc2_range_linuxtw = list(range(301, 316)) + list(range(346, 361)) + \
-                             list(range(391, 394)) + list(range(396, 406)) + \
-                             list(range(436, 451)) + list(range(481, 496))
 
-        range_ms_linux = mdc1_range + mdc2_range_linuxtw
+
+        range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
