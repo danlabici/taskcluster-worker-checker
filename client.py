@@ -111,9 +111,13 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "no loaner": {
-                "bug": "No BUG",
-                "owner": "No Owner"
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-582": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
             },
         },
         "pxe_issues": {
