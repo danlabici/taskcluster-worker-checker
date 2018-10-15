@@ -303,41 +303,31 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
                 "date": "13.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
-        },
+            },
             "t-yosemite-r7-109": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-144": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015", t-linux64-ms-274
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-150": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-225": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
             },
-            "t-yosemite-r7-365": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
-            },
             "t-yosemite-r7-367": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
-            "t-yosemite-r7-323": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495914",
-                "date": "03.10.2018",
-                "update": "New bug. No updates"
             },
         },
         "ssh_unresponsive": {
@@ -364,12 +354,7 @@ machines_to_ignore = {
             "t-yosemite-r7-333": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
                 "date": "28.09.2018",
-                "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-425": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
-                "date": "16.09.2018",
-                "update": "dhouse cc-ed"
+                "update": "New bug, no updates yet"            
             },
             "t-yosemite-r7-436": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
