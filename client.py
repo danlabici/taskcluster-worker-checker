@@ -304,6 +304,26 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-068": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
+                "date": "13.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
+        },
+            "t-yosemite-r7-109": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
+            "t-yosemite-r7-144": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
+            "t-yosemite-r7-150": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
             "t-yosemite-r7-225": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
                 "date": "20.09.2018",
@@ -441,8 +461,8 @@ machines_to_ignore['linux']['loaner'].update(
 
 # Insert Windows from 581 to 585 chassis 14 into the loan dictionary
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["t-linux64-ms-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
-    
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
+
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
