@@ -59,16 +59,6 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-274": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-278": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
             "t-linux64-ms-308": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
                 "date": "15.09.2018",
@@ -182,11 +172,6 @@ machines_to_ignore = {
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.08.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
-            },
-            "T-W1064-MS-217": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
-                "date": "20.09.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
             "T-W1064-MS-318": {
@@ -308,41 +293,31 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
                 "date": "13.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
-        },
+            },
             "t-yosemite-r7-109": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-144": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-150": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
-        },
+            },
             "t-yosemite-r7-225": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
             },
-            "t-yosemite-r7-365": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
-            },
             "t-yosemite-r7-367": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
-            "t-yosemite-r7-323": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495914",
-                "date": "03.10.2018",
-                "update": "New bug. No updates"
             },
         },
         "ssh_unresponsive": {
@@ -370,11 +345,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
                 "date": "28.09.2018",
                 "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-425": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
-                "date": "16.09.2018",
-                "update": "dhouse cc-ed"
             },
             "t-yosemite-r7-436": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
@@ -458,10 +428,6 @@ def build_host_info(hostnames, **kwargs):
 # Insert Linux from chassis 14 into the loan dictionary
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
-
-# Insert Windows from 581 to 585 chassis 14 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
 
 workersList = []
 
