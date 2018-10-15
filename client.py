@@ -184,11 +184,6 @@ machines_to_ignore = {
                 "date": "25.08.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
             },
-            "T-W1064-MS-217": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
-                "date": "20.09.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
-            },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
                 "date": "30.09.2018",
@@ -315,7 +310,7 @@ machines_to_ignore = {
                 "update": "New Bug. No updates"
         },
             "t-yosemite-r7-144": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015", t-linux64-ms-274
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
         },
@@ -458,10 +453,6 @@ def build_host_info(hostnames, **kwargs):
 # Insert Linux from chassis 14 into the loan dictionary
 machines_to_ignore['linux']['loaner'].update(
     build_host_info(["t-linux64-ms-{}".format(i) for i in range(571, 580)], bug="Loaner for Relops", owner="No Owner"))
-
-# Insert Windows from 581 to 585 chassis 14 into the loan dictionary
-machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
 
 workersList = []
 
