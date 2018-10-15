@@ -304,6 +304,26 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-068": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
+                "date": "13.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
+        },
+            "t-yosemite-r7-109": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
+            "t-yosemite-r7-144": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
+            "t-yosemite-r7-150": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+        },
             "t-yosemite-r7-225": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
                 "date": "20.09.2018",
