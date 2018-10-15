@@ -441,8 +441,8 @@ machines_to_ignore['linux']['loaner'].update(
 
 # Insert Windows from 581 to 585 chassis 14 into the loan dictionary
 machines_to_ignore['windows']['loaner'].update(
-    build_host_info(["t-linux64-ms-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
-    
+    build_host_info(["T-W1064-MS-{}".format(i) for i in range(581, 586)], bug="1498620", owner="markco"))
+
 workersList = []
 
 LINUX = "gecko-t-linux-talos"
