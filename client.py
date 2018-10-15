@@ -19,16 +19,6 @@ machines_to_ignore = {
     "linux": {
         "loaner": {
 
-            "t-linux64-ms-240": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-
-            "t-linux64-ms-280": {
-                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
-                "owner": ":dragrom"
-            },
-
             "t-linux64-ms-394": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -61,8 +51,8 @@ machines_to_ignore = {
         "ssh_stdio": {
             "t-linux64-ms-308": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
+                "date": "28.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
             },
             "t-linux64-ms-358": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
@@ -86,15 +76,7 @@ machines_to_ignore = {
                 "owner": ":dragrom"
             },
             "t-linux64-ms-280": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-394": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-395": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
             },
         },
@@ -106,10 +88,10 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
-            "t-linux64-ms-308": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "28.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "ssh_stdio": {
@@ -135,25 +117,20 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
+            "T-W1064-MS-262": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498851",
+                "date": "13.10.2018",
+                "update": "New bug. No updates"
+            },
+        },
+        "hdd_issues": {
             "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
-        "hdd_issues": {
-            "T-W1064-MS-291": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
-                "date": "01.09.2018",
-                "update": "Waiting on Pmoore's suggestion"
-            },
-        },
-        "other_issues": {
-            "T-W1064-MS-036": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493467",
-                "date": "23.09.2018",
-                "update": "machine not picking up tasks/ markco is on it"
-            },
+        "other_issues": {            
             "T-W1064-MS-116": {
                 "bug": "No Bug",
                 "date": "No Date",
@@ -218,11 +195,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
                 "date": "28.09.2018",
                 "update": "No video on ILO. Asked Van to re-seat."
-            },
-            "T-W1064-MS-471": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
             },
             "T-W1064-MS-474": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
