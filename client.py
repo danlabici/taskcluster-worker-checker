@@ -111,9 +111,13 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "no loaner": {
-                "bug": "No BUG",
-                "owner": "No Owner"
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-582": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
             },
         },
         "pxe_issues": {
@@ -140,6 +144,16 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
                 "date": "26.09.2018",
                 "update": "powered off after green task. Food for markco"
+            },
+            "T-W1064-MS-211": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488710",
+                "date": "06.10.2018",
+                "update": "Food for markco"
+            },
+            "T-W1064-MS-214": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496117",
+                "date": "06.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496120"
             },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
