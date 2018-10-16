@@ -4,7 +4,6 @@ function _menuPrincipal()
 {
     cat Automation/banner.txt
     echo
-    #echo "Please choose an option :"
     echo
     echo "1) Update checker"
     echo "2) Multiple machine search"
@@ -56,10 +55,12 @@ do
             until [ $opc1 -eq 3 ]
             do
                 case $opc1 in
-                    1)  echo "Loading the Loading message"
+                    1)  clear
+                        echo "Loading the Loading message"
                         python3 client.py -w win && python3 client.py -w osx && python3 client.py -w linux && python3 client.py -w linuxtw
                         ;;
-                    2)  echo "following the white rabbit.."
+                    2)  clear
+                        echo "Following the white rabbit.."
                         python3 client.py -w win -v true && python3 client.py -w osx -v true && python3 client.py -w linux -v true && python3 client.py -w linuxtw -v true
                         ;;
                     3)
@@ -111,7 +112,7 @@ do
                     pluma client.py
                     ;;
                   2) clear
-                    echo "Update the repository with the latest news"
+                    echo "Update the repository with the latest changes"
                     Automation/push.sh
                     ;;
                  *)
