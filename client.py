@@ -136,8 +136,8 @@ machines_to_ignore = {
         },
         "other_issues": {
             "T-W1064-MS-116": {
-                "bug": "No Bug",
-                "date": "No Date",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485213",
+                "date": "16.10.2018",
                 "update": "machine not picking up tasks even after reimage"
             },
             "T-W1064-MS-125": {
@@ -145,25 +145,15 @@ machines_to_ignore = {
                 "date": "26.09.2018",
                 "update": "powered off after green task. Food for markco"
             },
-            "T-W1064-MS-211": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488710",
-                "date": "06.10.2018",
-                "update": "Food for markco"
-            },
-            "T-W1064-MS-214": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496117",
-                "date": "06.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496120"
-            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
                 "update": "do not touch"
             },
             "T-W1064-MS-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
-                "date": "25.08.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
+                "date": "16.10.2018",
+                "update": "worker is dead"
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
@@ -214,11 +204,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
                 "date": "26.09.2018",
                 "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-581": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494351#c2",
-                "date": "30.09.2018",
-                "update": "do not touch"
             },
             "T-W1064-MS-599": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
