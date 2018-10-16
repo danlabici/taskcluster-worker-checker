@@ -295,16 +295,6 @@ machines_to_ignore = {
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
             },
-            "t-yosemite-r7-225": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
-            },
-            "t-yosemite-r7-367": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
         },
         "ssh_unresponsive": {
             "t-yosemite-r7-189": {
@@ -327,27 +317,17 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-            "t-yosemite-r7-333": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
-                "date": "28.09.2018",
-                "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-436": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
-                "date": "16.09.2018",
-                "update": "awaiting relops response"
-            },
-            "t-yosemite-r7-451": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
-                "date": "01.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488022"
-            },
         },
         "other_issues": {
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
                 "update": "requires on site visit"
+            },
+            "t-yosemite-r7-119": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499119",
+                "date": "16.10.2018",
+                "update": "van will check it"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
@@ -378,26 +358,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476396",
                 "date": "05.10.2018",
                 "update": "the machine has been repurposed"
-            },
-            "t-yosemite-r7-042": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-050": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-063": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-098": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
             },
         },
     },
