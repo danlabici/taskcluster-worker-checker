@@ -136,8 +136,8 @@ machines_to_ignore = {
         },
         "other_issues": {            
             "T-W1064-MS-116": {
-                "bug": "No Bug",
-                "date": "No Date",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485213",
+                "date": "16.10.2018",
                 "update": "machine not picking up tasks even after reimage"
             },
             "T-W1064-MS-125": {
@@ -161,9 +161,9 @@ machines_to_ignore = {
                 "update": "do not touch"
             },
             "T-W1064-MS-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
-                "date": "25.08.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
+                "date": "16.10.2018",
+                "update": "worker is dead"
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
@@ -214,11 +214,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
                 "date": "26.09.2018",
                 "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-581": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494351#c2",
-                "date": "30.09.2018",
-                "update": "do not touch"
             },
             "T-W1064-MS-599": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
@@ -295,16 +290,6 @@ machines_to_ignore = {
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
             },
-            "t-yosemite-r7-225": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
-            },
-            "t-yosemite-r7-367": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
         },
         "ssh_unresponsive": {
             "t-yosemite-r7-189": {
@@ -327,27 +312,17 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-            "t-yosemite-r7-333": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
-                "date": "28.09.2018",
-                "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-436": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
-                "date": "16.09.2018",
-                "update": "awaiting relops response"
-            },
-            "t-yosemite-r7-451": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
-                "date": "01.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488022"
-            },
         },
         "other_issues": {
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
                 "update": "requires on site visit"
+            },
+            "t-yosemite-r7-119": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499119",
+                "date": "16.10.2018",
+                "update": "van will check it"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
@@ -378,26 +353,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476396",
                 "date": "05.10.2018",
                 "update": "the machine has been repurposed"
-            },
-            "t-yosemite-r7-042": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-050": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-063": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-098": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
             },
         },
     },
@@ -509,8 +464,6 @@ def generate_machine_lists(workertype):
                      list(range(91, 106)) + list(range(136, 151)) + \
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
-
-
 
         range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
