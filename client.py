@@ -19,16 +19,6 @@ machines_to_ignore = {
     "linux": {
         "loaner": {
 
-            "t-linux64-ms-240": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-
-            "t-linux64-ms-280": {
-                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
-                "owner": ":dragrom"
-            },
-
             "t-linux64-ms-394": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -59,20 +49,10 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-274": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-278": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
             "t-linux64-ms-308": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
+                "date": "28.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
             },
             "t-linux64-ms-358": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
@@ -96,15 +76,7 @@ machines_to_ignore = {
                 "owner": ":dragrom"
             },
             "t-linux64-ms-280": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-394": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-395": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
             },
         },
@@ -116,10 +88,10 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
-            "t-linux64-ms-308": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "28.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "ssh_stdio": {
@@ -139,48 +111,30 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-
             "T-W1064-MS-581": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
                 "owner": ":markco"
             },
             "T-W1064-MS-582": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
-                "owner": ":markco"
-            },
-            "T-W1064-MS-583": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
-                "owner": ":markco"
-            },
-            "T-W1064-MS-584": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
-                "owner": ":markco"
-            },
-            "T-W1064-MS-585": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498620",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
                 "owner": ":markco"
             },
         },
         "pxe_issues": {
+            "T-W1064-MS-262": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498851",
+                "date": "13.10.2018",
+                "update": "New bug. No updates"
+            },
+        },
+        "hdd_issues": {
             "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
-        "hdd_issues": {
-            "T-W1064-MS-291": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
-                "date": "01.09.2018",
-                "update": "Waiting on Pmoore's suggestion"
-            },
-        },
         "other_issues": {
-            "T-W1064-MS-036": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493467",
-                "date": "23.09.2018",
-                "update": "machine not picking up tasks/ markco is on it"
-            },
             "T-W1064-MS-116": {
                 "bug": "No Bug",
                 "date": "No Date",
@@ -191,6 +145,16 @@ machines_to_ignore = {
                 "date": "26.09.2018",
                 "update": "powered off after green task. Food for markco"
             },
+            "T-W1064-MS-211": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488710",
+                "date": "06.10.2018",
+                "update": "Food for markco"
+            },
+            "T-W1064-MS-214": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496117",
+                "date": "06.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496120"
+            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
@@ -200,16 +164,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
                 "date": "25.08.2018",
                 "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
-            },
-            "T-W1064-MS-217": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
-                "date": "20.09.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
-            },
-            "T-W1064-MS-262": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498852",
-                "date": "14.10.2018",
-                "update": "doesn't enter netboot"
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
@@ -255,11 +209,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
                 "date": "28.09.2018",
                 "update": "No video on ILO. Asked Van to re-seat."
-            },
-            "T-W1064-MS-471": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
             },
             "T-W1064-MS-474": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
@@ -326,25 +275,35 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-068": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
+                "date": "13.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
+            },
+            "t-yosemite-r7-109": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+            },
+            "t-yosemite-r7-144": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+            },
+            "t-yosemite-r7-150": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
+            },
             "t-yosemite-r7-225": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
             },
-            "t-yosemite-r7-365": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
-            },
             "t-yosemite-r7-367": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
                 "date": "20.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
-            },
-            "t-yosemite-r7-323": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495914",
-                "date": "03.10.2018",
-                "update": "New bug. No updates"
             },
         },
         "ssh_unresponsive": {
@@ -372,11 +331,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
                 "date": "28.09.2018",
                 "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-425": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
-                "date": "16.09.2018",
-                "update": "dhouse cc-ed"
             },
             "t-yosemite-r7-436": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
@@ -412,7 +366,7 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-273": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112",
-                "date": "4.10.2018",
+                "date": "26.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112#c2"
             },
             "t-yosemite-r7-384": {
