@@ -130,11 +130,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {            
-            "T-W1064-MS-214": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496117",
-                "date": "06.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1496120"
-            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
