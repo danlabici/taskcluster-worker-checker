@@ -186,9 +186,9 @@ machines_to_ignore = {
                 "update": "pxe network boot problems"
             },
             "T-W1064-MS-470": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
-                "date": "28.09.2018",
-                "update": "No video on ILO. Asked Van to re-seat."
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
+                "date": "17.10.2018",
+                "update": "Not in TC, error Resource not found."
             },
             "T-W1064-MS-474": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
