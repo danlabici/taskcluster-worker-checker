@@ -130,12 +130,7 @@ machines_to_ignore = {
             },
         },
         "other_issues": {            
-            "T-W1064-MS-116": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485213",
-                "date": "16.10.2018",
-                "update": "machine not picking up tasks even after reimage"
-            },
-            "T-W1064-MS-125": {
+                "T-W1064-MS-125": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
                 "date": "26.09.2018",
                 "update": "powered off after green task. Food for markco"
