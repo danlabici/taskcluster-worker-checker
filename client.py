@@ -70,7 +70,6 @@ machines_to_ignore = {
     },
     "linuxtw": {
         "loaner": {
-
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -121,6 +120,26 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
+              "T-W1064-MS-465": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
+                "date": "28.09.2018",
+                "update": "pxe network boot problems"
+              },
+             "T-W1064-MS-474": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-599": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-600": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494013",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
         },
         "hdd_issues": {
             "No Issue": {
@@ -180,32 +199,12 @@ machines_to_ignore = {
                 "date": "30.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776#c2"
             },
-            "T-W1064-MS-465": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
-                "date": "28.09.2018",
-                "update": "pxe network boot problems"
-            },
             "T-W1064-MS-470": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
             },
-            "T-W1064-MS-474": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-599": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-600": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494013",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-        },
+         },
     },
     "osx": {
         "loaner": {
