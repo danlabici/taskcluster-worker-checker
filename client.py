@@ -121,11 +121,6 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
-            "T-W1064-MS-262": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498851",
-                "date": "13.10.2018",
-                "update": "New bug. No updates"
-            },
         },
         "hdd_issues": {
             "No Issue": {
