@@ -204,6 +204,11 @@ machines_to_ignore = {
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
             },
+            "T-W1064-MS-472": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500249",
+                "date": "19.10.2018",
+                "update": "opened ticket for reseating"
+            },
          },
     },
     "osx": {
@@ -218,10 +223,6 @@ machines_to_ignore = {
                 "owner": ":dragrom"
             },
 
-            "t-yosemite-r7-246": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492703",
-                "owner": ":dhouse"
-            },
 
             "t-yosemite-r7-253": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
@@ -254,16 +255,7 @@ machines_to_ignore = {
                 "date": "13.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
             },
-            "t-yosemite-r7-109": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476837",
-                "date": "13.10.2018",
-                "update": "New Bug. No updates"
-            },
-            "t-yosemite-r7-144": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498015",
-                "date": "13.10.2018",
-                "update": "New Bug. No updates"
-            },
+
             "t-yosemite-r7-150": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
                 "date": "13.10.2018",
@@ -275,11 +267,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-223": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482741",
-                "date": "28.09.2018",
-                "update": "New bug, no updates yet"
             },
             "t-yosemite-r7-229": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
@@ -297,11 +284,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
                 "update": "requires on site visit"
-            },
-            "t-yosemite-r7-119": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499119",
-                "date": "16.10.2018",
-                "update": "van will check it"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
