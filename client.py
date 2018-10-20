@@ -120,12 +120,12 @@ machines_to_ignore = {
             },
         },
         "pxe_issues": {
-              "T-W1064-MS-465": {
+            "T-W1064-MS-465": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
                 "date": "28.09.2018",
                 "update": "pxe network boot problems"
-              },
-             "T-W1064-MS-474": {
+            },
+            "T-W1064-MS-474": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
                 "date": "26.09.2018",
                 "update": "pxe network boot problems"
@@ -149,6 +149,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-035": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500656",
+                "date": "20.10.2018",
+                "update": "needs reseat"
+            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
@@ -159,7 +164,7 @@ machines_to_ignore = {
                 "date": "16.10.2018",
                 "update": "worker is dead"
             },
-             "T-W1064-MS-291": {
+            "T-W1064-MS-291": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485380",
                 "date": "17.10.2018",
                 "update": "worker is dead"
@@ -204,7 +209,7 @@ machines_to_ignore = {
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
             },
-         },
+        },
     },
     "osx": {
         "loaner": {
@@ -217,7 +222,6 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
-
 
             "t-yosemite-r7-253": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
