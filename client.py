@@ -19,16 +19,6 @@ machines_to_ignore = {
     "linux": {
         "loaner": {
 
-            "t-linux64-ms-240": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-
-            "t-linux64-ms-280": {
-                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
-                "owner": ":dragrom"
-            },
-
             "t-linux64-ms-394": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
@@ -59,20 +49,10 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-274": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491557",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
-            "t-linux64-ms-278": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491564",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
-            },
             "t-linux64-ms-308": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "15.09.2018",
-                "update": "New bug. No update"
+                "date": "28.09.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
             },
             "t-linux64-ms-358": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
@@ -90,21 +70,12 @@ machines_to_ignore = {
     },
     "linuxtw": {
         "loaner": {
-
             "t-linux64-ms-240": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
             "t-linux64-ms-280": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-394": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-            "t-linux64-ms-395": {
-                "bug": "Staging Pool - No Bug",
+                "bug": "Staging Pool - https://bugzilla.mozilla.org/show_bug.cgi?id=1464070",
                 "owner": ":dragrom"
             },
         },
@@ -116,10 +87,10 @@ machines_to_ignore = {
             },
         },
         "hdd_issues": {
-            "t-linux64-ms-308": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "28.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "ssh_stdio": {
@@ -139,35 +110,49 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "T-W1064-MS-033": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495495",
-                "owner": "markco"
+            "T-W1064-MS-581": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
+            },
+            "T-W1064-MS-582": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
+                "owner": ":markco"
             },
         },
         "pxe_issues": {
+            "T-W1064-MS-465": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
+                "date": "28.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-474": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-599": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+            "T-W1064-MS-600": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494013",
+                "date": "26.09.2018",
+                "update": "pxe network boot problems"
+            },
+        },
+        "hdd_issues": {
             "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
-        "hdd_issues": {
-            "T-W1064-MS-291": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475908",
-                "date": "01.09.2018",
-                "update": "Waiting on Pmoore's suggestion"
-            },
-        },
         "other_issues": {
-            "T-W1064-MS-036": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493467",
-                "date": "23.09.2018",
-                "update": "machine not picking up tasks/ markco is on it"
-            },
-            "T-W1064-MS-125": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490314",
-                "date": "26.09.2018",
-                "update": "powered off after green task. Food for markco"
+            "T-W1064-MS-035": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500656",
+                "date": "20.10.2018",
+                "update": "needs reseat"
             },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
@@ -175,14 +160,14 @@ machines_to_ignore = {
                 "update": "do not touch"
             },
             "T-W1064-MS-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481076",
-                "date": "25.08.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
+                "date": "16.10.2018",
+                "update": "worker is dead"
             },
-            "T-W1064-MS-217": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
-                "date": "20.09.2018",
-                "update": "dhouse: I created ticket RITM0259212 with QTS (see the DCOps bug)"
+            "T-W1064-MS-291": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485380",
+                "date": "17.10.2018",
+                "update": "worker is dead"
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
@@ -213,46 +198,16 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480778",
                 "date": "30.09.2018",
                 "update": "New bug. No update"
-            }, 
+            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776#c2"
-            },        
-            "T-W1064-MS-465": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494810",
-                "date": "28.09.2018",
-                "update": "pxe network boot problems"
             },
             "T-W1064-MS-470": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494867",
-                "date": "28.09.2018",
-                "update": "No video on ILO. Asked Van to re-seat."
-            },
-            "T-W1064-MS-471": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494019",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-474": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494017",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-581": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494351#c2",
-                "date": "30.09.2018",
-                "update": "do not touch"
-            },
-            "T-W1064-MS-599": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494010",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
-            },
-            "T-W1064-MS-600": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494013",
-                "date": "26.09.2018",
-                "update": "pxe network boot problems"
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
+                "date": "17.10.2018",
+                "update": "Not in TC, error Resource not found."
             },
         },
     },
@@ -266,11 +221,6 @@ machines_to_ignore = {
             "t-yosemite-r7-101": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
-            },
-
-            "t-yosemite-r7-246": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492703",
-                "owner": ":dhouse"
             },
 
             "t-yosemite-r7-253": {
@@ -299,20 +249,16 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-225": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490659#c4"
+            "t-yosemite-r7-068": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
+                "date": "13.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
             },
-            "t-yosemite-r7-365": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492032#c1"
-            },
-            "t-yosemite-r7-367": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080",
-                "date": "20.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1479080#c4"
+
+            "t-yosemite-r7-150": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
+                "date": "13.10.2018",
+                "update": "New Bug. No updates"
             },
         },
         "ssh_unresponsive": {
@@ -320,11 +266,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
                 "update": "New bug, no updates yet."
-            },
-            "t-yosemite-r7-223": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482741",
-                "date": "28.09.2018",
-                "update": "New bug, no updates yet"
             },
             "t-yosemite-r7-229": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
@@ -335,26 +276,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
-            },
-            "t-yosemite-r7-333": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494673",
-                "date": "28.09.2018",
-                "update": "New bug, no updates yet"
-            },
-            "t-yosemite-r7-425": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490453",
-                "date": "16.09.2018",
-                "update": "dhouse cc-ed"
-            },
-            "t-yosemite-r7-436": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491653",
-                "date": "16.09.2018",
-                "update": "awaiting relops response"
-            },
-            "t-yosemite-r7-451": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1481051",
-                "date": "01.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1488022"
             },
         },
         "other_issues": {
@@ -388,25 +309,10 @@ machines_to_ignore = {
                 "date": "23.09.2018",
                 "update": "Van will check on his next DC visit"
             },
-            "t-yosemite-r7-042": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-050": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-063": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
-            },
-            "t-yosemite-r7-098": {
-                "bug": "No Bug",
-                "date": "18.08.2018",
-                "update": "Quarantined for Testing by DHouse"
+            "t-yosemite-r7-393": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476396",
+                "date": "05.10.2018",
+                "update": "the machine has been repurposed"
             },
         },
     },
@@ -478,7 +384,7 @@ def parse_taskcluster_json(workertype):
             if not data["workers"]:
                 # Not sure why but TC kinda fails at responding or I'm doing something wrong
                 # Anyways if you keep at it, it will respond with the JSON data :D
-                print("JSON Response Failed. Retrying...")
+                print("Empty Worker List. Retrying...")
                 parse_taskcluster_json(workertype)
             else:
                 for workers in data['workers']:
@@ -494,7 +400,9 @@ def parse_taskcluster_json(workertype):
 def generate_machine_lists(workertype):
     global mdc1_range, mdc2_range  # We need them global so we can use them to generate the ssh command.
     if (workertype == LINUX) or (workertype == "linux"):
-        mdc2_range = list(range(526, 541)) + \
+        mdc2_range = list(range(301, 316)) + list(range(346, 361)) + \
+                     list(range(391, 406)) + list(range(436, 451)) + \
+                     list(range(481, 496)) + list(range(526, 541)) + \
                      list(range(571, 581))
 
         #   list(range(301, 316)) + list(range(346, 361)) + \   All linux chassis (except 13) moved to talos-TW
@@ -517,11 +425,7 @@ def generate_machine_lists(workertype):
                      list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        mdc2_range_linuxtw = list(range(301, 316)) + list(range(346, 361)) + \
-                             list(range(391, 394)) + list(range(396, 406)) + \
-                             list(range(436, 451)) + list(range(481, 496))
-
-        range_ms_linux = mdc1_range + mdc2_range_linuxtw
+        range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
