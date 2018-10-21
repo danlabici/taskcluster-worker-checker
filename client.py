@@ -249,16 +249,45 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-045": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658#c11"
+            },
             "t-yosemite-r7-068": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
                 "date": "13.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
             },
-
+            "t-yosemite-r7-128": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660#c2"
+            },
             "t-yosemite-r7-150": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
+            },
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024#c2"
+            },
+            "t-yosemite-r7-292": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476021",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476021#a8267522_610973"
+            },
+            "t-yosemite-r7-353": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144#c3"
+            },
+            "t-yosemite-r7-423": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500756",
+                "date": "21.10.2018",
+                "update": "New bug. No Update"
             },
         },
         "ssh_unresponsive": {
@@ -279,6 +308,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "t-yosemite-r7-048": {
+                "bug": "No Bug",
+                "date": "19.10.2018",
+                "update": "Quarantined"
+            },
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
