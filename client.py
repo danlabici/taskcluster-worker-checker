@@ -49,15 +49,10 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-308": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "28.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
-            },
-            "t-linux64-ms-358": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
-                "date": "20.09.2018",
-                "update": "New bug. No update"
+           "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "other_issues": {
