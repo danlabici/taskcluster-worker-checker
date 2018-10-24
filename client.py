@@ -49,15 +49,10 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-linux64-ms-308": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491566",
-                "date": "28.09.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491567"
-            },
-            "t-linux64-ms-358": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1492808",
-                "date": "20.09.2018",
-                "update": "New bug. No update"
+           "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "other_issues": {
@@ -149,11 +144,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-035": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500656",
-                "date": "20.10.2018",
-                "update": "needs reseat"
-            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
@@ -161,13 +151,13 @@ machines_to_ignore = {
             },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
-                "date": "16.10.2018",
+                "date": "24.10.2018",
                 "update": "worker is dead"
             },
             "T-W1064-MS-291": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485380",
-                "date": "17.10.2018",
-                "update": "worker is dead"
+                "date": "24.10.2018",
+                "update": "running, but not getting any tasks"
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
@@ -195,8 +185,8 @@ machines_to_ignore = {
                 "update": "New bug. No update"
             },
             "T-W1064-MS-324": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480778",
-                "date": "30.09.2018",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495265",
+                "date": "24.10.2018",
                 "update": "New bug. No update"
             },
             "T-W1064-MS-345": {
@@ -222,12 +212,6 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
-
-            "t-yosemite-r7-253": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1452773",
-                "owner": ":bwc"
-            },
-
             "t-yosemite-r7-266": {
                 "bug": "1487818",
                 "owner": ":dividehex"
@@ -249,16 +233,40 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
+            "t-yosemite-r7-045": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658#c11"
+            },
             "t-yosemite-r7-068": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
                 "date": "13.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
             },
-
+            "t-yosemite-r7-128": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660#c2"
+            },
             "t-yosemite-r7-150": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
                 "date": "13.10.2018",
                 "update": "New Bug. No updates"
+            },
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024#c2"
+            },
+            "t-yosemite-r7-353": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
+                "date": "21.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144#c3"
+            },
+            "t-yosemite-r7-423": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500758",
+                "date": "24.10.2018",
+                "update": "New bug. No Update"
             },
         },
         "ssh_unresponsive": {
@@ -277,8 +285,18 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-        },
+            "t-yosemite-r7-353": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
+                "date": "23.10.2018",
+                "update": "Van will check next on site visit"
+            },
+        }, 
         "other_issues": {
+            "t-yosemite-r7-048": {
+                "bug": "No Bug",
+                "date": "19.10.2018",
+                "update": "Quarantined"
+            },
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "01.08.2018",
