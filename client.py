@@ -233,74 +233,44 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "t-yosemite-r7-045": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658",
-                "date": "21.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480658#c11"
-            },
-            "t-yosemite-r7-068": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195",
-                "date": "13.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1486195#c2"
-            },
-            "t-yosemite-r7-128": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660",
-                "date": "21.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500660#c2"
-            },
-            "t-yosemite-r7-150": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1498025",
-                "date": "13.10.2018",
-                "update": "New Bug. No updates"
-            },
-            "t-yosemite-r7-246": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024",
-                "date": "21.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1480024#c2"
-            },
-            "t-yosemite-r7-353": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
-                "date": "21.10.2018",
-                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144#c3"
-            },
-            "t-yosemite-r7-423": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1500758",
-                "date": "24.10.2018",
-                "update": "New bug. No Update"
+            "No Issue": {
+                "bug": "No BUG",
+                "date": "No Date",
+                "update": "No Update"
             },
         },
         "ssh_unresponsive": {
+            "t-yosemite-r7-118": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502203",
+                "date": "26.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502203#c2"
+            },
             "t-yosemite-r7-189": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472682",
                 "date": "16.08.2018",
-                "update": "New bug, no updates yet."
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1472510#c3"
             },
             "t-yosemite-r7-229": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477779",
                 "date": "17.08.2018",
-                "update": "Van to check it next DC visit"
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1475133#c14"
             },
             "t-yosemite-r7-239": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1473791",
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-            "t-yosemite-r7-353": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
-                "date": "23.10.2018",
-                "update": "Van will check next on site visit"
-            },
         }, 
         "other_issues": {
             "t-yosemite-r7-048": {
-                "bug": "No Bug",
-                "date": "19.10.2018",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502191",
+                "date": "26.10.2018",
                 "update": "Quarantined"
             },
             "t-yosemite-r7-072": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
-                "date": "01.08.2018",
-                "update": "requires on site visit"
+                "date": "26.10.2018",
+                "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c4"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
@@ -423,11 +393,10 @@ def generate_machine_lists(workertype):
                      list(range(481, 496)) + list(range(526, 541)) + \
                      list(range(571, 581))
 
-        #   list(range(301, 316)) + list(range(346, 361)) + \   All linux chassis (except 13) moved to talos-TW
-        #          list(range(391, 406)) + list(range(436, 451)) + \
-        #          list(range(481, 496)) +
+        mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
+                     list(range(91, 106)) + list(range(136, 151))
 
-        range_ms_linux = mdc2_range
+        range_ms_linux = mdc2_range + mdc1_range
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
@@ -438,9 +407,7 @@ def generate_machine_lists(workertype):
         return linux_machines
 
     if (workertype == LINUXTW) or (workertype == "linuxtw"):
-        mdc1_range = list(range(1, 16)) + list(range(46, 61)) + \
-                     list(range(91, 106)) + list(range(136, 151)) + \
-                     list(range(181, 196)) + list(range(226, 241)) + \
+        mdc1_range = list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
         range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
