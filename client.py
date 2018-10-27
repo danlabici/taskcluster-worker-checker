@@ -277,6 +277,11 @@ machines_to_ignore = {
                 "date": "04.09.2018",
                 "update": "van will check it next DC visit"
             },
+            "t-yosemite-r7-191": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502155",
+                "date": "27.10.2018",
+                "update": "Worker panic"
+            },
             "t-yosemite-r7-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1477150",
                 "date": "26.08.2018",
