@@ -8,10 +8,12 @@ try:
     from argparse import ArgumentParser
     import urllib.request, json
     import prettytable
+    import gspread
+    from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Detected Missing Dependences! \n Trying Automated Installation.")
-    print("If installation fails, please run: pip install prettytable")
-    os.system("python -m pip install prettytable")
+    print("If installation fails, please run: pip install prettytable gspread")
+    os.system("python -m pip install prettytable gspread oauth2client PyOpenSSL")
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -49,7 +51,7 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-           "No Issue": {
+            "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
@@ -260,7 +262,7 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-        }, 
+        },
         "other_issues": {
             "t-yosemite-r7-048": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502191",
@@ -462,6 +464,37 @@ def generate_machine_lists(workertype):
     else:
         print("Invalid Worker-Type!")
         exit(0)
+
+
+# Setup Google Sheets
+credentials = None
+scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
+
+check_for_file = os.path.isfile("creds.json")
+
+if check_for_file:
+    ENV_CREDS = "creds.json"
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+    google_enabled = True
+else:
+    print("Credentials file is missing. Google Sheets data such as ILO:PORT will not be shown.")
+    print("Check README for details on how to add the credentials.")
+    google_enabled = False
+
+gc = gspread.authorize(credentials)
+
+worksheet_mdc1 = gc.open("CiDuty - Production Moonshot Master Inventory").get_worksheet(0)
+worksheet_mdc2 = gc.open("CiDuty - Production Moonshot Master Inventory").get_worksheet(1)
+
+data_mdc1 = worksheet_mdc1.get_all_records()
+data_mdc2 = worksheet_mdc2.get_all_records()
+
+worker_google_data_mdc1 = [(entry["Index #"], entry["Hostname"], entry["Chassis"], entry["Cartridge #"],
+                            entry["ilo ip:port"], entry["NOTES"]) for entry in data_mdc1]
+worker_google_data_mdc2 = [(entry["Index #"], entry["Hostname"], entry["Chassis"], entry["Cartridge #"],
+                            entry["ilo ip:port"], entry["NOTES"]) for entry in data_mdc2]
+
+all_worker_google_data = worker_google_data_mdc1 + worker_google_data_mdc2
 
 
 def main():
@@ -747,12 +780,34 @@ def main():
     for machine in missing_machines:
         if (workertype == LINUX) or (workertype == "linux"):
             if verbose == "short":
-                print(machine)
+                if int(machine[-3:]) >= int(mdc2_range[0]):
+                    full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
+                else:
+                    full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
+                    full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
+
                 else:
-                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
+                    full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
 
         if (workertype == LINUXTW) or (workertype == "linuxtw"):
             if verbose == "short":
@@ -763,12 +818,33 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
             if verbose == "short":
-                print(machine)
-            else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
+                    full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
                 else:
-                    print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
+                    full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
+            else:
+                if int(machine[-3:]) < int(mdc2_range[0]):
+                    full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
+                else:
+                    full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if verbose == "short":
