@@ -5,7 +5,16 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_dc840765e1d8_key -iv $encrypted_dc840765e1d8_iv
   -in ciduty-twc.json.enc -out ciduty-twc.json -d
 - easy_install prettytable
+- easy_install gspread
+- easy_install oauth2client
+- easy_install pyopenssl
 script:
-- python3 client.py -w linux -v True
-- python3 client.py -w win -v True
-- python3 client.py -w osx -u root -v True
+- python3 client.py -w linux
+- python3 client.py -w win
+- python3 client.py -w osx
+- python3 client.py -w linux -v short
+- python3 client.py -w win -v short
+- python3 client.py -w osx -v short
+- python3 client.py -w linux -v true
+- python3 client.py -w win -v true
+- python3 client.py -w osx -v true
