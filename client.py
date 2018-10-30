@@ -523,12 +523,14 @@ def generate_machine_lists(workertype):
 # Setup Google Sheets
 scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
 
-check_for_file = os.path.isfile("creds.json")
+check_for_file = os.path.isfile("ciduty-twc.json")
 
 try:
     if check_for_file:
-        ENV_CREDS = "creds.json"
+        ENV_CREDS = "ciduty-twc.json"
         credentials = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+    else:
+        pass
 except FileNotFoundError:
     print("Credentials file is missing.")
     print("Check README for details on how to add the credentials.")

@@ -106,5 +106,5 @@ venv.bak/
 .idea/
 .idea/*
 
-creds.json
-/creds.json
+ciduty-twc.json/
+/ciduty-twc.json
