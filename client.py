@@ -190,7 +190,7 @@ machines_to_ignore = {
                 "update": "running, but not getting any tasks"
             },
             "T-W1064-MS-318": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502846",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
                 "date": "29.10.2018",
                 "update": "New bug. No update"
             },
@@ -331,6 +331,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112",
                 "date": "26.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112#c2"
+            },
+            "t-yosemite-r7-318": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502846",
+                "date": "29.10.2018",
+                "update": "New bug. No update"
             },
             "t-yosemite-r7-384": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
