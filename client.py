@@ -190,8 +190,8 @@ machines_to_ignore = {
                 "update": "running, but not getting any tasks"
             },
             "T-W1064-MS-318": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
-                "date": "30.09.2018",
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502846",
+                "date": "29.10.2018",
                 "update": "New bug. No update"
             },
             "T-W1064-MS-320": {
@@ -301,6 +301,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526",
                 "date": "26.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c4"
+            },
+            "t-yosemite-r7-165": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1471030#c2",
+                "date": "29.10.2018",
+                "update": "waiting on updates from dhouse/van"
             },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
