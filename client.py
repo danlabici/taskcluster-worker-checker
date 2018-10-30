@@ -191,7 +191,7 @@ machines_to_ignore = {
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
-                "date": "30.09.2018",
+                "date": "29.10.2018",
                 "update": "New bug. No update"
             },
             "T-W1064-MS-320": {
@@ -302,6 +302,11 @@ machines_to_ignore = {
                 "date": "26.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c4"
             },
+            "t-yosemite-r7-165": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1471030#c2",
+                "date": "29.10.2018",
+                "update": "waiting on updates from dhouse/van"
+            },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
                 "date": "04.09.2018",
@@ -326,6 +331,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112",
                 "date": "26.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112#c2"
+            },
+            "t-yosemite-r7-318": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502846",
+                "date": "29.10.2018",
+                "update": "New bug. No update"
             },
             "t-yosemite-r7-384": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
