@@ -2,16 +2,19 @@
 This script will check for missing moonshots in TaskCluster.
 github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 """
-import os
-
 try:
-    from argparse import ArgumentParser
-    import urllib.request, json
+    import os
+    import json
+    import gspread
     import prettytable
+    import urllib.request
+    from argparse import ArgumentParser
+    from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
-    print("Detected Missing Dependences! \n Trying Automated Installation.")
-    print("If installation fails, please run: pip install prettytable")
-    os.system("python -m pip install prettytable")
+    print("Detected Missing Dependences! \n Please run the following, based on your OS type.")
+    print("Windows: pip install prettytable gspread oauth2client pyopenssl")
+    print("Linux/OSX: pip3 install prettytable gspread oauth2client pyopenssl")
+    exit(0)
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -174,6 +177,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-201": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
+            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
@@ -219,6 +227,11 @@ machines_to_ignore = {
                 "date": "24.10.2018",
                 "update": "New bug. No update"
             },
+            "T-W1064-MS-333": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
+            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
@@ -228,6 +241,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
+            },
+            "T-W1064-MS-593": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
             },
         },
     },
@@ -290,7 +308,7 @@ machines_to_ignore = {
                 "date": "06.08.2018",
                 "update": "Taken to the apple store"
             },
-        }, 
+        },
         "other_issues": {
             "t-yosemite-r7-048": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502191",
@@ -390,7 +408,6 @@ def parse_taskcluster_json(workertype):
     if (workertype == LINUX) or (workertype == "linux"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
 
-
     elif (workertype == LINUXTW) or (workertype == "linuxtw"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos-tw/workers"
 
@@ -415,8 +432,7 @@ def parse_taskcluster_json(workertype):
 
         try:
             if not data["workers"]:
-                # Not sure why but TC kinda fails at responding or I'm doing something wrong
-                # Anyways if you keep at it, it will respond with the JSON data :D
+                # TaskCluster has an issue with RelEng hardware. BUG 1497560
                 print("Empty Worker List. Retrying...")
                 parse_taskcluster_json(workertype)
             else:
@@ -455,7 +471,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
+        range_ms_linux = mdc1_range
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
@@ -490,7 +506,7 @@ def generate_machine_lists(workertype):
         mdc2_range = list(range(21, 237))
         mdc1_range = list(range(237, 473))
 
-        range_ms_osx = mdc2_range + mdc1_range  # No idea why macs MDC2 starts with the lower numbers.
+        range_ms_osx = mdc2_range + mdc1_range
         ms_osx_name = "t-yosemite-r7-{}"
         osx_machines = []
 
@@ -502,6 +518,39 @@ def generate_machine_lists(workertype):
     else:
         print("Invalid Worker-Type!")
         exit(0)
+
+
+# Setup Google Sheets
+scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
+
+check_for_file = os.path.isfile("ciduty-twc.json")
+
+try:
+    if check_for_file:
+        ENV_CREDS = "ciduty-twc.json"
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+    else:
+        pass
+except FileNotFoundError:
+    print("Credentials file is missing.")
+    print("Check README for details on how to add the credentials.")
+    print("Not part of CiDuty? Ping #ci and ask for help! We are 24/7 :)")
+    exit(0)
+
+gc = gspread.authorize(credentials)
+
+worksheet_mdc1 = gc.open("CiDuty - Production Moonshot Master Inventory").get_worksheet(0)
+worksheet_mdc2 = gc.open("CiDuty - Production Moonshot Master Inventory").get_worksheet(1)
+
+data_mdc1 = worksheet_mdc1.get_all_records()
+data_mdc2 = worksheet_mdc2.get_all_records()
+
+worker_google_data_mdc1 = [(entry["Index #"], entry["Hostname"], entry["Chassis"], entry["Cartridge #"],
+                            entry["ilo ip:port"], entry["NOTES"]) for entry in data_mdc1]
+worker_google_data_mdc2 = [(entry["Index #"], entry["Hostname"], entry["Chassis"], entry["Cartridge #"],
+                            entry["ilo ip:port"], entry["NOTES"]) for entry in data_mdc2]
+
+all_worker_google_data = worker_google_data_mdc1 + worker_google_data_mdc2
 
 
 def main():
@@ -787,12 +836,34 @@ def main():
     for machine in missing_machines:
         if (workertype == LINUX) or (workertype == "linux"):
             if verbose == "short":
-                print(machine)
+                if int(machine[-3:]) >= int(mdc2_range[0]):
+                    full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
+                else:
+                    full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
+                    full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
+
                 else:
-                    print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
+                    full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
 
         if (workertype == LINUXTW) or (workertype == "linuxtw"):
             if verbose == "short":
@@ -803,12 +874,33 @@ def main():
 
         if (workertype == WINDOWS) or (workertype == "win"):
             if verbose == "short":
-                print(machine)
-            else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
-                    print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
+                    full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
                 else:
-                    print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
+                    full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    print(machine, "ILO Host:", machine_data[0][4], "GoogleSheet Notes:", machine_data[0][5])
+            else:
+                if int(machine[-3:]) < int(mdc2_range[0]):
+                    full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
+                else:
+                    full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
+                    machine_data = [s for s in all_worker_google_data if full_host in s]
+                    if verbose:
+                        print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
+                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                              "Cartridge Number:", machine_data[0][3], "GoogleSheet Notes:", machine_data[0][5], "\n")
+                    else:
+                        print(machine, "ILO Host:", machine_data[0][4])
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if verbose == "short":
