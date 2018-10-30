@@ -6,19 +6,29 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 ## Instalation:
 1) Make sure you have PrettyTable installed on your system, by running:
 
-    `pip install prettytable` - Works on Linux, Mac, Windows (if python is installed).
+    `pip3 install prettytable gspread oauth2client pyopenssl` - Works on Linux, Mac.
+    
+    `pip install prettytable gspread oauth2client pyopenssl`  - Works on Windows.
 
 2) Clone the repository and run client.py
 
 ## Running Client.py
 | Windows                         | Linux/Mac OSX                  |   
 | --------------------------------|--------------------------------|
-| `python3 client.py -w linux`    | `python3 client.py -w linux`   |
-| `python3 client.py -w linuxtw`  | `python3 client.py -w linuxtw` |
-| `python3 client.py -w win`      | `python3 client.py -w win`     |
-| `python3 client.py -w osx`      | `python3 client.py -w osx`     |
+| `python client.py -w linux`    | `python3 client.py -w linux`   |
+| `python client.py -w linuxtw`  | `python3 client.py -w linuxtw` |
+| `python client.py -w win`      | `python3 client.py -w win`     |
+| `python client.py -w osx`      | `python3 client.py -w osx`     |
 
-If you preffer the output to be saved in a file, you can run the following command:
+
+
+3) Since `30 October 2018` the script will require you to manually add a json file which holds the credentials needed to connect to Google Drive.
+The file is inside the `"secret repo/passwords/ciduty-twc.json"`.
+
+If you don't know how to get access to this file, please ping anyone in **CiDuty** using **#ci**
+
+## Other options:
+If you prefer the output to be saved in a file, you can run the following command:
 
 `python client.py -w WORKER_TYPE -u LDAP_USERNAME > missing.txt`
 
@@ -32,7 +42,7 @@ ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ssh LDAP@WORKER_TYPE.releng.DATACENTER.mozilla.com
 ```
 
-You can also add the `-v True` or `--verbose True` to get extra information such as loaned machines and machines that have known issues.
+You can also add the `-v true/short` or `--verbose true/short` to get extra information such as loaned machines and machines that have known issues.
 Output example with -v/--verbose:
 ```
 Linux Loaners:

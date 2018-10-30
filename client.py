@@ -2,18 +2,19 @@
 This script will check for missing moonshots in TaskCluster.
 github repo: https://github.com/Akhliskun/taskcluster-worker-checker
 """
-import os
-
 try:
-    from argparse import ArgumentParser
-    import urllib.request, json
-    import prettytable
+    import os
+    import json
     import gspread
+    import prettytable
+    import urllib.request
+    from argparse import ArgumentParser
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
-    print("Detected Missing Dependences! \n Trying Automated Installation.")
-    print("If installation fails, please run: pip install prettytable gspread")
-    os.system("python -m pip install prettytable gspread oauth2client PyOpenSSL")
+    print("Detected Missing Dependences! \n Please run the following, based on your OS type.")
+    print("Windows: pip install prettytable gspread oauth2client pyopenssl")
+    print("Linux/OSX: pip3 install prettytable gspread oauth2client pyopenssl")
+    exit(0)
 
 # Define machines that SHOULDN'T appear.
 # Example: Machine is dev-env, loaner, or has known problems etc.
@@ -51,17 +52,47 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-            "No Issue": {
+           "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
             },
         },
         "other_issues": {
-            "No Issue": {
-                "bug": "No BUG",
-                "date": "No Date",
-                "update": "No Update"
+            "t-linux64-ms-313": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502517",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-392": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502535",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-401": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502537",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-402": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1469129",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-405": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502543",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-481": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502545",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
+            },
+            "t-linux64-ms-540": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502549",
+                "date": "28.10.2018",
+                "update": "stuck at Reboot Processes"
             },
         },
     },
@@ -146,6 +177,11 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
+            "T-W1064-MS-201": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
+            },
             "T-W1064-MS-258": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
                 "date": "30.09.2018",
@@ -163,7 +199,7 @@ machines_to_ignore = {
             },
             "T-W1064-MS-318": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1495255",
-                "date": "30.09.2018",
+                "date": "29.10.2018",
                 "update": "New bug. No update"
             },
             "T-W1064-MS-320": {
@@ -191,6 +227,11 @@ machines_to_ignore = {
                 "date": "24.10.2018",
                 "update": "New bug. No update"
             },
+            "T-W1064-MS-333": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
+            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
@@ -200,6 +241,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
+            },
+            "T-W1064-MS-593": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
+                "date": "30.10.2018",
+                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
             },
         },
     },
@@ -274,6 +320,11 @@ machines_to_ignore = {
                 "date": "26.10.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1478526#c4"
             },
+            "t-yosemite-r7-165": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1471030#c2",
+                "date": "29.10.2018",
+                "update": "waiting on updates from dhouse/van"
+            },
             "t-yosemite-r7-175": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485271",
                 "date": "04.09.2018",
@@ -298,6 +349,11 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112",
                 "date": "26.07.2018",
                 "update": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494112#c2"
+            },
+            "t-yosemite-r7-318": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502846",
+                "date": "29.10.2018",
+                "update": "New bug. No update"
             },
             "t-yosemite-r7-384": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
@@ -352,7 +408,6 @@ def parse_taskcluster_json(workertype):
     if (workertype == LINUX) or (workertype == "linux"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
 
-
     elif (workertype == LINUXTW) or (workertype == "linuxtw"):
         apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos-tw/workers"
 
@@ -377,8 +432,7 @@ def parse_taskcluster_json(workertype):
 
         try:
             if not data["workers"]:
-                # Not sure why but TC kinda fails at responding or I'm doing something wrong
-                # Anyways if you keep at it, it will respond with the JSON data :D
+                # TaskCluster has an issue with RelEng hardware. BUG 1497560
                 print("Empty Worker List. Retrying...")
                 parse_taskcluster_json(workertype)
             else:
@@ -417,7 +471,7 @@ def generate_machine_lists(workertype):
         mdc1_range = list(range(181, 196)) + list(range(226, 241)) + \
                      list(range(271, 280))
 
-        range_ms_linux = mdc1_range  # when the machines from mdc2 category linux-tw will be re-added add here + mdc2_range_linuxtw
+        range_ms_linux = mdc1_range
         ms_linux_name = "t-linux64-ms-{}"
         linux_machines = []
 
@@ -452,7 +506,7 @@ def generate_machine_lists(workertype):
         mdc2_range = list(range(21, 237))
         mdc1_range = list(range(237, 473))
 
-        range_ms_osx = mdc2_range + mdc1_range  # No idea why macs MDC2 starts with the lower numbers.
+        range_ms_osx = mdc2_range + mdc1_range
         ms_osx_name = "t-yosemite-r7-{}"
         osx_machines = []
 
@@ -467,19 +521,19 @@ def generate_machine_lists(workertype):
 
 
 # Setup Google Sheets
-credentials = None
 scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
 
 check_for_file = os.path.isfile("creds.json")
 
-if check_for_file:
-    ENV_CREDS = "creds.json"
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
-    google_enabled = True
-else:
-    print("Credentials file is missing. Google Sheets data such as ILO:PORT will not be shown.")
+try:
+    if check_for_file:
+        ENV_CREDS = "creds.json"
+        credentials = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+except FileNotFoundError:
+    print("Credentials file is missing.")
     print("Check README for details on how to add the credentials.")
-    google_enabled = False
+    print("Not part of CiDuty? Ping #ci and ask for help! We are 24/7 :)")
+    exit(0)
 
 gc = gspread.authorize(credentials)
 
