@@ -138,11 +138,11 @@ machines_to_ignore = {
     },
     "windows": {
         "loaner": {
-            "T-W1064-MS-581": {
+            "T-W1064-MS-018": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
                 "owner": ":markco"
             },
-            "T-W1064-MS-582": {
+            "T-W1064-MS-581": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499223",
                 "owner": ":markco"
             },
