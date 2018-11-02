@@ -260,6 +260,46 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
+            "t-yosemite-r7-240": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-241": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-242": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-243": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-244": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-245": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-247": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-248": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-249": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
             "t-yosemite-r7-266": {
                 "bug": "1487818",
                 "owner": ":dividehex"
