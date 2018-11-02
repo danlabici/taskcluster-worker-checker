@@ -177,11 +177,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-             "T-W1064-MS-021": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1490295",
-                "date": "30.10.2018",
-                "update": "No network, asked Van to reseat."
-            },
             "T-W1064-MS-201": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
                 "date": "30.10.2018",
