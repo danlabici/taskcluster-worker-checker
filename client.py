@@ -839,31 +839,31 @@ def main():
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO Host:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
                 else:
                     full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO Host:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
                     if verbose:
                         print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
-                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                        print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
                               "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
                     else:
-                        print(machine, "ILO Host:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
+                        print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
                 else:
                     full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
                     if verbose:
                         print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
-                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                        print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
                               "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],"Cartridge serial:", machine_data[0][6], "\n")
                     else:
-                        print(machine, "ILO Host:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
+                        print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
         if (workertype == LINUXTW) or (workertype == "linuxtw"):
             if verbose == "short":
@@ -877,30 +877,30 @@ def main():
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO Host:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
                 else:
                     full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO Host:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
             else:
                 if int(machine[-3:]) < int(mdc2_range[0]):
                     full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
                     if verbose:
                         print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
-                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                        print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
                               "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
                     else:
-                        print(machine, "ILO Host:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
+                        print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
                 else:
                     full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
                     if verbose:
                         print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
-                        print("ILO Host:", machine_data[0][4], "Chassis:", machine_data[0][2],
+                        print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
                               "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
                     else:
-                        print(machine, "ILO Host:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
+                        print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
         if (workertype == MACOSX) or (workertype == "osx"):
             if verbose == "short":
