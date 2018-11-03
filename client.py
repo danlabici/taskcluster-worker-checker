@@ -177,16 +177,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-201": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
-            },
-            "T-W1064-MS-258": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
-                "date": "30.09.2018",
-                "update": "do not touch"
-            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
                 "date": "24.10.2018",
@@ -227,11 +217,6 @@ machines_to_ignore = {
                 "date": "24.10.2018",
                 "update": "New bug. No update"
             },
-            "T-W1064-MS-333": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
-            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
@@ -241,11 +226,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
-            },
-            "T-W1064-MS-593": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
             },
         },
     },
