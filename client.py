@@ -52,7 +52,7 @@ machines_to_ignore = {
             },
         },
         "ssh_stdio": {
-           "No Issue": {
+            "No Issue": {
                 "bug": "No BUG",
                 "date": "No Date",
                 "update": "No Update"
@@ -177,16 +177,6 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "T-W1064-MS-201": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
-            },
-            "T-W1064-MS-258": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493240#c2",
-                "date": "30.09.2018",
-                "update": "do not touch"
-            },
             "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
                 "date": "24.10.2018",
@@ -227,11 +217,6 @@ machines_to_ignore = {
                 "date": "24.10.2018",
                 "update": "New bug. No update"
             },
-            "T-W1064-MS-333": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
-            },
             "T-W1064-MS-345": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1482776",
                 "date": "30.09.2018",
@@ -241,11 +226,6 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1494866",
                 "date": "17.10.2018",
                 "update": "Not in TC, error Resource not found."
-            },
-            "T-W1064-MS-593": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499801#c5",
-                "date": "30.10.2018",
-                "update": "Do not touch! Used for testing. Keep an eye on the bug!"
             },
         },
     },
@@ -259,6 +239,46 @@ machines_to_ignore = {
             "t-yosemite-r7-101": {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
+            },
+            "t-yosemite-r7-240": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-241": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-242": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-243": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-244": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-245": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-246": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-247": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-248": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
+            },
+            "t-yosemite-r7-249": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
+                "owner": ":dividehex"
             },
             "t-yosemite-r7-266": {
                 "bug": "1487818",
@@ -839,11 +859,13 @@ def main():
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:",
+                          machine_data[0][6])
                 else:
                     full_host = machine.lower() + ".test.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:",
+                          machine_data[0][6])
             else:
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".test.releng.mdc2.mozilla.com"
@@ -851,7 +873,8 @@ def main():
                     if verbose:
                         print("ssh {}@{}.test.releng.mdc2.mozilla.com".format('root', machine))
                         print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
-                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
+                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],
+                              "Cartridge serial:", machine_data[0][6], "\n")
                     else:
                         print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
@@ -861,7 +884,8 @@ def main():
                     if verbose:
                         print("ssh {}@{}.test.releng.mdc1.mozilla.com".format('root', machine))
                         print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
-                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],"Cartridge serial:", machine_data[0][6], "\n")
+                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],
+                              "Cartridge serial:", machine_data[0][6], "\n")
                     else:
                         print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
@@ -877,11 +901,13 @@ def main():
                 if int(machine[-3:]) >= int(mdc2_range[0]):
                     full_host = machine.lower() + ".wintest.releng.mdc2.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:",
+                          machine_data[0][6])
                 else:
                     full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
                     machine_data = [s for s in all_worker_google_data if full_host in s]
-                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6])
+                    print(machine, "ILO:", machine_data[0][4], "GNotes:", machine_data[0][5], "Cartridge serial:",
+                          machine_data[0][6])
             else:
                 if int(machine[-3:]) < int(mdc2_range[0]):
                     full_host = machine.lower() + ".wintest.releng.mdc1.mozilla.com"
@@ -889,7 +915,8 @@ def main():
                     if verbose:
                         print("ssh {}@{}.wintest.releng.mdc1.mozilla.com".format('Administrator', machine))
                         print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
-                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
+                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],
+                              "Cartridge serial:", machine_data[0][6], "\n")
                     else:
                         print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
                 else:
@@ -898,7 +925,8 @@ def main():
                     if verbose:
                         print("ssh {}@{}.wintest.releng.mdc2.mozilla.com".format('Administrator', machine))
                         print("ILO:", machine_data[0][4], "Chassis:", machine_data[0][2],
-                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5], "Cartridge serial:", machine_data[0][6], "\n")
+                              "Cartridge Number:", machine_data[0][3], "GNotes:", machine_data[0][5],
+                              "Cartridge serial:", machine_data[0][6], "\n")
                     else:
                         print(machine, "ILO:", machine_data[0][4], "Cartridge serial:", machine_data[0][6])
 
