@@ -10,11 +10,11 @@ file.close()
 def menu():       #the menu. 8 options
     print("\n1. Check for updates. ")
     print("2. Search for Linux. ")
-    print("4. Search for Windows. ")
-    print("5. Search for OSX. ")
-    print("6. Search for all types of workers. ")
-    print("7. Edit the script. ")
-    print("8. Exit.\n")
+    print("3. Search for Windows. ")
+    print("4. Search for OSX. ")
+    print("5. Search for all types of workers. ")
+    print("6. Edit the script. ")
+    print("7. Exit.\n")
 
 menu()
 

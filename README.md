@@ -16,7 +16,6 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 | Windows                         | Linux/Mac OSX                  |   
 | --------------------------------|--------------------------------|
 | `python client.py -w linux`    | `python3 client.py -w linux`   |
-| `python client.py -w linuxtw`  | `python3 client.py -w linuxtw` |
 | `python client.py -w win`      | `python3 client.py -w win`     |
 | `python client.py -w osx`      | `python3 client.py -w osx`     |
 
