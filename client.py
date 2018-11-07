@@ -375,6 +375,11 @@ machines_to_ignore = {
                 "date": "29.10.2018",
                 "update": "New bug. No update"
             },
+            "t-yosemite-r7-353": {
+                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
+                "date": "05.11.2018",
+                "update": "Van will check machine next DC visit"
+            },
             "t-yosemite-r7-384": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
                 "date": "23.09.2018",
