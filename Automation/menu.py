@@ -10,12 +10,11 @@ file.close()
 def menu():       #the menu. 8 options
     print("\n1. Check for updates. ")
     print("2. Search for Linux. ")
-    print("3. Search for Linux-TW. ")
-    print("4. Search for Windows. ")
-    print("5. Search for OSX. ")
-    print("6. Search for all types of workers. ")
-    print("7. Edit the script. ")
-    print("8. Exit.\n")
+    print("3. Search for Windows. ")
+    print("4. Search for OSX. ")
+    print("5. Search for all types of workers. ")
+    print("6. Edit the script. ")
+    print("7. Exit.\n")
 
 menu()
 
@@ -26,23 +25,19 @@ while True:     #the 'switch:case' method to choose an option
     elif option == 2:
         subprocess.call(['python', '../client.py', '-w', 'linux', '-v', 'true'])
     elif option == 3:
-        subprocess.call(['python', '../client.py', '-w', 'linuxtw', '-v', 'true'])
-    elif option == 4:
         subprocess.call(['python', '../client.py', '-w', 'win', '-v', 'true'])
-    elif option == 5:
+    elif option == 4:
         subprocess.call(['python', '../client.py', '-w', 'osx', '-v', 'true'])
-    elif option == 6:
+    elif option == 5:
         print("\n\n\nLinux: ")
         subprocess.call(['python', '../client.py', '-w', 'linux'])
-        print("\n\n\nLinux TW: ")
-        subprocess.call(['python', '../client.py', '-w', 'linuxtw'])
         print("\n\n\nWindows: ")
         subprocess.call(['python', '../client.py', '-w', 'win'])
         print("\n\n\nOSX: ")
         subprocess.call(['python', '../client.py', '-w', 'osx'])
-    elif option == 7:
+    elif option == 6:
         subprocess.call("nano ../client.py")
-    elif option == 8:
+    elif option == 7:
         break
     else:
         print("Wrong option !")
