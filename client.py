@@ -39,19 +39,19 @@ machines_to_ignore = {
             
              "t-linux64-ms-240": {
                 "bug": "",
-                "owner": "gecko-t-linux-talos-beta"
+                "owner": ":dragrom"
             },
              "t-linux64-ms-280": {
                 "bug": "",
-                "owner": "gecko-t-linux-talos-beta"
+                "owner": ":dragrom"
             },
              "t-linux64-ms-394": {
                 "bug": "",
-                "owner": "gecko-t-linux-talos-beta"
+                "owner": ":dragrom"
             },
              "t-linux64-ms-395": {
                 "bug": "",
-                "owner": "gecko-t-linux-talos-beta"
+                "owner": ":dragrom"
             },
             
         },
