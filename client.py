@@ -36,6 +36,24 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573",
                 "owner": ":dev-env"
             },
+            
+             "t-linux64-ms-240": {
+                "bug": "",
+                "owner": "gecko-t-linux-talos-beta"
+            },
+             "t-linux64-ms-280": {
+                "bug": "",
+                "owner": "gecko-t-linux-talos-beta"
+            },
+             "t-linux64-ms-394": {
+                "bug": "",
+                "owner": "gecko-t-linux-talos-beta"
+            },
+             "t-linux64-ms-395": {
+                "bug": "",
+                "owner": "gecko-t-linux-talos-beta"
+            },
+            
         },
         "pxe_issues": {
             "No Issue": {
