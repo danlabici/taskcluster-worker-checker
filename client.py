@@ -21,39 +21,27 @@ except ImportError:
 machines_to_ignore = {
     "linux": {
         "loaner": {
-
-            "t-linux64-ms-394": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-
-            "t-linux64-ms-395": {
-                "bug": "Staging Pool - No Bug",
-                "owner": ":dragrom"
-            },
-
             "t-linux64-ms-580": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573",
                 "owner": ":dev-env"
             },
-            
-             "t-linux64-ms-240": {
+            "t-linux64-ms-240": {
                 "bug": "",
                 "owner": ":dragrom"
             },
-             "t-linux64-ms-280": {
+            "t-linux64-ms-280": {
                 "bug": "",
                 "owner": ":dragrom"
             },
-             "t-linux64-ms-394": {
+            "t-linux64-ms-394": {
                 "bug": "",
                 "owner": ":dragrom"
             },
-             "t-linux64-ms-395": {
+            "t-linux64-ms-395": {
                 "bug": "",
                 "owner": ":dragrom"
             },
-            
+
         },
         "pxe_issues": {
             "No Issue": {
@@ -77,7 +65,7 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            },
+        },
     },
     "windows": {
         "loaner": {
@@ -143,46 +131,7 @@ machines_to_ignore = {
                 "bug": "Staging Pool - No Bug",
                 "owner": ":dragrom"
             },
-            "t-yosemite-r7-240": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-241": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-242": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-243": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-244": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-245": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-246": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-247": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-248": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
-            "t-yosemite-r7-249": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1504280",
-                "owner": ":dividehex"
-            },
+
             "t-yosemite-r7-266": {
                 "bug": "1487818",
                 "owner": ":dividehex"
@@ -280,13 +229,8 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-353": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
-                "date": "05.11.2018",
-                "update": "Van will check machine next DC visit"
-            },
-            "t-yosemite-r7-384": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
-                "date": "23.09.2018",
-                "update": "Van will check on his next DC visit"
+                "date": "10.11.2018",
+                "update": "dropped off at apple"
             },
             "t-yosemite-r7-393": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476396",
