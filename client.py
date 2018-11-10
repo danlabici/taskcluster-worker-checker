@@ -36,6 +36,24 @@ machines_to_ignore = {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1474573",
                 "owner": ":dev-env"
             },
+            
+             "t-linux64-ms-240": {
+                "bug": "",
+                "owner": ":dragrom"
+            },
+             "t-linux64-ms-280": {
+                "bug": "",
+                "owner": ":dragrom"
+            },
+             "t-linux64-ms-394": {
+                "bug": "",
+                "owner": ":dragrom"
+            },
+             "t-linux64-ms-395": {
+                "bug": "",
+                "owner": ":dragrom"
+            },
+            
         },
         "pxe_issues": {
             "No Issue": {
@@ -59,42 +77,7 @@ machines_to_ignore = {
             },
         },
         "other_issues": {
-            "t-linux64-ms-313": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502517",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
             },
-            "t-linux64-ms-392": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502535",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-            "t-linux64-ms-401": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502537",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-            "t-linux64-ms-402": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1469129",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-            "t-linux64-ms-405": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502543",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-            "t-linux64-ms-481": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502545",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-            "t-linux64-ms-540": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1502549",
-                "date": "28.10.2018",
-                "update": "stuck at Reboot Processes"
-            },
-        },
     },
     "windows": {
         "loaner": {
