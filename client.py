@@ -229,13 +229,8 @@ machines_to_ignore = {
             },
             "t-yosemite-r7-353": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1499144",
-                "date": "05.11.2018",
-                "update": "Van will check machine next DC visit"
-            },
-            "t-yosemite-r7-384": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1493101",
-                "date": "23.09.2018",
-                "update": "Van will check on his next DC visit"
+                "date": "10.11.2018",
+                "update": "dropped off at apple"
             },
             "t-yosemite-r7-393": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1476396",
