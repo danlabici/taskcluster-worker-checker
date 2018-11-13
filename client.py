@@ -108,12 +108,7 @@ machines_to_ignore = {
             },
         },
     "other_issues": { 
-        "T-W1064-MS-284": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
-                "date": "24.10.2018",
-                "update": "worker is dead"
-            },
-        },
+           },
     },
     "osx": {
         "loaner": {
