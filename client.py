@@ -107,13 +107,7 @@ machines_to_ignore = {
                 "update": "No Update"
             },
         },
-        "other_issues": {
-            "T-W1064-MS-217": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1484258",
-                "date": "12.11.2018",
-                "update": "cartridge reseat requested"
-            },
-            "T-W1064-MS-284": {
+          "T-W1064-MS-284": {
                 "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1491466",
                 "date": "24.10.2018",
                 "update": "worker is dead"
