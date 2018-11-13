@@ -113,11 +113,6 @@ machines_to_ignore = {
                 "date": "24.10.2018",
                 "update": "worker is dead"
             },
-            "T-W1064-MS-291": {
-                "bug": "https://bugzilla.mozilla.org/show_bug.cgi?id=1485380",
-                "date": "24.10.2018",
-                "update": "running, but not getting any tasks"
-            },
         },
     },
     "osx": {
