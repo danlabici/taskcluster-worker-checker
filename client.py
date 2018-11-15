@@ -144,7 +144,7 @@ def add_idle_to_google_dict():
 def output_all_problem_machines():
     machine_data = open_json("google_dict.json")
     table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ({} hours)".format(lazy_time), "ILO", "Notes"]
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Notes"]
 
     for machine in machine_data:
         hostname = machine
@@ -218,13 +218,13 @@ def dev_run_login():
 if __name__ == "__main__":
     script_start = datetime.now()
 
-    if ("-v" or "--verbose") in sys.argv:
+    if "-v" or "--verbose" in sys.argv:
         verbose = True
         print("Script running with Verbose Mode ENABLED\n")
     else:
         verbose = False
 
-    if ("-ct" or "--citest") in sys.argv:
+    if "-ct" or "--citest" in sys.argv:
         citest = True
         print("TravisCI Testing Begins!")
         dev_run_login()
