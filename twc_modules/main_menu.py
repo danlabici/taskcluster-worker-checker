@@ -44,20 +44,27 @@ def run_menu(*arg):
         except ValueError:
             print("\n\nInvalid Choice!\n")
             run_menu()
-        if choice == 1:
+        if choice_menu1 == 1:
             run_all_machines()
             exit(0)
         if choice_menu1 == 2:
-            run_windows_machines()
+            # run_windows_machines()
+            print("Logic not implemented yet!")
+            exit(0)
         if choice_menu1 == 3:
-            run_linux_machines()
+            # run_linux_machines()
+            print("Logic not implemented yet!")
+            exit(0)
         if choice_menu1 == 4:
-            run_yosemite_machines()
+            # run_yosemite_machines()
+            print("Logic not implemented yet!")
+            exit(0)
         if choice_menu1 == 0:
             run_menu()
 
     if choice == 11:
         run_all_machines()
+
     if choice in range(12, 16):
         print("Logic not implemented yet!")
         exit(0)
