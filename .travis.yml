@@ -14,4 +14,4 @@ before_install:
 - echo $TRAVIS_BUILD_NUMBER
 - echo $TRAVIS_REPO_SLUG
 script:
-- python3 client.py --verbose --citest
+- python3 client.py -v -ct
