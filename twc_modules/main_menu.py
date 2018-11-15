@@ -58,7 +58,7 @@ def run_menu(*arg):
 
     if choice == 11:
         run_all_machines()
-    if choice in range(11, 16):
+    if choice in range(12, 16):
         print("Logic not implemented yet!")
         exit(0)
 

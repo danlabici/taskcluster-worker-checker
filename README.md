@@ -23,9 +23,9 @@ If you don't know how to get access to this file, please ping anyone in **CiDuty
 |           `python client.py`    | `python3 client.py`            |
 
 
-You can also add the `-v`/`--verbose` to get extra information such as loaned machines and machines that have known issues.
+You can also add the `-v` to get extra information such as loaned machines and machines that have known issues.
 
-When you submit code/PRs, the TravisCI testing will also add `--citest` argument to ensure that everything works as expected!
+When you submit code/PRs, the TravisCI testing will also add `-ct` argument to ensure that everything works as expected!
 
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into.

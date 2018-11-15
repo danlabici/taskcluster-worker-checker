@@ -1,12 +1,15 @@
 #!/usr/bin/python3
-import sys
 import json
+import sys
+from datetime import datetime, timedelta
+
 import gspread
 import requests
-from prettytable import PrettyTable
-from datetime import datetime, timedelta
-from twc_modules import configuration, main_menu
 from oauth2client.service_account import ServiceAccountCredentials
+from prettytable import PrettyTable
+
+from twc_modules import configuration, main_menu
+
 timenow = datetime.utcnow()
 
 twc_version = configuration.VERSION
@@ -59,6 +62,7 @@ def get_google_spreadsheet_data():
         {
             "prefix": entry["Hostname prefix"],
             "chassis": entry["Chassis"],
+            "serial": entry["Cartridge Serial"],
             "cartridge": entry["Cartridge #"],
             "ilo": entry["ilo ip:port"],
             "owner": entry["Ownership"],
@@ -71,6 +75,7 @@ def get_google_spreadsheet_data():
         {
             "prefix": entry["Hostname prefix"],
             "chassis": entry["Chassis"],
+            "serial": entry["Cartridge Serial"],
             "cartridge": entry["Cartridge #"],
             "ilo": entry["ilo ip:port"],
             "owner": entry["Ownership"],
@@ -144,12 +149,13 @@ def add_idle_to_google_dict():
 def output_all_problem_machines():
     machine_data = open_json("google_dict.json")
     table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Notes"]
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Notes"]
 
     for machine in machine_data:
         hostname = machine
         ignore = machine_data.get(machine)["ignore"]
         notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
         if notes == "":
             notes = "No notes available."
         else:
@@ -160,9 +166,10 @@ def output_all_problem_machines():
             ilo = machine_data.get(machine)["ilo"]
         except KeyError:
             ilo = "-"
+
         if machine:
             if idle > timedelta(hours=6) and ignore == "No":
-                table.add_row([hostname, idle, ilo, notes])
+                table.add_row([hostname, idle, ilo, serial, notes])
 
     print(table)
 
@@ -218,13 +225,13 @@ def dev_run_login():
 if __name__ == "__main__":
     script_start = datetime.now()
 
-    if "-v" or "--verbose" in sys.argv:
+    if "-v" in sys.argv:
         verbose = True
         print("Script running with Verbose Mode ENABLED\n")
     else:
         verbose = False
 
-    if "-ct" or "--citest" in sys.argv:
+    if "-ct" in sys.argv:
         citest = True
         print("TravisCI Testing Begins!")
         dev_run_login()

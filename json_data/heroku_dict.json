@@ -1,0 +1,5157 @@
+{
+  "t-linux64-ms-001": {
+    "datacenter": "mdc1",
+    "idle": 2950,
+    "lastseen": "2018-11-15T15:53:09.094130"
+  },
+  "t-linux64-ms-002": {
+    "datacenter": "mdc1",
+    "idle": 2287,
+    "lastseen": "2018-11-15T16:04:11.869251"
+  },
+  "t-linux64-ms-003": {
+    "datacenter": "mdc1",
+    "idle": 2810,
+    "lastseen": "2018-11-15T15:55:29.015865"
+  },
+  "t-linux64-ms-004": {
+    "datacenter": "mdc1",
+    "idle": 702,
+    "lastseen": "2018-11-15T16:30:36.688385"
+  },
+  "t-linux64-ms-005": {
+    "datacenter": "mdc1",
+    "idle": 757,
+    "lastseen": "2018-11-15T16:29:42.361690"
+  },
+  "t-linux64-ms-006": {
+    "datacenter": "mdc1",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.068080"
+  },
+  "t-linux64-ms-007": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.035241"
+  },
+  "t-linux64-ms-008": {
+    "datacenter": "mdc1",
+    "idle": 868,
+    "lastseen": "2018-11-15T16:27:51.314874"
+  },
+  "t-linux64-ms-009": {
+    "datacenter": "mdc1",
+    "idle": 3383,
+    "lastseen": "2018-11-15T15:45:55.667225"
+  },
+  "t-linux64-ms-010": {
+    "datacenter": "mdc1",
+    "idle": 32024,
+    "lastseen": "2018-11-15T07:48:35.237010"
+  },
+  "t-linux64-ms-011": {
+    "datacenter": "mdc1",
+    "idle": 2816,
+    "lastseen": "2018-11-15T15:55:22.663564"
+  },
+  "t-linux64-ms-012": {
+    "datacenter": "mdc1",
+    "idle": 2674,
+    "lastseen": "2018-11-15T15:57:44.799732"
+  },
+  "t-linux64-ms-013": {
+    "datacenter": "mdc1",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:46.958982"
+  },
+  "t-linux64-ms-014": {
+    "datacenter": "mdc1",
+    "idle": 2932,
+    "lastseen": "2018-11-15T15:53:26.878366"
+  },
+  "t-linux64-ms-015": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:08.889525"
+  },
+  "t-linux64-ms-046": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.033745"
+  },
+  "t-linux64-ms-047": {
+    "datacenter": "mdc1",
+    "idle": 3295,
+    "lastseen": "2018-11-15T15:47:24.014506"
+  },
+  "t-linux64-ms-048": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.247331"
+  },
+  "t-linux64-ms-049": {
+    "datacenter": "mdc1",
+    "idle": 1054,
+    "lastseen": "2018-11-15T16:24:45.459703"
+  },
+  "t-linux64-ms-050": {
+    "datacenter": "mdc1",
+    "idle": 2551,
+    "lastseen": "2018-11-15T15:59:47.861258"
+  },
+  "t-linux64-ms-051": {
+    "datacenter": "mdc1",
+    "idle": 1405,
+    "lastseen": "2018-11-15T16:18:54.193151"
+  },
+  "t-linux64-ms-052": {
+    "datacenter": "mdc1",
+    "idle": 2582,
+    "lastseen": "2018-11-15T15:59:16.905346"
+  },
+  "t-linux64-ms-053": {
+    "datacenter": "mdc1",
+    "idle": 138,
+    "lastseen": "2018-11-15T16:40:00.684598"
+  },
+  "t-linux64-ms-054": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.248580"
+  },
+  "t-linux64-ms-055": {
+    "datacenter": "mdc1",
+    "idle": 2209,
+    "lastseen": "2018-11-15T16:05:29.936248"
+  },
+  "t-linux64-ms-056": {
+    "datacenter": "mdc1",
+    "idle": 1185,
+    "lastseen": "2018-11-15T16:22:34.058711"
+  },
+  "t-linux64-ms-057": {
+    "datacenter": "mdc1",
+    "idle": 137,
+    "lastseen": "2018-11-15T16:40:02.437434"
+  },
+  "t-linux64-ms-058": {
+    "datacenter": "mdc1",
+    "idle": 3646,
+    "lastseen": "2018-11-15T15:41:33.274220"
+  },
+  "t-linux64-ms-059": {
+    "datacenter": "mdc1",
+    "idle": 1168,
+    "lastseen": "2018-11-15T16:22:50.700976"
+  },
+  "t-linux64-ms-060": {
+    "datacenter": "mdc1",
+    "idle": 28,
+    "lastseen": "2018-11-15T16:41:50.623107"
+  },
+  "t-linux64-ms-091": {
+    "datacenter": "mdc1",
+    "idle": 2930,
+    "lastseen": "2018-11-15T15:53:28.526168"
+  },
+  "t-linux64-ms-092": {
+    "datacenter": "mdc1",
+    "idle": 2050,
+    "lastseen": "2018-11-15T16:08:08.885384"
+  },
+  "t-linux64-ms-093": {
+    "datacenter": "mdc1",
+    "idle": 1485,
+    "lastseen": "2018-11-15T16:17:33.509430"
+  },
+  "t-linux64-ms-094": {
+    "datacenter": "mdc1",
+    "idle": 1185,
+    "lastseen": "2018-11-15T16:22:34.107978"
+  },
+  "t-linux64-ms-095": {
+    "datacenter": "mdc1",
+    "idle": 12470,
+    "lastseen": "2018-11-15T13:14:29.346355"
+  },
+  "t-linux64-ms-096": {
+    "datacenter": "mdc1",
+    "idle": 2809,
+    "lastseen": "2018-11-15T15:55:29.849733"
+  },
+  "t-linux64-ms-097": {
+    "datacenter": "mdc1",
+    "idle": 3170,
+    "lastseen": "2018-11-15T15:49:28.895206"
+  },
+  "t-linux64-ms-098": {
+    "datacenter": "mdc1",
+    "idle": 2808,
+    "lastseen": "2018-11-15T15:55:31.319796"
+  },
+  "t-linux64-ms-099": {
+    "datacenter": "mdc1",
+    "idle": 3339,
+    "lastseen": "2018-11-15T15:46:40.003202"
+  },
+  "t-linux64-ms-100": {
+    "datacenter": "mdc1",
+    "idle": 2055,
+    "lastseen": "2018-11-15T16:08:04.355874"
+  },
+  "t-linux64-ms-101": {
+    "datacenter": "mdc1",
+    "idle": 3283,
+    "lastseen": "2018-11-15T15:47:36.316573"
+  },
+  "t-linux64-ms-102": {
+    "datacenter": "mdc1",
+    "idle": 42835,
+    "lastseen": "2018-11-15T04:48:23.933890"
+  },
+  "t-linux64-ms-103": {
+    "datacenter": "mdc1",
+    "idle": 36,
+    "lastseen": "2018-11-15T16:41:42.694580"
+  },
+  "t-linux64-ms-104": {
+    "datacenter": "mdc1",
+    "idle": 1653,
+    "lastseen": "2018-11-15T16:14:45.713518"
+  },
+  "t-linux64-ms-105": {
+    "datacenter": "mdc1",
+    "idle": 1082,
+    "lastseen": "2018-11-15T16:24:17.145970"
+  },
+  "t-linux64-ms-136": {
+    "datacenter": "mdc1",
+    "idle": 239,
+    "lastseen": "2018-11-15T16:38:20.094106"
+  },
+  "t-linux64-ms-137": {
+    "datacenter": "mdc1",
+    "idle": 41,
+    "lastseen": "2018-11-15T16:41:37.688145"
+  },
+  "t-linux64-ms-138": {
+    "datacenter": "mdc1",
+    "idle": 1326,
+    "lastseen": "2018-11-15T16:20:13.471065"
+  },
+  "t-linux64-ms-139": {
+    "datacenter": "mdc1",
+    "idle": 1559,
+    "lastseen": "2018-11-15T16:16:19.821928"
+  },
+  "t-linux64-ms-140": {
+    "datacenter": "mdc1",
+    "idle": 111,
+    "lastseen": "2018-11-15T16:40:27.546518"
+  },
+  "t-linux64-ms-141": {
+    "datacenter": "mdc1",
+    "idle": 3,
+    "lastseen": "2018-11-15T16:42:15.612700"
+  },
+  "t-linux64-ms-142": {
+    "datacenter": "mdc1",
+    "idle": 3260,
+    "lastseen": "2018-11-15T15:47:58.606827"
+  },
+  "t-linux64-ms-143": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.053232"
+  },
+  "t-linux64-ms-144": {
+    "datacenter": "mdc1",
+    "idle": 32873,
+    "lastseen": "2018-11-15T07:34:26.279928"
+  },
+  "t-linux64-ms-145": {
+    "datacenter": "mdc1",
+    "idle": 1343,
+    "lastseen": "2018-11-15T16:19:55.698691"
+  },
+  "t-linux64-ms-146": {
+    "datacenter": "mdc1",
+    "idle": 1082,
+    "lastseen": "2018-11-15T16:24:16.868401"
+  },
+  "t-linux64-ms-147": {
+    "datacenter": "mdc1",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.913013"
+  },
+  "t-linux64-ms-148": {
+    "datacenter": "mdc1",
+    "idle": 26,
+    "lastseen": "2018-11-15T16:41:53.310070"
+  },
+  "t-linux64-ms-149": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.220547"
+  },
+  "t-linux64-ms-150": {
+    "datacenter": "mdc1",
+    "idle": 742,
+    "lastseen": "2018-11-15T16:29:57.210994"
+  },
+  "t-linux64-ms-181": {
+    "datacenter": "mdc1",
+    "idle": 2085,
+    "lastseen": "2018-11-15T16:07:33.699744"
+  },
+  "t-linux64-ms-182": {
+    "datacenter": "mdc1",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.993834"
+  },
+  "t-linux64-ms-183": {
+    "datacenter": "mdc1",
+    "idle": 1330,
+    "lastseen": "2018-11-15T16:20:09.124388"
+  },
+  "t-linux64-ms-184": {
+    "datacenter": "mdc1",
+    "idle": 206,
+    "lastseen": "2018-11-15T16:38:53.171404"
+  },
+  "t-linux64-ms-185": {
+    "datacenter": "mdc1",
+    "idle": 234,
+    "lastseen": "2018-11-15T16:38:25.500769"
+  },
+  "t-linux64-ms-186": {
+    "datacenter": "mdc1",
+    "idle": 6056,
+    "lastseen": "2018-11-15T15:01:22.674657"
+  },
+  "t-linux64-ms-187": {
+    "datacenter": "mdc1",
+    "idle": 12468,
+    "lastseen": "2018-11-15T13:14:31.455840"
+  },
+  "t-linux64-ms-188": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.046825"
+  },
+  "t-linux64-ms-189": {
+    "datacenter": "mdc1",
+    "idle": 1348,
+    "lastseen": "2018-11-15T16:19:50.661732"
+  },
+  "t-linux64-ms-190": {
+    "datacenter": "mdc1",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.066298"
+  },
+  "t-linux64-ms-191": {
+    "datacenter": "mdc1",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.647584"
+  },
+  "t-linux64-ms-192": {
+    "datacenter": "mdc1",
+    "idle": 19788,
+    "lastseen": "2018-11-15T11:12:30.653527"
+  },
+  "t-linux64-ms-193": {
+    "datacenter": "mdc1",
+    "idle": 1326,
+    "lastseen": "2018-11-15T16:20:12.935755"
+  },
+  "t-linux64-ms-194": {
+    "datacenter": "mdc1",
+    "idle": 1176,
+    "lastseen": "2018-11-15T16:22:42.774479"
+  },
+  "t-linux64-ms-195": {
+    "datacenter": "mdc1",
+    "idle": 4,
+    "lastseen": "2018-11-15T16:42:15.199623"
+  },
+  "t-linux64-ms-226": {
+    "datacenter": "mdc1",
+    "idle": 3033,
+    "lastseen": "2018-11-15T15:51:45.990863"
+  },
+  "t-linux64-ms-227": {
+    "datacenter": "mdc1",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.859561"
+  },
+  "t-linux64-ms-228": {
+    "datacenter": "mdc1",
+    "idle": 17382,
+    "lastseen": "2018-11-15T11:52:37.305717"
+  },
+  "t-linux64-ms-229": {
+    "datacenter": "mdc1",
+    "idle": 67,
+    "lastseen": "2018-11-15T16:41:12.242569"
+  },
+  "t-linux64-ms-230": {
+    "datacenter": "mdc1",
+    "idle": 20363,
+    "lastseen": "2018-11-15T11:02:56.127962"
+  },
+  "t-linux64-ms-231": {
+    "datacenter": "mdc1",
+    "idle": 4237,
+    "lastseen": "2018-11-15T15:31:41.722999"
+  },
+  "t-linux64-ms-232": {
+    "datacenter": "mdc1",
+    "idle": 95,
+    "lastseen": "2018-11-15T16:40:44.141482"
+  },
+  "t-linux64-ms-233": {
+    "datacenter": "mdc1",
+    "idle": 2016,
+    "lastseen": "2018-11-15T16:08:42.687135"
+  },
+  "t-linux64-ms-234": {
+    "datacenter": "mdc1",
+    "idle": 913,
+    "lastseen": "2018-11-15T16:27:06.491622"
+  },
+  "t-linux64-ms-235": {
+    "datacenter": "mdc1",
+    "idle": 281,
+    "lastseen": "2018-11-15T16:37:38.422391"
+  },
+  "t-linux64-ms-236": {
+    "datacenter": "mdc1",
+    "idle": 2946,
+    "lastseen": "2018-11-15T15:53:12.562215"
+  },
+  "t-linux64-ms-237": {
+    "datacenter": "mdc1",
+    "idle": 133,
+    "lastseen": "2018-11-15T16:40:05.510718"
+  },
+  "t-linux64-ms-238": {
+    "datacenter": "mdc1",
+    "idle": 2866,
+    "lastseen": "2018-11-15T15:54:32.693381"
+  },
+  "t-linux64-ms-239": {
+    "datacenter": "mdc1",
+    "idle": 24153,
+    "lastseen": "2018-11-15T09:59:45.730717"
+  },
+  "t-linux64-ms-271": {
+    "datacenter": "mdc1",
+    "idle": 14946,
+    "lastseen": "2018-11-15T12:33:12.789628"
+  },
+  "t-linux64-ms-272": {
+    "datacenter": "mdc1",
+    "idle": 3742,
+    "lastseen": "2018-11-15T15:39:56.768621"
+  },
+  "t-linux64-ms-273": {
+    "datacenter": "mdc1",
+    "idle": 2421,
+    "lastseen": "2018-11-15T16:01:57.680966"
+  },
+  "t-linux64-ms-274": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.055799"
+  },
+  "t-linux64-ms-275": {
+    "datacenter": "mdc1",
+    "idle": 1704,
+    "lastseen": "2018-11-15T16:13:54.680124"
+  },
+  "t-linux64-ms-276": {
+    "datacenter": "mdc1",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.134522"
+  },
+  "t-linux64-ms-277": {
+    "datacenter": "mdc1",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.325116"
+  },
+  "t-linux64-ms-278": {
+    "datacenter": "mdc1",
+    "idle": 1359,
+    "lastseen": "2018-11-15T16:19:39.933020"
+  },
+  "t-linux64-ms-279": {
+    "datacenter": "mdc1",
+    "idle": 38531,
+    "lastseen": "2018-11-15T06:00:07.583667"
+  },
+  "t-linux64-ms-301": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:08.982789"
+  },
+  "t-linux64-ms-302": {
+    "datacenter": "mdc2",
+    "idle": 13914,
+    "lastseen": "2018-11-15T12:50:24.759290"
+  },
+  "t-linux64-ms-303": {
+    "datacenter": "mdc2",
+    "idle": 2843,
+    "lastseen": "2018-11-15T15:54:56.413508"
+  },
+  "t-linux64-ms-304": {
+    "datacenter": "mdc2",
+    "idle": 1602,
+    "lastseen": "2018-11-15T16:15:36.530691"
+  },
+  "t-linux64-ms-305": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.594979"
+  },
+  "t-linux64-ms-306": {
+    "datacenter": "mdc2",
+    "idle": 707,
+    "lastseen": "2018-11-15T16:30:31.730750"
+  },
+  "t-linux64-ms-307": {
+    "datacenter": "mdc2",
+    "idle": 92,
+    "lastseen": "2018-11-15T16:40:47.144180"
+  },
+  "t-linux64-ms-308": {
+    "datacenter": "mdc2",
+    "idle": 2767,
+    "lastseen": "2018-11-15T15:56:11.603879"
+  },
+  "t-linux64-ms-309": {
+    "datacenter": "mdc2",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:46.960737"
+  },
+  "t-linux64-ms-310": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.130917"
+  },
+  "t-linux64-ms-311": {
+    "datacenter": "mdc2",
+    "idle": 740,
+    "lastseen": "2018-11-15T16:29:59.476132"
+  },
+  "t-linux64-ms-312": {
+    "datacenter": "mdc2",
+    "idle": 2876,
+    "lastseen": "2018-11-15T15:54:23.255148"
+  },
+  "t-linux64-ms-313": {
+    "datacenter": "mdc2",
+    "idle": 2838,
+    "lastseen": "2018-11-15T15:55:01.050097"
+  },
+  "t-linux64-ms-314": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.907717"
+  },
+  "t-linux64-ms-315": {
+    "datacenter": "mdc2",
+    "idle": 1046,
+    "lastseen": "2018-11-15T16:24:53.370097"
+  },
+  "t-linux64-ms-346": {
+    "datacenter": "mdc2",
+    "idle": 3325,
+    "lastseen": "2018-11-15T15:46:54.460741"
+  },
+  "t-linux64-ms-347": {
+    "datacenter": "mdc2",
+    "idle": 3206,
+    "lastseen": "2018-11-15T15:48:52.578943"
+  },
+  "t-linux64-ms-348": {
+    "datacenter": "mdc2",
+    "idle": 2531,
+    "lastseen": "2018-11-15T16:00:08.303159"
+  },
+  "t-linux64-ms-349": {
+    "datacenter": "mdc2",
+    "idle": 14816,
+    "lastseen": "2018-11-15T12:35:23.120628"
+  },
+  "t-linux64-ms-350": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.054528"
+  },
+  "t-linux64-ms-351": {
+    "datacenter": "mdc2",
+    "idle": 2486,
+    "lastseen": "2018-11-15T16:00:53.421811"
+  },
+  "t-linux64-ms-352": {
+    "datacenter": "mdc2",
+    "idle": 1251,
+    "lastseen": "2018-11-15T16:21:27.742031"
+  },
+  "t-linux64-ms-353": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.049195"
+  },
+  "t-linux64-ms-354": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.128669"
+  },
+  "t-linux64-ms-355": {
+    "datacenter": "mdc2",
+    "idle": 3235,
+    "lastseen": "2018-11-15T15:48:23.572617"
+  },
+  "t-linux64-ms-356": {
+    "datacenter": "mdc2",
+    "idle": 1151,
+    "lastseen": "2018-11-15T16:23:08.169743"
+  },
+  "t-linux64-ms-357": {
+    "datacenter": "mdc2",
+    "idle": 722,
+    "lastseen": "2018-11-15T16:30:17.245071"
+  },
+  "t-linux64-ms-358": {
+    "datacenter": "mdc2",
+    "idle": 3225,
+    "lastseen": "2018-11-15T15:48:34.175464"
+  },
+  "t-linux64-ms-359": {
+    "datacenter": "mdc2",
+    "idle": 2047,
+    "lastseen": "2018-11-15T16:08:12.176986"
+  },
+  "t-linux64-ms-360": {
+    "datacenter": "mdc2",
+    "idle": 1628,
+    "lastseen": "2018-11-15T16:15:11.439339"
+  },
+  "t-linux64-ms-391": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.243481"
+  },
+  "t-linux64-ms-392": {
+    "datacenter": "mdc2",
+    "idle": 3365,
+    "lastseen": "2018-11-15T15:46:13.551975"
+  },
+  "t-linux64-ms-393": {
+    "datacenter": "mdc2",
+    "idle": 997,
+    "lastseen": "2018-11-15T16:25:41.670113"
+  },
+  "t-linux64-ms-396": {
+    "datacenter": "mdc2",
+    "idle": 3256,
+    "lastseen": "2018-11-15T15:48:02.665960"
+  },
+  "t-linux64-ms-397": {
+    "datacenter": "mdc2",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.047471"
+  },
+  "t-linux64-ms-398": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:08.990280"
+  },
+  "t-linux64-ms-399": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.650472"
+  },
+  "t-linux64-ms-400": {
+    "datacenter": "mdc2",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.135829"
+  },
+  "t-linux64-ms-401": {
+    "datacenter": "mdc2",
+    "idle": 3924,
+    "lastseen": "2018-11-15T15:36:54.672021"
+  },
+  "t-linux64-ms-402": {
+    "datacenter": "mdc2",
+    "idle": 496,
+    "lastseen": "2018-11-15T16:34:02.690233"
+  },
+  "t-linux64-ms-403": {
+    "datacenter": "mdc2",
+    "idle": 2880,
+    "lastseen": "2018-11-15T15:54:18.742963"
+  },
+  "t-linux64-ms-404": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:08.888002"
+  },
+  "t-linux64-ms-405": {
+    "datacenter": "mdc2",
+    "idle": 478,
+    "lastseen": "2018-11-15T16:34:20.605117"
+  },
+  "t-linux64-ms-436": {
+    "datacenter": "mdc2",
+    "idle": 3141,
+    "lastseen": "2018-11-15T15:49:57.987062"
+  },
+  "t-linux64-ms-437": {
+    "datacenter": "mdc2",
+    "idle": 3438,
+    "lastseen": "2018-11-15T15:45:00.531514"
+  },
+  "t-linux64-ms-438": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.132295"
+  },
+  "t-linux64-ms-439": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.909122"
+  },
+  "t-linux64-ms-440": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.094425"
+  },
+  "t-linux64-ms-441": {
+    "datacenter": "mdc2",
+    "idle": 903,
+    "lastseen": "2018-11-15T16:27:16.465003"
+  },
+  "t-linux64-ms-442": {
+    "datacenter": "mdc2",
+    "idle": 13,
+    "lastseen": "2018-11-15T16:42:05.832183"
+  },
+  "t-linux64-ms-443": {
+    "datacenter": "mdc2",
+    "idle": 1185,
+    "lastseen": "2018-11-15T16:22:33.729294"
+  },
+  "t-linux64-ms-444": {
+    "datacenter": "mdc2",
+    "idle": 2896,
+    "lastseen": "2018-11-15T15:54:02.884822"
+  },
+  "t-linux64-ms-445": {
+    "datacenter": "mdc2",
+    "idle": 2657,
+    "lastseen": "2018-11-15T15:58:02.476467"
+  },
+  "t-linux64-ms-446": {
+    "datacenter": "mdc2",
+    "idle": 718,
+    "lastseen": "2018-11-15T16:30:21.335917"
+  },
+  "t-linux64-ms-447": {
+    "datacenter": "mdc2",
+    "idle": 1485,
+    "lastseen": "2018-11-15T16:17:34.282138"
+  },
+  "t-linux64-ms-448": {
+    "datacenter": "mdc2",
+    "idle": 9,
+    "lastseen": "2018-11-15T16:42:10.229414"
+  },
+  "t-linux64-ms-449": {
+    "datacenter": "mdc2",
+    "idle": 2770,
+    "lastseen": "2018-11-15T15:56:08.798704"
+  },
+  "t-linux64-ms-450": {
+    "datacenter": "mdc2",
+    "idle": 3388,
+    "lastseen": "2018-11-15T15:45:51.407833"
+  },
+  "t-linux64-ms-481": {
+    "datacenter": "mdc2",
+    "idle": 21516,
+    "lastseen": "2018-11-15T10:43:43.265612"
+  },
+  "t-linux64-ms-482": {
+    "datacenter": "mdc2",
+    "idle": 2727,
+    "lastseen": "2018-11-15T15:56:52.407364"
+  },
+  "t-linux64-ms-483": {
+    "datacenter": "mdc2",
+    "idle": 2920,
+    "lastseen": "2018-11-15T15:53:39.309660"
+  },
+  "t-linux64-ms-484": {
+    "datacenter": "mdc2",
+    "idle": 1497,
+    "lastseen": "2018-11-15T16:17:21.927530"
+  },
+  "t-linux64-ms-485": {
+    "datacenter": "mdc2",
+    "idle": 1432,
+    "lastseen": "2018-11-15T16:18:26.661904"
+  },
+  "t-linux64-ms-486": {
+    "datacenter": "mdc2",
+    "idle": 1038,
+    "lastseen": "2018-11-15T16:25:01.219197"
+  },
+  "t-linux64-ms-487": {
+    "datacenter": "mdc2",
+    "idle": 1704,
+    "lastseen": "2018-11-15T16:13:55.224726"
+  },
+  "t-linux64-ms-488": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.952608"
+  },
+  "t-linux64-ms-489": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.238594"
+  },
+  "t-linux64-ms-490": {
+    "datacenter": "mdc2",
+    "idle": 1129,
+    "lastseen": "2018-11-15T16:23:30.420270"
+  },
+  "t-linux64-ms-491": {
+    "datacenter": "mdc2",
+    "idle": 1045,
+    "lastseen": "2018-11-15T16:24:53.582601"
+  },
+  "t-linux64-ms-492": {
+    "datacenter": "mdc2",
+    "idle": 475,
+    "lastseen": "2018-11-15T16:34:24.392952"
+  },
+  "t-linux64-ms-493": {
+    "datacenter": "mdc2",
+    "idle": 2889,
+    "lastseen": "2018-11-15T15:54:09.807962"
+  },
+  "t-linux64-ms-494": {
+    "datacenter": "mdc2",
+    "idle": 2297,
+    "lastseen": "2018-11-15T16:04:01.859913"
+  },
+  "t-linux64-ms-495": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.646075"
+  },
+  "t-linux64-ms-526": {
+    "datacenter": "mdc2",
+    "idle": 64,
+    "lastseen": "2018-11-15T16:41:14.803538"
+  },
+  "t-linux64-ms-527": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.097121"
+  },
+  "t-linux64-ms-528": {
+    "datacenter": "mdc2",
+    "idle": 52823,
+    "lastseen": "2018-11-15T02:01:55.654833"
+  },
+  "t-linux64-ms-529": {
+    "datacenter": "mdc2",
+    "idle": 3485,
+    "lastseen": "2018-11-15T15:44:14.386845"
+  },
+  "t-linux64-ms-530": {
+    "datacenter": "mdc2",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.048825"
+  },
+  "t-linux64-ms-531": {
+    "datacenter": "mdc2",
+    "idle": 54,
+    "lastseen": "2018-11-15T16:41:24.906324"
+  },
+  "t-linux64-ms-532": {
+    "datacenter": "mdc2",
+    "idle": 452,
+    "lastseen": "2018-11-15T16:34:47.044733"
+  },
+  "t-linux64-ms-533": {
+    "datacenter": "mdc2",
+    "idle": 3227,
+    "lastseen": "2018-11-15T15:48:32.282406"
+  },
+  "t-linux64-ms-534": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.098565"
+  },
+  "t-linux64-ms-535": {
+    "datacenter": "mdc2",
+    "idle": 2687,
+    "lastseen": "2018-11-15T15:57:32.388023"
+  },
+  "t-linux64-ms-536": {
+    "datacenter": "mdc2",
+    "idle": 2924,
+    "lastseen": "2018-11-15T15:53:35.103324"
+  },
+  "t-linux64-ms-537": {
+    "datacenter": "mdc2",
+    "idle": 3224,
+    "lastseen": "2018-11-15T15:48:35.129183"
+  },
+  "t-linux64-ms-538": {
+    "datacenter": "mdc2",
+    "idle": 3495,
+    "lastseen": "2018-11-15T15:44:03.672903"
+  },
+  "t-linux64-ms-539": {
+    "datacenter": "mdc2",
+    "idle": 21311,
+    "lastseen": "2018-11-15T10:47:08.396289"
+  },
+  "t-linux64-ms-540": {
+    "datacenter": "mdc2",
+    "idle": 3108,
+    "lastseen": "2018-11-15T15:50:30.667121"
+  },
+  "t-w1064-ms-016": {
+    "datacenter": "mdc1",
+    "idle": 1749,
+    "lastseen": "2018-11-15T16:13:09.613692"
+  },
+  "t-w1064-ms-017": {
+    "datacenter": "mdc1",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:13.756091"
+  },
+  "t-w1064-ms-018": {
+    "datacenter": "mdc1",
+    "idle": 2373,
+    "lastseen": "2018-11-15T16:02:46.017114"
+  },
+  "t-w1064-ms-019": {
+    "datacenter": "mdc1",
+    "idle": 1214,
+    "lastseen": "2018-11-15T16:22:05.284709"
+  },
+  "t-w1064-ms-020": {
+    "datacenter": "mdc1",
+    "idle": 813,
+    "lastseen": "2018-11-15T16:28:46.033089"
+  },
+  "t-w1064-ms-021": {
+    "datacenter": "mdc1",
+    "idle": 5177,
+    "lastseen": "2018-11-15T15:16:01.718047"
+  },
+  "t-w1064-ms-022": {
+    "datacenter": "mdc1",
+    "idle": 2608,
+    "lastseen": "2018-11-15T15:58:51.412853"
+  },
+  "t-w1064-ms-023": {
+    "datacenter": "mdc1",
+    "idle": 17745,
+    "lastseen": "2018-11-15T11:46:34.119358"
+  },
+  "t-w1064-ms-024": {
+    "datacenter": "mdc1",
+    "idle": 223,
+    "lastseen": "2018-11-15T16:38:36.054122"
+  },
+  "t-w1064-ms-025": {
+    "datacenter": "mdc1",
+    "idle": 1287,
+    "lastseen": "2018-11-15T16:20:51.518665"
+  },
+  "t-w1064-ms-026": {
+    "datacenter": "mdc1",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.575612"
+  },
+  "t-w1064-ms-027": {
+    "datacenter": "mdc1",
+    "idle": 13166,
+    "lastseen": "2018-11-15T13:02:53.279406"
+  },
+  "t-w1064-ms-028": {
+    "datacenter": "mdc1",
+    "idle": 834,
+    "lastseen": "2018-11-15T16:28:24.683645"
+  },
+  "t-w1064-ms-029": {
+    "datacenter": "mdc1",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.517461"
+  },
+  "t-w1064-ms-030": {
+    "datacenter": "mdc1",
+    "idle": 1862,
+    "lastseen": "2018-11-15T16:11:16.591325"
+  },
+  "t-w1064-ms-031": {
+    "datacenter": "mdc1",
+    "idle": 19585,
+    "lastseen": "2018-11-15T11:15:53.518508"
+  },
+  "t-w1064-ms-032": {
+    "datacenter": "mdc1",
+    "idle": 2376,
+    "lastseen": "2018-11-15T16:02:43.144051"
+  },
+  "t-w1064-ms-033": {
+    "datacenter": "mdc1",
+    "idle": 875,
+    "lastseen": "2018-11-15T16:27:43.864337"
+  },
+  "t-w1064-ms-034": {
+    "datacenter": "mdc1",
+    "idle": 1170,
+    "lastseen": "2018-11-15T16:22:48.931248"
+  },
+  "t-w1064-ms-035": {
+    "datacenter": "mdc1",
+    "idle": 399,
+    "lastseen": "2018-11-15T16:35:39.531827"
+  },
+  "t-w1064-ms-036": {
+    "datacenter": "mdc1",
+    "idle": 2375,
+    "lastseen": "2018-11-15T16:02:44.228876"
+  },
+  "t-w1064-ms-037": {
+    "datacenter": "mdc1",
+    "idle": 2425,
+    "lastseen": "2018-11-15T16:01:54.134576"
+  },
+  "t-w1064-ms-038": {
+    "datacenter": "mdc1",
+    "idle": 2482,
+    "lastseen": "2018-11-15T16:00:57.165257"
+  },
+  "t-w1064-ms-039": {
+    "datacenter": "mdc1",
+    "idle": 13366,
+    "lastseen": "2018-11-15T12:59:32.789025"
+  },
+  "t-w1064-ms-040": {
+    "datacenter": "mdc1",
+    "idle": 439,
+    "lastseen": "2018-11-15T16:34:59.720041"
+  },
+  "t-w1064-ms-041": {
+    "datacenter": "mdc1",
+    "idle": 3219,
+    "lastseen": "2018-11-15T15:48:40.215581"
+  },
+  "t-w1064-ms-042": {
+    "datacenter": "mdc1",
+    "idle": 579,
+    "lastseen": "2018-11-15T16:32:39.983300"
+  },
+  "t-w1064-ms-043": {
+    "datacenter": "mdc1",
+    "idle": 2893,
+    "lastseen": "2018-11-15T15:54:05.934093"
+  },
+  "t-w1064-ms-044": {
+    "datacenter": "mdc1",
+    "idle": 4580,
+    "lastseen": "2018-11-15T15:25:58.510988"
+  },
+  "t-w1064-ms-045": {
+    "datacenter": "mdc1",
+    "idle": 1669,
+    "lastseen": "2018-11-15T16:14:30.069270"
+  },
+  "t-w1064-ms-061": {
+    "datacenter": "mdc1",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.574011"
+  },
+  "t-w1064-ms-062": {
+    "datacenter": "mdc1",
+    "idle": 3677,
+    "lastseen": "2018-11-15T15:41:02.423930"
+  },
+  "t-w1064-ms-063": {
+    "datacenter": "mdc1",
+    "idle": 5163,
+    "lastseen": "2018-11-15T15:16:16.500670"
+  },
+  "t-w1064-ms-064": {
+    "datacenter": "mdc1",
+    "idle": 492,
+    "lastseen": "2018-11-15T16:34:07.400791"
+  },
+  "t-w1064-ms-065": {
+    "datacenter": "mdc1",
+    "idle": 12601,
+    "lastseen": "2018-11-15T13:12:18.108586"
+  },
+  "t-w1064-ms-066": {
+    "datacenter": "mdc1",
+    "idle": 2783,
+    "lastseen": "2018-11-15T15:55:56.027398"
+  },
+  "t-w1064-ms-067": {
+    "datacenter": "mdc1",
+    "idle": 55,
+    "lastseen": "2018-11-15T16:41:23.552948"
+  },
+  "t-w1064-ms-068": {
+    "datacenter": "mdc1",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.536885"
+  },
+  "t-w1064-ms-069": {
+    "datacenter": "mdc1",
+    "idle": 446,
+    "lastseen": "2018-11-15T16:34:53.365446"
+  },
+  "t-w1064-ms-070": {
+    "datacenter": "mdc1",
+    "idle": 1885,
+    "lastseen": "2018-11-15T16:10:53.962140"
+  },
+  "t-w1064-ms-071": {
+    "datacenter": "mdc1",
+    "idle": 791,
+    "lastseen": "2018-11-15T16:29:08.491911"
+  },
+  "t-w1064-ms-072": {
+    "datacenter": "mdc1",
+    "idle": 613,
+    "lastseen": "2018-11-15T16:32:05.857113"
+  },
+  "t-w1064-ms-073": {
+    "datacenter": "mdc1",
+    "idle": 1041,
+    "lastseen": "2018-11-15T16:24:57.659183"
+  },
+  "t-w1064-ms-074": {
+    "datacenter": "mdc1",
+    "idle": 530,
+    "lastseen": "2018-11-15T16:33:29.251340"
+  },
+  "t-w1064-ms-075": {
+    "datacenter": "mdc1",
+    "idle": 595,
+    "lastseen": "2018-11-15T16:32:23.880379"
+  },
+  "t-w1064-ms-076": {
+    "datacenter": "mdc1",
+    "idle": 3280,
+    "lastseen": "2018-11-15T15:47:39.445787"
+  },
+  "t-w1064-ms-077": {
+    "datacenter": "mdc1",
+    "idle": 15066,
+    "lastseen": "2018-11-15T12:31:12.747540"
+  },
+  "t-w1064-ms-078": {
+    "datacenter": "mdc1",
+    "idle": 2417,
+    "lastseen": "2018-11-15T16:02:02.386093"
+  },
+  "t-w1064-ms-079": {
+    "datacenter": "mdc1",
+    "idle": 572,
+    "lastseen": "2018-11-15T16:32:47.273762"
+  },
+  "t-w1064-ms-080": {
+    "datacenter": "mdc1",
+    "idle": 16062,
+    "lastseen": "2018-11-15T12:14:36.848569"
+  },
+  "t-w1064-ms-081": {
+    "datacenter": "mdc1",
+    "idle": 1174,
+    "lastseen": "2018-11-15T16:22:45.468577"
+  },
+  "t-w1064-ms-082": {
+    "datacenter": "mdc1",
+    "idle": 1527,
+    "lastseen": "2018-11-15T16:16:52.181839"
+  },
+  "t-w1064-ms-083": {
+    "datacenter": "mdc1",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.522362"
+  },
+  "t-w1064-ms-084": {
+    "datacenter": "mdc1",
+    "idle": 982,
+    "lastseen": "2018-11-15T16:25:56.893189"
+  },
+  "t-w1064-ms-085": {
+    "datacenter": "mdc1",
+    "idle": 3125,
+    "lastseen": "2018-11-15T15:50:13.680265"
+  },
+  "t-w1064-ms-086": {
+    "datacenter": "mdc1",
+    "idle": 946,
+    "lastseen": "2018-11-15T16:26:33.485102"
+  },
+  "t-w1064-ms-087": {
+    "datacenter": "mdc1",
+    "idle": 1308,
+    "lastseen": "2018-11-15T16:20:31.443501"
+  },
+  "t-w1064-ms-088": {
+    "datacenter": "mdc1",
+    "idle": 3389,
+    "lastseen": "2018-11-15T15:45:50.159289"
+  },
+  "t-w1064-ms-089": {
+    "datacenter": "mdc1",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:14.132118"
+  },
+  "t-w1064-ms-090": {
+    "datacenter": "mdc1",
+    "idle": 2529,
+    "lastseen": "2018-11-15T16:00:09.886689"
+  },
+  "t-w1064-ms-106": {
+    "datacenter": "mdc1",
+    "idle": 832,
+    "lastseen": "2018-11-15T16:28:27.121160"
+  },
+  "t-w1064-ms-107": {
+    "datacenter": "mdc1",
+    "idle": 1935,
+    "lastseen": "2018-11-15T16:10:03.873029"
+  },
+  "t-w1064-ms-108": {
+    "datacenter": "mdc1",
+    "idle": 4068,
+    "lastseen": "2018-11-15T15:34:30.648695"
+  },
+  "t-w1064-ms-109": {
+    "datacenter": "mdc1",
+    "idle": 15121,
+    "lastseen": "2018-11-15T12:30:18.473927"
+  },
+  "t-w1064-ms-110": {
+    "datacenter": "mdc1",
+    "idle": 115,
+    "lastseen": "2018-11-15T16:40:24.433526"
+  },
+  "t-w1064-ms-111": {
+    "datacenter": "mdc1",
+    "idle": 1951,
+    "lastseen": "2018-11-15T16:09:47.876243"
+  },
+  "t-w1064-ms-112": {
+    "datacenter": "mdc1",
+    "idle": 619,
+    "lastseen": "2018-11-15T16:31:59.537158"
+  },
+  "t-w1064-ms-113": {
+    "datacenter": "mdc1",
+    "idle": 312,
+    "lastseen": "2018-11-15T16:37:06.622879"
+  },
+  "t-w1064-ms-114": {
+    "datacenter": "mdc1",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.572197"
+  },
+  "t-w1064-ms-115": {
+    "datacenter": "mdc1",
+    "idle": 357,
+    "lastseen": "2018-11-15T16:36:22.326716"
+  },
+  "t-w1064-ms-116": {
+    "datacenter": "mdc1",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:13.621179"
+  },
+  "t-w1064-ms-117": {
+    "datacenter": "mdc1",
+    "idle": 2626,
+    "lastseen": "2018-11-15T15:58:33.438527"
+  },
+  "t-w1064-ms-118": {
+    "datacenter": "mdc1",
+    "idle": 3587,
+    "lastseen": "2018-11-15T15:42:32.163269"
+  },
+  "t-w1064-ms-119": {
+    "datacenter": "mdc1",
+    "idle": 3704,
+    "lastseen": "2018-11-15T15:40:35.275933"
+  },
+  "t-w1064-ms-120": {
+    "datacenter": "mdc1",
+    "idle": 1311,
+    "lastseen": "2018-11-15T16:20:28.493651"
+  },
+  "t-w1064-ms-121": {
+    "datacenter": "mdc1",
+    "idle": 813,
+    "lastseen": "2018-11-15T16:28:45.998441"
+  },
+  "t-w1064-ms-122": {
+    "datacenter": "mdc1",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:59.198297"
+  },
+  "t-w1064-ms-123": {
+    "datacenter": "mdc1",
+    "idle": 311,
+    "lastseen": "2018-11-15T16:37:08.277158"
+  },
+  "t-w1064-ms-124": {
+    "datacenter": "mdc1",
+    "idle": 16146,
+    "lastseen": "2018-11-15T12:13:13.052418"
+  },
+  "t-w1064-ms-125": {
+    "datacenter": "mdc1",
+    "idle": 998,
+    "lastseen": "2018-11-15T16:25:40.759752"
+  },
+  "t-w1064-ms-126": {
+    "datacenter": "mdc1",
+    "idle": 760,
+    "lastseen": "2018-11-15T16:29:39.007082"
+  },
+  "t-w1064-ms-127": {
+    "datacenter": "mdc1",
+    "idle": 3667,
+    "lastseen": "2018-11-15T15:41:11.889075"
+  },
+  "t-w1064-ms-128": {
+    "datacenter": "mdc1",
+    "idle": 3142,
+    "lastseen": "2018-11-15T15:49:56.720798"
+  },
+  "t-w1064-ms-129": {
+    "datacenter": "mdc1",
+    "idle": 863,
+    "lastseen": "2018-11-15T16:27:55.946272"
+  },
+  "t-w1064-ms-130": {
+    "datacenter": "mdc1",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.355454"
+  },
+  "t-w1064-ms-131": {
+    "datacenter": "mdc1",
+    "idle": 3648,
+    "lastseen": "2018-11-15T15:41:30.711830"
+  },
+  "t-w1064-ms-132": {
+    "datacenter": "mdc1",
+    "idle": 2794,
+    "lastseen": "2018-11-15T15:55:44.972035"
+  },
+  "t-w1064-ms-133": {
+    "datacenter": "mdc1",
+    "idle": 1550,
+    "lastseen": "2018-11-15T16:16:28.768415"
+  },
+  "t-w1064-ms-134": {
+    "datacenter": "mdc1",
+    "idle": 22051,
+    "lastseen": "2018-11-15T10:34:48.377110"
+  },
+  "t-w1064-ms-135": {
+    "datacenter": "mdc1",
+    "idle": 931,
+    "lastseen": "2018-11-15T16:26:47.671129"
+  },
+  "t-w1064-ms-151": {
+    "datacenter": "mdc1",
+    "idle": 2455,
+    "lastseen": "2018-11-15T16:01:23.639892"
+  },
+  "t-w1064-ms-152": {
+    "datacenter": "mdc1",
+    "idle": 768,
+    "lastseen": "2018-11-15T16:29:30.732239"
+  },
+  "t-w1064-ms-153": {
+    "datacenter": "mdc1",
+    "idle": 12223,
+    "lastseen": "2018-11-15T13:18:36.474911"
+  },
+  "t-w1064-ms-154": {
+    "datacenter": "mdc1",
+    "idle": 613,
+    "lastseen": "2018-11-15T16:32:05.607771"
+  },
+  "t-w1064-ms-155": {
+    "datacenter": "mdc1",
+    "idle": 5442,
+    "lastseen": "2018-11-15T15:11:36.687983"
+  },
+  "t-w1064-ms-156": {
+    "datacenter": "mdc1",
+    "idle": 1595,
+    "lastseen": "2018-11-15T16:15:43.697612"
+  },
+  "t-w1064-ms-157": {
+    "datacenter": "mdc1",
+    "idle": 12325,
+    "lastseen": "2018-11-15T13:16:54.392776"
+  },
+  "t-w1064-ms-158": {
+    "datacenter": "mdc1",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.898722"
+  },
+  "t-w1064-ms-159": {
+    "datacenter": "mdc1",
+    "idle": 838,
+    "lastseen": "2018-11-15T16:28:21.371978"
+  },
+  "t-w1064-ms-160": {
+    "datacenter": "mdc1",
+    "idle": 2316,
+    "lastseen": "2018-11-15T16:03:42.553253"
+  },
+  "t-w1064-ms-161": {
+    "datacenter": "mdc1",
+    "idle": 982,
+    "lastseen": "2018-11-15T16:25:56.888936"
+  },
+  "t-w1064-ms-162": {
+    "datacenter": "mdc1",
+    "idle": 169,
+    "lastseen": "2018-11-15T16:39:30.276307"
+  },
+  "t-w1064-ms-163": {
+    "datacenter": "mdc1",
+    "idle": 3128,
+    "lastseen": "2018-11-15T15:50:10.767122"
+  },
+  "t-w1064-ms-164": {
+    "datacenter": "mdc1",
+    "idle": 1619,
+    "lastseen": "2018-11-15T16:15:19.591987"
+  },
+  "t-w1064-ms-165": {
+    "datacenter": "mdc1",
+    "idle": 861,
+    "lastseen": "2018-11-15T16:27:58.308627"
+  },
+  "t-w1064-ms-166": {
+    "datacenter": "mdc1",
+    "idle": 1271,
+    "lastseen": "2018-11-15T16:21:08.243211"
+  },
+  "t-w1064-ms-167": {
+    "datacenter": "mdc1",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.887450"
+  },
+  "t-w1064-ms-168": {
+    "datacenter": "mdc1",
+    "idle": 12741,
+    "lastseen": "2018-11-15T13:09:57.613420"
+  },
+  "t-w1064-ms-169": {
+    "datacenter": "mdc1",
+    "idle": 2087,
+    "lastseen": "2018-11-15T16:07:32.452353"
+  },
+  "t-w1064-ms-170": {
+    "datacenter": "mdc1",
+    "idle": 1705,
+    "lastseen": "2018-11-15T16:13:54.346794"
+  },
+  "t-w1064-ms-171": {
+    "datacenter": "mdc1",
+    "idle": 508,
+    "lastseen": "2018-11-15T16:33:50.566887"
+  },
+  "t-w1064-ms-172": {
+    "datacenter": "mdc1",
+    "idle": 2324,
+    "lastseen": "2018-11-15T16:03:35.378775"
+  },
+  "t-w1064-ms-173": {
+    "datacenter": "mdc1",
+    "idle": 707,
+    "lastseen": "2018-11-15T16:30:31.554142"
+  },
+  "t-w1064-ms-174": {
+    "datacenter": "mdc1",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.911160"
+  },
+  "t-w1064-ms-175": {
+    "datacenter": "mdc1",
+    "idle": 912,
+    "lastseen": "2018-11-15T16:27:06.747483"
+  },
+  "t-w1064-ms-176": {
+    "datacenter": "mdc1",
+    "idle": 1951,
+    "lastseen": "2018-11-15T16:09:48.104360"
+  },
+  "t-w1064-ms-177": {
+    "datacenter": "mdc1",
+    "idle": 5781,
+    "lastseen": "2018-11-15T15:05:57.718418"
+  },
+  "t-w1064-ms-178": {
+    "datacenter": "mdc1",
+    "idle": 389,
+    "lastseen": "2018-11-15T16:35:49.762507"
+  },
+  "t-w1064-ms-179": {
+    "datacenter": "mdc1",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.576994"
+  },
+  "t-w1064-ms-180": {
+    "datacenter": "mdc1",
+    "idle": 201,
+    "lastseen": "2018-11-15T16:38:57.902317"
+  },
+  "t-w1064-ms-196": {
+    "datacenter": "mdc1",
+    "idle": 868,
+    "lastseen": "2018-11-15T16:27:50.636006"
+  },
+  "t-w1064-ms-197": {
+    "datacenter": "mdc1",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.902627"
+  },
+  "t-w1064-ms-198": {
+    "datacenter": "mdc1",
+    "idle": 1266,
+    "lastseen": "2018-11-15T16:21:12.882684"
+  },
+  "t-w1064-ms-199": {
+    "datacenter": "mdc1",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.919825"
+  },
+  "t-w1064-ms-200": {
+    "datacenter": "mdc1",
+    "idle": 206,
+    "lastseen": "2018-11-15T16:38:52.556446"
+  },
+  "t-w1064-ms-201": {
+    "datacenter": "mdc1",
+    "idle": 530,
+    "lastseen": "2018-11-15T16:33:28.907331"
+  },
+  "t-w1064-ms-202": {
+    "datacenter": "mdc1",
+    "idle": 128,
+    "lastseen": "2018-11-15T16:40:11.125667"
+  },
+  "t-w1064-ms-203": {
+    "datacenter": "mdc1",
+    "idle": 788,
+    "lastseen": "2018-11-15T16:29:10.817759"
+  },
+  "t-w1064-ms-204": {
+    "datacenter": "mdc1",
+    "idle": 13719,
+    "lastseen": "2018-11-15T12:53:39.832327"
+  },
+  "t-w1064-ms-205": {
+    "datacenter": "mdc1",
+    "idle": 2654,
+    "lastseen": "2018-11-15T15:58:04.975700"
+  },
+  "t-w1064-ms-206": {
+    "datacenter": "mdc1",
+    "idle": 71,
+    "lastseen": "2018-11-15T16:41:07.749781"
+  },
+  "t-w1064-ms-207": {
+    "datacenter": "mdc1",
+    "idle": 69,
+    "lastseen": "2018-11-15T16:41:09.876908"
+  },
+  "t-w1064-ms-208": {
+    "datacenter": "mdc1",
+    "idle": 15967,
+    "lastseen": "2018-11-15T12:16:12.280213"
+  },
+  "t-w1064-ms-209": {
+    "datacenter": "mdc1",
+    "idle": 1052,
+    "lastseen": "2018-11-15T16:24:47.346683"
+  },
+  "t-w1064-ms-210": {
+    "datacenter": "mdc1",
+    "idle": 396,
+    "lastseen": "2018-11-15T16:35:42.658928"
+  },
+  "t-w1064-ms-211": {
+    "datacenter": "mdc1",
+    "idle": 406,
+    "lastseen": "2018-11-15T16:35:32.679532"
+  },
+  "t-w1064-ms-212": {
+    "datacenter": "mdc1",
+    "idle": 2737,
+    "lastseen": "2018-11-15T15:56:42.262342"
+  },
+  "t-w1064-ms-213": {
+    "datacenter": "mdc1",
+    "idle": 877,
+    "lastseen": "2018-11-15T16:27:42.204719"
+  },
+  "t-w1064-ms-214": {
+    "datacenter": "mdc1",
+    "idle": 5432,
+    "lastseen": "2018-11-15T15:11:46.991888"
+  },
+  "t-w1064-ms-215": {
+    "datacenter": "mdc1",
+    "idle": 1080,
+    "lastseen": "2018-11-15T16:24:19.481764"
+  },
+  "t-w1064-ms-216": {
+    "datacenter": "mdc1",
+    "idle": 2608,
+    "lastseen": "2018-11-15T15:58:50.638810"
+  },
+  "t-w1064-ms-217": {
+    "datacenter": "mdc1",
+    "idle": 507,
+    "lastseen": "2018-11-15T16:33:52.160896"
+  },
+  "t-w1064-ms-218": {
+    "datacenter": "mdc1",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.842932"
+  },
+  "t-w1064-ms-219": {
+    "datacenter": "mdc1",
+    "idle": 584,
+    "lastseen": "2018-11-15T16:32:34.739489"
+  },
+  "t-w1064-ms-220": {
+    "datacenter": "mdc1",
+    "idle": 3227,
+    "lastseen": "2018-11-15T15:48:31.693934"
+  },
+  "t-w1064-ms-221": {
+    "datacenter": "mdc1",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.227248"
+  },
+  "t-w1064-ms-222": {
+    "datacenter": "mdc1",
+    "idle": 931,
+    "lastseen": "2018-11-15T16:26:47.835140"
+  },
+  "t-w1064-ms-223": {
+    "datacenter": "mdc1",
+    "idle": 1662,
+    "lastseen": "2018-11-15T16:14:37.440906"
+  },
+  "t-w1064-ms-224": {
+    "datacenter": "mdc1",
+    "idle": 1108,
+    "lastseen": "2018-11-15T16:23:50.539669"
+  },
+  "t-w1064-ms-225": {
+    "datacenter": "mdc1",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.581248"
+  },
+  "t-w1064-ms-241": {
+    "datacenter": "mdc1",
+    "idle": 720,
+    "lastseen": "2018-11-15T16:30:18.614686"
+  },
+  "t-w1064-ms-242": {
+    "datacenter": "mdc1",
+    "idle": 876,
+    "lastseen": "2018-11-15T16:27:43.318897"
+  },
+  "t-w1064-ms-243": {
+    "datacenter": "mdc1",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.829484"
+  },
+  "t-w1064-ms-244": {
+    "datacenter": "mdc1",
+    "idle": 239,
+    "lastseen": "2018-11-15T16:38:19.876735"
+  },
+  "t-w1064-ms-245": {
+    "datacenter": "mdc1",
+    "idle": 864,
+    "lastseen": "2018-11-15T16:27:55.234985"
+  },
+  "t-w1064-ms-246": {
+    "datacenter": "mdc1",
+    "idle": 2722,
+    "lastseen": "2018-11-15T15:56:56.759917"
+  },
+  "t-w1064-ms-247": {
+    "datacenter": "mdc1",
+    "idle": 501,
+    "lastseen": "2018-11-15T16:33:57.615445"
+  },
+  "t-w1064-ms-248": {
+    "datacenter": "mdc1",
+    "idle": 1644,
+    "lastseen": "2018-11-15T16:14:54.658447"
+  },
+  "t-w1064-ms-249": {
+    "datacenter": "mdc1",
+    "idle": 1271,
+    "lastseen": "2018-11-15T16:21:08.240724"
+  },
+  "t-w1064-ms-250": {
+    "datacenter": "mdc1",
+    "idle": 243,
+    "lastseen": "2018-11-15T16:38:15.579585"
+  },
+  "t-w1064-ms-251": {
+    "datacenter": "mdc1",
+    "idle": 443,
+    "lastseen": "2018-11-15T16:34:55.813731"
+  },
+  "t-w1064-ms-252": {
+    "datacenter": "mdc1",
+    "idle": 13184,
+    "lastseen": "2018-11-15T13:02:35.463773"
+  },
+  "t-w1064-ms-253": {
+    "datacenter": "mdc1",
+    "idle": 656,
+    "lastseen": "2018-11-15T16:31:23.025803"
+  },
+  "t-w1064-ms-254": {
+    "datacenter": "mdc1",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.260180"
+  },
+  "t-w1064-ms-255": {
+    "datacenter": "mdc1",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.525991"
+  },
+  "t-w1064-ms-256": {
+    "datacenter": "mdc1",
+    "idle": 2526,
+    "lastseen": "2018-11-15T16:00:12.528827"
+  },
+  "t-w1064-ms-257": {
+    "datacenter": "mdc1",
+    "idle": 454,
+    "lastseen": "2018-11-15T16:34:45.369508"
+  },
+  "t-w1064-ms-258": {
+    "datacenter": "mdc1",
+    "idle": 391,
+    "lastseen": "2018-11-15T16:35:48.030589"
+  },
+  "t-w1064-ms-259": {
+    "datacenter": "mdc1",
+    "idle": 931,
+    "lastseen": "2018-11-15T16:26:47.813370"
+  },
+  "t-w1064-ms-260": {
+    "datacenter": "mdc1",
+    "idle": 2336,
+    "lastseen": "2018-11-15T16:03:23.374620"
+  },
+  "t-w1064-ms-261": {
+    "datacenter": "mdc1",
+    "idle": 355,
+    "lastseen": "2018-11-15T16:36:23.633545"
+  },
+  "t-w1064-ms-262": {
+    "datacenter": "mdc1",
+    "idle": 2733,
+    "lastseen": "2018-11-15T15:56:46.268288"
+  },
+  "t-w1064-ms-263": {
+    "datacenter": "mdc1",
+    "idle": 5914,
+    "lastseen": "2018-11-15T15:03:44.718507"
+  },
+  "t-w1064-ms-264": {
+    "datacenter": "mdc1",
+    "idle": 783,
+    "lastseen": "2018-11-15T16:29:15.819899"
+  },
+  "t-w1064-ms-265": {
+    "datacenter": "mdc1",
+    "idle": 17291,
+    "lastseen": "2018-11-15T11:54:07.780340"
+  },
+  "t-w1064-ms-266": {
+    "datacenter": "mdc1",
+    "idle": 463,
+    "lastseen": "2018-11-15T16:34:35.755396"
+  },
+  "t-w1064-ms-267": {
+    "datacenter": "mdc1",
+    "idle": 1680,
+    "lastseen": "2018-11-15T16:14:19.406475"
+  },
+  "t-w1064-ms-268": {
+    "datacenter": "mdc1",
+    "idle": 2729,
+    "lastseen": "2018-11-15T15:56:49.538357"
+  },
+  "t-w1064-ms-269": {
+    "datacenter": "mdc1",
+    "idle": 1234,
+    "lastseen": "2018-11-15T16:21:44.656302"
+  },
+  "t-w1064-ms-270": {
+    "datacenter": "mdc1",
+    "idle": 1551,
+    "lastseen": "2018-11-15T16:16:27.896563"
+  },
+  "t-w1064-ms-281": {
+    "datacenter": "mdc1",
+    "idle": 965,
+    "lastseen": "2018-11-15T16:26:14.214554"
+  },
+  "t-w1064-ms-282": {
+    "datacenter": "mdc1",
+    "idle": 4453,
+    "lastseen": "2018-11-15T15:28:05.903443"
+  },
+  "t-w1064-ms-283": {
+    "datacenter": "mdc1",
+    "idle": 1699,
+    "lastseen": "2018-11-15T16:13:59.836003"
+  },
+  "t-w1064-ms-284": {
+    "datacenter": "mdc1",
+    "idle": 2219,
+    "lastseen": "2018-11-15T16:05:19.623186"
+  },
+  "t-w1064-ms-285": {
+    "datacenter": "mdc1",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.527443"
+  },
+  "t-w1064-ms-286": {
+    "datacenter": "mdc1",
+    "idle": 1152,
+    "lastseen": "2018-11-15T16:23:07.478035"
+  },
+  "t-w1064-ms-287": {
+    "datacenter": "mdc1",
+    "idle": 17158,
+    "lastseen": "2018-11-15T11:56:20.964941"
+  },
+  "t-w1064-ms-288": {
+    "datacenter": "mdc1",
+    "idle": 18426,
+    "lastseen": "2018-11-15T11:35:13.291104"
+  },
+  "t-w1064-ms-289": {
+    "datacenter": "mdc1",
+    "idle": 1626,
+    "lastseen": "2018-11-15T16:15:12.952982"
+  },
+  "t-w1064-ms-290": {
+    "datacenter": "mdc1",
+    "idle": 323,
+    "lastseen": "2018-11-15T16:36:55.769926"
+  },
+  "t-w1064-ms-291": {
+    "datacenter": "mdc1",
+    "idle": 4110,
+    "lastseen": "2018-11-15T15:33:48.736094"
+  },
+  "t-w1064-ms-292": {
+    "datacenter": "mdc1",
+    "idle": 3624,
+    "lastseen": "2018-11-15T15:41:55.091869"
+  },
+  "t-w1064-ms-293": {
+    "datacenter": "mdc1",
+    "idle": 861,
+    "lastseen": "2018-11-15T16:27:58.020552"
+  },
+  "t-w1064-ms-294": {
+    "datacenter": "mdc1",
+    "idle": 12223,
+    "lastseen": "2018-11-15T13:18:36.269235"
+  },
+  "t-w1064-ms-295": {
+    "datacenter": "mdc1",
+    "idle": 2916,
+    "lastseen": "2018-11-15T15:53:42.582760"
+  },
+  "t-w1064-ms-296": {
+    "datacenter": "mdc1",
+    "idle": 931,
+    "lastseen": "2018-11-15T16:26:47.946362"
+  },
+  "t-w1064-ms-297": {
+    "datacenter": "mdc1",
+    "idle": 2138,
+    "lastseen": "2018-11-15T16:06:41.054000"
+  },
+  "t-w1064-ms-298": {
+    "datacenter": "mdc1",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.572725"
+  },
+  "t-w1064-ms-316": {
+    "datacenter": "mdc2",
+    "idle": 2428,
+    "lastseen": "2018-11-15T16:01:51.003281"
+  },
+  "t-w1064-ms-317": {
+    "datacenter": "mdc2",
+    "idle": 12353,
+    "lastseen": "2018-11-15T13:16:26.121907"
+  },
+  "t-w1064-ms-318": {
+    "datacenter": "mdc2",
+    "idle": 5366,
+    "lastseen": "2018-11-15T15:12:52.823902"
+  },
+  "t-w1064-ms-319": {
+    "datacenter": "mdc2",
+    "idle": 2829,
+    "lastseen": "2018-11-15T15:55:10.279896"
+  },
+  "t-w1064-ms-320": {
+    "datacenter": "mdc2",
+    "idle": 3542,
+    "lastseen": "2018-11-15T15:43:16.962601"
+  },
+  "t-w1064-ms-321": {
+    "datacenter": "mdc2",
+    "idle": 765,
+    "lastseen": "2018-11-15T16:29:33.622194"
+  },
+  "t-w1064-ms-322": {
+    "datacenter": "mdc2",
+    "idle": 707,
+    "lastseen": "2018-11-15T16:30:32.314705"
+  },
+  "t-w1064-ms-323": {
+    "datacenter": "mdc2",
+    "idle": 2757,
+    "lastseen": "2018-11-15T15:56:22.323657"
+  },
+  "t-w1064-ms-324": {
+    "datacenter": "mdc2",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:13.622638"
+  },
+  "t-w1064-ms-325": {
+    "datacenter": "mdc2",
+    "idle": 39,
+    "lastseen": "2018-11-15T16:41:40.004901"
+  },
+  "t-w1064-ms-326": {
+    "datacenter": "mdc2",
+    "idle": 2275,
+    "lastseen": "2018-11-15T16:04:23.591480"
+  },
+  "t-w1064-ms-327": {
+    "datacenter": "mdc2",
+    "idle": 310,
+    "lastseen": "2018-11-15T16:37:09.444319"
+  },
+  "t-w1064-ms-328": {
+    "datacenter": "mdc2",
+    "idle": 430,
+    "lastseen": "2018-11-15T16:35:09.172555"
+  },
+  "t-w1064-ms-329": {
+    "datacenter": "mdc2",
+    "idle": 937,
+    "lastseen": "2018-11-15T16:26:41.807959"
+  },
+  "t-w1064-ms-330": {
+    "datacenter": "mdc2",
+    "idle": 2523,
+    "lastseen": "2018-11-15T16:00:15.875347"
+  },
+  "t-w1064-ms-331": {
+    "datacenter": "mdc2",
+    "idle": 769,
+    "lastseen": "2018-11-15T16:29:30.183467"
+  },
+  "t-w1064-ms-332": {
+    "datacenter": "mdc2",
+    "idle": 446,
+    "lastseen": "2018-11-15T16:34:53.367382"
+  },
+  "t-w1064-ms-333": {
+    "datacenter": "mdc2",
+    "idle": 439,
+    "lastseen": "2018-11-15T16:34:59.642581"
+  },
+  "t-w1064-ms-334": {
+    "datacenter": "mdc2",
+    "idle": 1869,
+    "lastseen": "2018-11-15T16:11:10.297967"
+  },
+  "t-w1064-ms-335": {
+    "datacenter": "mdc2",
+    "idle": 768,
+    "lastseen": "2018-11-15T16:29:30.718459"
+  },
+  "t-w1064-ms-336": {
+    "datacenter": "mdc2",
+    "idle": 3579,
+    "lastseen": "2018-11-15T15:42:39.996598"
+  },
+  "t-w1064-ms-337": {
+    "datacenter": "mdc2",
+    "idle": 1729,
+    "lastseen": "2018-11-15T16:13:30.481985"
+  },
+  "t-w1064-ms-338": {
+    "datacenter": "mdc2",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.531025"
+  },
+  "t-w1064-ms-339": {
+    "datacenter": "mdc2",
+    "idle": 1951,
+    "lastseen": "2018-11-15T16:09:47.804602"
+  },
+  "t-w1064-ms-340": {
+    "datacenter": "mdc2",
+    "idle": 1948,
+    "lastseen": "2018-11-15T16:09:51.426728"
+  },
+  "t-w1064-ms-341": {
+    "datacenter": "mdc2",
+    "idle": 20002,
+    "lastseen": "2018-11-15T11:08:56.540567"
+  },
+  "t-w1064-ms-342": {
+    "datacenter": "mdc2",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.653270"
+  },
+  "t-w1064-ms-343": {
+    "datacenter": "mdc2",
+    "idle": 5691,
+    "lastseen": "2018-11-15T15:07:27.512234"
+  },
+  "t-w1064-ms-344": {
+    "datacenter": "mdc2",
+    "idle": 647,
+    "lastseen": "2018-11-15T16:31:32.327579"
+  },
+  "t-w1064-ms-345": {
+    "datacenter": "mdc2",
+    "idle": 1662,
+    "lastseen": "2018-11-15T16:14:37.110676"
+  },
+  "t-w1064-ms-361": {
+    "datacenter": "mdc2",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.582927"
+  },
+  "t-w1064-ms-362": {
+    "datacenter": "mdc2",
+    "idle": 931,
+    "lastseen": "2018-11-15T16:26:47.967234"
+  },
+  "t-w1064-ms-363": {
+    "datacenter": "mdc2",
+    "idle": 636,
+    "lastseen": "2018-11-15T16:31:42.525184"
+  },
+  "t-w1064-ms-364": {
+    "datacenter": "mdc2",
+    "idle": 888,
+    "lastseen": "2018-11-15T16:27:30.663711"
+  },
+  "t-w1064-ms-365": {
+    "datacenter": "mdc2",
+    "idle": 3362,
+    "lastseen": "2018-11-15T15:46:17.124679"
+  },
+  "t-w1064-ms-366": {
+    "datacenter": "mdc2",
+    "idle": 2013,
+    "lastseen": "2018-11-15T16:08:45.916741"
+  },
+  "t-w1064-ms-367": {
+    "datacenter": "mdc2",
+    "idle": 566,
+    "lastseen": "2018-11-15T16:32:53.358816"
+  },
+  "t-w1064-ms-368": {
+    "datacenter": "mdc2",
+    "idle": 529,
+    "lastseen": "2018-11-15T16:33:29.602719"
+  },
+  "t-w1064-ms-369": {
+    "datacenter": "mdc2",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.384548"
+  },
+  "t-w1064-ms-370": {
+    "datacenter": "mdc2",
+    "idle": 654,
+    "lastseen": "2018-11-15T16:31:25.291424"
+  },
+  "t-w1064-ms-371": {
+    "datacenter": "mdc2",
+    "idle": 4412,
+    "lastseen": "2018-11-15T15:28:47.466970"
+  },
+  "t-w1064-ms-372": {
+    "datacenter": "mdc2",
+    "idle": 30,
+    "lastseen": "2018-11-15T16:41:48.718630"
+  },
+  "t-w1064-ms-373": {
+    "datacenter": "mdc2",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.532499"
+  },
+  "t-w1064-ms-374": {
+    "datacenter": "mdc2",
+    "idle": 3688,
+    "lastseen": "2018-11-15T15:40:50.722503"
+  },
+  "t-w1064-ms-375": {
+    "datacenter": "mdc2",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.538472"
+  },
+  "t-w1064-ms-376": {
+    "datacenter": "mdc2",
+    "idle": 1190,
+    "lastseen": "2018-11-15T16:22:29.484112"
+  },
+  "t-w1064-ms-377": {
+    "datacenter": "mdc2",
+    "idle": 75,
+    "lastseen": "2018-11-15T16:41:03.638807"
+  },
+  "t-w1064-ms-378": {
+    "datacenter": "mdc2",
+    "idle": 350,
+    "lastseen": "2018-11-15T16:36:29.255958"
+  },
+  "t-w1064-ms-379": {
+    "datacenter": "mdc2",
+    "idle": 783,
+    "lastseen": "2018-11-15T16:29:15.691580"
+  },
+  "t-w1064-ms-380": {
+    "datacenter": "mdc2",
+    "idle": 2599,
+    "lastseen": "2018-11-15T15:58:59.649696"
+  },
+  "t-w1064-ms-381": {
+    "datacenter": "mdc2",
+    "idle": 2812,
+    "lastseen": "2018-11-15T15:55:26.875755"
+  },
+  "t-w1064-ms-382": {
+    "datacenter": "mdc2",
+    "idle": 669,
+    "lastseen": "2018-11-15T16:31:09.652734"
+  },
+  "t-w1064-ms-383": {
+    "datacenter": "mdc2",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.901421"
+  },
+  "t-w1064-ms-384": {
+    "datacenter": "mdc2",
+    "idle": 6155,
+    "lastseen": "2018-11-15T14:59:43.856140"
+  },
+  "t-w1064-ms-385": {
+    "datacenter": "mdc2",
+    "idle": 527,
+    "lastseen": "2018-11-15T16:33:32.285527"
+  },
+  "t-w1064-ms-386": {
+    "datacenter": "mdc2",
+    "idle": 3025,
+    "lastseen": "2018-11-15T15:51:54.192626"
+  },
+  "t-w1064-ms-387": {
+    "datacenter": "mdc2",
+    "idle": 817,
+    "lastseen": "2018-11-15T16:28:41.564285"
+  },
+  "t-w1064-ms-388": {
+    "datacenter": "mdc2",
+    "idle": 13404,
+    "lastseen": "2018-11-15T12:58:54.769063"
+  },
+  "t-w1064-ms-389": {
+    "datacenter": "mdc2",
+    "idle": 1209,
+    "lastseen": "2018-11-15T16:22:10.057929"
+  },
+  "t-w1064-ms-390": {
+    "datacenter": "mdc2",
+    "idle": 584,
+    "lastseen": "2018-11-15T16:32:35.148344"
+  },
+  "t-w1064-ms-406": {
+    "datacenter": "mdc2",
+    "idle": 3667,
+    "lastseen": "2018-11-15T15:41:12.427839"
+  },
+  "t-w1064-ms-407": {
+    "datacenter": "mdc2",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.858278"
+  },
+  "t-w1064-ms-408": {
+    "datacenter": "mdc2",
+    "idle": 1082,
+    "lastseen": "2018-11-15T16:24:17.201641"
+  },
+  "t-w1064-ms-409": {
+    "datacenter": "mdc2",
+    "idle": 252967,
+    "lastseen": "2018-11-12T18:26:12.453992"
+  },
+  "t-w1064-ms-410": {
+    "datacenter": "mdc2",
+    "idle": 562,
+    "lastseen": "2018-11-15T16:32:56.600706"
+  },
+  "t-w1064-ms-411": {
+    "datacenter": "mdc2",
+    "idle": 6081,
+    "lastseen": "2018-11-15T15:00:57.640942"
+  },
+  "t-w1064-ms-412": {
+    "datacenter": "mdc2",
+    "idle": 12223,
+    "lastseen": "2018-11-15T13:18:36.122377"
+  },
+  "t-w1064-ms-413": {
+    "datacenter": "mdc2",
+    "idle": 2568,
+    "lastseen": "2018-11-15T15:59:30.892393"
+  },
+  "t-w1064-ms-414": {
+    "datacenter": "mdc2",
+    "idle": 722,
+    "lastseen": "2018-11-15T16:30:16.809661"
+  },
+  "t-w1064-ms-415": {
+    "datacenter": "mdc2",
+    "idle": 5267,
+    "lastseen": "2018-11-15T15:14:31.606463"
+  },
+  "t-w1064-ms-416": {
+    "datacenter": "mdc2",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:13.599846"
+  },
+  "t-w1064-ms-417": {
+    "datacenter": "mdc2",
+    "idle": 1159,
+    "lastseen": "2018-11-15T16:22:59.910287"
+  },
+  "t-w1064-ms-418": {
+    "datacenter": "mdc2",
+    "idle": 760,
+    "lastseen": "2018-11-15T16:29:39.437976"
+  },
+  "t-w1064-ms-419": {
+    "datacenter": "mdc2",
+    "idle": 250,
+    "lastseen": "2018-11-15T16:38:09.283950"
+  },
+  "t-w1064-ms-420": {
+    "datacenter": "mdc2",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:14.130780"
+  },
+  "t-w1064-ms-421": {
+    "datacenter": "mdc2",
+    "idle": 37,
+    "lastseen": "2018-11-15T16:41:42.393451"
+  },
+  "t-w1064-ms-422": {
+    "datacenter": "mdc2",
+    "idle": 12230,
+    "lastseen": "2018-11-15T13:18:28.809526"
+  },
+  "t-w1064-ms-423": {
+    "datacenter": "mdc2",
+    "idle": 1752,
+    "lastseen": "2018-11-15T16:13:07.195419"
+  },
+  "t-w1064-ms-424": {
+    "datacenter": "mdc2",
+    "idle": 1347,
+    "lastseen": "2018-11-15T16:19:52.455179"
+  },
+  "t-w1064-ms-425": {
+    "datacenter": "mdc2",
+    "idle": 2990,
+    "lastseen": "2018-11-15T15:52:29.465858"
+  },
+  "t-w1064-ms-426": {
+    "datacenter": "mdc2",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.909938"
+  },
+  "t-w1064-ms-427": {
+    "datacenter": "mdc2",
+    "idle": 789,
+    "lastseen": "2018-11-15T16:29:10.259089"
+  },
+  "t-w1064-ms-428": {
+    "datacenter": "mdc2",
+    "idle": 351,
+    "lastseen": "2018-11-15T16:36:28.489077"
+  },
+  "t-w1064-ms-429": {
+    "datacenter": "mdc2",
+    "idle": 790,
+    "lastseen": "2018-11-15T16:29:08.569792"
+  },
+  "t-w1064-ms-430": {
+    "datacenter": "mdc2",
+    "idle": 656,
+    "lastseen": "2018-11-15T16:31:23.184154"
+  },
+  "t-w1064-ms-431": {
+    "datacenter": "mdc2",
+    "idle": 1279,
+    "lastseen": "2018-11-15T16:21:00.419916"
+  },
+  "t-w1064-ms-432": {
+    "datacenter": "mdc2",
+    "idle": 1287,
+    "lastseen": "2018-11-15T16:20:51.602062"
+  },
+  "t-w1064-ms-433": {
+    "datacenter": "mdc2",
+    "idle": 810,
+    "lastseen": "2018-11-15T16:28:48.706485"
+  },
+  "t-w1064-ms-434": {
+    "datacenter": "mdc2",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.891694"
+  },
+  "t-w1064-ms-435": {
+    "datacenter": "mdc2",
+    "idle": 777,
+    "lastseen": "2018-11-15T16:29:22.111658"
+  },
+  "t-w1064-ms-451": {
+    "datacenter": "mdc2",
+    "idle": 768,
+    "lastseen": "2018-11-15T16:29:30.724842"
+  },
+  "t-w1064-ms-452": {
+    "datacenter": "mdc2",
+    "idle": 846,
+    "lastseen": "2018-11-15T16:28:12.606455"
+  },
+  "t-w1064-ms-453": {
+    "datacenter": "mdc2",
+    "idle": 702,
+    "lastseen": "2018-11-15T16:30:36.699519"
+  },
+  "t-w1064-ms-454": {
+    "datacenter": "mdc2",
+    "idle": 791,
+    "lastseen": "2018-11-15T16:29:08.484394"
+  },
+  "t-w1064-ms-455": {
+    "datacenter": "mdc2",
+    "idle": 12417,
+    "lastseen": "2018-11-15T13:15:21.625561"
+  },
+  "t-w1064-ms-456": {
+    "datacenter": "mdc2",
+    "idle": 286,
+    "lastseen": "2018-11-15T16:37:32.742495"
+  },
+  "t-w1064-ms-457": {
+    "datacenter": "mdc2",
+    "idle": 873,
+    "lastseen": "2018-11-15T16:27:46.103036"
+  },
+  "t-w1064-ms-458": {
+    "datacenter": "mdc2",
+    "idle": 256,
+    "lastseen": "2018-11-15T16:38:03.226788"
+  },
+  "t-w1064-ms-459": {
+    "datacenter": "mdc2",
+    "idle": 514810,
+    "lastseen": "2018-11-09T17:42:08.700420"
+  },
+  "t-w1064-ms-460": {
+    "datacenter": "mdc2",
+    "idle": 14346,
+    "lastseen": "2018-11-15T12:43:12.723506"
+  },
+  "t-w1064-ms-461": {
+    "datacenter": "mdc2",
+    "idle": 982,
+    "lastseen": "2018-11-15T16:25:56.891735"
+  },
+  "t-w1064-ms-462": {
+    "datacenter": "mdc2",
+    "idle": 1025,
+    "lastseen": "2018-11-15T16:25:13.712644"
+  },
+  "t-w1064-ms-463": {
+    "datacenter": "mdc2",
+    "idle": 1284,
+    "lastseen": "2018-11-15T16:20:54.916621"
+  },
+  "t-w1064-ms-464": {
+    "datacenter": "mdc2",
+    "idle": 877,
+    "lastseen": "2018-11-15T16:27:42.276938"
+  },
+  "t-w1064-ms-466": {
+    "datacenter": "mdc2",
+    "idle": 759,
+    "lastseen": "2018-11-15T16:29:39.775480"
+  },
+  "t-w1064-ms-467": {
+    "datacenter": "mdc2",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.148170"
+  },
+  "t-w1064-ms-468": {
+    "datacenter": "mdc2",
+    "idle": 12223,
+    "lastseen": "2018-11-15T13:18:36.233159"
+  },
+  "t-w1064-ms-469": {
+    "datacenter": "mdc2",
+    "idle": 861,
+    "lastseen": "2018-11-15T16:27:58.256136"
+  },
+  "t-w1064-ms-470": {
+    "datacenter": "mdc2",
+    "idle": 2130,
+    "lastseen": "2018-11-15T16:06:49.157670"
+  },
+  "t-w1064-ms-471": {
+    "datacenter": "mdc2",
+    "idle": 154,
+    "lastseen": "2018-11-15T16:39:44.814797"
+  },
+  "t-w1064-ms-472": {
+    "datacenter": "mdc2",
+    "idle": 915,
+    "lastseen": "2018-11-15T16:27:03.996312"
+  },
+  "t-w1064-ms-473": {
+    "datacenter": "mdc2",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.267347"
+  },
+  "t-w1064-ms-475": {
+    "datacenter": "mdc2",
+    "idle": 165,
+    "lastseen": "2018-11-15T16:39:33.670472"
+  },
+  "t-w1064-ms-476": {
+    "datacenter": "mdc2",
+    "idle": 1718,
+    "lastseen": "2018-11-15T16:13:40.692736"
+  },
+  "t-w1064-ms-477": {
+    "datacenter": "mdc2",
+    "idle": 1913,
+    "lastseen": "2018-11-15T16:10:26.476949"
+  },
+  "t-w1064-ms-478": {
+    "datacenter": "mdc2",
+    "idle": 1001,
+    "lastseen": "2018-11-15T16:25:37.943099"
+  },
+  "t-w1064-ms-479": {
+    "datacenter": "mdc2",
+    "idle": 13417,
+    "lastseen": "2018-11-15T12:58:42.461939"
+  },
+  "t-w1064-ms-480": {
+    "datacenter": "mdc2",
+    "idle": 808,
+    "lastseen": "2018-11-15T16:28:51.184147"
+  },
+  "t-w1064-ms-496": {
+    "datacenter": "mdc2",
+    "idle": 219,
+    "lastseen": "2018-11-15T16:38:39.844544"
+  },
+  "t-w1064-ms-497": {
+    "datacenter": "mdc2",
+    "idle": 131,
+    "lastseen": "2018-11-15T16:40:08.154230"
+  },
+  "t-w1064-ms-498": {
+    "datacenter": "mdc2",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.862166"
+  },
+  "t-w1064-ms-499": {
+    "datacenter": "mdc2",
+    "idle": 2965,
+    "lastseen": "2018-11-15T15:52:54.070367"
+  },
+  "t-w1064-ms-500": {
+    "datacenter": "mdc2",
+    "idle": 12958,
+    "lastseen": "2018-11-15T13:06:21.112321"
+  },
+  "t-w1064-ms-501": {
+    "datacenter": "mdc2",
+    "idle": 12137,
+    "lastseen": "2018-11-15T13:20:02.229319"
+  },
+  "t-w1064-ms-502": {
+    "datacenter": "mdc2",
+    "idle": 1527,
+    "lastseen": "2018-11-15T16:16:52.128428"
+  },
+  "t-w1064-ms-503": {
+    "datacenter": "mdc2",
+    "idle": 574,
+    "lastseen": "2018-11-15T16:32:44.912772"
+  },
+  "t-w1064-ms-504": {
+    "datacenter": "mdc2",
+    "idle": 5554,
+    "lastseen": "2018-11-15T15:09:44.996198"
+  },
+  "t-w1064-ms-505": {
+    "datacenter": "mdc2",
+    "idle": 1894,
+    "lastseen": "2018-11-15T16:10:44.893082"
+  },
+  "t-w1064-ms-506": {
+    "datacenter": "mdc2",
+    "idle": 2504,
+    "lastseen": "2018-11-15T16:00:35.089128"
+  },
+  "t-w1064-ms-507": {
+    "datacenter": "mdc2",
+    "idle": 16345,
+    "lastseen": "2018-11-15T12:09:54.074571"
+  },
+  "t-w1064-ms-508": {
+    "datacenter": "mdc2",
+    "idle": 1806,
+    "lastseen": "2018-11-15T16:12:13.321024"
+  },
+  "t-w1064-ms-509": {
+    "datacenter": "mdc2",
+    "idle": 2708,
+    "lastseen": "2018-11-15T15:57:10.747738"
+  },
+  "t-w1064-ms-510": {
+    "datacenter": "mdc2",
+    "idle": 1814,
+    "lastseen": "2018-11-15T16:12:04.844622"
+  },
+  "t-w1064-ms-511": {
+    "datacenter": "mdc2",
+    "idle": 772,
+    "lastseen": "2018-11-15T16:29:27.167088"
+  },
+  "t-w1064-ms-512": {
+    "datacenter": "mdc2",
+    "idle": 151,
+    "lastseen": "2018-11-15T16:39:48.060801"
+  },
+  "t-w1064-ms-513": {
+    "datacenter": "mdc2",
+    "idle": 13404,
+    "lastseen": "2018-11-15T12:58:54.665729"
+  },
+  "t-w1064-ms-514": {
+    "datacenter": "mdc2",
+    "idle": 2487,
+    "lastseen": "2018-11-15T16:00:52.154789"
+  },
+  "t-w1064-ms-515": {
+    "datacenter": "mdc2",
+    "idle": 330,
+    "lastseen": "2018-11-15T16:36:49.418992"
+  },
+  "t-w1064-ms-516": {
+    "datacenter": "mdc2",
+    "idle": 1179,
+    "lastseen": "2018-11-15T16:22:39.836931"
+  },
+  "t-w1064-ms-517": {
+    "datacenter": "mdc2",
+    "idle": 2286,
+    "lastseen": "2018-11-15T16:04:12.687355"
+  },
+  "t-w1064-ms-518": {
+    "datacenter": "mdc2",
+    "idle": 1026,
+    "lastseen": "2018-11-15T16:25:13.302687"
+  },
+  "t-w1064-ms-519": {
+    "datacenter": "mdc2",
+    "idle": 3861,
+    "lastseen": "2018-11-15T15:37:58.316643"
+  },
+  "t-w1064-ms-520": {
+    "datacenter": "mdc2",
+    "idle": 498,
+    "lastseen": "2018-11-15T16:34:00.579751"
+  },
+  "t-w1064-ms-521": {
+    "datacenter": "mdc2",
+    "idle": 1367,
+    "lastseen": "2018-11-15T16:19:32.457264"
+  },
+  "t-w1064-ms-522": {
+    "datacenter": "mdc2",
+    "idle": 550,
+    "lastseen": "2018-11-15T16:33:09.353069"
+  },
+  "t-w1064-ms-523": {
+    "datacenter": "mdc2",
+    "idle": 1889,
+    "lastseen": "2018-11-15T16:10:50.459856"
+  },
+  "t-w1064-ms-524": {
+    "datacenter": "mdc2",
+    "idle": 2318,
+    "lastseen": "2018-11-15T16:03:40.515418"
+  },
+  "t-w1064-ms-525": {
+    "datacenter": "mdc2",
+    "idle": 1170,
+    "lastseen": "2018-11-15T16:22:48.935202"
+  },
+  "t-w1064-ms-541": {
+    "datacenter": "mdc2",
+    "idle": 2571,
+    "lastseen": "2018-11-15T15:59:27.863333"
+  },
+  "t-w1064-ms-542": {
+    "datacenter": "mdc2",
+    "idle": 1858,
+    "lastseen": "2018-11-15T16:11:21.033033"
+  },
+  "t-w1064-ms-543": {
+    "datacenter": "mdc2",
+    "idle": 2523,
+    "lastseen": "2018-11-15T16:00:16.347984"
+  },
+  "t-w1064-ms-544": {
+    "datacenter": "mdc2",
+    "idle": 107,
+    "lastseen": "2018-11-15T16:40:31.979010"
+  },
+  "t-w1064-ms-545": {
+    "datacenter": "mdc2",
+    "idle": 191,
+    "lastseen": "2018-11-15T16:39:07.717892"
+  },
+  "t-w1064-ms-546": {
+    "datacenter": "mdc2",
+    "idle": 5285,
+    "lastseen": "2018-11-15T15:14:13.541371"
+  },
+  "t-w1064-ms-547": {
+    "datacenter": "mdc2",
+    "idle": 786,
+    "lastseen": "2018-11-15T16:29:13.417921"
+  },
+  "t-w1064-ms-548": {
+    "datacenter": "mdc2",
+    "idle": 258,
+    "lastseen": "2018-11-15T16:38:01.463167"
+  },
+  "t-w1064-ms-549": {
+    "datacenter": "mdc2",
+    "idle": 2309,
+    "lastseen": "2018-11-15T16:03:50.353669"
+  },
+  "t-w1064-ms-550": {
+    "datacenter": "mdc2",
+    "idle": 3100,
+    "lastseen": "2018-11-15T15:50:39.393705"
+  },
+  "t-w1064-ms-551": {
+    "datacenter": "mdc2",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:33.089029"
+  },
+  "t-w1064-ms-552": {
+    "datacenter": "mdc2",
+    "idle": 3345,
+    "lastseen": "2018-11-15T15:46:33.978114"
+  },
+  "t-w1064-ms-553": {
+    "datacenter": "mdc2",
+    "idle": 2740,
+    "lastseen": "2018-11-15T15:56:39.441948"
+  },
+  "t-w1064-ms-554": {
+    "datacenter": "mdc2",
+    "idle": 2869,
+    "lastseen": "2018-11-15T15:54:29.838639"
+  },
+  "t-w1064-ms-555": {
+    "datacenter": "mdc2",
+    "idle": 2776,
+    "lastseen": "2018-11-15T15:56:03.463404"
+  },
+  "t-w1064-ms-556": {
+    "datacenter": "mdc2",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.900080"
+  },
+  "t-w1064-ms-557": {
+    "datacenter": "mdc2",
+    "idle": 2503,
+    "lastseen": "2018-11-15T16:00:36.354077"
+  },
+  "t-w1064-ms-558": {
+    "datacenter": "mdc2",
+    "idle": 17385,
+    "lastseen": "2018-11-15T11:52:34.491224"
+  },
+  "t-w1064-ms-559": {
+    "datacenter": "mdc2",
+    "idle": 763,
+    "lastseen": "2018-11-15T16:29:35.656153"
+  },
+  "t-w1064-ms-560": {
+    "datacenter": "mdc2",
+    "idle": 5000,
+    "lastseen": "2018-11-15T15:18:58.677861"
+  },
+  "t-w1064-ms-561": {
+    "datacenter": "mdc2",
+    "idle": 1354,
+    "lastseen": "2018-11-15T16:19:44.545190"
+  },
+  "t-w1064-ms-562": {
+    "datacenter": "mdc2",
+    "idle": 3668,
+    "lastseen": "2018-11-15T15:41:11.288001"
+  },
+  "t-w1064-ms-563": {
+    "datacenter": "mdc2",
+    "idle": 1970,
+    "lastseen": "2018-11-15T16:09:29.499519"
+  },
+  "t-w1064-ms-564": {
+    "datacenter": "mdc2",
+    "idle": 671,
+    "lastseen": "2018-11-15T16:31:08.474775"
+  },
+  "t-w1064-ms-565": {
+    "datacenter": "mdc2",
+    "idle": 1461,
+    "lastseen": "2018-11-15T16:17:58.053714"
+  },
+  "t-w1064-ms-566": {
+    "datacenter": "mdc2",
+    "idle": 985,
+    "lastseen": "2018-11-15T16:25:54.047714"
+  },
+  "t-w1064-ms-567": {
+    "datacenter": "mdc2",
+    "idle": 3152,
+    "lastseen": "2018-11-15T15:49:46.743387"
+  },
+  "t-w1064-ms-568": {
+    "datacenter": "mdc2",
+    "idle": 768,
+    "lastseen": "2018-11-15T16:29:30.723469"
+  },
+  "t-w1064-ms-569": {
+    "datacenter": "mdc2",
+    "idle": 12996,
+    "lastseen": "2018-11-15T13:05:42.911795"
+  },
+  "t-w1064-ms-570": {
+    "datacenter": "mdc2",
+    "idle": 83,
+    "lastseen": "2018-11-15T16:40:55.835704"
+  },
+  "t-w1064-ms-582": {
+    "datacenter": "mdc2",
+    "idle": 873,
+    "lastseen": "2018-11-15T16:27:46.011978"
+  },
+  "t-w1064-ms-583": {
+    "datacenter": "mdc2",
+    "idle": 1432,
+    "lastseen": "2018-11-15T16:18:26.723468"
+  },
+  "t-w1064-ms-584": {
+    "datacenter": "mdc2",
+    "idle": 140,
+    "lastseen": "2018-11-15T16:39:59.076652"
+  },
+  "t-w1064-ms-585": {
+    "datacenter": "mdc2",
+    "idle": 1473,
+    "lastseen": "2018-11-15T16:17:46.122961"
+  },
+  "t-w1064-ms-586": {
+    "datacenter": "mdc2",
+    "idle": 6544,
+    "lastseen": "2018-11-15T14:53:15.272732"
+  },
+  "t-w1064-ms-587": {
+    "datacenter": "mdc2",
+    "idle": 3936,
+    "lastseen": "2018-11-15T15:36:43.189447"
+  },
+  "t-w1064-ms-588": {
+    "datacenter": "mdc2",
+    "idle": 1045,
+    "lastseen": "2018-11-15T16:24:54.431199"
+  },
+  "t-w1064-ms-589": {
+    "datacenter": "mdc2",
+    "idle": 5165,
+    "lastseen": "2018-11-15T15:16:14.413460"
+  },
+  "t-w1064-ms-590": {
+    "datacenter": "mdc2",
+    "idle": 603,
+    "lastseen": "2018-11-15T16:32:15.514560"
+  },
+  "t-w1064-ms-591": {
+    "datacenter": "mdc2",
+    "idle": 1467,
+    "lastseen": "2018-11-15T16:17:52.355142"
+  },
+  "t-w1064-ms-592": {
+    "datacenter": "mdc2",
+    "idle": 736,
+    "lastseen": "2018-11-15T16:30:02.697669"
+  },
+  "t-w1064-ms-593": {
+    "datacenter": "mdc2",
+    "idle": 499,
+    "lastseen": "2018-11-15T16:33:59.559289"
+  },
+  "t-w1064-ms-594": {
+    "datacenter": "mdc2",
+    "idle": 610,
+    "lastseen": "2018-11-15T16:32:08.818633"
+  },
+  "t-w1064-ms-595": {
+    "datacenter": "mdc2",
+    "idle": 451,
+    "lastseen": "2018-11-15T16:34:48.005124"
+  },
+  "t-w1064-ms-596": {
+    "datacenter": "mdc2",
+    "idle": 255,
+    "lastseen": "2018-11-15T16:38:04.391959"
+  },
+  "t-w1064-ms-597": {
+    "datacenter": "mdc2",
+    "idle": 2166,
+    "lastseen": "2018-11-15T16:06:12.689880"
+  },
+  "t-w1064-ms-598": {
+    "datacenter": "mdc2",
+    "idle": 297,
+    "lastseen": "2018-11-15T16:37:21.703553"
+  },
+  "t-w1064-ux-001": {
+    "datacenter": "mtv2",
+    "idle": 14993,
+    "lastseen": "2018-11-15T12:32:25.759139"
+  },
+  "t-w1064-ux-002": {
+    "datacenter": "mtv2",
+    "idle": 14485,
+    "lastseen": "2018-11-15T12:40:53.888730"
+  },
+  "t-w1064-ux-003": {
+    "datacenter": "mtv2",
+    "idle": 15156,
+    "lastseen": "2018-11-15T12:29:42.901236"
+  },
+  "t-w1064-ux-004": {
+    "datacenter": "mtv2",
+    "idle": 14053,
+    "lastseen": "2018-11-15T12:48:05.839905"
+  },
+  "t-w1064-ux-005": {
+    "datacenter": "mtv2",
+    "idle": 3361,
+    "lastseen": "2018-11-15T15:46:17.537139"
+  },
+  "t-w1064-ux-006": {
+    "datacenter": "mtv2",
+    "idle": 13731,
+    "lastseen": "2018-11-15T12:53:27.626053"
+  },
+  "t-w1064-ux-007": {
+    "datacenter": "mtv2",
+    "idle": 14044,
+    "lastseen": "2018-11-15T12:48:15.256944"
+  },
+  "t-w1064-ux-008": {
+    "datacenter": "mtv2",
+    "idle": 13008,
+    "lastseen": "2018-11-15T13:05:30.879624"
+  },
+  "t-w1064-ux-009": {
+    "datacenter": "mtv2",
+    "idle": 13761,
+    "lastseen": "2018-11-15T12:52:58.447511"
+  },
+  "t-w1064-ux-010": {
+    "datacenter": "mtv2",
+    "idle": 14298,
+    "lastseen": "2018-11-15T12:44:00.712983"
+  },
+  "t-w1064-ux-011": {
+    "datacenter": "mtv2",
+    "idle": 13627,
+    "lastseen": "2018-11-15T12:55:12.497967"
+  },
+  "t-w1064-ux-012": {
+    "datacenter": "mtv2",
+    "idle": 15007,
+    "lastseen": "2018-11-15T12:32:12.250041"
+  },
+  "t-w1064-ux-013": {
+    "datacenter": "mtv2",
+    "idle": 2867,
+    "lastseen": "2018-11-15T15:54:32.426136"
+  },
+  "t-w1064-ux-014": {
+    "datacenter": "mtv2",
+    "idle": 15435,
+    "lastseen": "2018-11-15T12:25:03.750938"
+  },
+  "t-w1064-ux-015": {
+    "datacenter": "mtv2",
+    "idle": 15046,
+    "lastseen": "2018-11-15T12:31:33.004301"
+  },
+  "t-w1064-ux-016": {
+    "datacenter": "mtv2",
+    "idle": 14405,
+    "lastseen": "2018-11-15T12:42:13.780412"
+  },
+  "t-yosemite-r7-021": {
+    "datacenter": "mdc2",
+    "idle": 860,
+    "lastseen": "2018-11-15T16:27:58.631286"
+  },
+  "t-yosemite-r7-022": {
+    "datacenter": "mdc2",
+    "idle": 491,
+    "lastseen": "2018-11-15T16:34:08.309454"
+  },
+  "t-yosemite-r7-023": {
+    "datacenter": "mdc2",
+    "idle": 439,
+    "lastseen": "2018-11-15T16:34:59.851821"
+  },
+  "t-yosemite-r7-024": {
+    "datacenter": "mdc2",
+    "idle": 107,
+    "lastseen": "2018-11-15T16:40:32.366418"
+  },
+  "t-yosemite-r7-025": {
+    "datacenter": "mdc2",
+    "idle": 899,
+    "lastseen": "2018-11-15T16:27:20.269691"
+  },
+  "t-yosemite-r7-026": {
+    "datacenter": "mdc2",
+    "idle": 414,
+    "lastseen": "2018-11-15T16:35:25.185071"
+  },
+  "t-yosemite-r7-027": {
+    "datacenter": "mdc2",
+    "idle": 1002,
+    "lastseen": "2018-11-15T16:25:37.312505"
+  },
+  "t-yosemite-r7-028": {
+    "datacenter": "mdc2",
+    "idle": 248,
+    "lastseen": "2018-11-15T16:38:10.616062"
+  },
+  "t-yosemite-r7-029": {
+    "datacenter": "mdc2",
+    "idle": 447,
+    "lastseen": "2018-11-15T16:34:51.785310"
+  },
+  "t-yosemite-r7-030": {
+    "datacenter": "mdc2",
+    "idle": 814,
+    "lastseen": "2018-11-15T16:28:44.619671"
+  },
+  "t-yosemite-r7-031": {
+    "datacenter": "mdc2",
+    "idle": 1473,
+    "lastseen": "2018-11-15T16:17:46.149222"
+  },
+  "t-yosemite-r7-032": {
+    "datacenter": "mdc2",
+    "idle": 92,
+    "lastseen": "2018-11-15T16:40:46.602490"
+  },
+  "t-yosemite-r7-033": {
+    "datacenter": "mdc2",
+    "idle": 1088,
+    "lastseen": "2018-11-15T16:24:10.633920"
+  },
+  "t-yosemite-r7-034": {
+    "datacenter": "mdc2",
+    "idle": 422,
+    "lastseen": "2018-11-15T16:35:17.355831"
+  },
+  "t-yosemite-r7-035": {
+    "datacenter": "mdc2",
+    "idle": 768,
+    "lastseen": "2018-11-15T16:29:31.401895"
+  },
+  "t-yosemite-r7-036": {
+    "datacenter": "mdc2",
+    "idle": 2193,
+    "lastseen": "2018-11-15T16:05:46.279970"
+  },
+  "t-yosemite-r7-037": {
+    "datacenter": "mdc2",
+    "idle": 705,
+    "lastseen": "2018-11-15T16:30:34.436612"
+  },
+  "t-yosemite-r7-038": {
+    "datacenter": "mdc2",
+    "idle": 701,
+    "lastseen": "2018-11-15T16:30:38.415545"
+  },
+  "t-yosemite-r7-039": {
+    "datacenter": "mdc2",
+    "idle": 739,
+    "lastseen": "2018-11-15T16:29:59.867166"
+  },
+  "t-yosemite-r7-040": {
+    "datacenter": "mdc2",
+    "idle": 544,
+    "lastseen": "2018-11-15T16:33:14.626753"
+  },
+  "t-yosemite-r7-041": {
+    "datacenter": "mdc2",
+    "idle": 57459,
+    "lastseen": "2018-11-15T00:44:40.075782"
+  },
+  "t-yosemite-r7-042": {
+    "datacenter": "mdc2",
+    "idle": 430,
+    "lastseen": "2018-11-15T16:35:09.023936"
+  },
+  "t-yosemite-r7-043": {
+    "datacenter": "mdc2",
+    "idle": 351,
+    "lastseen": "2018-11-15T16:36:28.254572"
+  },
+  "t-yosemite-r7-044": {
+    "datacenter": "mdc2",
+    "idle": 714,
+    "lastseen": "2018-11-15T16:30:25.028715"
+  },
+  "t-yosemite-r7-045": {
+    "datacenter": "mdc2",
+    "idle": 42743,
+    "lastseen": "2018-11-15T04:49:56.105440"
+  },
+  "t-yosemite-r7-046": {
+    "datacenter": "mdc2",
+    "idle": 1234,
+    "lastseen": "2018-11-15T16:21:45.405995"
+  },
+  "t-yosemite-r7-047": {
+    "datacenter": "mdc2",
+    "idle": 475,
+    "lastseen": "2018-11-15T16:34:24.145065"
+  },
+  "t-yosemite-r7-048": {
+    "datacenter": "mdc2",
+    "idle": 504881,
+    "lastseen": "2018-11-09T20:27:38.074582"
+  },
+  "t-yosemite-r7-049": {
+    "datacenter": "mdc2",
+    "idle": 2235,
+    "lastseen": "2018-11-15T16:05:04.497378"
+  },
+  "t-yosemite-r7-050": {
+    "datacenter": "mdc2",
+    "idle": 911,
+    "lastseen": "2018-11-15T16:27:07.795437"
+  },
+  "t-yosemite-r7-051": {
+    "datacenter": "mdc2",
+    "idle": 432,
+    "lastseen": "2018-11-15T16:35:07.429723"
+  },
+  "t-yosemite-r7-052": {
+    "datacenter": "mdc2",
+    "idle": 0,
+    "lastseen": "2018-11-15T16:42:19.216600"
+  },
+  "t-yosemite-r7-053": {
+    "datacenter": "mdc2",
+    "idle": 829,
+    "lastseen": "2018-11-15T16:28:30.433266"
+  },
+  "t-yosemite-r7-054": {
+    "datacenter": "mdc2",
+    "idle": 7,
+    "lastseen": "2018-11-15T16:42:12.355815"
+  },
+  "t-yosemite-r7-055": {
+    "datacenter": "mdc2",
+    "idle": 1107,
+    "lastseen": "2018-11-15T16:23:52.165018"
+  },
+  "t-yosemite-r7-056": {
+    "datacenter": "mdc2",
+    "idle": 16,
+    "lastseen": "2018-11-15T16:42:02.629402"
+  },
+  "t-yosemite-r7-057": {
+    "datacenter": "mdc2",
+    "idle": 5904,
+    "lastseen": "2018-11-15T15:03:54.838190"
+  },
+  "t-yosemite-r7-058": {
+    "datacenter": "mdc2",
+    "idle": 686,
+    "lastseen": "2018-11-15T16:30:53.416641"
+  },
+  "t-yosemite-r7-059": {
+    "datacenter": "mdc2",
+    "idle": 2063,
+    "lastseen": "2018-11-15T16:07:55.599691"
+  },
+  "t-yosemite-r7-060": {
+    "datacenter": "mdc2",
+    "idle": 959,
+    "lastseen": "2018-11-15T16:26:19.915898"
+  },
+  "t-yosemite-r7-061": {
+    "datacenter": "mdc2",
+    "idle": 1834,
+    "lastseen": "2018-11-15T16:11:44.541318"
+  },
+  "t-yosemite-r7-062": {
+    "datacenter": "mdc2",
+    "idle": 2593,
+    "lastseen": "2018-11-15T15:59:05.799439"
+  },
+  "t-yosemite-r7-063": {
+    "datacenter": "mdc2",
+    "idle": 1273,
+    "lastseen": "2018-11-15T16:21:06.209158"
+  },
+  "t-yosemite-r7-064": {
+    "datacenter": "mdc2",
+    "idle": 99,
+    "lastseen": "2018-11-15T16:40:40.009053"
+  },
+  "t-yosemite-r7-065": {
+    "datacenter": "mdc2",
+    "idle": 1017,
+    "lastseen": "2018-11-15T16:25:21.785986"
+  },
+  "t-yosemite-r7-066": {
+    "datacenter": "mdc2",
+    "idle": 25,
+    "lastseen": "2018-11-15T16:41:54.294354"
+  },
+  "t-yosemite-r7-067": {
+    "datacenter": "mdc2",
+    "idle": 2186,
+    "lastseen": "2018-11-15T16:05:52.720624"
+  },
+  "t-yosemite-r7-068": {
+    "datacenter": "mdc2",
+    "idle": 242,
+    "lastseen": "2018-11-15T16:38:17.414966"
+  },
+  "t-yosemite-r7-069": {
+    "datacenter": "mdc2",
+    "idle": 1805,
+    "lastseen": "2018-11-15T16:12:13.856818"
+  },
+  "t-yosemite-r7-070": {
+    "datacenter": "mdc2",
+    "idle": 578,
+    "lastseen": "2018-11-15T16:32:41.458772"
+  },
+  "t-yosemite-r7-071": {
+    "datacenter": "mdc2",
+    "idle": 318,
+    "lastseen": "2018-11-15T16:37:01.414961"
+  },
+  "t-yosemite-r7-073": {
+    "datacenter": "mdc2",
+    "idle": 215,
+    "lastseen": "2018-11-15T16:38:44.065454"
+  },
+  "t-yosemite-r7-074": {
+    "datacenter": "mdc2",
+    "idle": -3,
+    "lastseen": "2018-11-15T16:42:22.550274"
+  },
+  "t-yosemite-r7-075": {
+    "datacenter": "mdc2",
+    "idle": 34669,
+    "lastseen": "2018-11-15T07:04:29.716560"
+  },
+  "t-yosemite-r7-076": {
+    "datacenter": "mdc2",
+    "idle": 1365,
+    "lastseen": "2018-11-15T16:19:33.789721"
+  },
+  "t-yosemite-r7-077": {
+    "datacenter": "mdc2",
+    "idle": 181,
+    "lastseen": "2018-11-15T16:39:17.782476"
+  },
+  "t-yosemite-r7-078": {
+    "datacenter": "mdc2",
+    "idle": 1,
+    "lastseen": "2018-11-15T16:42:18.290039"
+  },
+  "t-yosemite-r7-079": {
+    "datacenter": "mdc2",
+    "idle": 1556,
+    "lastseen": "2018-11-15T16:16:22.965310"
+  },
+  "t-yosemite-r7-080": {
+    "datacenter": "mdc2",
+    "idle": 148,
+    "lastseen": "2018-11-15T16:39:51.024038"
+  },
+  "t-yosemite-r7-081": {
+    "datacenter": "mdc2",
+    "idle": 816,
+    "lastseen": "2018-11-15T16:28:42.638907"
+  },
+  "t-yosemite-r7-082": {
+    "datacenter": "mdc2",
+    "idle": 770,
+    "lastseen": "2018-11-15T16:29:29.110696"
+  },
+  "t-yosemite-r7-083": {
+    "datacenter": "mdc2",
+    "idle": 909,
+    "lastseen": "2018-11-15T16:27:09.663041"
+  },
+  "t-yosemite-r7-084": {
+    "datacenter": "mdc2",
+    "idle": 999,
+    "lastseen": "2018-11-15T16:25:40.223110"
+  },
+  "t-yosemite-r7-085": {
+    "datacenter": "mdc2",
+    "idle": 2241,
+    "lastseen": "2018-11-15T16:04:58.489469"
+  },
+  "t-yosemite-r7-086": {
+    "datacenter": "mdc2",
+    "idle": 640,
+    "lastseen": "2018-11-15T16:31:39.389490"
+  },
+  "t-yosemite-r7-087": {
+    "datacenter": "mdc2",
+    "idle": 635,
+    "lastseen": "2018-11-15T16:31:43.800798"
+  },
+  "t-yosemite-r7-088": {
+    "datacenter": "mdc2",
+    "idle": 118,
+    "lastseen": "2018-11-15T16:40:21.372446"
+  },
+  "t-yosemite-r7-089": {
+    "datacenter": "mdc2",
+    "idle": 1550,
+    "lastseen": "2018-11-15T16:16:29.391973"
+  },
+  "t-yosemite-r7-090": {
+    "datacenter": "mdc2",
+    "idle": 2107,
+    "lastseen": "2018-11-15T16:07:12.472633"
+  },
+  "t-yosemite-r7-091": {
+    "datacenter": "mdc2",
+    "idle": 1215,
+    "lastseen": "2018-11-15T16:22:03.619930"
+  },
+  "t-yosemite-r7-092": {
+    "datacenter": "mdc2",
+    "idle": 269,
+    "lastseen": "2018-11-15T16:37:50.357965"
+  },
+  "t-yosemite-r7-093": {
+    "datacenter": "mdc2",
+    "idle": 16,
+    "lastseen": "2018-11-15T16:42:03.342502"
+  },
+  "t-yosemite-r7-094": {
+    "datacenter": "mdc2",
+    "idle": 57,
+    "lastseen": "2018-11-15T16:41:22.261655"
+  },
+  "t-yosemite-r7-095": {
+    "datacenter": "mdc2",
+    "idle": 530,
+    "lastseen": "2018-11-15T16:33:29.101060"
+  },
+  "t-yosemite-r7-096": {
+    "datacenter": "mdc2",
+    "idle": 433,
+    "lastseen": "2018-11-15T16:35:05.989659"
+  },
+  "t-yosemite-r7-097": {
+    "datacenter": "mdc2",
+    "idle": 508,
+    "lastseen": "2018-11-15T16:33:50.704039"
+  },
+  "t-yosemite-r7-098": {
+    "datacenter": "mdc2",
+    "idle": 82,
+    "lastseen": "2018-11-15T16:40:57.016754"
+  },
+  "t-yosemite-r7-099": {
+    "datacenter": "mdc2",
+    "idle": 52,
+    "lastseen": "2018-11-15T16:41:27.117055"
+  },
+  "t-yosemite-r7-102": {
+    "datacenter": "mdc2",
+    "idle": 12959,
+    "lastseen": "2018-11-15T13:06:20.227433"
+  },
+  "t-yosemite-r7-103": {
+    "datacenter": "mdc2",
+    "idle": 659,
+    "lastseen": "2018-11-15T16:31:19.940595"
+  },
+  "t-yosemite-r7-104": {
+    "datacenter": "mdc2",
+    "idle": 660,
+    "lastseen": "2018-11-15T16:31:19.434309"
+  },
+  "t-yosemite-r7-105": {
+    "datacenter": "mdc2",
+    "idle": 462,
+    "lastseen": "2018-11-15T16:34:37.101278"
+  },
+  "t-yosemite-r7-106": {
+    "datacenter": "mdc2",
+    "idle": 1429,
+    "lastseen": "2018-11-15T16:18:30.429010"
+  },
+  "t-yosemite-r7-107": {
+    "datacenter": "mdc2",
+    "idle": 480,
+    "lastseen": "2018-11-15T16:34:18.807265"
+  },
+  "t-yosemite-r7-108": {
+    "datacenter": "mdc2",
+    "idle": 1267,
+    "lastseen": "2018-11-15T16:21:11.626451"
+  },
+  "t-yosemite-r7-109": {
+    "datacenter": "mdc2",
+    "idle": 47,
+    "lastseen": "2018-11-15T16:41:32.362274"
+  },
+  "t-yosemite-r7-110": {
+    "datacenter": "mdc2",
+    "idle": 868,
+    "lastseen": "2018-11-15T16:27:50.766338"
+  },
+  "t-yosemite-r7-111": {
+    "datacenter": "mdc2",
+    "idle": 513,
+    "lastseen": "2018-11-15T16:33:46.276091"
+  },
+  "t-yosemite-r7-112": {
+    "datacenter": "mdc2",
+    "idle": 328,
+    "lastseen": "2018-11-15T16:36:50.828518"
+  },
+  "t-yosemite-r7-113": {
+    "datacenter": "mdc2",
+    "idle": 1315,
+    "lastseen": "2018-11-15T16:20:24.045074"
+  },
+  "t-yosemite-r7-114": {
+    "datacenter": "mdc2",
+    "idle": 697,
+    "lastseen": "2018-11-15T16:30:41.869594"
+  },
+  "t-yosemite-r7-115": {
+    "datacenter": "mdc2",
+    "idle": 349,
+    "lastseen": "2018-11-15T16:36:30.414697"
+  },
+  "t-yosemite-r7-116": {
+    "datacenter": "mdc2",
+    "idle": 727,
+    "lastseen": "2018-11-15T16:30:11.998689"
+  },
+  "t-yosemite-r7-117": {
+    "datacenter": "mdc2",
+    "idle": 2531,
+    "lastseen": "2018-11-15T16:00:07.623585"
+  },
+  "t-yosemite-r7-118": {
+    "datacenter": "mdc2",
+    "idle": 1475,
+    "lastseen": "2018-11-15T16:17:43.986125"
+  },
+  "t-yosemite-r7-119": {
+    "datacenter": "mdc2",
+    "idle": 2680,
+    "lastseen": "2018-11-15T15:57:38.558742"
+  },
+  "t-yosemite-r7-120": {
+    "datacenter": "mdc2",
+    "idle": 549,
+    "lastseen": "2018-11-15T16:33:10.044416"
+  },
+  "t-yosemite-r7-121": {
+    "datacenter": "mdc2",
+    "idle": 2178,
+    "lastseen": "2018-11-15T16:06:01.111043"
+  },
+  "t-yosemite-r7-122": {
+    "datacenter": "mdc2",
+    "idle": 405,
+    "lastseen": "2018-11-15T16:35:33.880792"
+  },
+  "t-yosemite-r7-123": {
+    "datacenter": "mdc2",
+    "idle": 71,
+    "lastseen": "2018-11-15T16:41:08.167137"
+  },
+  "t-yosemite-r7-124": {
+    "datacenter": "mdc2",
+    "idle": 100,
+    "lastseen": "2018-11-15T16:40:38.780027"
+  },
+  "t-yosemite-r7-125": {
+    "datacenter": "mdc2",
+    "idle": 719,
+    "lastseen": "2018-11-15T16:30:19.565980"
+  },
+  "t-yosemite-r7-126": {
+    "datacenter": "mdc2",
+    "idle": 145,
+    "lastseen": "2018-11-15T16:39:54.183254"
+  },
+  "t-yosemite-r7-127": {
+    "datacenter": "mdc2",
+    "idle": 593,
+    "lastseen": "2018-11-15T16:32:26.469940"
+  },
+  "t-yosemite-r7-128": {
+    "datacenter": "mdc2",
+    "idle": 257,
+    "lastseen": "2018-11-15T16:38:01.749467"
+  },
+  "t-yosemite-r7-129": {
+    "datacenter": "mdc2",
+    "idle": 519,
+    "lastseen": "2018-11-15T16:33:39.593914"
+  },
+  "t-yosemite-r7-130": {
+    "datacenter": "mdc2",
+    "idle": 429,
+    "lastseen": "2018-11-15T16:35:10.135264"
+  },
+  "t-yosemite-r7-131": {
+    "datacenter": "mdc2",
+    "idle": 121,
+    "lastseen": "2018-11-15T16:40:18.368168"
+  },
+  "t-yosemite-r7-132": {
+    "datacenter": "mdc2",
+    "idle": 9,
+    "lastseen": "2018-11-15T16:42:10.142997"
+  },
+  "t-yosemite-r7-133": {
+    "datacenter": "mdc2",
+    "idle": 2609,
+    "lastseen": "2018-11-15T15:58:50.195028"
+  },
+  "t-yosemite-r7-134": {
+    "datacenter": "mdc2",
+    "idle": 69,
+    "lastseen": "2018-11-15T16:41:09.635764"
+  },
+  "t-yosemite-r7-135": {
+    "datacenter": "mdc2",
+    "idle": 2196,
+    "lastseen": "2018-11-15T16:05:42.913666"
+  },
+  "t-yosemite-r7-136": {
+    "datacenter": "mdc2",
+    "idle": 315,
+    "lastseen": "2018-11-15T16:37:03.896502"
+  },
+  "t-yosemite-r7-137": {
+    "datacenter": "mdc2",
+    "idle": 28,
+    "lastseen": "2018-11-15T16:41:50.917577"
+  },
+  "t-yosemite-r7-138": {
+    "datacenter": "mdc2",
+    "idle": 0,
+    "lastseen": "2018-11-15T16:42:18.658498"
+  },
+  "t-yosemite-r7-139": {
+    "datacenter": "mdc2",
+    "idle": 154,
+    "lastseen": "2018-11-15T16:39:44.869184"
+  },
+  "t-yosemite-r7-140": {
+    "datacenter": "mdc2",
+    "idle": 108,
+    "lastseen": "2018-11-15T16:40:31.120600"
+  },
+  "t-yosemite-r7-141": {
+    "datacenter": "mdc2",
+    "idle": 554,
+    "lastseen": "2018-11-15T16:33:05.413844"
+  },
+  "t-yosemite-r7-142": {
+    "datacenter": "mdc2",
+    "idle": 208,
+    "lastseen": "2018-11-15T16:38:51.075204"
+  },
+  "t-yosemite-r7-143": {
+    "datacenter": "mdc2",
+    "idle": 1715,
+    "lastseen": "2018-11-15T16:13:43.590376"
+  },
+  "t-yosemite-r7-144": {
+    "datacenter": "mdc2",
+    "idle": 411,
+    "lastseen": "2018-11-15T16:35:27.694420"
+  },
+  "t-yosemite-r7-145": {
+    "datacenter": "mdc2",
+    "idle": 937,
+    "lastseen": "2018-11-15T16:26:42.158075"
+  },
+  "t-yosemite-r7-146": {
+    "datacenter": "mdc2",
+    "idle": 45076,
+    "lastseen": "2018-11-15T04:11:02.947653"
+  },
+  "t-yosemite-r7-147": {
+    "datacenter": "mdc2",
+    "idle": 1291,
+    "lastseen": "2018-11-15T16:20:48.061371"
+  },
+  "t-yosemite-r7-148": {
+    "datacenter": "mdc2",
+    "idle": 2388,
+    "lastseen": "2018-11-15T16:02:30.664037"
+  },
+  "t-yosemite-r7-149": {
+    "datacenter": "mdc2",
+    "idle": 562,
+    "lastseen": "2018-11-15T16:32:57.363026"
+  },
+  "t-yosemite-r7-150": {
+    "datacenter": "mdc2",
+    "idle": 17093,
+    "lastseen": "2018-11-15T11:57:26.367891"
+  },
+  "t-yosemite-r7-151": {
+    "datacenter": "mdc2",
+    "idle": 2917,
+    "lastseen": "2018-11-15T15:53:41.905738"
+  },
+  "t-yosemite-r7-152": {
+    "datacenter": "mdc2",
+    "idle": 2250,
+    "lastseen": "2018-11-15T16:04:48.728061"
+  },
+  "t-yosemite-r7-153": {
+    "datacenter": "mdc2",
+    "idle": 57,
+    "lastseen": "2018-11-15T16:41:22.492677"
+  },
+  "t-yosemite-r7-154": {
+    "datacenter": "mdc2",
+    "idle": 144231,
+    "lastseen": "2018-11-14T00:38:27.966442"
+  },
+  "t-yosemite-r7-155": {
+    "datacenter": "mdc2",
+    "idle": 2082,
+    "lastseen": "2018-11-15T16:07:36.621297"
+  },
+  "t-yosemite-r7-156": {
+    "datacenter": "mdc2",
+    "idle": 1582,
+    "lastseen": "2018-11-15T16:15:57.001832"
+  },
+  "t-yosemite-r7-157": {
+    "datacenter": "mdc2",
+    "idle": 871,
+    "lastseen": "2018-11-15T16:27:47.597518"
+  },
+  "t-yosemite-r7-158": {
+    "datacenter": "mdc2",
+    "idle": 2564,
+    "lastseen": "2018-11-15T15:59:35.102562"
+  },
+  "t-yosemite-r7-159": {
+    "datacenter": "mdc2",
+    "idle": 641,
+    "lastseen": "2018-11-15T16:31:38.280202"
+  },
+  "t-yosemite-r7-160": {
+    "datacenter": "mdc2",
+    "idle": 731,
+    "lastseen": "2018-11-15T16:30:07.586052"
+  },
+  "t-yosemite-r7-161": {
+    "datacenter": "mdc2",
+    "idle": 120,
+    "lastseen": "2018-11-15T16:40:18.903498"
+  },
+  "t-yosemite-r7-162": {
+    "datacenter": "mdc2",
+    "idle": 2372,
+    "lastseen": "2018-11-15T16:02:47.080502"
+  },
+  "t-yosemite-r7-163": {
+    "datacenter": "mdc2",
+    "idle": 832,
+    "lastseen": "2018-11-15T16:28:27.425871"
+  },
+  "t-yosemite-r7-164": {
+    "datacenter": "mdc2",
+    "idle": 11,
+    "lastseen": "2018-11-15T16:42:08.284314"
+  },
+  "t-yosemite-r7-165": {
+    "datacenter": "mdc2",
+    "idle": 409,
+    "lastseen": "2018-11-15T16:35:30.207751"
+  },
+  "t-yosemite-r7-166": {
+    "datacenter": "mdc2",
+    "idle": 1001,
+    "lastseen": "2018-11-15T16:25:38.010931"
+  },
+  "t-yosemite-r7-167": {
+    "datacenter": "mdc2",
+    "idle": 2919,
+    "lastseen": "2018-11-15T15:53:40.205320"
+  },
+  "t-yosemite-r7-168": {
+    "datacenter": "mdc2",
+    "idle": 2438,
+    "lastseen": "2018-11-15T16:01:41.400650"
+  },
+  "t-yosemite-r7-169": {
+    "datacenter": "mdc2",
+    "idle": 350,
+    "lastseen": "2018-11-15T16:36:28.928958"
+  },
+  "t-yosemite-r7-170": {
+    "datacenter": "mdc2",
+    "idle": 337,
+    "lastseen": "2018-11-15T16:36:42.445823"
+  },
+  "t-yosemite-r7-171": {
+    "datacenter": "mdc2",
+    "idle": 16,
+    "lastseen": "2018-11-15T16:42:03.266423"
+  },
+  "t-yosemite-r7-172": {
+    "datacenter": "mdc2",
+    "idle": 372,
+    "lastseen": "2018-11-15T16:36:06.831711"
+  },
+  "t-yosemite-r7-173": {
+    "datacenter": "mdc2",
+    "idle": 863,
+    "lastseen": "2018-11-15T16:27:55.785120"
+  },
+  "t-yosemite-r7-174": {
+    "datacenter": "mdc2",
+    "idle": 368,
+    "lastseen": "2018-11-15T16:36:11.427693"
+  },
+  "t-yosemite-r7-176": {
+    "datacenter": "mdc2",
+    "idle": 805,
+    "lastseen": "2018-11-15T16:28:54.476137"
+  },
+  "t-yosemite-r7-177": {
+    "datacenter": "mdc2",
+    "idle": 51,
+    "lastseen": "2018-11-15T16:41:28.332642"
+  },
+  "t-yosemite-r7-178": {
+    "datacenter": "mdc2",
+    "idle": 374,
+    "lastseen": "2018-11-15T16:36:05.406690"
+  },
+  "t-yosemite-r7-179": {
+    "datacenter": "mdc2",
+    "idle": 623,
+    "lastseen": "2018-11-15T16:31:56.027194"
+  },
+  "t-yosemite-r7-180": {
+    "datacenter": "mdc2",
+    "idle": 969,
+    "lastseen": "2018-11-15T16:26:09.559130"
+  },
+  "t-yosemite-r7-181": {
+    "datacenter": "mdc2",
+    "idle": 683,
+    "lastseen": "2018-11-15T16:30:55.685127"
+  },
+  "t-yosemite-r7-182": {
+    "datacenter": "mdc2",
+    "idle": 2311,
+    "lastseen": "2018-11-15T16:03:48.063923"
+  },
+  "t-yosemite-r7-183": {
+    "datacenter": "mdc2",
+    "idle": 143,
+    "lastseen": "2018-11-15T16:39:55.951621"
+  },
+  "t-yosemite-r7-184": {
+    "datacenter": "mdc2",
+    "idle": 725,
+    "lastseen": "2018-11-15T16:30:13.950666"
+  },
+  "t-yosemite-r7-185": {
+    "datacenter": "mdc2",
+    "idle": 294,
+    "lastseen": "2018-11-15T16:37:24.590394"
+  },
+  "t-yosemite-r7-186": {
+    "datacenter": "mdc2",
+    "idle": 237,
+    "lastseen": "2018-11-15T16:38:22.046444"
+  },
+  "t-yosemite-r7-187": {
+    "datacenter": "mdc2",
+    "idle": 1305,
+    "lastseen": "2018-11-15T16:20:33.924412"
+  },
+  "t-yosemite-r7-188": {
+    "datacenter": "mdc2",
+    "idle": 577,
+    "lastseen": "2018-11-15T16:32:42.191975"
+  },
+  "t-yosemite-r7-190": {
+    "datacenter": "mdc2",
+    "idle": 642,
+    "lastseen": "2018-11-15T16:31:37.076463"
+  },
+  "t-yosemite-r7-192": {
+    "datacenter": "mdc2",
+    "idle": 407,
+    "lastseen": "2018-11-15T16:35:32.388891"
+  },
+  "t-yosemite-r7-193": {
+    "datacenter": "mdc2",
+    "idle": 716,
+    "lastseen": "2018-11-15T16:30:22.961585"
+  },
+  "t-yosemite-r7-194": {
+    "datacenter": "mdc2",
+    "idle": 350,
+    "lastseen": "2018-11-15T16:36:28.819428"
+  },
+  "t-yosemite-r7-195": {
+    "datacenter": "mdc2",
+    "idle": 2101,
+    "lastseen": "2018-11-15T16:07:18.316940"
+  },
+  "t-yosemite-r7-196": {
+    "datacenter": "mdc2",
+    "idle": 770,
+    "lastseen": "2018-11-15T16:29:29.502548"
+  },
+  "t-yosemite-r7-197": {
+    "datacenter": "mdc2",
+    "idle": 158,
+    "lastseen": "2018-11-15T16:39:40.696963"
+  },
+  "t-yosemite-r7-198": {
+    "datacenter": "mdc2",
+    "idle": 3416,
+    "lastseen": "2018-11-15T15:45:23.309774"
+  },
+  "t-yosemite-r7-199": {
+    "datacenter": "mdc2",
+    "idle": 471,
+    "lastseen": "2018-11-15T16:34:28.132122"
+  },
+  "t-yosemite-r7-200": {
+    "datacenter": "mdc2",
+    "idle": 43722,
+    "lastseen": "2018-11-15T04:33:37.207572"
+  },
+  "t-yosemite-r7-202": {
+    "datacenter": "mdc2",
+    "idle": 684,
+    "lastseen": "2018-11-15T16:30:55.213446"
+  },
+  "t-yosemite-r7-203": {
+    "datacenter": "mdc2",
+    "idle": 215,
+    "lastseen": "2018-11-15T16:38:43.854236"
+  },
+  "t-yosemite-r7-204": {
+    "datacenter": "mdc2",
+    "idle": 1378,
+    "lastseen": "2018-11-15T16:19:20.807607"
+  },
+  "t-yosemite-r7-205": {
+    "datacenter": "mdc2",
+    "idle": 88,
+    "lastseen": "2018-11-15T16:40:50.570835"
+  },
+  "t-yosemite-r7-206": {
+    "datacenter": "mdc2",
+    "idle": 510,
+    "lastseen": "2018-11-15T16:33:49.223215"
+  },
+  "t-yosemite-r7-207": {
+    "datacenter": "mdc2",
+    "idle": 753,
+    "lastseen": "2018-11-15T16:29:45.954617"
+  },
+  "t-yosemite-r7-208": {
+    "datacenter": "mdc2",
+    "idle": 78747,
+    "lastseen": "2018-11-14T18:49:51.736915"
+  },
+  "t-yosemite-r7-209": {
+    "datacenter": "mdc2",
+    "idle": 108,
+    "lastseen": "2018-11-15T16:40:31.033315"
+  },
+  "t-yosemite-r7-210": {
+    "datacenter": "mdc2",
+    "idle": 426,
+    "lastseen": "2018-11-15T16:35:13.333739"
+  },
+  "t-yosemite-r7-211": {
+    "datacenter": "mdc2",
+    "idle": 2179,
+    "lastseen": "2018-11-15T16:05:59.815081"
+  },
+  "t-yosemite-r7-212": {
+    "datacenter": "mdc2",
+    "idle": 337,
+    "lastseen": "2018-11-15T16:36:42.311209"
+  },
+  "t-yosemite-r7-213": {
+    "datacenter": "mdc2",
+    "idle": 743,
+    "lastseen": "2018-11-15T16:29:55.948818"
+  },
+  "t-yosemite-r7-214": {
+    "datacenter": "mdc2",
+    "idle": 420,
+    "lastseen": "2018-11-15T16:35:19.412917"
+  },
+  "t-yosemite-r7-215": {
+    "datacenter": "mdc2",
+    "idle": 2879,
+    "lastseen": "2018-11-15T15:54:19.736832"
+  },
+  "t-yosemite-r7-216": {
+    "datacenter": "mdc2",
+    "idle": 441,
+    "lastseen": "2018-11-15T16:34:57.725345"
+  },
+  "t-yosemite-r7-217": {
+    "datacenter": "mdc2",
+    "idle": 712,
+    "lastseen": "2018-11-15T16:30:27.386150"
+  },
+  "t-yosemite-r7-218": {
+    "datacenter": "mdc2",
+    "idle": 381,
+    "lastseen": "2018-11-15T16:35:57.827411"
+  },
+  "t-yosemite-r7-219": {
+    "datacenter": "mdc2",
+    "idle": 686,
+    "lastseen": "2018-11-15T16:30:53.108091"
+  },
+  "t-yosemite-r7-220": {
+    "datacenter": "mdc2",
+    "idle": 1617,
+    "lastseen": "2018-11-15T16:15:21.822603"
+  },
+  "t-yosemite-r7-221": {
+    "datacenter": "mdc2",
+    "idle": 284,
+    "lastseen": "2018-11-15T16:37:34.798384"
+  },
+  "t-yosemite-r7-222": {
+    "datacenter": "mdc2",
+    "idle": 2555,
+    "lastseen": "2018-11-15T15:59:44.247380"
+  },
+  "t-yosemite-r7-223": {
+    "datacenter": "mdc2",
+    "idle": 572,
+    "lastseen": "2018-11-15T16:32:46.977422"
+  },
+  "t-yosemite-r7-224": {
+    "datacenter": "mdc2",
+    "idle": 1423,
+    "lastseen": "2018-11-15T16:18:35.747599"
+  },
+  "t-yosemite-r7-225": {
+    "datacenter": "mdc2",
+    "idle": 996,
+    "lastseen": "2018-11-15T16:25:42.646185"
+  },
+  "t-yosemite-r7-226": {
+    "datacenter": "mdc2",
+    "idle": 906,
+    "lastseen": "2018-11-15T16:27:13.475615"
+  },
+  "t-yosemite-r7-227": {
+    "datacenter": "mdc2",
+    "idle": 2,
+    "lastseen": "2018-11-15T16:42:16.845549"
+  },
+  "t-yosemite-r7-228": {
+    "datacenter": "mdc2",
+    "idle": 582,
+    "lastseen": "2018-11-15T16:32:36.752691"
+  },
+  "t-yosemite-r7-230": {
+    "datacenter": "mdc2",
+    "idle": 82,
+    "lastseen": "2018-11-15T16:40:57.280298"
+  },
+  "t-yosemite-r7-231": {
+    "datacenter": "mdc2",
+    "idle": 29378,
+    "lastseen": "2018-11-15T08:32:40.880983"
+  },
+  "t-yosemite-r7-232": {
+    "datacenter": "mdc2",
+    "idle": -1,
+    "lastseen": "2018-11-15T16:42:20.794002"
+  },
+  "t-yosemite-r7-233": {
+    "datacenter": "mdc2",
+    "idle": 855,
+    "lastseen": "2018-11-15T16:28:04.173035"
+  },
+  "t-yosemite-r7-234": {
+    "datacenter": "mdc2",
+    "idle": 2294,
+    "lastseen": "2018-11-15T16:04:04.777047"
+  },
+  "t-yosemite-r7-235": {
+    "datacenter": "mdc2",
+    "idle": 316,
+    "lastseen": "2018-11-15T16:37:03.183984"
+  },
+  "t-yosemite-r7-236": {
+    "datacenter": "mdc2",
+    "idle": 36,
+    "lastseen": "2018-11-15T16:41:42.954463"
+  },
+  "t-yosemite-r7-237": {
+    "datacenter": "mdc1",
+    "idle": 829,
+    "lastseen": "2018-11-15T16:28:29.686642"
+  },
+  "t-yosemite-r7-238": {
+    "datacenter": "mdc1",
+    "idle": 1694,
+    "lastseen": "2018-11-15T16:14:05.068676"
+  },
+  "t-yosemite-r7-239": {
+    "datacenter": "mdc1",
+    "idle": 1302,
+    "lastseen": "2018-11-15T16:20:37.491467"
+  },
+  "t-yosemite-r7-240": {
+    "datacenter": "mdc1",
+    "idle": 495,
+    "lastseen": "2018-11-15T16:34:03.804016"
+  },
+  "t-yosemite-r7-241": {
+    "datacenter": "mdc1",
+    "idle": 1098,
+    "lastseen": "2018-11-15T16:24:00.975158"
+  },
+  "t-yosemite-r7-242": {
+    "datacenter": "mdc1",
+    "idle": 896,
+    "lastseen": "2018-11-15T16:27:23.394246"
+  },
+  "t-yosemite-r7-243": {
+    "datacenter": "mdc1",
+    "idle": 347,
+    "lastseen": "2018-11-15T16:36:31.698120"
+  },
+  "t-yosemite-r7-244": {
+    "datacenter": "mdc1",
+    "idle": 908,
+    "lastseen": "2018-11-15T16:27:10.947179"
+  },
+  "t-yosemite-r7-245": {
+    "datacenter": "mdc1",
+    "idle": 4829,
+    "lastseen": "2018-11-15T15:21:50.403518"
+  },
+  "t-yosemite-r7-246": {
+    "datacenter": "mdc1",
+    "idle": 2490,
+    "lastseen": "2018-11-15T16:00:48.540307"
+  },
+  "t-yosemite-r7-247": {
+    "datacenter": "mdc1",
+    "idle": 109,
+    "lastseen": "2018-11-15T16:40:30.348774"
+  },
+  "t-yosemite-r7-248": {
+    "datacenter": "mdc1",
+    "idle": 480,
+    "lastseen": "2018-11-15T16:34:19.178398"
+  },
+  "t-yosemite-r7-249": {
+    "datacenter": "mdc1",
+    "idle": 2118,
+    "lastseen": "2018-11-15T16:07:00.842661"
+  },
+  "t-yosemite-r7-250": {
+    "datacenter": "mdc1",
+    "idle": 115,
+    "lastseen": "2018-11-15T16:40:24.302131"
+  },
+  "t-yosemite-r7-251": {
+    "datacenter": "mdc1",
+    "idle": 1009,
+    "lastseen": "2018-11-15T16:25:29.665106"
+  },
+  "t-yosemite-r7-252": {
+    "datacenter": "mdc1",
+    "idle": 1104,
+    "lastseen": "2018-11-15T16:23:55.293647"
+  },
+  "t-yosemite-r7-253": {
+    "datacenter": "mdc1",
+    "idle": 543,
+    "lastseen": "2018-11-15T16:33:16.274318"
+  },
+  "t-yosemite-r7-254": {
+    "datacenter": "mdc1",
+    "idle": 318,
+    "lastseen": "2018-11-15T16:37:00.861066"
+  },
+  "t-yosemite-r7-255": {
+    "datacenter": "mdc1",
+    "idle": 34,
+    "lastseen": "2018-11-15T16:41:44.955983"
+  },
+  "t-yosemite-r7-256": {
+    "datacenter": "mdc1",
+    "idle": 260,
+    "lastseen": "2018-11-15T16:37:59.434602"
+  },
+  "t-yosemite-r7-257": {
+    "datacenter": "mdc1",
+    "idle": 596,
+    "lastseen": "2018-11-15T16:32:22.867775"
+  },
+  "t-yosemite-r7-258": {
+    "datacenter": "mdc1",
+    "idle": 687,
+    "lastseen": "2018-11-15T16:30:52.024087"
+  },
+  "t-yosemite-r7-259": {
+    "datacenter": "mdc1",
+    "idle": 351,
+    "lastseen": "2018-11-15T16:36:28.491980"
+  },
+  "t-yosemite-r7-260": {
+    "datacenter": "mdc1",
+    "idle": 707,
+    "lastseen": "2018-11-15T16:30:31.610134"
+  },
+  "t-yosemite-r7-261": {
+    "datacenter": "mdc1",
+    "idle": 863,
+    "lastseen": "2018-11-15T16:27:56.423422"
+  },
+  "t-yosemite-r7-262": {
+    "datacenter": "mdc1",
+    "idle": 614,
+    "lastseen": "2018-11-15T16:32:05.212314"
+  },
+  "t-yosemite-r7-263": {
+    "datacenter": "mdc1",
+    "idle": 510,
+    "lastseen": "2018-11-15T16:33:49.197143"
+  },
+  "t-yosemite-r7-264": {
+    "datacenter": "mdc1",
+    "idle": 262,
+    "lastseen": "2018-11-15T16:37:56.724849"
+  },
+  "t-yosemite-r7-265": {
+    "datacenter": "mdc1",
+    "idle": 591795,
+    "lastseen": "2018-11-08T20:19:04.228906"
+  },
+  "t-yosemite-r7-267": {
+    "datacenter": "mdc1",
+    "idle": 637,
+    "lastseen": "2018-11-15T16:31:42.461337"
+  },
+  "t-yosemite-r7-268": {
+    "datacenter": "mdc1",
+    "idle": 429,
+    "lastseen": "2018-11-15T16:35:09.764398"
+  },
+  "t-yosemite-r7-269": {
+    "datacenter": "mdc1",
+    "idle": 766,
+    "lastseen": "2018-11-15T16:29:33.385725"
+  },
+  "t-yosemite-r7-270": {
+    "datacenter": "mdc1",
+    "idle": 110,
+    "lastseen": "2018-11-15T16:40:29.071102"
+  },
+  "t-yosemite-r7-271": {
+    "datacenter": "mdc1",
+    "idle": 167,
+    "lastseen": "2018-11-15T16:39:32.220178"
+  },
+  "t-yosemite-r7-272": {
+    "datacenter": "mdc1",
+    "idle": 664,
+    "lastseen": "2018-11-15T16:31:15.385543"
+  },
+  "t-yosemite-r7-274": {
+    "datacenter": "mdc1",
+    "idle": 2268,
+    "lastseen": "2018-11-15T16:04:30.946086"
+  },
+  "t-yosemite-r7-275": {
+    "datacenter": "mdc1",
+    "idle": 381,
+    "lastseen": "2018-11-15T16:35:58.440398"
+  },
+  "t-yosemite-r7-277": {
+    "datacenter": "mdc1",
+    "idle": 782,
+    "lastseen": "2018-11-15T16:29:16.977123"
+  },
+  "t-yosemite-r7-278": {
+    "datacenter": "mdc1",
+    "idle": 191,
+    "lastseen": "2018-11-15T16:39:07.640168"
+  },
+  "t-yosemite-r7-279": {
+    "datacenter": "mdc1",
+    "idle": 2171,
+    "lastseen": "2018-11-15T16:06:08.162326"
+  },
+  "t-yosemite-r7-280": {
+    "datacenter": "mdc1",
+    "idle": 2195,
+    "lastseen": "2018-11-15T16:05:43.717160"
+  },
+  "t-yosemite-r7-281": {
+    "datacenter": "mdc1",
+    "idle": 363,
+    "lastseen": "2018-11-15T16:36:15.582056"
+  },
+  "t-yosemite-r7-282": {
+    "datacenter": "mdc1",
+    "idle": 2198,
+    "lastseen": "2018-11-15T16:05:41.222626"
+  },
+  "t-yosemite-r7-283": {
+    "datacenter": "mdc1",
+    "idle": 1125,
+    "lastseen": "2018-11-15T16:23:34.344741"
+  },
+  "t-yosemite-r7-284": {
+    "datacenter": "mdc1",
+    "idle": 2272,
+    "lastseen": "2018-11-15T16:04:27.122060"
+  },
+  "t-yosemite-r7-285": {
+    "datacenter": "mdc1",
+    "idle": 1507,
+    "lastseen": "2018-11-15T16:17:12.335218"
+  },
+  "t-yosemite-r7-286": {
+    "datacenter": "mdc1",
+    "idle": 1,
+    "lastseen": "2018-11-15T16:42:18.489219"
+  },
+  "t-yosemite-r7-287": {
+    "datacenter": "mdc1",
+    "idle": 266,
+    "lastseen": "2018-11-15T16:37:53.497649"
+  },
+  "t-yosemite-r7-288": {
+    "datacenter": "mdc1",
+    "idle": 102,
+    "lastseen": "2018-11-15T16:40:36.731123"
+  },
+  "t-yosemite-r7-289": {
+    "datacenter": "mdc1",
+    "idle": 3172,
+    "lastseen": "2018-11-15T15:49:26.806429"
+  },
+  "t-yosemite-r7-290": {
+    "datacenter": "mdc1",
+    "idle": 1072,
+    "lastseen": "2018-11-15T16:24:26.878577"
+  },
+  "t-yosemite-r7-291": {
+    "datacenter": "mdc1",
+    "idle": 1138,
+    "lastseen": "2018-11-15T16:23:21.046346"
+  },
+  "t-yosemite-r7-292": {
+    "datacenter": "mdc1",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.828194"
+  },
+  "t-yosemite-r7-294": {
+    "datacenter": "mdc1",
+    "idle": 53,
+    "lastseen": "2018-11-15T16:41:25.954721"
+  },
+  "t-yosemite-r7-295": {
+    "datacenter": "mdc1",
+    "idle": 571,
+    "lastseen": "2018-11-15T16:32:47.523417"
+  },
+  "t-yosemite-r7-296": {
+    "datacenter": "mdc1",
+    "idle": 487,
+    "lastseen": "2018-11-15T16:34:11.628319"
+  },
+  "t-yosemite-r7-297": {
+    "datacenter": "mdc1",
+    "idle": 2173,
+    "lastseen": "2018-11-15T16:06:06.041634"
+  },
+  "t-yosemite-r7-298": {
+    "datacenter": "mdc1",
+    "idle": 96761,
+    "lastseen": "2018-11-14T13:49:38.413389"
+  },
+  "t-yosemite-r7-299": {
+    "datacenter": "mdc1",
+    "idle": 52193,
+    "lastseen": "2018-11-15T02:12:25.948142"
+  },
+  "t-yosemite-r7-300": {
+    "datacenter": "mdc1",
+    "idle": 1984,
+    "lastseen": "2018-11-15T16:09:14.734206"
+  },
+  "t-yosemite-r7-301": {
+    "datacenter": "mdc1",
+    "idle": 680,
+    "lastseen": "2018-11-15T16:30:58.695049"
+  },
+  "t-yosemite-r7-302": {
+    "datacenter": "mdc1",
+    "idle": 300,
+    "lastseen": "2018-11-15T16:37:18.844904"
+  },
+  "t-yosemite-r7-303": {
+    "datacenter": "mdc1",
+    "idle": 14,
+    "lastseen": "2018-11-15T16:42:04.854854"
+  },
+  "t-yosemite-r7-304": {
+    "datacenter": "mdc1",
+    "idle": 791,
+    "lastseen": "2018-11-15T16:29:08.333522"
+  },
+  "t-yosemite-r7-305": {
+    "datacenter": "mdc1",
+    "idle": 2213,
+    "lastseen": "2018-11-15T16:05:25.952825"
+  },
+  "t-yosemite-r7-306": {
+    "datacenter": "mdc1",
+    "idle": 0,
+    "lastseen": "2018-11-15T16:42:18.631809"
+  },
+  "t-yosemite-r7-307": {
+    "datacenter": "mdc1",
+    "idle": 800,
+    "lastseen": "2018-11-15T16:28:59.202541"
+  },
+  "t-yosemite-r7-308": {
+    "datacenter": "mdc1",
+    "idle": 839,
+    "lastseen": "2018-11-15T16:28:20.417132"
+  },
+  "t-yosemite-r7-309": {
+    "datacenter": "mdc1",
+    "idle": 5908,
+    "lastseen": "2018-11-15T15:03:51.216036"
+  },
+  "t-yosemite-r7-310": {
+    "datacenter": "mdc1",
+    "idle": 35,
+    "lastseen": "2018-11-15T16:41:44.504098"
+  },
+  "t-yosemite-r7-311": {
+    "datacenter": "mdc1",
+    "idle": 231,
+    "lastseen": "2018-11-15T16:38:27.584396"
+  },
+  "t-yosemite-r7-312": {
+    "datacenter": "mdc1",
+    "idle": 379,
+    "lastseen": "2018-11-15T16:36:00.342285"
+  },
+  "t-yosemite-r7-313": {
+    "datacenter": "mdc1",
+    "idle": 218,
+    "lastseen": "2018-11-15T16:38:41.121379"
+  },
+  "t-yosemite-r7-314": {
+    "datacenter": "mdc1",
+    "idle": 42838,
+    "lastseen": "2018-11-15T04:48:20.806240"
+  },
+  "t-yosemite-r7-315": {
+    "datacenter": "mdc1",
+    "idle": 1167,
+    "lastseen": "2018-11-15T16:22:51.950291"
+  },
+  "t-yosemite-r7-316": {
+    "datacenter": "mdc1",
+    "idle": 68,
+    "lastseen": "2018-11-15T16:41:10.840797"
+  },
+  "t-yosemite-r7-317": {
+    "datacenter": "mdc1",
+    "idle": 464,
+    "lastseen": "2018-11-15T16:34:34.549535"
+  },
+  "t-yosemite-r7-318": {
+    "datacenter": "mdc1",
+    "idle": 2394,
+    "lastseen": "2018-11-15T16:02:25.146487"
+  },
+  "t-yosemite-r7-319": {
+    "datacenter": "mdc1",
+    "idle": 101,
+    "lastseen": "2018-11-15T16:40:37.677397"
+  },
+  "t-yosemite-r7-320": {
+    "datacenter": "mdc1",
+    "idle": 8,
+    "lastseen": "2018-11-15T16:42:10.588778"
+  },
+  "t-yosemite-r7-321": {
+    "datacenter": "mdc1",
+    "idle": 721,
+    "lastseen": "2018-11-15T16:30:18.403755"
+  },
+  "t-yosemite-r7-322": {
+    "datacenter": "mdc1",
+    "idle": 483,
+    "lastseen": "2018-11-15T16:34:15.620554"
+  },
+  "t-yosemite-r7-323": {
+    "datacenter": "mdc1",
+    "idle": 33417,
+    "lastseen": "2018-11-15T07:25:21.934260"
+  },
+  "t-yosemite-r7-324": {
+    "datacenter": "mdc1",
+    "idle": 294,
+    "lastseen": "2018-11-15T16:37:25.422541"
+  },
+  "t-yosemite-r7-325": {
+    "datacenter": "mdc1",
+    "idle": 1060,
+    "lastseen": "2018-11-15T16:24:39.215128"
+  },
+  "t-yosemite-r7-326": {
+    "datacenter": "mdc1",
+    "idle": 983,
+    "lastseen": "2018-11-15T16:25:55.522963"
+  },
+  "t-yosemite-r7-327": {
+    "datacenter": "mdc1",
+    "idle": 920,
+    "lastseen": "2018-11-15T16:26:59.128014"
+  },
+  "t-yosemite-r7-328": {
+    "datacenter": "mdc1",
+    "idle": 297,
+    "lastseen": "2018-11-15T16:37:21.994083"
+  },
+  "t-yosemite-r7-329": {
+    "datacenter": "mdc1",
+    "idle": 202,
+    "lastseen": "2018-11-15T16:38:57.086848"
+  },
+  "t-yosemite-r7-330": {
+    "datacenter": "mdc1",
+    "idle": 339,
+    "lastseen": "2018-11-15T16:36:40.305412"
+  },
+  "t-yosemite-r7-331": {
+    "datacenter": "mdc1",
+    "idle": 1437,
+    "lastseen": "2018-11-15T16:18:21.627323"
+  },
+  "t-yosemite-r7-332": {
+    "datacenter": "mdc1",
+    "idle": 895,
+    "lastseen": "2018-11-15T16:27:23.919994"
+  },
+  "t-yosemite-r7-333": {
+    "datacenter": "mdc1",
+    "idle": 1009,
+    "lastseen": "2018-11-15T16:25:30.444528"
+  },
+  "t-yosemite-r7-334": {
+    "datacenter": "mdc1",
+    "idle": 2303,
+    "lastseen": "2018-11-15T16:03:56.425819"
+  },
+  "t-yosemite-r7-335": {
+    "datacenter": "mdc1",
+    "idle": 48,
+    "lastseen": "2018-11-15T16:41:31.286721"
+  },
+  "t-yosemite-r7-336": {
+    "datacenter": "mdc1",
+    "idle": 30,
+    "lastseen": "2018-11-15T16:41:49.368335"
+  },
+  "t-yosemite-r7-337": {
+    "datacenter": "mdc1",
+    "idle": 399,
+    "lastseen": "2018-11-15T16:35:40.246116"
+  },
+  "t-yosemite-r7-338": {
+    "datacenter": "mdc1",
+    "idle": 746,
+    "lastseen": "2018-11-15T16:29:52.619017"
+  },
+  "t-yosemite-r7-339": {
+    "datacenter": "mdc1",
+    "idle": 1059,
+    "lastseen": "2018-11-15T16:24:40.005334"
+  },
+  "t-yosemite-r7-340": {
+    "datacenter": "mdc1",
+    "idle": 874,
+    "lastseen": "2018-11-15T16:27:45.163573"
+  },
+  "t-yosemite-r7-341": {
+    "datacenter": "mdc1",
+    "idle": 707,
+    "lastseen": "2018-11-15T16:30:32.142596"
+  },
+  "t-yosemite-r7-342": {
+    "datacenter": "mdc1",
+    "idle": 623,
+    "lastseen": "2018-11-15T16:31:55.922316"
+  },
+  "t-yosemite-r7-343": {
+    "datacenter": "mdc1",
+    "idle": 386,
+    "lastseen": "2018-11-15T16:35:53.263854"
+  },
+  "t-yosemite-r7-344": {
+    "datacenter": "mdc1",
+    "idle": 81,
+    "lastseen": "2018-11-15T16:40:58.180480"
+  },
+  "t-yosemite-r7-345": {
+    "datacenter": "mdc1",
+    "idle": 122,
+    "lastseen": "2018-11-15T16:40:17.360091"
+  },
+  "t-yosemite-r7-346": {
+    "datacenter": "mdc1",
+    "idle": 68957,
+    "lastseen": "2018-11-14T21:33:02.197641"
+  },
+  "t-yosemite-r7-347": {
+    "datacenter": "mdc1",
+    "idle": 143,
+    "lastseen": "2018-11-15T16:39:55.857966"
+  },
+  "t-yosemite-r7-348": {
+    "datacenter": "mdc1",
+    "idle": 285,
+    "lastseen": "2018-11-15T16:37:33.918525"
+  },
+  "t-yosemite-r7-349": {
+    "datacenter": "mdc1",
+    "idle": 144,
+    "lastseen": "2018-11-15T16:39:54.548918"
+  },
+  "t-yosemite-r7-350": {
+    "datacenter": "mdc1",
+    "idle": 896,
+    "lastseen": "2018-11-15T16:27:22.664944"
+  },
+  "t-yosemite-r7-351": {
+    "datacenter": "mdc1",
+    "idle": 547,
+    "lastseen": "2018-11-15T16:33:11.657134"
+  },
+  "t-yosemite-r7-352": {
+    "datacenter": "mdc1",
+    "idle": 28,
+    "lastseen": "2018-11-15T16:41:50.958825"
+  },
+  "t-yosemite-r7-354": {
+    "datacenter": "mdc1",
+    "idle": 415,
+    "lastseen": "2018-11-15T16:35:23.579483"
+  },
+  "t-yosemite-r7-355": {
+    "datacenter": "mdc1",
+    "idle": 426,
+    "lastseen": "2018-11-15T16:35:12.663324"
+  },
+  "t-yosemite-r7-356": {
+    "datacenter": "mdc1",
+    "idle": 2428,
+    "lastseen": "2018-11-15T16:01:50.654189"
+  },
+  "t-yosemite-r7-357": {
+    "datacenter": "mdc1",
+    "idle": 401,
+    "lastseen": "2018-11-15T16:35:38.091618"
+  },
+  "t-yosemite-r7-358": {
+    "datacenter": "mdc1",
+    "idle": 310,
+    "lastseen": "2018-11-15T16:37:09.164926"
+  },
+  "t-yosemite-r7-359": {
+    "datacenter": "mdc1",
+    "idle": 828,
+    "lastseen": "2018-11-15T16:28:31.021063"
+  },
+  "t-yosemite-r7-360": {
+    "datacenter": "mdc1",
+    "idle": 396,
+    "lastseen": "2018-11-15T16:35:43.381158"
+  },
+  "t-yosemite-r7-361": {
+    "datacenter": "mdc1",
+    "idle": 163,
+    "lastseen": "2018-11-15T16:39:35.923871"
+  },
+  "t-yosemite-r7-362": {
+    "datacenter": "mdc1",
+    "idle": 827,
+    "lastseen": "2018-11-15T16:28:31.906199"
+  },
+  "t-yosemite-r7-363": {
+    "datacenter": "mdc1",
+    "idle": 309,
+    "lastseen": "2018-11-15T16:37:09.956880"
+  },
+  "t-yosemite-r7-364": {
+    "datacenter": "mdc1",
+    "idle": 13,
+    "lastseen": "2018-11-15T16:42:06.122741"
+  },
+  "t-yosemite-r7-365": {
+    "datacenter": "mdc1",
+    "idle": 683,
+    "lastseen": "2018-11-15T16:30:56.486495"
+  },
+  "t-yosemite-r7-366": {
+    "datacenter": "mdc1",
+    "idle": 125,
+    "lastseen": "2018-11-15T16:40:14.205791"
+  },
+  "t-yosemite-r7-367": {
+    "datacenter": "mdc1",
+    "idle": 802,
+    "lastseen": "2018-11-15T16:28:57.341968"
+  },
+  "t-yosemite-r7-368": {
+    "datacenter": "mdc1",
+    "idle": 1120,
+    "lastseen": "2018-11-15T16:23:38.970740"
+  },
+  "t-yosemite-r7-369": {
+    "datacenter": "mdc1",
+    "idle": 766,
+    "lastseen": "2018-11-15T16:29:33.074144"
+  },
+  "t-yosemite-r7-370": {
+    "datacenter": "mdc1",
+    "idle": 1088,
+    "lastseen": "2018-11-15T16:24:11.034222"
+  },
+  "t-yosemite-r7-371": {
+    "datacenter": "mdc1",
+    "idle": 620,
+    "lastseen": "2018-11-15T16:31:58.882490"
+  },
+  "t-yosemite-r7-372": {
+    "datacenter": "mdc1",
+    "idle": 2536,
+    "lastseen": "2018-11-15T16:00:02.846786"
+  },
+  "t-yosemite-r7-373": {
+    "datacenter": "mdc1",
+    "idle": 598,
+    "lastseen": "2018-11-15T16:32:21.291133"
+  },
+  "t-yosemite-r7-374": {
+    "datacenter": "mdc1",
+    "idle": 512,
+    "lastseen": "2018-11-15T16:33:47.386623"
+  },
+  "t-yosemite-r7-375": {
+    "datacenter": "mdc1",
+    "idle": 1747,
+    "lastseen": "2018-11-15T16:13:11.751939"
+  },
+  "t-yosemite-r7-376": {
+    "datacenter": "mdc1",
+    "idle": 152,
+    "lastseen": "2018-11-15T16:39:47.148507"
+  },
+  "t-yosemite-r7-377": {
+    "datacenter": "mdc1",
+    "idle": 88,
+    "lastseen": "2018-11-15T16:40:51.013844"
+  },
+  "t-yosemite-r7-378": {
+    "datacenter": "mdc1",
+    "idle": 465,
+    "lastseen": "2018-11-15T16:34:34.116966"
+  },
+  "t-yosemite-r7-379": {
+    "datacenter": "mdc1",
+    "idle": 1001,
+    "lastseen": "2018-11-15T16:25:38.018593"
+  },
+  "t-yosemite-r7-381": {
+    "datacenter": "mdc1",
+    "idle": 1828,
+    "lastseen": "2018-11-15T16:11:51.454637"
+  },
+  "t-yosemite-r7-382": {
+    "datacenter": "mdc1",
+    "idle": 2370,
+    "lastseen": "2018-11-15T16:02:49.045014"
+  },
+  "t-yosemite-r7-383": {
+    "datacenter": "mdc1",
+    "idle": 577,
+    "lastseen": "2018-11-15T16:32:42.414350"
+  },
+  "t-yosemite-r7-384": {
+    "datacenter": "mdc1",
+    "idle": 3547,
+    "lastseen": "2018-11-15T15:43:12.469446"
+  },
+  "t-yosemite-r7-385": {
+    "datacenter": "mdc1",
+    "idle": 3302,
+    "lastseen": "2018-11-15T15:47:17.103128"
+  },
+  "t-yosemite-r7-386": {
+    "datacenter": "mdc1",
+    "idle": 261,
+    "lastseen": "2018-11-15T16:37:57.900894"
+  },
+  "t-yosemite-r7-387": {
+    "datacenter": "mdc1",
+    "idle": 559,
+    "lastseen": "2018-11-15T16:33:00.398018"
+  },
+  "t-yosemite-r7-388": {
+    "datacenter": "mdc1",
+    "idle": 519,
+    "lastseen": "2018-11-15T16:33:39.732259"
+  },
+  "t-yosemite-r7-389": {
+    "datacenter": "mdc1",
+    "idle": 1036,
+    "lastseen": "2018-11-15T16:25:03.161826"
+  },
+  "t-yosemite-r7-390": {
+    "datacenter": "mdc1",
+    "idle": 12076,
+    "lastseen": "2018-11-15T13:21:02.986001"
+  },
+  "t-yosemite-r7-391": {
+    "datacenter": "mdc1",
+    "idle": 2427,
+    "lastseen": "2018-11-15T16:01:51.538470"
+  },
+  "t-yosemite-r7-392": {
+    "datacenter": "mdc1",
+    "idle": 837,
+    "lastseen": "2018-11-15T16:28:22.085055"
+  },
+  "t-yosemite-r7-395": {
+    "datacenter": "mdc1",
+    "idle": 852,
+    "lastseen": "2018-11-15T16:28:06.623456"
+  },
+  "t-yosemite-r7-396": {
+    "datacenter": "mdc1",
+    "idle": 36,
+    "lastseen": "2018-11-15T16:41:43.159311"
+  },
+  "t-yosemite-r7-397": {
+    "datacenter": "mdc1",
+    "idle": 631,
+    "lastseen": "2018-11-15T16:31:48.396082"
+  },
+  "t-yosemite-r7-398": {
+    "datacenter": "mdc1",
+    "idle": 414,
+    "lastseen": "2018-11-15T16:35:24.930945"
+  },
+  "t-yosemite-r7-399": {
+    "datacenter": "mdc1",
+    "idle": 97,
+    "lastseen": "2018-11-15T16:40:42.241462"
+  },
+  "t-yosemite-r7-400": {
+    "datacenter": "mdc1",
+    "idle": 306,
+    "lastseen": "2018-11-15T16:37:13.195293"
+  },
+  "t-yosemite-r7-401": {
+    "datacenter": "mdc1",
+    "idle": 711,
+    "lastseen": "2018-11-15T16:30:28.487985"
+  },
+  "t-yosemite-r7-402": {
+    "datacenter": "mdc1",
+    "idle": 319,
+    "lastseen": "2018-11-15T16:37:00.170057"
+  },
+  "t-yosemite-r7-403": {
+    "datacenter": "mdc1",
+    "idle": 29,
+    "lastseen": "2018-11-15T16:41:50.391725"
+  },
+  "t-yosemite-r7-404": {
+    "datacenter": "mdc1",
+    "idle": 137,
+    "lastseen": "2018-11-15T16:40:02.464624"
+  },
+  "t-yosemite-r7-405": {
+    "datacenter": "mdc1",
+    "idle": 2240,
+    "lastseen": "2018-11-15T16:04:58.887430"
+  },
+  "t-yosemite-r7-406": {
+    "datacenter": "mdc1",
+    "idle": 5902,
+    "lastseen": "2018-11-15T15:03:57.062493"
+  },
+  "t-yosemite-r7-407": {
+    "datacenter": "mdc1",
+    "idle": 37,
+    "lastseen": "2018-11-15T16:41:42.453906"
+  },
+  "t-yosemite-r7-408": {
+    "datacenter": "mdc1",
+    "idle": 474,
+    "lastseen": "2018-11-15T16:34:25.234069"
+  },
+  "t-yosemite-r7-409": {
+    "datacenter": "mdc1",
+    "idle": 1321,
+    "lastseen": "2018-11-15T16:20:17.862077"
+  },
+  "t-yosemite-r7-410": {
+    "datacenter": "mdc1",
+    "idle": 129,
+    "lastseen": "2018-11-15T16:40:10.235349"
+  },
+  "t-yosemite-r7-411": {
+    "datacenter": "mdc1",
+    "idle": 777,
+    "lastseen": "2018-11-15T16:29:21.680342"
+  },
+  "t-yosemite-r7-412": {
+    "datacenter": "mdc1",
+    "idle": 196,
+    "lastseen": "2018-11-15T16:39:02.643790"
+  },
+  "t-yosemite-r7-413": {
+    "datacenter": "mdc1",
+    "idle": 1469,
+    "lastseen": "2018-11-15T16:17:49.791726"
+  },
+  "t-yosemite-r7-414": {
+    "datacenter": "mdc1",
+    "idle": 265,
+    "lastseen": "2018-11-15T16:37:54.407002"
+  },
+  "t-yosemite-r7-415": {
+    "datacenter": "mdc1",
+    "idle": 340,
+    "lastseen": "2018-11-15T16:36:39.246558"
+  },
+  "t-yosemite-r7-416": {
+    "datacenter": "mdc1",
+    "idle": 1231,
+    "lastseen": "2018-11-15T16:21:48.414093"
+  },
+  "t-yosemite-r7-417": {
+    "datacenter": "mdc1",
+    "idle": 378,
+    "lastseen": "2018-11-15T16:36:00.614597"
+  },
+  "t-yosemite-r7-418": {
+    "datacenter": "mdc1",
+    "idle": 593,
+    "lastseen": "2018-11-15T16:32:26.438574"
+  },
+  "t-yosemite-r7-419": {
+    "datacenter": "mdc1",
+    "idle": 948,
+    "lastseen": "2018-11-15T16:26:30.741277"
+  },
+  "t-yosemite-r7-420": {
+    "datacenter": "mdc1",
+    "idle": 593,
+    "lastseen": "2018-11-15T16:32:25.790296"
+  },
+  "t-yosemite-r7-421": {
+    "datacenter": "mdc1",
+    "idle": 478,
+    "lastseen": "2018-11-15T16:34:20.968100"
+  },
+  "t-yosemite-r7-422": {
+    "datacenter": "mdc1",
+    "idle": 512,
+    "lastseen": "2018-11-15T16:33:47.027366"
+  },
+  "t-yosemite-r7-423": {
+    "datacenter": "mdc1",
+    "idle": 1787,
+    "lastseen": "2018-11-15T16:12:32.038392"
+  },
+  "t-yosemite-r7-424": {
+    "datacenter": "mdc1",
+    "idle": 18,
+    "lastseen": "2018-11-15T16:42:01.501268"
+  },
+  "t-yosemite-r7-425": {
+    "datacenter": "mdc1",
+    "idle": 2245,
+    "lastseen": "2018-11-15T16:04:54.056310"
+  },
+  "t-yosemite-r7-426": {
+    "datacenter": "mdc1",
+    "idle": 323,
+    "lastseen": "2018-11-15T16:36:55.801244"
+  },
+  "t-yosemite-r7-427": {
+    "datacenter": "mdc1",
+    "idle": 533,
+    "lastseen": "2018-11-15T16:33:26.504491"
+  },
+  "t-yosemite-r7-428": {
+    "datacenter": "mdc1",
+    "idle": 558,
+    "lastseen": "2018-11-15T16:33:00.860583"
+  },
+  "t-yosemite-r7-429": {
+    "datacenter": "mdc1",
+    "idle": 197,
+    "lastseen": "2018-11-15T16:39:01.922196"
+  },
+  "t-yosemite-r7-430": {
+    "datacenter": "mdc1",
+    "idle": 357,
+    "lastseen": "2018-11-15T16:36:22.323247"
+  },
+  "t-yosemite-r7-431": {
+    "datacenter": "mdc1",
+    "idle": 255,
+    "lastseen": "2018-11-15T16:38:04.284875"
+  },
+  "t-yosemite-r7-432": {
+    "datacenter": "mdc1",
+    "idle": 946,
+    "lastseen": "2018-11-15T16:26:33.178664"
+  },
+  "t-yosemite-r7-433": {
+    "datacenter": "mdc1",
+    "idle": 110,
+    "lastseen": "2018-11-15T16:40:28.578572"
+  },
+  "t-yosemite-r7-434": {
+    "datacenter": "mdc1",
+    "idle": 1074,
+    "lastseen": "2018-11-15T16:24:25.229054"
+  },
+  "t-yosemite-r7-435": {
+    "datacenter": "mdc1",
+    "idle": 1836,
+    "lastseen": "2018-11-15T16:11:42.597296"
+  },
+  "t-yosemite-r7-436": {
+    "datacenter": "mdc1",
+    "idle": 581,
+    "lastseen": "2018-11-15T16:32:37.819848"
+  },
+  "t-yosemite-r7-437": {
+    "datacenter": "mdc1",
+    "idle": 1,
+    "lastseen": "2018-11-15T16:42:17.771968"
+  },
+  "t-yosemite-r7-438": {
+    "datacenter": "mdc1",
+    "idle": 135,
+    "lastseen": "2018-11-15T16:40:03.625664"
+  },
+  "t-yosemite-r7-439": {
+    "datacenter": "mdc1",
+    "idle": 51894,
+    "lastseen": "2018-11-15T02:17:25.331464"
+  },
+  "t-yosemite-r7-440": {
+    "datacenter": "mdc1",
+    "idle": 1348,
+    "lastseen": "2018-11-15T16:19:50.783465"
+  },
+  "t-yosemite-r7-441": {
+    "datacenter": "mdc1",
+    "idle": 369,
+    "lastseen": "2018-11-15T16:36:10.128046"
+  },
+  "t-yosemite-r7-442": {
+    "datacenter": "mdc1",
+    "idle": 311,
+    "lastseen": "2018-11-15T16:37:07.782220"
+  },
+  "t-yosemite-r7-443": {
+    "datacenter": "mdc1",
+    "idle": 2772,
+    "lastseen": "2018-11-15T15:56:06.770107"
+  },
+  "t-yosemite-r7-444": {
+    "datacenter": "mdc1",
+    "idle": 948,
+    "lastseen": "2018-11-15T16:26:31.051800"
+  },
+  "t-yosemite-r7-445": {
+    "datacenter": "mdc1",
+    "idle": 914,
+    "lastseen": "2018-11-15T16:27:04.871772"
+  },
+  "t-yosemite-r7-446": {
+    "datacenter": "mdc1",
+    "idle": 1261,
+    "lastseen": "2018-11-15T16:21:17.507070"
+  },
+  "t-yosemite-r7-447": {
+    "datacenter": "mdc1",
+    "idle": 181,
+    "lastseen": "2018-11-15T16:39:18.114312"
+  },
+  "t-yosemite-r7-448": {
+    "datacenter": "mdc1",
+    "idle": 35,
+    "lastseen": "2018-11-15T16:41:44.438132"
+  },
+  "t-yosemite-r7-449": {
+    "datacenter": "mdc1",
+    "idle": 55,
+    "lastseen": "2018-11-15T16:41:24.469786"
+  },
+  "t-yosemite-r7-450": {
+    "datacenter": "mdc1",
+    "idle": 926,
+    "lastseen": "2018-11-15T16:26:53.290452"
+  },
+  "t-yosemite-r7-451": {
+    "datacenter": "mdc1",
+    "idle": 580,
+    "lastseen": "2018-11-15T16:32:39.409060"
+  },
+  "t-yosemite-r7-452": {
+    "datacenter": "mdc1",
+    "idle": 278,
+    "lastseen": "2018-11-15T16:37:40.602401"
+  },
+  "t-yosemite-r7-453": {
+    "datacenter": "mdc1",
+    "idle": 2719,
+    "lastseen": "2018-11-15T15:57:00.386154"
+  },
+  "t-yosemite-r7-454": {
+    "datacenter": "mdc1",
+    "idle": 382,
+    "lastseen": "2018-11-15T16:35:56.857548"
+  },
+  "t-yosemite-r7-455": {
+    "datacenter": "mdc1",
+    "idle": 287,
+    "lastseen": "2018-11-15T16:37:32.049187"
+  },
+  "t-yosemite-r7-456": {
+    "datacenter": "mdc1",
+    "idle": 478,
+    "lastseen": "2018-11-15T16:34:20.599993"
+  },
+  "t-yosemite-r7-457": {
+    "datacenter": "mdc1",
+    "idle": 643,
+    "lastseen": "2018-11-15T16:31:35.877950"
+  },
+  "t-yosemite-r7-458": {
+    "datacenter": "mdc1",
+    "idle": 14,
+    "lastseen": "2018-11-15T16:42:05.135834"
+  },
+  "t-yosemite-r7-459": {
+    "datacenter": "mdc1",
+    "idle": 29142,
+    "lastseen": "2018-11-15T08:36:37.046968"
+  },
+  "t-yosemite-r7-460": {
+    "datacenter": "mdc1",
+    "idle": 13,
+    "lastseen": "2018-11-15T16:42:06.103295"
+  },
+  "t-yosemite-r7-461": {
+    "datacenter": "mdc1",
+    "idle": 710,
+    "lastseen": "2018-11-15T16:30:29.265723"
+  },
+  "t-yosemite-r7-462": {
+    "datacenter": "mdc1",
+    "idle": 4222,
+    "lastseen": "2018-11-15T15:31:56.538683"
+  },
+  "t-yosemite-r7-463": {
+    "datacenter": "mdc1",
+    "idle": 317,
+    "lastseen": "2018-11-15T16:37:01.784996"
+  },
+  "t-yosemite-r7-464": {
+    "datacenter": "mdc1",
+    "idle": 40,
+    "lastseen": "2018-11-15T16:41:39.412905"
+  },
+  "t-yosemite-r7-465": {
+    "datacenter": "mdc1",
+    "idle": 706,
+    "lastseen": "2018-11-15T16:30:32.653676"
+  },
+  "t-yosemite-r7-466": {
+    "datacenter": "mdc1",
+    "idle": 240,
+    "lastseen": "2018-11-15T16:38:18.675541"
+  },
+  "t-yosemite-r7-467": {
+    "datacenter": "mdc1",
+    "idle": 107,
+    "lastseen": "2018-11-15T16:40:31.831153"
+  },
+  "t-yosemite-r7-468": {
+    "datacenter": "mdc1",
+    "idle": 139,
+    "lastseen": "2018-11-15T16:40:00.453423"
+  },
+  "t-yosemite-r7-469": {
+    "datacenter": "mdc1",
+    "idle": 1168,
+    "lastseen": "2018-11-15T16:22:51.276505"
+  },
+  "t-yosemite-r7-470": {
+    "datacenter": "mdc1",
+    "idle": 2195,
+    "lastseen": "2018-11-15T16:05:43.916506"
+  },
+  "t-yosemite-r7-471": {
+    "datacenter": "mdc1",
+    "idle": 372,
+    "lastseen": "2018-11-15T16:36:06.971780"
+  },
+  "t-yosemite-r7-472": {
+    "datacenter": "mdc1",
+    "idle": 2407,
+    "lastseen": "2018-11-15T16:02:12.286493"
+  }
+}
