@@ -1,6 +1,5 @@
-from twc_modules import configuration, twc_audio
+from twc_modules import configuration
 from client import run_all_machines, run_windows_machines, run_linux_machines, run_yosemite_machines
-import random
 
 def run_menu(*arg):
     """
@@ -45,8 +44,6 @@ def run_menu(*arg):
             print("\n\nInvalid Choice!\n")
             run_menu()
         if choice_menu1 == 1:
-            if configuration.SPECIAL:
-                twc_audio.play(random.choice([configuration.WAVE02, configuration.WAVE03]))
             run_all_machines()
             exit(0)
         if choice_menu1 == 2:

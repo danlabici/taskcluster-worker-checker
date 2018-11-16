@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import sys
 import json
-import random
 from datetime import datetime, timedelta
 try:
     import gspread
@@ -10,18 +9,17 @@ try:
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Detected missing modules!\n"
-          "Please Run and restart the application:\n"
+          "Please Run and Restart the application:\n"
           "pip3 install -r requirements.txt")
     exit(0)
 
-from twc_modules import configuration, twc_audio, main_menu
-
+from twc_modules import configuration, main_menu
 
 timenow = datetime.utcnow()
-
 twc_version = configuration.VERSION
 lazy_time = configuration.LAZY
-
+verbose = True
+travisci_testing = True
 
 def get_heroku_last_seen():
     start = datetime.now()
@@ -38,7 +36,8 @@ def get_heroku_last_seen():
 
     save_json("heroku_dict.json", heroku_machines)
     end = datetime.now()
-    print("Heroku Data Processing took:", end - start)
+    if verbose:
+        print("Heroku Data Processing took:", end - start)
     return heroku_machines
 
 
@@ -104,7 +103,8 @@ def get_google_spreadsheet_data():
     all_google_machine_data = {**moonshots_google_data_mdc1, **moonshots_google_data_mdc2, **osx_google_data}
     save_json('google_dict.json', all_google_machine_data)
     end = datetime.now()
-    print("Google Data Processing took:", end - start)
+    if verbose:
+        print("Google Data Processing took:", end - start)
     return all_google_machine_data
 
 
@@ -134,7 +134,8 @@ def remove_fqdn_from_machine_name():
                 _google_dict[key[:17]] = _google_dict.pop(key)
     save_json('google_dict.json', _google_dict)
     end = datetime.now()
-    print("Removing the FQDN took:", end - start)
+    if verbose:
+        print("Removing the FQDN took:", end - start)
 
 
 def add_idle_to_google_dict():
@@ -143,21 +144,21 @@ def add_idle_to_google_dict():
     google_data = open_json("google_dict.json")
 
     shared_keys = set(heroku_data).intersection(google_data)
-    _temp_data = {}
     for key in shared_keys:
         machine_idle = {"idle": heroku_data.get(key)["idle"]}
         google_data[key].update(machine_idle)
 
     save_json("google_dict.json", google_data)
     end = datetime.now()
-    print("Adding IDLE times to Google Data took:", end - start)
+    if verbose:
+        print("Adding IDLE times to Google Data took:", end - start)
 
 
 def output_all_problem_machines():
+    start = datetime.now()
     machine_data = open_json("google_dict.json")
     table = PrettyTable()
     table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Notes"]
-    idle_machines = 0
 
     for machine in machine_data:
         hostname = machine
@@ -179,14 +180,12 @@ def output_all_problem_machines():
         if machine:
             if idle > timedelta(hours=6) and ignore == "No":
                 table.add_row([hostname, idle, ilo, serial, notes])
-                idle_machines += 1
 
     print(table)
-    if configuration.SPECIAL and idle_machines > 30:
-        twc_audio.play(random.choice([configuration.WAVE04, configuration.WAVE05]))
-    else:
-        twc_audio.play(random.choice([configuration.WAVE04, configuration.WAVE04]))
+    end= datetime.now()
 
+    if verbose:
+        print("Printing the missing machines took:", end-start)
 
 def write_html_data():
     pass
@@ -240,23 +239,17 @@ if __name__ == "__main__":
     script_start = datetime.now()
 
     if "-v" in sys.argv:
-        configuration.VERSION = True
-        print("Script running with Verbose Mode ENABLED\n")
+        verbose = True
+        print("Verbose mode not implemented yet.\n")
 
-    if "-a" in sys.argv:
-        configuration.SPECIAL = True
-        twc_audio.play(configuration.WAVE01)
-        main_menu.run_menu()
-
-    if "-ct" in sys.argv:
-        citest = True
+    if "-tc" in sys.argv:
+        travisci_testing = True
         print("TravisCI Testing Begins!")
         dev_run_login()
     else:
-        citest = False
         main_menu.run_menu()
 
     script_end = datetime.now()
 
-    if configuration.VERBOSE:
+    if verbose:
         print("Script total runtime:", script_end - script_start)
