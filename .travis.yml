@@ -8,7 +8,6 @@ before_install:
 - easy_install gspread
 - easy_install oauth2client
 - easy_install pyopenssl
-- easy_install pyaudio
 - echo $TRAVIS_COMMIT
 - echo $TRAVIS_TAG
 - echo $TRAVIS_BRANCH
