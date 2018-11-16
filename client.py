@@ -5,7 +5,6 @@ import random
 from datetime import datetime, timedelta
 try:
     import gspread
-    import pyaudio
     import requests
     from prettytable import PrettyTable
     from oauth2client.service_account import ServiceAccountCredentials
