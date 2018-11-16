@@ -1,14 +1,22 @@
 #!/usr/bin/python3
-import json
 import sys
+import json
+import random
 from datetime import datetime, timedelta
+try:
+    import gspread
+    import pyaudio
+    import requests
+    from prettytable import PrettyTable
+    from oauth2client.service_account import ServiceAccountCredentials
+except ImportError:
+    print("Detected missing modules!\n"
+          "Please Run and restart the application:\n"
+          "pip3 install -r requirements.txt")
+    exit(0)
 
-import gspread
-import requests
-from oauth2client.service_account import ServiceAccountCredentials
-from prettytable import PrettyTable
+from twc_modules import configuration, twc_audio, main_menu
 
-from twc_modules import configuration, main_menu
 
 timenow = datetime.utcnow()
 
@@ -150,6 +158,7 @@ def output_all_problem_machines():
     machine_data = open_json("google_dict.json")
     table = PrettyTable()
     table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Notes"]
+    idle_machines = 0
 
     for machine in machine_data:
         hostname = machine
@@ -167,11 +176,17 @@ def output_all_problem_machines():
         except KeyError:
             ilo = "-"
 
+
         if machine:
             if idle > timedelta(hours=6) and ignore == "No":
                 table.add_row([hostname, idle, ilo, serial, notes])
+                idle_machines += 1
 
     print(table)
+    if configuration.SPECIAL and idle_machines > 30:
+        twc_audio.play(random.choice([configuration.WAVE04, configuration.WAVE05]))
+    else:
+        twc_audio.play(random.choice([configuration.WAVE04, configuration.WAVE04]))
 
 
 def write_html_data():
@@ -226,10 +241,13 @@ if __name__ == "__main__":
     script_start = datetime.now()
 
     if "-v" in sys.argv:
-        verbose = True
+        configuration.VERSION = True
         print("Script running with Verbose Mode ENABLED\n")
-    else:
-        verbose = False
+
+    if "-a" in sys.argv:
+        configuration.SPECIAL = True
+        twc_audio.play(configuration.WAVE01)
+        main_menu.run_menu()
 
     if "-ct" in sys.argv:
         citest = True
@@ -241,5 +259,5 @@ if __name__ == "__main__":
 
     script_end = datetime.now()
 
-    if verbose:
+    if configuration.VERBOSE:
         print("Script total runtime:", script_end - script_start)

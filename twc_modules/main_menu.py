@@ -1,6 +1,6 @@
-from twc_modules.configuration import VERSION
+from twc_modules import configuration, twc_audio
 from client import run_all_machines, run_windows_machines, run_linux_machines, run_yosemite_machines
-
+import random
 
 def run_menu(*arg):
     """
@@ -19,7 +19,7 @@ def run_menu(*arg):
     """
     print("Welcome to CiDuty's TaskCluster Worker Checker.\n"
           "You can use the options below to investigate the machines which you want.\n"
-          "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(VERSION))
+          "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
     print("1. Check Machine(s) Status\n"
           "2. Check a Specific Machine\n"
           "3. List Machines Loaned by User\n"
@@ -45,6 +45,8 @@ def run_menu(*arg):
             print("\n\nInvalid Choice!\n")
             run_menu()
         if choice_menu1 == 1:
+            if configuration.SPECIAL:
+                twc_audio.play(random.choice([configuration.WAVE02, configuration.WAVE03]))
             run_all_machines()
             exit(0)
         if choice_menu1 == 2:
