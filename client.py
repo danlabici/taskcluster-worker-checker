@@ -216,8 +216,15 @@ def push_html_to_git():
 
 
 def run_all_machines():
-    print("Logic not implemented yet!")
-    exit(0)
+    """
+    This is the main order in which the tool will run all the functions needed to return the result.
+      - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
+    """
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    output_all_problem_machines()
 
 
 def run_windows_machines():
