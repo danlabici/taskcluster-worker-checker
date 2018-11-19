@@ -2,6 +2,7 @@
 import sys
 import json
 from datetime import datetime, timedelta
+
 try:
     import gspread
     import requests
@@ -17,12 +18,11 @@ from twc_modules import configuration, main_menu
 
 timenow = datetime.utcnow()
 twc_version = configuration.VERSION
-lazy_time = configuration.LAZY
-verbose = True
-travisci_testing = True
+
 
 def get_heroku_last_seen():
     start = datetime.now()
+    verbose = configuration.VERBOSE
     url = "http://releng-hardware.herokuapp.com/machines"
     headers = {"user-agent": "ciduty-twc/{}".format(twc_version)}
     data = json.loads(requests.get(url, headers=headers).text)
@@ -43,6 +43,7 @@ def get_heroku_last_seen():
 
 def get_google_spreadsheet_data():
     start = datetime.now()
+    verbose = configuration.VERBOSE
     # Define READONLY scopes needed for the CLI
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
 
@@ -104,6 +105,7 @@ def get_google_spreadsheet_data():
     save_json('google_dict.json', all_google_machine_data)
     end = datetime.now()
     if verbose:
+        save_json('vebose_google_dict.json', all_google_machine_data)
         print("Google Data Processing took:", end - start)
     return all_google_machine_data
 
@@ -122,6 +124,7 @@ def save_json(file_name, data):
 
 def remove_fqdn_from_machine_name():
     start = datetime.now()
+    verbose = configuration.VERBOSE
     # Update Machine-Key from FQDN to Hostname
     _google_dict = open_json('google_dict.json')
     for key in list(_google_dict):
@@ -140,6 +143,7 @@ def remove_fqdn_from_machine_name():
 
 def add_idle_to_google_dict():
     start = datetime.now()
+    verbose = configuration.VERSION
     heroku_data = open_json("heroku_dict.json")
     google_data = open_json("google_dict.json")
 
@@ -156,15 +160,25 @@ def add_idle_to_google_dict():
 
 def output_all_problem_machines():
     start = datetime.now()
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
-    table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Notes"]
+    if not verbose:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
+    else:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                             "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
         ignore = machine_data.get(machine)["ignore"]
         notes = machine_data.get(machine)["notes"]
         serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
         if notes == "":
             notes = "No notes available."
         else:
@@ -176,16 +190,22 @@ def output_all_problem_machines():
         except KeyError:
             ilo = "-"
 
-
         if machine:
-            if idle > timedelta(hours=6) and ignore == "No":
-                table.add_row([hostname, idle, ilo, serial, notes])
+            if idle > timedelta(hours=lazy_time) and ignore == "No":
+                if not verbose:
+                    table.add_row([hostname, idle, ilo, serial, notes])
+                else:
+                    _verbose_google_dict = open_json("vebose_google_dict.json")
+                    for key in _verbose_google_dict:
+                        if machine in str(key):
+                            table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
-    end= datetime.now()
+    end = datetime.now()
 
     if verbose:
-        print("Printing the missing machines took:", end-start)
+        print("Printing the missing machines took:", end - start)
+
 
 def write_html_data():
     pass
@@ -196,20 +216,19 @@ def push_html_to_git():
 
 
 def run_all_machines():
+    print("Logic not implemented yet!")
+    exit(0)
+
+
+def run_windows_machines():
     """
-    This is the main order in which the tool will run all the functions needed to return the result.
-      - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
+    This will output only Windows machines.
     """
     get_heroku_last_seen()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
     add_idle_to_google_dict()
     output_all_problem_machines()
-
-
-def run_windows_machines():
-    print("Logic not implemented yet!")
-    exit(0)
 
 
 def run_linux_machines():
@@ -236,20 +255,25 @@ def dev_run_login():
 
 
 if __name__ == "__main__":
-    script_start = datetime.now()
+    verbose = configuration.VERBOSE
+    for options in sys.argv:
+        if "-v".upper().lower() in sys.argv:
+            configuration.VERBOSE = True
 
-    if "-v" in sys.argv:
-        verbose = True
-        print("Verbose mode not implemented yet.\n")
+        if "-l".upper().lower() in sys.argv:
+            lazy_time_index = sys.argv.index("-l") + 1
+            lazy_time = sys.argv[lazy_time_index]
+            try:
+                configuration.LAZY = int(lazy_time)
+            except ValueError as e:
+                print("Expecting integer for the Lazy Time value, but got:\n", e)
+                exit(-1)
 
-    if "-tc" in sys.argv:
-        travisci_testing = True
-        print("TravisCI Testing Begins!")
-        dev_run_login()
-    else:
-        main_menu.run_menu()
+        if "-tc".upper().lower() in sys.argv:
+            configuration.TRAVISCI = True
+            print("TravisCI Testing Begins!")
+            dev_run_login()
+        else:
+            main_menu.run_menu()
 
     script_end = datetime.now()
-
-    if verbose:
-        print("Script total runtime:", script_end - script_start)

@@ -19,6 +19,11 @@ def run_menu(*arg):
     print("Welcome to CiDuty's TaskCluster Worker Checker.\n"
           "You can use the options below to investigate the machines which you want.\n"
           "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
+    if configuration.LAZY != 6:
+        print("==== Custom Lazy Time of:", configuration.LAZY, " ====")
+    if configuration.VERBOSE:
+        print("==== Verbose Mode Activated  ====\n")
+
     print("1. Check Machine(s) Status\n"
           "2. Check a Specific Machine\n"
           "3. List Machines Loaned by User\n"
