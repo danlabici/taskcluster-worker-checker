@@ -23,9 +23,14 @@ If you don't know how to get access to this file, please ping anyone in **CiDuty
 |           `python client.py`    | `python3 client.py`            |
 
 
-You can also add the `-v` to get extra information such as loaned machines and machines that have known issues.
+## Other Run Options:
+Script doesn't mind the order in which you set the options/arguments.
 
-When you submit code/PRs, the TravisCI testing will also add `-ct` argument to ensure that everything works as expected!
+`-v`  - Used to activate verbose mode. Script will output runtimes and vew extra columns in the end output.
+
+`-l`  - Used to set custom Lazy timer. Default Lazy Timer is set to 6 hours. Usage: `-l 10` or `-l 2`
+
+`-ct` - Used to set flag for TravisCI testing.
 
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into.
