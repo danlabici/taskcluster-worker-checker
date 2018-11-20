@@ -4,11 +4,9 @@ This utility will check [TaskCluster](https://github.com/taskcluster) provisione
 
 # How to run the script:
 ## Instalation:
-1) Make sure you have PrettyTable installed on your system, by running:
+1) Run the following command to install all missing dependencies:
 
-    `pip3 install prettytable gspread oauth2client pyopenssl` - Works on Linux, Mac.
-    
-    `pip install prettytable gspread oauth2client pyopenssl`  - Works on Windows.
+`pip install -r requirements.txt`
 
 2) Since `30 October 2018` the script will require you to manually add a json file which holds the credentials needed to connect to Google Drive.
 The file is inside the `"secret repo/passwords/ciduty-twc.json"`.
