@@ -1,5 +1,5 @@
 from twc_modules import configuration
-from client import run_logic, print_loaned_machines
+from client import run_logic, output_single_machine, output_loaned_machines, output_machines_with_notes
 
 windows = configuration.WINDOWS
 linux = configuration.LINUX
@@ -87,19 +87,22 @@ def run_menu(*arg):
     if choice == 2:
         print("Type the HostName to search for a specific machine.\n"
               "Example: t-yosemite-r7-240")
-        workerType = str(input())
-        run_logic(workerType)
+        single_machine = str(input())
+        output_single_machine(single_machine)
         exit(0)
 
     if choice == 3:
         print("Loaned machines has two distinct options to run:\n"
               "With a name provided. Example: Q or davehouse\n"
               "Or you can simple press enter (don't input anything) and will list all the machines that are loaned")
-        print_loaned_machines(loaner=input().lower())
+        output_loaned_machines(loaner=input().lower())
         exit(0)
 
     if choice == 4:
-        print("Logic not implemented yet!")
+        print("This function will print ALL machines with notes.\n"
+              "Press ENTER to continue.")
+        input()
+        output_machines_with_notes()
         exit(0)
 
     if choice == 5:

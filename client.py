@@ -196,12 +196,7 @@ def output_problem_machines(workerType):
             ilo = "-"
 
         if machine:
-            # Case 2 - Check WorkerType that was manually imputed by the user.
-            if workerType in str(machine):
-                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
-                break
 
-            # Case 1 - Check WorkerTypes that are predefined by the menu and respect the Lazy_Time logic.
             if idle > timedelta(hours=lazy_time) and ignore == "No":
                 if workerType == "ALL":
                     if not verbose:
@@ -239,6 +234,7 @@ def output_problem_machines(workerType):
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
+
     print(table)
     end = datetime.now()
 
@@ -246,7 +242,52 @@ def output_problem_machines(workerType):
         print("Printing the missing machines took:", end - start)
 
 
-def print_loaned_machines(**loaner):
+def output_single_machine(single_machine):
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+
+    table = PrettyTable()
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                             "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            if single_machine in str(machine):
+                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+
+    print(table)
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the missing machines took:", end - start)
+
+
+def output_loaned_machines(**loaner):
     start = datetime.now()
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
@@ -258,7 +299,7 @@ def print_loaned_machines(**loaner):
 
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes", "Ignored?"]
     else:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
@@ -285,18 +326,73 @@ def print_loaned_machines(**loaner):
 
         if machine:
             for value in loaner:
-                if loaner.get(value) == "":
-                    if owner:
-                        table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
-                else:
-                    if str(loaner.get(value)).lower() == str(owner).lower():
-                        table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                if owner:
+                    if loaner.get(value) == "":
+                        if not verbose:
+                            table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                        else:
+                            table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+
+                    else:
+                        if str(loaner.get(value)).lower() == str(owner).lower():
+                            if not verbose:
+                                table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                            else:
+                                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
     end = datetime.now()
 
     if verbose:
-        print("Printing the missing machines took:", end - start)
+        print("Printing the loaned machines took:", end - start)
+
+
+def output_machines_with_notes():
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+    table = PrettyTable()
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                         "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            if notes is not "No notes available.":
+                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+            else:
+                pass
+
+
+    print(table)
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the loaned machines took:", end - start)
+
 
 def write_html_data():
     pass
