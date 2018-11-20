@@ -1,5 +1,5 @@
 from twc_modules import configuration
-from client import run_logic
+from client import run_logic, print_loaned_machines
 
 windows = configuration.WINDOWS
 linux = configuration.LINUX
@@ -92,7 +92,10 @@ def run_menu(*arg):
         exit(0)
 
     if choice == 3:
-        print("Logic not implemented yet!")
+        print("Loaned machines has two distinct options to run:\n"
+              "With a name provided. Example: Q or davehouse\n"
+              "Or you can simple press enter (don't input anything) and will list all the machines that are loaned\n")
+        print_loaned_machines(loaner=input().lower())
         exit(0)
 
     if choice == 4:

@@ -246,6 +246,58 @@ def output_problem_machines(workerType):
         print("Printing the missing machines took:", end - start)
 
 
+def print_loaned_machines(**loaner):
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+    if not verbose:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
+    else:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                             "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            for value in loaner:
+                if loaner.get(value) == "":
+                    if owner:
+                        table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                else:
+                    if str(loaner.get(value)).lower() == str(owner).lower():
+                        table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+
+    print(table)
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the missing machines took:", end - start)
+
 def write_html_data():
     pass
 
