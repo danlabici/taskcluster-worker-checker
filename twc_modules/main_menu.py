@@ -94,7 +94,7 @@ def run_menu(*arg):
     if choice == 3:
         print("Loaned machines has two distinct options to run:\n"
               "With a name provided. Example: Q or davehouse\n"
-              "Or you can simple press enter (don't input anything) and will list all the machines that are loaned\n")
+              "Or you can simple press enter (don't input anything) and will list all the machines that are loaned")
         print_loaned_machines(loaner=input().lower())
         exit(0)
 
