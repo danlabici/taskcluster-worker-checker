@@ -1,5 +1,10 @@
 from twc_modules import configuration
-from client import run_all_machines, run_windows_machines, run_linux_machines, run_yosemite_machines
+from client import run_logic
+
+windows = configuration.WINDOWS
+linux = configuration.LINUX
+yosemite = configuration.YOSEMITE
+all = configuration.ALLWORKERS
 
 def run_menu(*arg):
     """
@@ -49,28 +54,34 @@ def run_menu(*arg):
             print("\n\nInvalid Choice!\n")
             run_menu()
         if choice_menu1 == 1:
-            run_all_machines()
+            run_logic(all)
             exit(0)
         if choice_menu1 == 2:
-            # run_windows_machines()
-            print("Logic not implemented yet!")
+            run_logic(windows)
             exit(0)
         if choice_menu1 == 3:
-            # run_linux_machines()
-            print("Logic not implemented yet!")
+            run_logic(linux)
             exit(0)
         if choice_menu1 == 4:
-            # run_yosemite_machines()
-            print("Logic not implemented yet!")
+            run_logic(yosemite)
             exit(0)
         if choice_menu1 == 0:
             run_menu()
 
     if choice == 11:
-        run_all_machines()
+        run_logic(all)
+        exit(0)
 
-    if choice in range(12, 16):
-        print("Logic not implemented yet!")
+    if choice == 12:
+        run_logic(windows)
+        exit(0)
+
+    if choice == 13:
+        run_logic(linux)
+        exit(0)
+
+    if choice == 14:
+        run_logic(yosemite)
         exit(0)
 
     if choice == 2:

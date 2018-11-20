@@ -18,7 +18,10 @@ from twc_modules import configuration, main_menu
 
 timenow = datetime.utcnow()
 twc_version = configuration.VERSION
-
+workerType = configuration.WORKERTYPE
+windows = configuration.WINDOWS
+linux = configuration.LINUX
+yosemite = configuration.YOSEMITE
 
 def get_heroku_last_seen():
     start = datetime.now()
@@ -158,7 +161,7 @@ def add_idle_to_google_dict():
         print("Adding IDLE times to Google Data took:", end - start)
 
 
-def output_all_problem_machines():
+def output_problem_machines(workerType):
     start = datetime.now()
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
@@ -192,13 +195,41 @@ def output_all_problem_machines():
 
         if machine:
             if idle > timedelta(hours=lazy_time) and ignore == "No":
-                if not verbose:
-                    table.add_row([hostname, idle, ilo, serial, notes])
-                else:
-                    _verbose_google_dict = open_json("vebose_google_dict.json")
-                    for key in _verbose_google_dict:
-                        if machine in str(key):
-                            table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                if workerType == "ALL":
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                    else:
+                        _verbose_google_dict = open_json("vebose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+
+                if workerType == "t-w1064-ms" and workerType in str(machine):
+                        if not verbose:
+                            table.add_row([hostname, idle, ilo, serial, notes])
+                        else:
+                            _verbose_google_dict = open_json("vebose_google_dict.json")
+                            for key in _verbose_google_dict:
+                                if machine in str(key):
+                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+
+                if workerType == "t-linux64-ms" and workerType in str(machine):
+                        if not verbose:
+                            table.add_row([hostname, idle, ilo, serial, notes])
+                        else:
+                            _verbose_google_dict = open_json("vebose_google_dict.json")
+                            for key in _verbose_google_dict:
+                                if machine in str(key):
+                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+
+                if workerType == "t-yosemite-r7" and workerType in machine:
+                        if not verbose:
+                            table.add_row([hostname, idle, ilo, serial, notes])
+                        else:
+                            _verbose_google_dict = open_json("vebose_google_dict.json")
+                            for key in _verbose_google_dict:
+                                if machine in str(key):
+                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
     end = datetime.now()
@@ -215,7 +246,7 @@ def push_html_to_git():
     pass
 
 
-def run_all_machines():
+def run_logic(workerType):
     """
     This is the main order in which the tool will run all the functions needed to return the result.
       - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
@@ -224,33 +255,12 @@ def run_all_machines():
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
     add_idle_to_google_dict()
-    output_all_problem_machines()
+    output_problem_machines(workerType=workerType)
 
 
-def run_windows_machines():
+def dev_run_logic():
     """
-    This will output only Windows machines.
-    """
-    get_heroku_last_seen()
-    get_google_spreadsheet_data()
-    remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
-    output_all_problem_machines()
-
-
-def run_linux_machines():
-    print("Logic not implemented yet!")
-    exit(0)
-
-
-def run_yosemite_machines():
-    print("Logic not implemented yet!")
-    exit(0)
-
-
-def dev_run_login():
-    """
-    When debuging and you change how data is stored/manipulated, use this function to always recreate the files.
+    When debugging and you change how data is stored/manipulated, use this function to always recreate the files.
     This will also skip the MainMenu of the CLI application
     :return: Fresh data.
     """
@@ -258,7 +268,7 @@ def dev_run_login():
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
     add_idle_to_google_dict()
-    output_all_problem_machines()
+    output_problem_machines(workerType=workerType)
 
 
 if __name__ == "__main__":
@@ -277,6 +287,6 @@ if __name__ == "__main__":
     if "-tc" in sys.argv:
         configuration.TRAVISCI = True
         print("TravisCI Testing Begins!")
-        dev_run_login()
+        dev_run_logic()
     else:
         main_menu.run_menu()
