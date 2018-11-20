@@ -85,7 +85,10 @@ def run_menu(*arg):
         exit(0)
 
     if choice == 2:
-        print("Logic not implemented yet!")
+        print("Type the HostName to search for a specific machine.\n"
+              "Example: t-yosemite-r7-240")
+        workerType = str(input())
+        run_logic(workerType)
         exit(0)
 
     if choice == 3:

@@ -23,6 +23,7 @@ windows = configuration.WINDOWS
 linux = configuration.LINUX
 yosemite = configuration.YOSEMITE
 
+
 def get_heroku_last_seen():
     start = datetime.now()
     verbose = configuration.VERBOSE
@@ -108,7 +109,7 @@ def get_google_spreadsheet_data():
     save_json('google_dict.json', all_google_machine_data)
     end = datetime.now()
     if verbose:
-        save_json('vebose_google_dict.json', all_google_machine_data)
+        save_json('verbose_google_dict.json', all_google_machine_data)
         print("Google Data Processing took:", end - start)
     return all_google_machine_data
 
@@ -166,6 +167,7 @@ def output_problem_machines(workerType):
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
+
     if not verbose:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
@@ -194,42 +196,48 @@ def output_problem_machines(workerType):
             ilo = "-"
 
         if machine:
+            # Case 2 - Check WorkerType that was manually imputed by the user.
+            if workerType in str(machine):
+                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                break
+
+            # Case 1 - Check WorkerTypes that are predefined by the menu and respect the Lazy_Time logic.
             if idle > timedelta(hours=lazy_time) and ignore == "No":
                 if workerType == "ALL":
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
                     else:
-                        _verbose_google_dict = open_json("vebose_google_dict.json")
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
                 if workerType == "t-w1064-ms" and workerType in str(machine):
-                        if not verbose:
-                            table.add_row([hostname, idle, ilo, serial, notes])
-                        else:
-                            _verbose_google_dict = open_json("vebose_google_dict.json")
-                            for key in _verbose_google_dict:
-                                if machine in str(key):
-                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
                 if workerType == "t-linux64-ms" and workerType in str(machine):
-                        if not verbose:
-                            table.add_row([hostname, idle, ilo, serial, notes])
-                        else:
-                            _verbose_google_dict = open_json("vebose_google_dict.json")
-                            for key in _verbose_google_dict:
-                                if machine in str(key):
-                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
                 if workerType == "t-yosemite-r7" and workerType in machine:
-                        if not verbose:
-                            table.add_row([hostname, idle, ilo, serial, notes])
-                        else:
-                            _verbose_google_dict = open_json("vebose_google_dict.json")
-                            for key in _verbose_google_dict:
-                                if machine in str(key):
-                                    table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
     end = datetime.now()
