@@ -262,25 +262,21 @@ def dev_run_login():
 
 
 if __name__ == "__main__":
-    verbose = configuration.VERBOSE
-    for options in sys.argv:
-        if "-v".upper().lower() in sys.argv:
-            configuration.VERBOSE = True
+    if "-v" in sys.argv:
+        configuration.VERBOSE = True
 
-        if "-l".upper().lower() in sys.argv:
-            lazy_time_index = sys.argv.index("-l") + 1
-            lazy_time = sys.argv[lazy_time_index]
-            try:
-                configuration.LAZY = int(lazy_time)
-            except ValueError as e:
-                print("Expecting integer for the Lazy Time value, but got:\n", e)
-                exit(-1)
+    if "-l" in sys.argv:
+        lazy_time_index = sys.argv.index("-l") + 1
+        lazy_time = sys.argv[lazy_time_index]
+        try:
+            configuration.LAZY = int(lazy_time)
+        except ValueError as e:
+            print("Expecting integer for the Lazy Time value, but got:\n", e)
+            exit(-1)
 
-        if "-tc".upper().lower() in sys.argv:
-            configuration.TRAVISCI = True
-            print("TravisCI Testing Begins!")
-            dev_run_login()
-        else:
-            main_menu.run_menu()
-
-    script_end = datetime.now()
+    if "-tc" in sys.argv:
+        configuration.TRAVISCI = True
+        print("TravisCI Testing Begins!")
+        dev_run_login()
+    else:
+        main_menu.run_menu()
