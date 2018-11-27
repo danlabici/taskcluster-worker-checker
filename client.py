@@ -7,6 +7,7 @@ try:
     import gspread
     import requests
     from prettytable import PrettyTable
+    from sty import fg, bg, ef, rs, Rule
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Detected missing modules!\n"
@@ -183,6 +184,11 @@ def output_problem_machines(workerType):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+        
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
 
         if notes == "":
             notes = "No notes available."
@@ -252,18 +258,22 @@ def output_single_machine(single_machine):
     add_idle_to_google_dict()
     machine_data = open_json("google_dict.json")
 
-
     table = PrettyTable()
     table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
                              "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
-        ignore = machine_data.get(machine)["ignore"]
         notes = machine_data.get(machine)["notes"]
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+        ignore = machine_data.get(machine)["ignore"]
+
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
 
         if notes == "":
             notes = "No notes available."
@@ -312,6 +322,11 @@ def output_loaned_machines(**loaner):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
 
         if notes == "":
             notes = "No notes available."
@@ -369,6 +384,11 @@ def output_machines_with_notes():
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+
         if notes == "":
             notes = "No notes available."
         else:
@@ -385,7 +405,6 @@ def output_machines_with_notes():
                 table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
             else:
                 pass
-
 
     print(table)
     end = datetime.now()
