@@ -184,11 +184,6 @@ def output_problem_machines(workerType):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
-        
-        if ignore == "Yes":
-            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
-        else:
-            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
 
         if notes == "":
             notes = "No notes available."
