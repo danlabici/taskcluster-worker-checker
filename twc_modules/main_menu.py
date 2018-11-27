@@ -55,64 +55,72 @@ def run_menu(*arg):
             run_menu()
         if choice_menu1 == 1:
             run_logic(all)
-            exit(0)
+            menu_persistent()
         if choice_menu1 == 2:
             run_logic(windows)
-            exit(0)
+            menu_persistent()
         if choice_menu1 == 3:
             run_logic(linux)
-            exit(0)
+            menu_persistent()
         if choice_menu1 == 4:
             run_logic(yosemite)
-            exit(0)
+            menu_persistent()
         if choice_menu1 == 0:
             run_menu()
 
     if choice == 11:
         run_logic(all)
-        exit(0)
+        menu_persistent()
 
     if choice == 12:
         run_logic(windows)
-        exit(0)
+        menu_persistent()
 
     if choice == 13:
         run_logic(linux)
-        exit(0)
+        menu_persistent()
 
     if choice == 14:
         run_logic(yosemite)
-        exit(0)
+        menu_persistent()
 
     if choice == 2:
         print("Type the HostName to search for a specific machine.\n"
               "Example: t-yosemite-r7-240")
         single_machine = str(input())
         output_single_machine(single_machine)
-        exit(0)
+        menu_persistent()
 
     if choice == 3:
         print("Loaned machines has two distinct options to run:\n"
               "With a name provided. Example: Q or davehouse\n"
               "Or you can simple press enter (don't input anything) and will list all the machines that are loaned")
         output_loaned_machines(loaner=input().lower())
-        exit(0)
+        menu_persistent()
 
     if choice == 4:
         print("This function will print ALL machines with notes.\n"
               "Press ENTER to continue.")
         input()
         output_machines_with_notes()
-        exit(0)
+        menu_persistent()
 
     if choice == 5:
         print("Logic not implemented yet!")
-        exit(0)
+        menu_persistent()
 
     if choice == 0:
         print("Closing CLI application.\n")
-        exit()
+        configuration.PERSISTENT = False
+        menu_persistent()
     else:
         print("\n\nInvalid Choice!\n"
               "Restarting script!\n\n")
         run_menu()
+
+
+def menu_persistent():
+    while configuration.PERSISTENT:
+        run_menu()
+    else:
+        exit(0)
