@@ -454,6 +454,10 @@ if __name__ == "__main__":
             print("Expecting integer for the Lazy Time value, but got:\n", e)
             exit(-1)
 
+    if "-p" in sys.argv:
+        configuration.PERSISTENT = True
+        main_menu.menu_persistent()
+
     if "-tc" in sys.argv:
         configuration.TRAVISCI = True
         print("TravisCI Testing Begins!")

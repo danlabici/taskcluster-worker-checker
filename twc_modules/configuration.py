@@ -2,6 +2,7 @@
 VERSION = "1.2.0"
 LAZY = int(6)
 VERBOSE = False
+PERSISTENT = False
 TRAVISCI = False
 WORKERTYPE = "ALL"
 
