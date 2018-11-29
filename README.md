@@ -30,6 +30,8 @@ Script doesn't mind the order in which you set the options/arguments.
 
 `-ct` - Used to set flag for TravisCI testing.
 
+`-p`  - Used to set persistent menu.
+
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into.
 2) We get the machine data from [RelEnd-Hardware](https://releng-hardware.herokuapp.com/machines)
