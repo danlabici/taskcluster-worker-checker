@@ -87,7 +87,7 @@ def run_menu(*arg):
     if choice == 2:
         print("Type the HostName to search for a specific machine.\n"
               "Example: t-yosemite-r7-240")
-        single_machine = str(input())
+        single_machine = str(input().lower())
         output_single_machine(single_machine)
         menu_persistent()
 

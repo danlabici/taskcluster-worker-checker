@@ -165,6 +165,7 @@ def add_idle_to_google_dict():
 
 def output_problem_machines(workerType):
     start = datetime.now()
+    number_of_machines = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
@@ -202,43 +203,51 @@ def output_problem_machines(workerType):
                 if workerType == "ALL":
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
+                        number_of_machines += 1
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
 
                 if workerType == "t-w1064-ms" and workerType in str(machine):
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
+                        number_of_machines += 1
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
 
                 if workerType == "t-linux64-ms" and workerType in str(machine):
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
+                        number_of_machines += 1
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
 
                 if workerType == "t-yosemite-r7" and workerType in machine:
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
+                        number_of_machines += 1
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
 
 
     print(table)
+    print("Total number of lazy workers:", number_of_machines)
     end = datetime.now()
-
     if verbose:
         print("Printing the missing machines took:", end - start)
 
