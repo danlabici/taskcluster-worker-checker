@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import os
 import sys
 import json
 from datetime import datetime, timedelta
@@ -244,9 +245,12 @@ def output_problem_machines(workerType):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
                                 number_of_machines += 1
 
-
     print(table)
     print("Total number of lazy workers:", number_of_machines)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
     end = datetime.now()
     if verbose:
         print("Printing the missing machines took:", end - start)
@@ -264,7 +268,7 @@ def output_single_machine(single_machine):
 
     table = PrettyTable()
     table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
-                             "Ownership Notes", " Other Notes", "Ignored?"]
+                         "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
@@ -295,6 +299,10 @@ def output_single_machine(single_machine):
                 table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
     end = datetime.now()
 
     if verbose:
@@ -313,7 +321,8 @@ def output_loaned_machines(**loaner):
 
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes", "Ignored?"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes",
+                             "Ignored?"]
     else:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
@@ -360,6 +369,10 @@ def output_loaned_machines(**loaner):
                                 table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
     end = datetime.now()
 
     if verbose:
@@ -411,17 +424,47 @@ def output_machines_with_notes():
                 pass
 
     print(table)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
     end = datetime.now()
 
     if verbose:
         print("Printing the loaned machines took:", end - start)
 
 
-def write_html_data():
-    pass
+def write_html_data(*args):
+    x = args[0]
+    default_html = """
+    <head>
+        <style type="text/css">
+            table {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+            table td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+            table th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+            table .tg-hmp3{background-color:#D2E4FC;text-align:left;vertical-align:top}
+            table .tg-baqh{text-align:center;vertical-align:top}
+            table .tg-mb3i{background-color:#D2E4FC;text-align:right;vertical-align:top}
+            table .tg-lqy6{text-align:right;vertical-align:top}
+            table .tg-0lax{text-align:left;vertical-align:top}
+        </style> 
+    </head>
+    """
+
+    # Delete old data and insert the styling.
+    with open("index.html", "w+") as f:
+        f.write(default_html)
+
+    # Append the table.
+    with open("index.html", "a") as f:
+        f.write(x.get_html_string())
+        f.close()
+
+    if configuration.OPENHTML:
+        os.system("start" + " index.html")
 
 
-def push_html_to_git():
+def push_to_git():
     pass
 
 
@@ -462,10 +505,18 @@ if __name__ == "__main__":
         except ValueError as e:
             print("Expecting integer for the Lazy Time value, but got:\n", e)
             exit(-1)
+    if "-o" in sys.argv:
+        configuration.OUTPUTFILE = True
+
+    if "-o" and "-a" in sys.argv:
+        configuration.OPENHTML = True
 
     if "-p" in sys.argv:
         configuration.PERSISTENT = True
         main_menu.menu_persistent()
+
+    if len(sys.argv) > int(1):
+        configuration.ARGLEN = len(sys.argv) - 1  # We subtract 1 as that's the client.py argument.
 
     if "-tc" in sys.argv:
         configuration.TRAVISCI = True

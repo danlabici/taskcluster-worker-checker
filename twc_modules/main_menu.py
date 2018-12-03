@@ -1,6 +1,6 @@
 from twc_modules import configuration
 from client import run_logic, output_single_machine, output_loaned_machines, output_machines_with_notes
-
+import os
 windows = configuration.WINDOWS
 linux = configuration.LINUX
 yosemite = configuration.YOSEMITE
@@ -27,7 +27,17 @@ def run_menu(*arg):
     if configuration.LAZY != 6:
         print("==== Custom Lazy Time of:", configuration.LAZY, " ====")
     if configuration.VERBOSE:
-        print("==== Verbose Mode Activated  ====\n")
+        print("==== Verbose Mode Activated  ====")
+    if configuration.PERSISTENT:
+        print("==== Persistent Menu Activated  ====")
+    if configuration.OUTPUTFILE:
+        print("==== Output will be saved in:",  str(os.path.dirname(os.path.realpath("index.html"))), "====")
+    if configuration.OUTPUTFILE and configuration.OPENHTML:
+        print("==== Generated HTML will automatically open at the end of the program  ====")
+
+    # Insert a new line between run arguments and the main menu.
+    if configuration.ARGLEN > 0:
+        print("\n")
 
     print("1. Check Machine(s) Status\n"
           "2. Check a Specific Machine\n"

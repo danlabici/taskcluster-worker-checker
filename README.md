@@ -28,9 +28,15 @@ Script doesn't mind the order in which you set the options/arguments.
 
 `-l`  - Used to set custom Lazy timer. Default Lazy Timer is set to 6 hours. Usage: `-l 10` or `-l 2`
 
+`-p`  - Used to set persistent menu.
+
+`-o`  - Used to output the resulting table in a HTML file, called index.html
+
+`-a`  - If `-o` is provided, the file will automatically open in your default browser.
+
 `-ct` - Used to set flag for TravisCI testing.
 
-`-p`  - Used to set persistent menu.
+
 
 ## How does it work?
 1) Script will ask the user which worker-type he's interested into.
