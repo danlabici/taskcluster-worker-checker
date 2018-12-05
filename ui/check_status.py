@@ -51,7 +51,10 @@ class CheckStatusWindow(QtWidgets.QFrame):
         lazy_time = LAZY
         machine_data = open_json("google_dict.json")
         for machine in machine_data:
-            hostname = machine.partition(".")[0]
+            if self.details_check.isChecked():
+                hostname = machine
+            else:
+                hostname = machine.partition(".")[0]
             ignore = machine_data.get(machine)["ignore"]
             notes = machine_data.get(machine)["notes"]
             serial = machine_data.get(machine)["serial"]
