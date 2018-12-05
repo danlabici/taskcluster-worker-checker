@@ -49,12 +49,17 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.output_problem_machines("yosemite")
 
     def get_all_machines(self):
-        get_heroku_last_seen()
-        self.message_board_history("Getting Heroku data...")
-        get_google_spreadsheet_data()
-        self.message_board_history("Getting Google spreadsheet data...")
-        add_idle_to_google_dict()
-        self.message_board_history("Adding 'idle' to google dict data...")
+        option = QtWidgets.QMessageBox.information(None, "Import new data", "Do you want to import new data or work on existing data?\n"
+                                                                            "Working on existing data improves app performance!", QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
+        if option == QtWidgets.QMessageBox.Yes:
+            get_heroku_last_seen()
+            self.message_board_history("Getting Heroku data...")
+            get_google_spreadsheet_data()
+            self.message_board_history("Getting Google spreadsheet data...")
+            add_idle_to_google_dict()
+            self.message_board_history("Adding 'idle' to google dict data...")
+        else:
+            pass
 
     def output_problem_machines(self, workerVal):
         # start = datetime.now()
@@ -71,12 +76,12 @@ class CheckStatusWindow(QtWidgets.QFrame):
             serial = machine_data.get(machine)["serial"]
             owner = machine_data.get(machine)["owner"]
             reason = machine_data.get(machine)["reason"]
+            # idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            idle = 0
             try:
-                idle = timedelta(seconds=machine_data.get(machine)["idle"])
                 ilo = machine_data.get(machine)["ilo"]
             except KeyError:
                 ilo = "-"
-                idle = "-"
 
             if workerVal in machine:
                 list_row = [hostname, idle, ilo, serial, notes]
