@@ -265,11 +265,11 @@ def output_problem_machines(workerType):
                                 count_up()
 
     print(table)
-    print("Total number of lazy workers:", number_of_machines)
+    print("Total Lazy Workers:", number_of_machines)
     if workerType == "ALL":
-        print("Windows Machines:", number_of_windows)
-        print("Linux   Machines:", number_of_linux)
-        print("OSX     Machines:", number_of_osx)
+        print("Windows   Machines:", number_of_windows)
+        print("Linux     Machines:", number_of_linux)
+        print("OSX       Machines:", number_of_osx)
 
     if configuration.OUTPUTFILE:
         write_html_data(table)
