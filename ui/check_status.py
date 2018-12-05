@@ -16,6 +16,10 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.linux_btn.pressed.connect(self.linux_workers)
         self.mac_btn.pressed.connect(self.mac_workers)
 
+    def mesage_board_history(self, text):
+        read1 = self.status_browser.toPlainText()
+        self.status_browser.setText(text + " \n" + read1 + " ")
+
     def all_workers(self):
         self.get_all_machines()
         self.tableWidget.setRowCount(0)
@@ -62,7 +66,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
             if workerVal in machine:
                 list_row = [hostname, idle, ilo, serial, notes]
-                print("execute if")
                 rowPosition = self.tableWidget.rowCount()
                 self.tableWidget.insertRow(rowPosition)
                 self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
@@ -70,13 +73,12 @@ class CheckStatusWindow(QtWidgets.QFrame):
                 self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
                 self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
                 self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
-            # else:
-            #     list_row = [hostname, idle, ilo, serial, notes]
-            #     print("execute else")
-            #     rowPosition = self.tableWidget.rowCount()
-            #     self.tableWidget.insertRow(rowPosition)
-            #     self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0].partition(".")))
-            #     self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
-            #     self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
-            #     self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
-            #     self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
+            elif workerVal not in machine:
+                list_row = [hostname, idle, ilo, serial, notes]
+                rowPosition = self.tableWidget.rowCount()
+                self.tableWidget.insertRow(rowPosition)
+                self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
+                self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
+                self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
+                self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
+                self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
