@@ -62,11 +62,11 @@ class CheckStatusWindow(QtWidgets.QFrame):
             pass
 
     def output_problem_machines(self, workerVal):
-        # start = datetime.now()
         self.tableWidget.setColumnCount(5)
         lazy_time = LAZY
         machine_data = open_json("google_dict.json")
-        for machine in machine_data:
+        idle_data = open_json("heroku_dict.json")
+        for machine, idle in zip(machine_data, idle_data):
             if self.details_check.isChecked():
                 hostname = machine
             else:
@@ -76,8 +76,8 @@ class CheckStatusWindow(QtWidgets.QFrame):
             serial = machine_data.get(machine)["serial"]
             owner = machine_data.get(machine)["owner"]
             reason = machine_data.get(machine)["reason"]
-            # idle = timedelta(seconds=machine_data.get(machine)["idle"])
-            idle = 0
+            idle = str(timedelta(seconds=idle_data.get(idle)["idle"]))
+            # idle = 0
             try:
                 ilo = machine_data.get(machine)["ilo"]
             except KeyError:

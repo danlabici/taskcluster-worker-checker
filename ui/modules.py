@@ -12,7 +12,6 @@ timenow = datetime.utcnow()
 def open_json(file_name):
     with open("json_data/{}".format(file_name)) as f:
         data = json.load(f)
-        print("open file")
     return data
 
 
