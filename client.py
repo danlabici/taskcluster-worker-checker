@@ -167,6 +167,9 @@ def add_idle_to_google_dict():
 def output_problem_machines(workerType):
     start = datetime.now()
     number_of_machines = 0
+    number_of_windows = 0
+    number_of_linux = 0
+    number_of_osx = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
@@ -198,55 +201,75 @@ def output_problem_machines(workerType):
         except KeyError:
             ilo = "-"
 
+        def count_up():
+            nonlocal number_of_machines, number_of_windows, number_of_linux, number_of_osx
+
+            number_of_machines += 1
+
+            if "t-w1064-ms" in str(machine):
+                number_of_windows += 1
+            elif "t-linux64-ms" in str(machine):
+                number_of_linux += 1
+            elif "t-yosemite-r7" in str(machine):
+                number_of_osx += 1
+            else:
+                pass
+
+            return number_of_machines, number_of_windows, number_of_linux, number_of_osx
+
         if machine:
 
             if idle > timedelta(hours=lazy_time) and ignore == "No":
                 if workerType == "ALL":
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
-                        number_of_machines += 1
+                        count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
-                                number_of_machines += 1
+                                count_up()
 
                 if workerType == "t-w1064-ms" and workerType in str(machine):
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
-                        number_of_machines += 1
+                        count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
-                                number_of_machines += 1
+                                count_up()
 
                 if workerType == "t-linux64-ms" and workerType in str(machine):
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
-                        number_of_machines += 1
+                        count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
-                                number_of_machines += 1
+                                count_up()
 
                 if workerType == "t-yosemite-r7" and workerType in machine:
                     if not verbose:
                         table.add_row([hostname, idle, ilo, serial, notes])
-                        number_of_machines += 1
+                        count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
                                 table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
-                                number_of_machines += 1
+                                count_up()
 
     print(table)
     print("Total number of lazy workers:", number_of_machines)
+    if workerType == "ALL":
+        print("Windows Machines:", number_of_windows)
+        print("Linux   Machines:", number_of_linux)
+        print("OSX     Machines:", number_of_osx)
 
     if configuration.OUTPUTFILE:
         write_html_data(table)
@@ -311,6 +334,7 @@ def output_single_machine(single_machine):
 
 def output_loaned_machines(**loaner):
     start = datetime.now()
+    number_of_machines = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     get_heroku_last_seen()
@@ -358,17 +382,22 @@ def output_loaned_machines(**loaner):
                     if loaner.get(value) == "":
                         if not verbose:
                             table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                            number_of_machines += 1
                         else:
                             table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                            number_of_machines += 1
 
                     else:
                         if str(loaner.get(value)).lower() == str(owner).lower():
                             if not verbose:
                                 table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                                number_of_machines += 1
                             else:
                                 table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
 
     print(table)
+    print("Total number of loaned machines:", number_of_machines)
 
     if configuration.OUTPUTFILE:
         write_html_data(table)
@@ -381,6 +410,7 @@ def output_loaned_machines(**loaner):
 
 def output_machines_with_notes():
     start = datetime.now()
+    number_of_machines = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     get_heroku_last_seen()
@@ -420,10 +450,12 @@ def output_machines_with_notes():
         if machine:
             if notes is not "No notes available.":
                 table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                number_of_machines += 1
             else:
                 pass
 
     print(table)
+    print("Total number of machines with notes:", number_of_machines)
 
     if configuration.OUTPUTFILE:
         write_html_data(table)
