@@ -108,25 +108,6 @@ def get_google_spreadsheet_data():
     #     print("Google Data Processing took:", end - start)
     return all_google_machine_data
 
-def remove_fqdn_from_machine_name():
-    start = datetime.now()
-    # verbose = configuration.VERBOSE
-    # Update Machine-Key from FQDN to Hostname
-    _google_dict = open_json('google_dict.json')
-    for key in list(_google_dict):
-        if len(key) > 1:
-            if "t-linux64-ms-" in key:
-                _google_dict[key[:16]] = _google_dict.pop(key)
-            elif "t-w1064-ms-" in key:
-                _google_dict[key[:14]] = _google_dict.pop(key)
-            else:
-                _google_dict[key[:17]] = _google_dict.pop(key)
-    save_json('google_dict.json', _google_dict)
-    end = datetime.now()
-    # if verbose:
-    #     print("Removing the FQDN took:", end - start)
-
-
 def add_idle_to_google_dict():
     start = datetime.now()
     # verbose = configuration.VERSION
@@ -142,3 +123,12 @@ def add_idle_to_google_dict():
     end = datetime.now()
     # if verbose:
     #     print("Adding IDLE times to Google Data took:", end - start)
+
+def remove_fqdn_from_machine_name(hostname):
+    if len(hostname) > 1:
+        if "t-linux64-ms-" in hostname:
+            return hostname[:16]
+        elif "t-w1064-ms-" in hostname:
+            return hostname[:14]
+        else:
+            return hostname[:17]
