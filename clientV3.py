@@ -2,8 +2,7 @@ from PyQt5 import QtWidgets, uic
 from ui.check_status import CheckStatusWindow
 import os
 import sys
-import json
-from datetime import datetime, timedelta
+from ui.messaging_module import TrayIcon
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -24,5 +23,7 @@ if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
     main_window = MainWindow()
     main_window.show()
+    tray = TrayIcon()
+    tray.show()
     sys.exit(app.exec_())
 

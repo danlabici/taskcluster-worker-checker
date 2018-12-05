@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 import sys
 
 
@@ -6,8 +6,8 @@ class TrayIcon(QtWidgets.QSystemTrayIcon):
     def __init__(self):
         QtWidgets.QSystemTrayIcon.__init__(self)
         self.tray = QtWidgets.QSystemTrayIcon()
-        # icon = QtGui.QIcon("tray_icon.png")
-        # self.tray.setIcon(icon)
+        icon = QtGui.QIcon("DevOps-Gear.png")
+        self.tray.setIcon(icon)
         menu = QtWidgets.QMenu()
         exit_action = menu.addAction("Exit")
         settings_action = menu.addAction("Settings")
