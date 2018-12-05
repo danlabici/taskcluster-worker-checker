@@ -12,10 +12,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         file_path = os.path.abspath('ui/check_status.ui')
         uic.loadUi(file_path, self)
         TrayIcon().messageInfo("Status", "Tray opened", 1)
-        self.all_btn.pressed.connect(self.all_workers)
-        self.win_btn.pressed.connect(self.windows_workers)
-        self.linux_btn.pressed.connect(self.linux_workers)
-        self.mac_btn.pressed.connect(self.mac_workers)
+        self.process_btn.pressed.connect(self.start_processing)
         self.lazy_spin.setEnabled(False)
         self.lazy_check.stateChanged.connect(self.change_lazy_input_state)
 
@@ -29,39 +26,14 @@ class CheckStatusWindow(QtWidgets.QFrame):
         read1 = self.status_browser.toPlainText()
         self.status_browser.setText(text + " \n" + read1 + " ")
 
-    def all_workers(self):
+    def start_processing(self):
         print("execute")
         self.get_all_machines()
         if self.lazy_check.isChecked():
-            self.output_problem_machines("All", (self.lazy_spin.value() * 3600))
+            self.output_problem_machines(str(self.machine_combo.currentText()).partition("-")[0], (self.lazy_spin.value() * 3600))
             self.message_board_history("Filtering list using value: {}h".format(self.lazy_spin.value()))
         else:
-            self.output_problem_machines("All", 0)
-
-    def windows_workers(self):
-        self.get_all_machines()
-        if self.lazy_check.isChecked():
-            self.output_problem_machines("w1064", (self.lazy_spin.value() * 3600))
-            self.message_board_history("Filtering list using value: {}h".format(self.lazy_spin.value()))
-        else:
-            self.output_problem_machines("w1064", 0)
-
-    def linux_workers(self):
-        self.get_all_machines()
-        if self.lazy_check.isChecked():
-            self.output_problem_machines("linux64", (self.lazy_spin.value() * 3600))
-            self.message_board_history("Filtering list using value: {}h".format(self.lazy_spin.value()))
-        else:
-            self.output_problem_machines("linux64", 0)
-
-    def mac_workers(self):
-        self.get_all_machines()
-        if self.lazy_check.isChecked():
-            self.output_problem_machines("yosemite", (self.lazy_spin.value() * 3600))
-            self.message_board_history("Filtering list using value: {}h".format(self.lazy_spin.value()))
-        else:
-            self.output_problem_machines("yosemite", 0)
-
+            self.output_problem_machines(str(self.machine_combo.currentText()).partition("-")[0], 0)
 
     def get_all_machines(self):
         option = QtWidgets.QMessageBox.information(None, "Import new data", "Do you want to import new data or work on existing data?\n"
