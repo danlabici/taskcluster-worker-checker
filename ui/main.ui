@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Mozilla Task Cluster</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QMdiArea" name="mdiArea"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>Fi&amp;le</string>
+    </property>
+    <addaction name="actionImport"/>
+    <addaction name="actionExport"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Setti&amp;ngs</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>Abo&amp;ut</string>
+    </property>
+    <addaction name="actionHelp_Docs"/>
+    <addaction name="actionContact_Support"/>
+   </widget>
+   <widget class="QMenu" name="menuOperations">
+    <property name="title">
+     <string>Operations</string>
+    </property>
+    <addaction name="actionCheck_Machine_Status"/>
+    <addaction name="actionCheck_a_Specific_Machine"/>
+    <addaction name="actionList_Machines_Loaned_by_User"/>
+    <addaction name="actionList_Machines_with_Added_Notes"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuOperations"/>
+   <addaction name="menuSettings"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionImport">
+   <property name="text">
+    <string>Import</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionCheck_a_Specific_Machine">
+   <property name="text">
+    <string>Check a Specific Machine</string>
+   </property>
+  </action>
+  <action name="actionList_Machines_Loaned_by_User">
+   <property name="text">
+    <string>List Machines Loaned by User</string>
+   </property>
+  </action>
+  <action name="actionList_Machines_with_Added_Notes">
+   <property name="text">
+    <string>List Machines with Added Notes</string>
+   </property>
+  </action>
+  <action name="actionHelp_Docs">
+   <property name="text">
+    <string>Help Docs</string>
+   </property>
+  </action>
+  <action name="actionContact_Support">
+   <property name="text">
+    <string>Contact Support</string>
+   </property>
+  </action>
+  <action name="actionCheck_All_WorkesTypes">
+   <property name="text">
+    <string>Check All WorkesTypes</string>
+   </property>
+  </action>
+  <action name="actionCheck_Only_Windows_MAchines">
+   <property name="text">
+    <string>Check Only Windows Machines</string>
+   </property>
+  </action>
+  <action name="actionCheck_Machine_Status">
+   <property name="text">
+    <string>Check Machine Status</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
