@@ -16,7 +16,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.linux_btn.pressed.connect(self.linux_workers)
         self.mac_btn.pressed.connect(self.mac_workers)
 
-    def mesage_board_history(self, text):
+    def message_board_history(self, text):
         read1 = self.status_browser.toPlainText()
         self.status_browser.setText(text + " \n" + read1 + " ")
 
@@ -42,8 +42,11 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def get_all_machines(self):
         get_heroku_last_seen()
+        self.message_board_history("Getting Heroku data...")
         get_google_spreadsheet_data()
+        self.message_board_history("Getting Google spreadsheet data...")
         add_idle_to_google_dict()
+        self.message_board_history("Adding 'idle' to google dict data...")
 
     def output_problem_machines(self, workerVal):
         # start = datetime.now()
