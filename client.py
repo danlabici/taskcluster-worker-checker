@@ -1,161 +1,558 @@
-"""
-This script will check for missing moonshots in TaskCluster.
-"""
+#!/usr/bin/python3
+import os
+import sys
+import json
+from datetime import datetime, timedelta
 
-from argparse import ArgumentParser
-import urllib.request, json, pdb
+try:
+    import gspread
+    import requests
+    from prettytable import PrettyTable
+    from sty import fg, bg, ef, rs, Rule
+    from oauth2client.service_account import ServiceAccountCredentials
+except ImportError:
+    print("Detected missing modules!\n"
+          "Please Run and Restart the application:\n"
+          "pip3 install -r requirements.txt")
+    exit(0)
 
-# Define machines that SHOULDN'T appear.
-# Example: Machine is dev-env, loaner, etc.
-# ToDo: Implement a function that checks if we have machines loaned.
-ignore_ms_linux = None
-ignore_ms_windows = None
-ignore_ms_osx = None
-workersList = []
+from twc_modules import configuration, main_menu
 
-LINUX = "gecko-t-linux-talos"
-WINDOWS = "gecko-t-win10-64-hw"
-MACOSX = "gecko-t-osx-1010"
+timenow = datetime.utcnow()
+twc_version = configuration.VERSION
+workerType = configuration.WORKERTYPE
+windows = configuration.WINDOWS
+linux = configuration.LINUX
+yosemite = configuration.YOSEMITE
 
-def parse_taskcluster_json(workertype):
-    '''
-    We need this incase Auth fails.
-    :param workertype: gecko-t-linux-talos, gecko-t-win10-64-hw, gecko-t-osx-1010.
-    :return: A JSON file containing all workers for a workertype selected at runtime.
-    '''
-    # Setup API URLs
-    global apiUrl, data
-    if workertype == LINUX:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
 
-    elif workertype == WINDOWS:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-win10-64-hw/workers"
+def get_heroku_last_seen():
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    url = "http://releng-hardware.herokuapp.com/machines"
+    headers = {"user-agent": "ciduty-twc/{}".format(twc_version)}
+    data = json.loads(requests.get(url, headers=headers).text)
+    heroku_machines = {}
+    for value in data:
+        idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
+        _idle = int(idle.total_seconds())
+        heroku_machines.update(
+            {value["machine"].lower(): {"lastseen": value["lastseen"], "idle": _idle,
+                                        "datacenter": value["datacenter"]}})
 
-    elif workertype == MACOSX:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-osx-1010/workers"
+    save_json("heroku_dict.json", heroku_machines)
+    end = datetime.now()
+    if verbose:
+        print("Heroku Data Processing took:", end - start)
+    return heroku_machines
 
+
+def get_google_spreadsheet_data():
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    # Define READONLY scopes needed for the CLI
+    scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
+
+    # Setup Credentials
+    ENV_CREDS = "ciduty-twc.json"
+    login_info = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+
+    # Authenticate / Login
+    auth_token = gspread.authorize(login_info)
+
+    # Choose which sheets from the SpreadSheet we will work with.
+    moonshots_sheet_mdc1 = auth_token.open("Moonshot Master Inventory").get_worksheet(0)
+    moonshots_sheet_mdc2 = auth_token.open("Moonshot Master Inventory").get_worksheet(1)
+    osx_sheet_all_mdc = auth_token.open("Moonshot Master Inventory").get_worksheet(2)
+
+    # Read the Data from the sheets
+    moonshots_mdc1 = moonshots_sheet_mdc1.get_all_records()
+    moonshots_mdc2 = moonshots_sheet_mdc2.get_all_records()
+    osx_all_mdc = osx_sheet_all_mdc.get_all_records()
+
+    # Construct dictionaries with all data that we need.
+    moonshots_google_data_mdc1 = {entry["Hostname"]:
+        {
+            "prefix": entry["Hostname prefix"],
+            "chassis": entry["Chassis"],
+            "serial": entry["Cartridge Serial"],
+            "cartridge": entry["Cartridge #"],
+            "ilo": entry["ilo ip:port"],
+            "owner": entry["Ownership"],
+            "reason": entry["Ownership Reason"],
+            "notes": entry["NOTES"],
+            "ignore": entry["CiDuty CLI Ignore"]
+        } for entry in moonshots_mdc1}
+
+    moonshots_google_data_mdc2 = {entry["Hostname"]:
+        {
+            "prefix": entry["Hostname prefix"],
+            "chassis": entry["Chassis"],
+            "serial": entry["Cartridge Serial"],
+            "cartridge": entry["Cartridge #"],
+            "ilo": entry["ilo ip:port"],
+            "owner": entry["Ownership"],
+            "reason": entry["Ownership Reason"],
+            "notes": entry["NOTES"],
+            "ignore": entry["CiDuty CLI Ignore"]
+        } for entry in moonshots_mdc2}
+
+    osx_google_data = {entry["Hostname"]:
+        {
+            "serial": entry["Serial"],
+            "warranty": entry["Warranty End Date"],
+            "owner": entry["Ownership"],
+            "reason": entry["Ownership Reason"],
+            "notes": entry["Notes"],
+            "ignore": entry["CiDuty CLI Ignore"]
+        } for entry in osx_all_mdc}
+
+    all_google_machine_data = {**moonshots_google_data_mdc1, **moonshots_google_data_mdc2, **osx_google_data}
+    save_json('google_dict.json', all_google_machine_data)
+    end = datetime.now()
+    if verbose:
+        save_json('verbose_google_dict.json', all_google_machine_data)
+        print("Google Data Processing took:", end - start)
+    return all_google_machine_data
+
+
+def open_json(file_name):
+    with open("json_data/{}".format(file_name)) as f:
+        data = json.load(f)
+    return data
+
+
+def save_json(file_name, data):
+    with open("json_data/{}".format(file_name), 'w') as f:
+        json.dump(data, f, indent=2, sort_keys=True)
+        f.close()
+
+
+def remove_fqdn_from_machine_name():
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    # Update Machine-Key from FQDN to Hostname
+    _google_dict = open_json('google_dict.json')
+    for key in list(_google_dict):
+        if len(key) > 1:
+            if "t-linux64-ms-" in key:
+                _google_dict[key[:16]] = _google_dict.pop(key)
+            elif "t-w1064-ms-" in key:
+                _google_dict[key[:14]] = _google_dict.pop(key)
+            else:
+                _google_dict[key[:17]] = _google_dict.pop(key)
+    save_json('google_dict.json', _google_dict)
+    end = datetime.now()
+    if verbose:
+        print("Removing the FQDN took:", end - start)
+
+
+def add_idle_to_google_dict():
+    start = datetime.now()
+    verbose = configuration.VERSION
+    heroku_data = open_json("heroku_dict.json")
+    google_data = open_json("google_dict.json")
+
+    shared_keys = set(heroku_data).intersection(google_data)
+    for key in shared_keys:
+        machine_idle = {"idle": heroku_data.get(key)["idle"]}
+        google_data[key].update(machine_idle)
+
+    save_json("google_dict.json", google_data)
+    end = datetime.now()
+    if verbose:
+        print("Adding IDLE times to Google Data took:", end - start)
+
+
+def output_problem_machines(workerType):
+    start = datetime.now()
+    number_of_machines = 0
+    number_of_windows = 0
+    number_of_linux = 0
+    number_of_osx = 0
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    machine_data = open_json("google_dict.json")
+
+    if not verbose:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
     else:
-        print("Unknown workertype!")
-        exit(0)
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                             "Ownership Notes", " Other Notes", "Ignored?"]
 
-    with urllib.request.urlopen(apiUrl) as api:
-        try:
-            data = json.loads(api.read().decode())
-        except:
-            print('Error found. Aborting ship!')
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
 
-        if data["workers"] == []:
-            # Not sure why but TC kinda fails at responding or I'm doing something wrong
-            # Anyways if you keep at it, it will respond with the JSON data :D
-            print("Auth Failed. Retrying...")
-            parse_taskcluster_json(workertype)
-
+        if notes == "":
+            notes = "No notes available."
         else:
-            for workers in data['workers']:
-                workersList.append(workers['workerId'])
+            pass
 
-    return workersList
-
-
-def generate_machine_lists(workertype):
-    if workertype == LINUX:
-
-        range_ms_linux = list(range(1, 16)) + list(range(46, 61)) + \
-                         list(range(91, 106)) + list(range(136, 151)) + \
-                         list(range(181, 196)) + list(range(226, 241)) + \
-                         list(range(271, 281)) + list(range(301, 316)) + \
-                         list(range(346, 361)) + list(range(391, 406)) + \
-                         list(range(436, 451)) + list(range(481, 496)) + \
-                         list(range(526, 541)) + list(range(571, 581))
-        ms_linux_name = "t-linux64-ms-{}"
-        linux_machines = []
-
-        # Construct Linux Machine names.
-        for i in range_ms_linux:
-            digit_constructor = str(i).zfill(3)  # Generate numbers in 3 digits form, like: 001, 002, 003
-            linux_machines.append(ms_linux_name.format(digit_constructor))  # Linux Name + Number
-
-        return linux_machines
-
-    elif workertype == WINDOWS:
-
-        range_ms_windows = list(range(16, 46)) + list(range(61, 91)) + \
-                         list(range(106, 136)) + list(range(151, 181)) + \
-                         list(range(196, 226)) + list(range(241, 271)) + \
-                         list(range(281, 299)) + list(range(316, 346)) + \
-                         list(range(361, 391)) + list(range(406, 436)) + \
-                         list(range(451, 481)) + list(range(496, 526)) + \
-                         list(range(541, 571)) + list(range(581, 601))
-        ms_windows_name = "T-W1064-MS-{}"
-        windows_machines = []
-
-        # Construct Windows Machine names.
-        for i in range_ms_windows:
-            digit_constructor = str(i).zfill(3)  # Generate numbers in 3 digits form, like: 001, 002, 003
-            windows_machines.append(ms_windows_name.format(digit_constructor))  # Windows Name + Number
-        return windows_machines
-
-    elif workertype == MACOSX:
-
-        range_ms_osx = list(range(20, 237)) + list(range(237, 473))  # ToDo: Add real MacOS range.
-        ms_osx_name = "t-yosemite-r7-{}"
-        osx_machines = []
-
-        # Construct OSX Machine names.
-        for i in range_ms_osx:
-            digit_constructor = str(i).zfill(3)  # Generate numbers in 3 digits form, like: 001, 002, 003
-            osx_machines.append(ms_osx_name.format(digit_constructor))   # Mac Name + Number
-        return osx_machines
-
-    else:
-        print("Invalid Worker-Type!")
-        exit(0)
-
-
-def main():
-    # Get/Set Arguments
-    global apiUrl, data
-    parser = ArgumentParser(
-        description="Utility to check missing moonshots form TC.")
-    parser.add_argument('-w', '--worker-type',
-                        dest="worker_type",
-                        help='Available options: gecko-t-osx-1010, gecko-t-linux-talos, gecko-t-win10-64-hw',
-                        required=True)
-
-    args = parser.parse_args()
-    workertype = args.worker_type
-
-    # Generate API URL
-    if workertype == LINUX:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-linux-talos/workers"
-    elif workertype == WINDOWS:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-win10-64-hw/workers"
-    elif workertype == MACOSX:
-        apiUrl = "https://queue.taskcluster.net/v1/provisioners/releng-hardware/worker-types/gecko-t-osx-1010/workers"
-    else:
-        print("Wrong workertype!")
-        exit(1)
-
-    with urllib.request.urlopen(apiUrl) as api:
         try:
-            data = json.loads(api.read().decode())
-        except:
-            print('Error found. Aborting ship!')
-        # Retry to Auth problems
-        if data["workers"] == []:
-            print("Auth Failed. Retrying...")
-            parse_taskcluster_json(workertype)
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        def count_up():
+            nonlocal number_of_machines, number_of_windows, number_of_linux, number_of_osx
+
+            number_of_machines += 1
+
+            if "t-w1064-ms" in str(machine):
+                number_of_windows += 1
+            elif "t-linux64-ms" in str(machine):
+                number_of_linux += 1
+            elif "t-yosemite-r7" in str(machine):
+                number_of_osx += 1
+            else:
+                pass
+
+            return number_of_machines, number_of_windows, number_of_linux, number_of_osx
+
+        if machine:
+
+            if idle > timedelta(hours=lazy_time) and ignore == "No":
+                if workerType == "ALL":
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                        count_up()
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                count_up()
+
+                if workerType == "t-w1064-ms" and workerType in str(machine):
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                        count_up()
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                count_up()
+
+                if workerType == "t-linux64-ms" and workerType in str(machine):
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                        count_up()
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                count_up()
+
+                if workerType == "t-yosemite-r7" and workerType in machine:
+                    if not verbose:
+                        table.add_row([hostname, idle, ilo, serial, notes])
+                        count_up()
+                    else:
+                        _verbose_google_dict = open_json("verbose_google_dict.json")
+                        for key in _verbose_google_dict:
+                            if machine in str(key):
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                count_up()
+
+    print(table)
+    print("Total number of lazy workers:", number_of_machines)
+    if workerType == "ALL":
+        print("Windows Machines:", number_of_windows)
+        print("Linux   Machines:", number_of_linux)
+        print("OSX     Machines:", number_of_osx)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
+    end = datetime.now()
+    if verbose:
+        print("Printing the missing machines took:", end - start)
+
+
+def output_single_machine(single_machine):
+    start = datetime.now()
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+    table = PrettyTable()
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                         "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+        ignore = machine_data.get(machine)["ignore"]
+
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
         else:
-            for workers in data['workers']:
-                workersList.append(workers['workerId'])
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
 
-    a = set(workersList)  # Mark workerlist to be compared to our list.
-    missing_machines = [x for x in generate_machine_lists(workertype) if x not in a]
-    print("Control Number: {}".format(len(generate_machine_lists(workertype))))
-    print("Number from TC JSON: {}".format(len(workersList)))
-    print(missing_machines)
-    return workertype
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            if single_machine in str(machine):
+                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+
+    print(table)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the missing machines took:", end - start)
 
 
-if __name__ == '__main__':
-    main()
+def output_loaned_machines(**loaner):
+    start = datetime.now()
+    number_of_machines = 0
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+    if not verbose:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes",
+                             "Ignored?"]
+    else:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                             "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            for value in loaner:
+                if owner:
+                    if loaner.get(value) == "":
+                        if not verbose:
+                            table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                            number_of_machines += 1
+                        else:
+                            table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                            number_of_machines += 1
+
+                    else:
+                        if str(loaner.get(value)).lower() == str(owner).lower():
+                            if not verbose:
+                                table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                                number_of_machines += 1
+                            else:
+                                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                                number_of_machines += 1
+
+    print(table)
+    print("Total number of loaned machines:", number_of_machines)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the loaned machines took:", end - start)
+
+
+def output_machines_with_notes():
+    start = datetime.now()
+    number_of_machines = 0
+    verbose = configuration.VERBOSE
+    lazy_time = configuration.LAZY
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    machine_data = open_json("google_dict.json")
+
+    table = PrettyTable()
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
+                         "Ownership Notes", " Other Notes", "Ignored?"]
+
+    for machine in machine_data:
+        hostname = machine
+        ignore = machine_data.get(machine)["ignore"]
+        notes = machine_data.get(machine)["notes"]
+        serial = machine_data.get(machine)["serial"]
+        owner = machine_data.get(machine)["owner"]
+        reason = machine_data.get(machine)["reason"]
+
+        if ignore == "Yes":
+            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
+        else:
+            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+
+        if notes == "":
+            notes = "No notes available."
+        else:
+            pass
+
+        try:
+            idle = timedelta(seconds=machine_data.get(machine)["idle"])
+            ilo = machine_data.get(machine)["ilo"]
+        except KeyError:
+            ilo = "-"
+
+        if machine:
+            if notes is not "No notes available.":
+                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                number_of_machines += 1
+            else:
+                pass
+
+    print(table)
+    print("Total number of machines with notes:", number_of_machines)
+
+    if configuration.OUTPUTFILE:
+        write_html_data(table)
+
+    end = datetime.now()
+
+    if verbose:
+        print("Printing the loaned machines took:", end - start)
+
+
+def write_html_data(*args):
+    x = args[0]
+    default_html = """
+    <head>
+        <style type="text/css">
+            table {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+            table td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;}
+            table th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;}
+            table .tg-hmp3{background-color:#D2E4FC;text-align:left;vertical-align:top}
+            table .tg-baqh{text-align:center;vertical-align:top}
+            table .tg-mb3i{background-color:#D2E4FC;text-align:right;vertical-align:top}
+            table .tg-lqy6{text-align:right;vertical-align:top}
+            table .tg-0lax{text-align:left;vertical-align:top}
+        </style> 
+    </head>
+    """
+
+    # Delete old data and insert the styling.
+    with open("index.html", "w+") as f:
+        f.write(default_html)
+
+    # Append the table.
+    with open("index.html", "a") as f:
+        f.write(x.get_html_string())
+        f.close()
+
+    if configuration.OPENHTML:
+        os.system("start" + " index.html")
+
+
+def push_to_git():
+    pass
+
+
+def run_logic(workerType):
+    """
+    This is the main order in which the tool will run all the functions needed to return the result.
+      - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
+    """
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    output_problem_machines(workerType=workerType)
+
+
+def dev_run_logic():
+    """
+    When debugging and you change how data is stored/manipulated, use this function to always recreate the files.
+    This will also skip the MainMenu of the CLI application
+    :return: Fresh data.
+    """
+    get_heroku_last_seen()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_idle_to_google_dict()
+    output_problem_machines(workerType=workerType)
+
+
+if __name__ == "__main__":
+    if "-v" in sys.argv:
+        configuration.VERBOSE = True
+
+    if "-l" in sys.argv:
+        lazy_time_index = sys.argv.index("-l") + 1
+        lazy_time = sys.argv[lazy_time_index]
+        try:
+            configuration.LAZY = int(lazy_time)
+        except ValueError as e:
+            print("Expecting integer for the Lazy Time value, but got:\n", e)
+            exit(-1)
+    if "-o" in sys.argv:
+        configuration.OUTPUTFILE = True
+
+    if "-o" and "-a" in sys.argv:
+        configuration.OPENHTML = True
+
+    if "-p" in sys.argv:
+        configuration.PERSISTENT = True
+        main_menu.menu_persistent()
+
+    if len(sys.argv) > int(1):
+        configuration.ARGLEN = len(sys.argv) - 1  # We subtract 1 as that's the client.py argument.
+
+    if "-tc" in sys.argv:
+        configuration.TRAVISCI = True
+        print("TravisCI Testing Begins!")
+        dev_run_logic()
+    else:
+        main_menu.run_menu()
