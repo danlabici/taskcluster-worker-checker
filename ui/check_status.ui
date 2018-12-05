@@ -73,6 +73,13 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QCheckBox" name="details_check">
+       <property name="text">
+        <string>Details</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QCheckBox" name="lazy_check">
        <property name="text">
@@ -93,20 +100,19 @@
        </property>
       </spacer>
      </item>
-     <item row="0" column="0">
-      <widget class="QCheckBox" name="details_check">
-       <property name="text">
-        <string>Details</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="2">
       <widget class="QSpinBox" name="lazy_spin">
        <property name="suffix">
         <string>h</string>
        </property>
+       <property name="minimum">
+        <number>1</number>
+       </property>
        <property name="maximum">
         <number>24</number>
+       </property>
+       <property name="value">
+        <number>6</number>
        </property>
       </widget>
      </item>
