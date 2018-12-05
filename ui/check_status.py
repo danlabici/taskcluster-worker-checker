@@ -15,6 +15,14 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.win_btn.pressed.connect(self.windows_workers)
         self.linux_btn.pressed.connect(self.linux_workers)
         self.mac_btn.pressed.connect(self.mac_workers)
+        self.lazy_spin.setEnabled(False)
+        self.lazy_check.stateChanged.connect(self.change_lazy_input_state)
+
+    def change_lazy_input_state(self):
+        if self.lazy_check.isChecked():
+            self.lazy_spin.setEnabled(True)
+        else:
+            self.lazy_spin.setEnabled(False)
 
     def message_board_history(self, text):
         read1 = self.status_browser.toPlainText()
