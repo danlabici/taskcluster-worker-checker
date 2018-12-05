@@ -18,22 +18,22 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def all_workers(self):
         self.get_all_machines()
-        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
         self.output_problem_machines("All")
 
     def windows_workers(self):
         self.get_all_machines()
-        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
         self.output_problem_machines("w1064")
 
     def linux_workers(self):
         self.get_all_machines()
-        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
         self.output_problem_machines("linux64")
 
     def mac_workers(self):
         self.get_all_machines()
-        self.tableWidget.clear()
+        self.tableWidget.setRowCount(0)
         self.output_problem_machines("yosemite")
 
     def get_all_machines(self):

@@ -18,7 +18,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def show_check_status_widget(self):
         self.qdock = CheckStatusWindow()
         self.mdiArea.addSubWindow(self.qdock)
-        self.qdock.show()
+        self.qdock.showMaximized()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
