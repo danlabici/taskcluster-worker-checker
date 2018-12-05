@@ -27,7 +27,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.status_browser.setText(text + " \n" + read1 + " ")
 
     def start_processing(self):
-        print("execute")
         self.get_all_machines()
         if self.lazy_check.isChecked():
             self.output_problem_machines(str(self.machine_combo.currentText()).partition("-")[0], (self.lazy_spin.value() * 3600))

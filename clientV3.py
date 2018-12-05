@@ -12,6 +12,7 @@ class MainWindow(QtWidgets.QMainWindow):
         uic.loadUi(file_path, self)
         self.move(QtWidgets.QApplication.desktop().screen().rect().center() - self.rect().center())
         self.menubar.setNativeMenuBar(False)
+        self.showMaximized()
         self.actionCheck_Machine_Status.triggered.connect(self.show_check_status_widget)
 
     def show_check_status_widget(self):
