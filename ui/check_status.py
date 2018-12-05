@@ -63,6 +63,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def output_problem_machines(self, workerVal):
         self.tableWidget.setColumnCount(5)
+        self.tableWidget.setHorizontalHeaderLabels(['Machine(Hostname)', 'Idle Time', 'Ilo', 'Serial Number', 'Notes'])
         lazy_time = LAZY
         machine_data = open_json("google_dict.json")
         idle_data = open_json("heroku_dict.json")
