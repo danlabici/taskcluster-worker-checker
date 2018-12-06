@@ -1,14 +1,16 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtCore
 import os
 from datetime import datetime, timedelta
 from ui.messaging_module import TrayIcon
+from ui.details import MachineDetails
 from ui.modules import GetDataThread, open_json, save_json
 from twc_modules.configuration import *
 
 
 class CheckStatusWindow(QtWidgets.QFrame):
-    def __init__(self, parent=None):
-        QtWidgets.QFrame.__init__(self, parent)
+    filterData = QtCore.pyqtSignal(str)
+    def __init__(self):
+        QtWidgets.QFrame.__init__(self)
         file_path = os.path.abspath('ui/check_status.ui')
         uic.loadUi(file_path, self)
         TrayIcon().messageInfo("Status", "Tray opened", 1)
@@ -18,6 +20,20 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.process_btn.pressed.connect(self.get_all_machines)
         self.lazy_spin.setEnabled(False)
         self.lazy_check.stateChanged.connect(self.change_lazy_input_state)
+        self.tableWidget.doubleClicked.connect(self.display_more_info)
+
+    def select_row_table(self):
+        index = self.tableWidget.selectionModel().selectedRows()[0]
+        id_us = self.tableWidget.model().data(index)
+        return id_us
+
+    def display_more_info(self):
+        row_id = self.select_row_table()
+        dialog1 = MachineDetails()
+        self.filterData.connect(dialog1.display_info)
+        self.filterData.emit(row_id)
+        dialog1.exec()
+
 
     def change_lazy_input_state(self):
         if self.lazy_check.isChecked():
