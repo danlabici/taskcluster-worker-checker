@@ -1,10 +1,9 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import pyqtSlot
 import os
-from datetime import datetime, timedelta
+from datetime import timedelta
 from ui.messaging_module import TrayIcon
 from ui.modules import open_json
-# from ui.check_status import CheckStatusWindow as filterSignal
 
 class MachineDetails(QtWidgets.QDialog):
     def __init__(self):
@@ -13,11 +12,9 @@ class MachineDetails(QtWidgets.QDialog):
         uic.loadUi(file_path, self)
         TrayIcon().messageInfo("Machine Details", "Load Complete.", 1)
         self.close_btn.pressed.connect(self.close)
-        # self.filterSlot.connect(self.display_info)
 
     @pyqtSlot(str)
     def display_info(self, filter):
-        print(filter)
         machine_data = open_json("google_dict.json")
         idle_data = open_json("heroku_dict.json")
         for machine, idle in zip(machine_data, idle_data):
