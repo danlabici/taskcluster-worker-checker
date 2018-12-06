@@ -34,7 +34,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.filterData.emit(row_id)
         dialog1.exec()
 
-
     def change_lazy_input_state(self):
         if self.lazy_check.isChecked():
             self.lazy_spin.setEnabled(True)
@@ -43,7 +42,8 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def message_board_history(self, text):
         read1 = self.status_browser.toPlainText()
-        self.status_browser.setText(text + " \n" + read1 + " ")
+        # self.status_browser.setText(text + " \n" + read1 + " ")
+        self.status_browser.setText("[{}]---{} \n {} ".format(datetime.now(), text, read1))
 
     def start_processing(self):
         if self.lazy_check.isChecked():

@@ -111,7 +111,6 @@ def open_json(file_name):
         data = json.load(f)
     return data
 
-
 def save_json(file_name, data):
     with open("json_data/{}".format(file_name), 'w') as f:
         json.dump(data, f, indent=2, sort_keys=True)
@@ -125,3 +124,4 @@ def remove_fqdn_from_machine_name(hostname):
             return hostname[:14]
         else:
             return hostname[:17]
+

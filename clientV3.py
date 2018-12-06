@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, uic
+from PyQt5 import QtWidgets, uic, QtCore
 from ui.check_status import CheckStatusWindow
 import os
 import sys
@@ -14,6 +14,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.menubar.setNativeMenuBar(False)
         # self.showMaximized()
         self.actionCheck_Machine_Status.triggered.connect(self.show_check_status_widget)
+        self.actionExit.triggered.connect(self.close)
 
     def show_check_status_widget(self):
         self.qdock = CheckStatusWindow()

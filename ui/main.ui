@@ -16,7 +16,23 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QMdiArea" name="mdiArea"/>
+     <widget class="QMdiArea" name="mdiArea">
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="background">
+       <brush brushstyle="NoBrush">
+        <color alpha="255">
+         <red>136</red>
+         <green>142</green>
+         <blue>147</blue>
+        </color>
+       </brush>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -42,6 +58,16 @@
     <property name="title">
      <string>Setti&amp;ngs</string>
     </property>
+    <widget class="QMenu" name="menuChoose_Theme">
+     <property name="title">
+      <string>Choose Theme</string>
+     </property>
+     <addaction name="actionLight"/>
+     <addaction name="actionDark"/>
+     <addaction name="actionVS_Dark"/>
+    </widget>
+    <addaction name="menuChoose_Theme"/>
+    <addaction name="actionProperties"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -56,8 +82,6 @@
     </property>
     <addaction name="actionCheck_Machine_Status"/>
     <addaction name="actionCheck_a_Specific_Machine"/>
-    <addaction name="actionList_Machines_Loaned_by_User"/>
-    <addaction name="actionList_Machines_with_Added_Notes"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuOperations"/>
@@ -67,42 +91,42 @@
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionImport">
    <property name="text">
-    <string>Import</string>
+    <string>&amp;Import</string>
    </property>
   </action>
   <action name="actionExport">
    <property name="text">
-    <string>Export</string>
+    <string>&amp;Export</string>
    </property>
   </action>
   <action name="actionExit">
    <property name="text">
-    <string>Exit</string>
+    <string>E&amp;xit</string>
    </property>
   </action>
   <action name="actionCheck_a_Specific_Machine">
    <property name="text">
-    <string>Check a Specific Machine</string>
+    <string>Check a &amp;Specific Machine</string>
    </property>
   </action>
   <action name="actionList_Machines_Loaned_by_User">
    <property name="text">
-    <string>List Machines Loaned by User</string>
+    <string>&amp;List Machines Loaned by User</string>
    </property>
   </action>
   <action name="actionList_Machines_with_Added_Notes">
    <property name="text">
-    <string>List Machines with Added Notes</string>
+    <string>List &amp;Machines with Added Notes</string>
    </property>
   </action>
   <action name="actionHelp_Docs">
    <property name="text">
-    <string>Help Docs</string>
+    <string>&amp;Help Docs</string>
    </property>
   </action>
   <action name="actionContact_Support">
    <property name="text">
-    <string>Contact Support</string>
+    <string>&amp;Contact Support</string>
    </property>
   </action>
   <action name="actionCheck_All_WorkesTypes">
@@ -117,7 +141,36 @@
   </action>
   <action name="actionCheck_Machine_Status">
    <property name="text">
-    <string>Check Machine Status</string>
+    <string>&amp;Check Machine Status</string>
+   </property>
+  </action>
+  <action name="actionLight">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Light</string>
+   </property>
+  </action>
+  <action name="actionDark">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Dark</string>
+   </property>
+  </action>
+  <action name="actionVS_Dark">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>VS Dark</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="text">
+    <string>Properties</string>
    </property>
   </action>
  </widget>
