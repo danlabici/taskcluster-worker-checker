@@ -51,8 +51,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
             self.output_problem_machines(str(self.machine_combo.currentText()).partition("-")[0], (self.lazy_spin.value() * 3600))
             self.message_board_history("Filtering list using value: {}h".format(self.lazy_spin.value()))
         else:
-            while self.thread1.isRunning():
-                pass
             self.output_problem_machines(str(self.machine_combo.currentText()).partition("-")[0], 0)
 
     def get_all_machines(self):
