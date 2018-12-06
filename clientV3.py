@@ -15,11 +15,26 @@ class MainWindow(QtWidgets.QMainWindow):
         # self.showMaximized()
         self.actionCheck_Machine_Status.triggered.connect(self.show_check_status_widget)
         self.actionExit.triggered.connect(self.close)
+        self.actionLight.triggered.connect(self.theme_selector_light)
+        self.actionDark.triggered.connect(self.theme_selector_dark)
+        self.actionVS_Dark.triggered.connect(self.theme_selector_vs)
 
     def show_check_status_widget(self):
         self.qdock = CheckStatusWindow()
         self.mdiArea.addSubWindow(self.qdock)
         self.qdock.showMaximized()
+
+    def theme_selector_light(self):
+        self.actionDark.setChecked(False)
+        self.actionVS_Dark.setChecked(False)
+
+    def theme_selector_dark(self):
+        self.actionLight.setChecked(False)
+        self.actionVS_Dark.setChecked(False)
+
+    def theme_selector_vs(self):
+        self.actionDark.setChecked(False)
+        self.actionLight.setChecked(False)
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)

@@ -21,7 +21,7 @@
        <enum>QFrame::Box</enum>
       </property>
       <property name="background">
-       <brush brushstyle="NoBrush">
+       <brush brushstyle="SolidPattern">
         <color alpha="255">
          <red>136</red>
          <green>142</green>
@@ -68,6 +68,7 @@
     </widget>
     <addaction name="menuChoose_Theme"/>
     <addaction name="actionProperties"/>
+    <addaction name="separator"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
