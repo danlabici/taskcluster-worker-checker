@@ -21,6 +21,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.lazy_spin.setEnabled(False)
         self.lazy_check.stateChanged.connect(self.change_lazy_input_state)
         self.tableWidget.doubleClicked.connect(self.display_more_info)
+        self.filter_btn.pressed.connect(self.filter_by_field)
 
     def select_row_table(self):
         index = self.tableWidget.selectionModel().selectedRows()[0]
@@ -61,6 +62,43 @@ class CheckStatusWindow(QtWidgets.QFrame):
             self.thread1.start(1)
         else:
             self.start_processing()
+
+    def filter_by_field(self):
+        self.tableWidget.setColumnCount(5)
+        self.tableWidget.setRowCount(0)
+        self.tableWidget.setHorizontalHeaderLabels(['Machine(Hostname)', 'Idle Time', 'Ilo', 'Serial Number', 'Notes'])
+        machine_data = open_json("google_dict.json")
+        idle_data = open_json("heroku_dict.json")
+        if self.filter_combo.currentText() == "Owner":
+            compare = "owner"
+        elif self.filter_combo.currentText() == "Notes":
+            compare = "notes"
+        else:
+            compare = None
+        for machine, idle in zip(machine_data, idle_data):
+            if (self.filter_line.text() in machine_data.get(machine)[compare]):
+                if self.details_check.isChecked():
+                    hostname = machine
+                else:
+                    hostname = machine.partition(".")[0]
+                ignore = machine_data.get(machine)["ignore"]
+                notes = machine_data.get(machine)["notes"]
+                serial = machine_data.get(machine)["serial"]
+                owner = machine_data.get(machine)["owner"]
+                reason = machine_data.get(machine)["reason"]
+                idle = str(timedelta(seconds=idle_data.get(idle)["idle"]))
+                try:
+                    ilo = machine_data.get(machine)["ilo"]
+                except KeyError:
+                    ilo = "-"
+                list_row = [hostname, idle, ilo, serial, notes]
+                rowPosition = self.tableWidget.rowCount()
+                self.tableWidget.insertRow(rowPosition)
+                self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
+                self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
+                self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
+                self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
+                self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
 
     def output_problem_machines(self, workerVal, lazyH):
         self.tableWidget.setColumnCount(5)

@@ -60,7 +60,7 @@
     </property>
     <widget class="QMenu" name="menuChoose_Theme">
      <property name="title">
-      <string>Choose Theme</string>
+      <string>&amp;Choose Theme</string>
      </property>
      <addaction name="actionLight"/>
      <addaction name="actionDark"/>
@@ -150,7 +150,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Light</string>
+    <string>&amp;Light</string>
    </property>
   </action>
   <action name="actionDark">
@@ -158,7 +158,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Dark</string>
+    <string>&amp;Dark</string>
    </property>
   </action>
   <action name="actionVS_Dark">
@@ -166,12 +166,12 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>VS Dark</string>
+    <string>&amp;VS Dark</string>
    </property>
   </action>
   <action name="actionProperties">
    <property name="text">
-    <string>Properties</string>
+    <string>&amp;Properties</string>
    </property>
   </action>
  </widget>
