@@ -105,7 +105,14 @@
      <item row="0" column="0">
       <widget class="QCheckBox" name="lazy_check">
        <property name="text">
-        <string>LAZY</string>
+        <string>Idle Time:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QCheckBox" name="owner_check">
+       <property name="text">
+        <string>Owner/Notes</string>
        </property>
       </widget>
      </item>
@@ -119,7 +126,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="7">
+     <item row="0" column="9">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -135,7 +142,7 @@
      <item row="0" column="4">
       <widget class="QPushButton" name="filter_btn">
        <property name="text">
-        <string>Filter</string>
+        <string>Search</string>
        </property>
       </widget>
      </item>
@@ -154,22 +161,6 @@
         <number>6</number>
        </property>
       </widget>
-     </item>
-     <item row="0" column="2">
-      <spacer name="horizontalSpacer_3">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Maximum</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
      <item row="0" column="6">
       <widget class="QComboBox" name="filter_combo">
@@ -190,6 +181,27 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
+      </widget>
+     </item>
+     <item row="0" column="7">
+      <widget class="QCheckBox" name="ignore_check">
+       <property name="text">
+        <string>Ignored</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="8">
+      <widget class="QComboBox" name="ignore_combo">
+       <item>
+        <property name="text">
+         <string>No</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Yes</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>

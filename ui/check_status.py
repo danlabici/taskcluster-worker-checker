@@ -15,14 +15,17 @@ class CheckStatusWindow(QtWidgets.QFrame):
         TrayIcon().messageInfo("Status", "Tray opened", 1)
         self.thread1 = GetDataThread()
         self.thread1.newValue.connect(self.message_board_history)
-        if self.lazy_check.isChecked():
-            self.thread1.finished.connect(self.start_processing_lazy)
-        else:
-            self.thread1.finished.connect(self.start_processing_no_lazy)
+        self.thread1.finished.connect(self.start_processing_no_lazy)
         self.process_btn.pressed.connect(self.get_all_machines)
         self.thread1.addList.connect(self.add_lista)
         self.lazy_spin.setEnabled(False)
+        self.filter_btn.setEnabled(False)
+        self.filter_line.setEnabled(False)
+        self.filter_combo.setEnabled(False)
+        self.ignore_combo.setEnabled(False)
         self.lazy_check.stateChanged.connect(self.change_lazy_input_state)
+        self.owner_check.stateChanged.connect(self.change_owner_input_state)
+        self.ignore_check.stateChanged.connect(self.change_ignore_input_state)
         self.tableWidget.doubleClicked.connect(self.display_more_info)
         # self.filter_btn.pressed.connect(self.filter_by_field)
         self.objects = []
@@ -51,23 +54,57 @@ class CheckStatusWindow(QtWidgets.QFrame):
     def start_processing_no_lazy(self):
         self.tableWidget.setRowCount(0)
         _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
+        _lazy_time = str(self.lazy_spin.value() * 3600)
+        _owner_name = self.filter_line.displayText()
+        _ignore = self.ignore_combo.currentText()
         for member in self.objects:
-            if _name_filter in member.hostname:
+            if (_name_filter in member.hostname) and (self.ignore_check.isChecked() is False) \
+                    and (self.lazy_check.isChecked() is False) and (self.owner_check.isChecked() is False):
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and self.ignore_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time in str(member.idle)) \
+                    and self.ignore_check.isChecked() and self.lazy_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time in str(member.idle)) \
+                    and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.lazy_check.isChecked() \
+                    and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time in str(member.idle)) \
+                    and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.lazy_check.isChecked() \
+                    and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_owner_name in member.owner) \
+                    and self.ignore_check.isChecked() and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_owner_name in member.notes) \
+                    and self.ignore_check.isChecked() and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_lazy_time in str(member.idle)) and (_owner_name in member.owner) \
+                    and self.lazy_check.isChecked() and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_lazy_time in str(member.idle)) and (_owner_name in member.notes) \
+                    and self.lazy_check.isChecked() and self.owner_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif (_name_filter in member.hostname) and (_lazy_time in str(member.idle)) and self.lazy_check.isChecked():
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif _name_filter == "All":
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
             else:
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+                pass
         self.message_board_history("Showing list of machines based on name filter.")
 
-    def start_processing_lazy(self):
-        self.tableWidget.setRowCount(0)
-        _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
-        _lazy = self.lazy_spin.value() * 3600
-        for member in self.objects:
-            if (_name_filter in member.hostname) and (_lazy > int(member.idle)):
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif _lazy > int(member.idle):
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-        self.message_board_history("Showing list of machines based on name filter.")
+    # def start_processing_lazy(self):
+    #     self.tableWidget.setRowCount(0)
+    #     _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
+    #     _lazy = self.lazy_spin.value() * 3600
+    #     for member in self.objects:
+    #         if (_name_filter in member.hostname) and (_lazy > int(member.idle)):
+    #             self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+    #         elif _lazy > int(member.idle):
+    #             self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+    #     self.message_board_history("Showing list of machines based on name filter "
+    #                                "and idle time. Limit set to: {}h".format(self.lazy_spin.value()))
 
     def get_all_machines(self):
         option = QtWidgets.QMessageBox.information(None, "Import new data", "Do you want to import new data or work on existing data?\n"
@@ -75,10 +112,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         if option == QtWidgets.QMessageBox.Yes:
             self.thread1.start(1)
         else:
-            if self.lazy_check.isChecked():
-                self.start_processing_lazy()
-            else:
-                self.start_processing_no_lazy()
+            self.start_processing_no_lazy()
     
     def list_objects_on_table(self, host, idle, ilo, serial, notes):
         self.tableWidget.setColumnCount(5)
@@ -99,7 +133,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def message_board_history(self, text):
         read1 = self.status_browser.toPlainText()
-        # self.status_browser.setText(text + " \n" + read1 + " ")
         self.status_browser.setText("[{}]---{} \n {} ".format(datetime.now(), text, read1))
 
     def change_lazy_input_state(self):
@@ -107,6 +140,22 @@ class CheckStatusWindow(QtWidgets.QFrame):
             self.lazy_spin.setEnabled(True)
         else:
             self.lazy_spin.setEnabled(False)
+
+    def change_ignore_input_state(self):
+        if self.ignore_check.isChecked():
+            self.ignore_combo.setEnabled(True)
+        else:
+            self.ignore_combo.setEnabled(False)
+
+    def change_owner_input_state(self):
+        if self.owner_check.isChecked():
+            self.filter_btn.setEnabled(True)
+            self.filter_line.setEnabled(True)
+            self.filter_combo.setEnabled(True)
+        else:
+            self.filter_btn.setEnabled(False)
+            self.filter_line.setEnabled(False)
+            self.filter_combo.setEnabled(False)
 
     def display_more_info(self):
         row_id = self.select_row_table()
@@ -120,7 +169,17 @@ class CheckStatusWindow(QtWidgets.QFrame):
         id_us = self.tableWidget.model().data(index)
         return id_us
 
-
+    def filter_by_field(self):
+        elf.tableWidget.setRowCount(0)
+        _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
+        _lazy = self.lazy_spin.value() * 3600
+        for member in self.objects:
+            if (_name_filter in member.hostname) and (_lazy > int(member.idle)):
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+            elif _lazy > int(member.idle):
+                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
+        self.message_board_history("Showing list of machines based on name filter "
+                                   "and idle time. Limit set to: {}h".format(self.lazy_spin.value()))
     #-----------------------___------------------------
 
     # def filter_by_field(self):
