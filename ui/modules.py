@@ -11,6 +11,7 @@ timenow = datetime.utcnow()
 
 class GetDataThread(QtCore.QThread):
     newValue = QtCore.pyqtSignal(str)
+    addList = QtCore.pyqtSignal()
     finished = QtCore.pyqtSignal()
     def __init__(self, parent=None):
         QtCore.QThread.__init__(self, parent)
@@ -103,7 +104,59 @@ class GetDataThread(QtCore.QThread):
         self.get_google_spreadsheet_data()
         self.add_idle_to_google_dict()
         self.newValue.emit("Done importing new data.")
+        self.addList.emit()
         self.finished.emit()
+
+class VmMachine(QtCore.QObject):
+    def __init__(self, hostname):
+        QtCore.QObject.__init__(self)
+        if hostname == "":
+            self.hostname = "NoName"
+        else:
+            self.hostname = hostname
+        self.ignore = ""
+        self.notes = ""
+        self.serial = ""
+        self.owner = ""
+        self.reason = ""
+        self.idle = ""
+        self.ilo = ""
+
+    def __repr__(self):
+        return {self.hostname: {"ignore": self.ignore,
+                                  "notes": self.notes,
+                                  "serial": self.serial,
+                                  "owner": self.owner,
+                                  "reason": self.reason,
+                                  "idle": self.idle,
+                                  "ilo": self.ilo}}
+
+    def insert_data(self, ignore, notes, serial, owner, reason, idle, ilo):
+        if ignore == "":
+            self.ignore = "N/A"
+        else:
+            self.ignore = ignore
+        if notes == "":
+            self.notes = "N/A"
+        else:
+            self.notes = notes
+        if serial == "":
+            self.serial = "N/A"
+        else:
+            self.serial = serial
+        if owner == "":
+            self.owner = "N/A"
+        else:
+            self.owner = owner
+        if reason == "":
+            self.reason = "N/A"
+        else:
+            self.reason = reason
+        if idle == "":
+            self.idle = "N/A"
+        else:
+            self.idle = idle
+        self.ilo = ilo
 
 
 def open_json(file_name):
