@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 from ui.messaging_module import TrayIcon
 from ui.details import MachineDetails
-from ui.modules import GetDataThread, open_json, save_json, VmMachine
+from ui.modules import GetDataThread, open_json, VmMachine
 
 
 class CheckStatusWindow(QtWidgets.QFrame):
@@ -177,103 +177,3 @@ class CheckStatusWindow(QtWidgets.QFrame):
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
         self.message_board_history("Showing list of machines based on name filter "
                                    "and idle time. Limit set to: {}h".format(self.lazy_spin.value()))
-    #-----------------------___------------------------
-
-    # def filter_by_field(self):
-    #     self.tableWidget.setColumnCount(5)
-    #     self.tableWidget.setRowCount(0)
-    #     self.tableWidget.setHorizontalHeaderLabels(['Machine(Hostname)', 'Idle Time', 'Ilo', 'Serial Number', 'Notes'])
-    #     machine_data = open_json("google_dict.json")
-    #     idle_data = open_json("heroku_dict.json")
-    #     if self.filter_combo.currentText() == "Owner":
-    #         compare = "owner"
-    #     elif self.filter_combo.currentText() == "Notes":
-    #         compare = "notes"
-    #     else:
-    #         compare = None
-    #     for machine, idle in zip(machine_data, idle_data):
-    #         if (self.filter_line.text() in machine_data.get(machine)[compare]):
-    #             if self.details_check.isChecked():
-    #                 hostname = machine
-    #             else:
-    #                 hostname = machine.partition(".")[0]
-    #             ignore = machine_data.get(machine)["ignore"]
-    #             notes = machine_data.get(machine)["notes"]
-    #             serial = machine_data.get(machine)["serial"]
-    #             owner = machine_data.get(machine)["owner"]
-    #             reason = machine_data.get(machine)["reason"]
-    #             idle = str(timedelta(seconds=idle_data.get(idle)["idle"]))
-    #             try:
-    #                 ilo = machine_data.get(machine)["ilo"]
-    #             except KeyError:
-    #                 ilo = "-"
-    #             list_row = [hostname, idle, ilo, serial, notes]
-    #             rowPosition = self.tableWidget.rowCount()
-    #             self.tableWidget.insertRow(rowPosition)
-    #             self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
-    #             self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
-    #             self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
-    #             self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
-    #             self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
-
-    # def output_problem_machines(self, workerVal, lazyH):
-    #     self.tableWidget.setColumnCount(5)
-    #     self.tableWidget.setRowCount(0)
-    #     self.tableWidget.setHorizontalHeaderLabels(['Machine(Hostname)', 'Idle Time', 'Ilo', 'Serial Number', 'Notes'])
-    #     machine_data = open_json("google_dict.json")
-    #     idle_data = open_json("heroku_dict.json")
-    #     for machine, idle in zip(machine_data, idle_data):
-    #         if (workerVal in machine) and (lazyH < idle_data.get(idle)["idle"]):
-    #             if self.details_check.isChecked():
-    #                 hostname = machine
-    #             else:
-    #                 hostname = machine.partition(".")[0]
-    #             ignore = machine_data.get(machine)["ignore"]
-    #             notes = machine_data.get(machine)["notes"]
-    #             serial = machine_data.get(machine)["serial"]
-    #             owner = machine_data.get(machine)["owner"]
-    #             reason = machine_data.get(machine)["reason"]
-    #             idle = str(timedelta(seconds=idle_data.get(idle)["idle"]))
-    #             try:
-    #                 ilo = machine_data.get(machine)["ilo"]
-    #             except KeyError:
-    #                 ilo = "-"
-    #             list_row = [hostname, idle, ilo, serial, notes]
-    #             rowPosition = self.tableWidget.rowCount()
-    #             self.tableWidget.insertRow(rowPosition)
-    #             self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
-    #             self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
-    #             self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
-    #             self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
-    #             self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
-    #         elif (workerVal == "All") and (lazyH < idle_data.get(idle)["idle"]):
-    #             if self.details_check.isChecked():
-    #                 hostname = machine
-    #             else:
-    #                 hostname = machine.partition(".")[0]
-    #             ignore = machine_data.get(machine)["ignore"]
-    #             notes = machine_data.get(machine)["notes"]
-    #             serial = machine_data.get(machine)["serial"]
-    #             owner = machine_data.get(machine)["owner"]
-    #             reason = machine_data.get(machine)["reason"]
-    #             idle = str(timedelta(seconds=idle_data.get(idle)["idle"]))
-    #             try:
-    #                 ilo = machine_data.get(machine)["ilo"]
-    #             except KeyError:
-    #                 ilo = "-"
-    #             list_row = [hostname, idle, ilo, serial, notes]
-    #             rowPosition = self.tableWidget.rowCount()
-    #             self.tableWidget.insertRow(rowPosition)
-    #             self.tableWidget.setItem(rowPosition, 0, QtWidgets.QTableWidgetItem(list_row[0]))
-    #             self.tableWidget.setItem(rowPosition, 1, QtWidgets.QTableWidgetItem(list_row[1]))
-    #             self.tableWidget.setItem(rowPosition, 2, QtWidgets.QTableWidgetItem(list_row[2]))
-    #             self.tableWidget.setItem(rowPosition, 3, QtWidgets.QTableWidgetItem(list_row[3]))
-    #             self.tableWidget.setItem(rowPosition, 4, QtWidgets.QTableWidgetItem(list_row[4]))
-    #         else:
-    #             pass
-    #     header = self.tableWidget.horizontalHeader()
-    #     header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
-    #     header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
-    #     header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
-    #     header.setSectionResizeMode(3, QtWidgets.QHeaderView.ResizeToContents)
-    #     header.setSectionResizeMode(4, QtWidgets.QHeaderView.ResizeToContents)
