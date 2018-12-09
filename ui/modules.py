@@ -5,6 +5,7 @@ import requests
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from PyQt5 import QtCore
+from ui.messaging_module import TrayIcon
 
 twc_version = VERSION
 timenow = datetime.utcnow()
@@ -160,14 +161,18 @@ class VmMachine(QtCore.QObject):
 
 
 def open_json(file_name):
-    with open("json_data/{}".format(file_name)) as f:
-        data = json.load(f)
-    return data
+    try:
+        with open("json_data/{}".format(file_name)) as f:
+            data = json.load(f)
+        return data
+    except FileNotFoundError:
+        TrayIcon().messageWarning("Error", "Data files not found. Please import data to create the work files.", 0)
+        return {}
 
 def save_json(file_name, data):
     with open("json_data/{}".format(file_name), 'w') as f:
         json.dump(data, f, indent=2, sort_keys=True)
-        f.close()
+    f.close()
 
 def remove_fqdn_from_machine_name(hostname):
     if len(hostname) > 1:
