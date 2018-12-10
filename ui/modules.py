@@ -262,6 +262,19 @@ class UiProperties(Settings):
                 self.set_data_json(data)
 
 
+class ThemeSet(Settings):
+    def __init__(self, code, type):
+        Settings.__init__(self)
+        self.code = code
+        self.type = type
+
+    def update_theme(self):
+        data = self.get_data_json()
+        data['theme']['code'] = self.code
+        data['theme']['type'] = self.type
+        self.set_data_json(data)
+
+
 def open_json(file_name):
     try:
         with open("json_data/{}".format(file_name)) as f:
