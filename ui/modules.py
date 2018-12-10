@@ -183,3 +183,8 @@ def remove_fqdn_from_machine_name(hostname):
         else:
             return hostname[:17]
 
+def save_logs(intext):
+    with open("taskcluster.log", 'a') as f:
+        f.write(intext)
+    f.close()
+    TrayIcon().messageInfo("Log Info.", "Log file saved.", 1)

@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 from ui.messaging_module import TrayIcon
 from ui.details import MachineDetails
-from ui.modules import GetDataThread, open_json, VmMachine
+from ui.modules import GetDataThread, open_json, VmMachine, save_logs
 
 
 class CheckStatusWindow(QtWidgets.QFrame):
@@ -19,7 +19,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.process_btn.pressed.connect(self.get_all_machines)
         self.thread1.addList.connect(self.add_lista)
         self.lazy_spin.setEnabled(False)
-        self.filter_btn.setEnabled(False)
         self.filter_line.setEnabled(False)
         self.filter_combo.setEnabled(False)
         self.ignore_combo.setEnabled(False)
@@ -27,7 +26,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
         self.owner_check.stateChanged.connect(self.change_owner_input_state)
         self.ignore_check.stateChanged.connect(self.change_ignore_input_state)
         self.tableWidget.doubleClicked.connect(self.display_more_info)
-        # self.filter_btn.pressed.connect(self.filter_by_field)
         self.objects = []
         self.add_lista()
 
@@ -146,11 +144,9 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def change_owner_input_state(self):
         if self.owner_check.isChecked():
-            self.filter_btn.setEnabled(True)
             self.filter_line.setEnabled(True)
             self.filter_combo.setEnabled(True)
         else:
-            self.filter_btn.setEnabled(False)
             self.filter_line.setEnabled(False)
             self.filter_combo.setEnabled(False)
 
@@ -177,3 +173,6 @@ class CheckStatusWindow(QtWidgets.QFrame):
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
         self.message_board_history("Showing list of machines based on name filter "
                                    "and idle time. Limit set to: {}h".format(self.lazy_spin.value()))
+
+    def closeEvent(self, QCloseEvent):
+        save_logs(self.status_browser.toPlainText())
