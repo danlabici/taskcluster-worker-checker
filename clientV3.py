@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets, uic, QtCore
+from PyQt5 import QtWidgets, uic, QtQuick, QtGui
 from ui.check_status import CheckStatusWindow
 import os
 import sys
