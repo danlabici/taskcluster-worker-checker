@@ -272,7 +272,7 @@ class UiProperties(Settings):
         _property = {'name': self.name,
                      'active': self.active,
                      'value': self.value}
-        data['backend'].append(_property)
+        data['ui_properties'].append(_property)
         self.set_data_json(data)
 
 
