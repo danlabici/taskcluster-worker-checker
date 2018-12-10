@@ -204,6 +204,15 @@ class Settings(QtCore.QObject):
         self.filename = 'settings.json'
         self.json_create()
 
+    def get_property(self, type, search):
+        data = self.get_data_json()
+        for member in data[type]:
+            if search in member['name']:
+                return member
+                break
+        else:
+            return {"active": "No", "name": "", "value": "/path/to/file"}
+
     def get_data_json(self):
         with open(self.filename, 'r') as f:
             data = json.load(f)
@@ -223,7 +232,7 @@ class Settings(QtCore.QObject):
         if self.is_json() is False:
             data = {'ui_properties':[{
                     'name': '',
-                    'active': False,
+                    'active': "No",
                     'value': ''}],
                     'theme': {
                         'type': '',
@@ -231,7 +240,7 @@ class Settings(QtCore.QObject):
                     },
                     'backend':[{
                         'name': '',
-                        'active': False,
+                        'active': "No",
                         'value': ''}
                     ]}
             with open(self.filename, 'w') as f:
@@ -254,12 +263,17 @@ class UiProperties(Settings):
                 data['ui_properties'][data['ui_properties'].index(member)]['value'] = self.value
                 data['ui_properties'][data['ui_properties'].index(member)]['active'] = self.active
                 self.set_data_json(data)
-            else:
-                _property = {'name': self.name,
-                    'active': self.active,
-                    'value': self.value}
-                data['ui_properties'].append(_property)
-                self.set_data_json(data)
+                break
+        else:
+            self.add_property()
+
+    def add_property(self):
+        data = self.get_data_json()
+        _property = {'name': self.name,
+                     'active': self.active,
+                     'value': self.value}
+        data['backend'].append(_property)
+        self.set_data_json(data)
 
 
 class BackendProperties(Settings):
@@ -272,16 +286,21 @@ class BackendProperties(Settings):
     def update_property(self):
         data = self.get_data_json()
         for member in data['backend']:
-            if self.name == member['name']:
+            if self.name in member['name']:
                 data['backend'][data['backend'].index(member)]['value'] = self.value
                 data['backend'][data['backend'].index(member)]['active'] = self.active
                 self.set_data_json(data)
-            else:
-                _property = {'name': self.name,
-                    'active': self.active,
-                    'value': self.value}
-                data['backend'].append(_property)
-                self.set_data_json(data)
+                break
+        else:
+            self.add_property()
+
+    def add_property(self):
+        data = self.get_data_json()
+        _property = {'name': self.name,
+            'active': self.active,
+            'value': self.value}
+        data['backend'].append(_property)
+        self.set_data_json(data)
 
 
 class ThemeSet(Settings):
