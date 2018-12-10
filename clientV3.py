@@ -3,7 +3,7 @@ from ui.check_status import CheckStatusWindow
 import os
 import sys
 from ui.messaging_module import TrayIcon
-
+from ui.settings import SettingsWindow
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
@@ -18,6 +18,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.actionLight.triggered.connect(self.theme_selector_light)
         self.actionDark.triggered.connect(self.theme_selector_dark)
         self.actionVS_Dark.triggered.connect(self.theme_selector_vs)
+        self.actionProperties.triggered.connect(self.show_settings)
 
     def show_check_status_widget(self):
         self.qdock = CheckStatusWindow()
@@ -28,6 +29,17 @@ class MainWindow(QtWidgets.QMainWindow):
         self.mdiArea.addSubWindow(self.qdock)
         self.anim.start()
         self.qdock.showMaximized()
+
+    def show_settings(self):
+        self.sett = SettingsWindow()
+        self.sett.show()
+
+    # def showEvent(self, QShowEvent):
+    #     self.anim = QtCore.QPropertyAnimation(self.sett, b"geometry")
+    #     self.anim.setDuration(2000)
+    #     self.anim.setStartValue(QtCore.QRect(0, 0, 0, 0))
+    #     self.anim.setEndValue(QtCore.QRect(self.sett.geometry()))
+    #     self.anim.start()
 
     def theme_selector_light(self):
         self.actionDark.setChecked(False)
