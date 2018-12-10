@@ -262,6 +262,28 @@ class UiProperties(Settings):
                 self.set_data_json(data)
 
 
+class BackendProperties(Settings):
+    def __init__(self, name, value, active):
+        Settings.__init__(self)
+        self.name = name
+        self.value = value
+        self.active = active
+
+    def update_property(self):
+        data = self.get_data_json()
+        for member in data['backend']:
+            if self.name == member['name']:
+                data['backend'][data['backend'].index(member)]['value'] = self.value
+                data['backend'][data['backend'].index(member)]['active'] = self.active
+                self.set_data_json(data)
+            else:
+                _property = {'name': self.name,
+                    'active': self.active,
+                    'value': self.value}
+                data['backend'].append(_property)
+                self.set_data_json(data)
+
+
 class ThemeSet(Settings):
     def __init__(self, code, type):
         Settings.__init__(self)
