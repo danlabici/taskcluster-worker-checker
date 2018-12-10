@@ -8,6 +8,7 @@ from PyQt5 import QtCore
 import base64
 from uuid import getnode as get_mac
 from ui.messaging_module import TrayIcon
+import os
 
 twc_version = VERSION
 timenow = datetime.utcnow()
@@ -194,6 +195,72 @@ class Cryptograph(QtCore.QObject):
     def decoding(self, value):
         """Returns decoded string"""
         return self.decode(str(self.mac_addr), value)
+
+
+class Settings(QtCore.QObject):
+    def __init__(self):
+        QtCore.QObject.__init__(self)
+        self.type = type
+        self.filename = 'settings.json'
+        self.json_create()
+
+    def get_data_json(self):
+        with open(self.filename, 'r') as f:
+            data = json.load(f)
+        return data
+
+    def set_data_json(self, data):
+        with open(self.filename, 'w') as f:
+            json.dump(data, f, indent=2, sort_keys=True)
+        f.close()
+
+    def is_json(self):
+        """Check if json properties files exist"""
+        return os.path.isfile(self.filename)
+
+    def json_create(self):
+        """If no json file present, create one time only"""
+        if self.is_json() is False:
+            data = {'ui_properties':[{
+                    'name': '',
+                    'active': False,
+                    'value': ''}],
+                    'theme': {
+                        'type': '',
+                        'code': 1
+                    },
+                    'backend':[{
+                        'name': '',
+                        'active': False,
+                        'value': ''}
+                    ]}
+            with open(self.filename, 'w') as f:
+                json.dump(data, f, indent=2, sort_keys=True)
+        else:
+            pass
+
+
+class UiProperties(Settings):
+    def __init__(self, name, value, active):
+        Settings.__init__(self)
+        self.name = name
+        self.value = value
+        self.active = active
+
+    def update_property(self):
+        data = self.get_data_json()
+        for member in data['ui_properties']:
+            if self.name == member['name']:
+                data['ui_properties'][data['ui_properties'].index(member)]['value'] = self.value
+                data['ui_properties'][data['ui_properties'].index(member)]['active'] = self.active
+                self.set_data_json(data)
+            else:
+                _property = {'name': self.name,
+                    'active': self.active,
+                    'value': self.value}
+                data['ui_properties'].append(_property)
+                self.set_data_json(data)
+
 
 def open_json(file_name):
     try:
