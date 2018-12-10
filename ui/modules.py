@@ -5,6 +5,8 @@ import requests
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 from PyQt5 import QtCore
+import base64
+from uuid import getnode as get_mac
 from ui.messaging_module import TrayIcon
 
 twc_version = VERSION
@@ -108,6 +110,7 @@ class GetDataThread(QtCore.QThread):
         self.addList.emit()
         self.finished.emit()
 
+
 class VmMachine(QtCore.QObject):
     def __init__(self, hostname):
         QtCore.QObject.__init__(self)
@@ -159,6 +162,38 @@ class VmMachine(QtCore.QObject):
             self.idle = idle
         self.ilo = ilo
 
+
+class Cryptograph(QtCore.QObject):
+    def __init__(self):
+        QtCore.QObject.__init__(self)
+        self.mac_addr = str(get_mac())
+
+    def encode(self, key, clear):
+        """Encode a string based on a key, in this case mac address"""
+        enc = []
+        for i in range(len(clear)):
+            self.mac_addr_c = self.mac_addr[i % len(self.mac_addr)]
+            enc_c = chr((ord(clear[i]) + ord(self.mac_addr_c)) % 256)
+            enc.append(enc_c)
+        return base64.urlsafe_b64encode("".join(enc).encode()).decode()
+
+    def decode(self, key, enc):
+        """Decode a string based on a key, in this case mac address"""
+        dec = []
+        enc = base64.urlsafe_b64decode(enc).decode()
+        for i in range(len(enc)):
+            self.mac_addr_c = self.mac_addr[i % len(self.mac_addr)]
+            dec_c = chr((256 + ord(enc[i]) - ord(self.mac_addr_c)) % 256)
+            dec.append(dec_c)
+        return "".join(dec)
+
+    def encoding(self, value):
+        """Returns encoded string"""
+        return self.encode(str(self.mac_addr),value)
+
+    def decoding(self, value):
+        """Returns decoded string"""
+        return self.decode(str(self.mac_addr), value)
 
 def open_json(file_name):
     try:
