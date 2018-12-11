@@ -2,8 +2,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import pyqtSlot
 import os
 from datetime import timedelta
-from ui.messaging_module import TrayIcon
-from ui.modules import open_json, VmMachine
+from ui.modules import open_json, VmMachine, TrayIcon
 
 class MachineDetails(QtWidgets.QDialog):
     def __init__(self):

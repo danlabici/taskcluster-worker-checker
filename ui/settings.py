@@ -1,7 +1,6 @@
 from PyQt5 import QtWidgets, uic, QtCore
 import os
-from ui.messaging_module import TrayIcon
-from ui.modules import BackendProperties, UiProperties, Settings
+from ui.modules import BackendProperties, UiProperties, Settings, TrayIcon
 
 class SettingsWindow(QtWidgets.QDialog):
     filterData = QtCore.pyqtSignal(str)

@@ -1,9 +1,8 @@
 from PyQt5 import QtWidgets, uic, QtCore
 import os
 from datetime import datetime, timedelta
-from ui.messaging_module import TrayIcon
 from ui.details import MachineDetails
-from ui.modules import GetDataThread, open_json, VmMachine, save_logs
+from ui.modules import GetDataThread, open_json, VmMachine, save_logs, TrayIcon
 
 
 class CheckStatusWindow(QtWidgets.QFrame):

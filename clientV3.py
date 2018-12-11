@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic, QtCore
 from ui.check_status import CheckStatusWindow
 import os
 import sys
-from ui.messaging_module import TrayIcon
+from ui.modules import TrayIcon
 from ui.settings import SettingsWindow
 
 class MainWindow(QtWidgets.QMainWindow):
