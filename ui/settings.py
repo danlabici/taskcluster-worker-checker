@@ -11,9 +11,19 @@ class SettingsWindow(QtWidgets.QDialog):
         uic.loadUi(file_path, self)
         self.save_btn.pressed.connect(self.save_all)
         self.discard_btn.pressed.connect(self.close)
-        self.get_working_dir()
-        self.get_google_creds()
+        self.work_btn.pressed.connect(self.get_wdir_folder)
+        self.google_btn.pressed.connect(self.get_google_creds_file)
+        self.get_working_dir_json()
+        self.get_google_creds_json()
         self.get_notification_display()
+
+    def get_wdir_folder(self):
+        folder_name = QtWidgets.QFileDialog.getExistingDirectory(self, 'Open Workdir Folder', '/path/to/default/*')
+        self.workingDir_txtField.setText(folder_name)
+
+    def get_google_creds_file(self):
+        file_name = QtWidgets.QFileDialog.getOpenFileName(self, 'Open Google Creds File', '/path/to/default/*')
+        self.credentials_txtField.setText(file_name[0])
 
     def save_working_dir(self):
         wdir_path = self.workingDir_txtField.displayText()
@@ -30,12 +40,12 @@ class SettingsWindow(QtWidgets.QDialog):
         t = UiProperties(name='Notifier', value=status, active="Yes")
         t.update_property()
 
-    def get_working_dir(self):
+    def get_working_dir_json(self):
         t = Settings()
         data = t.get_property('backend', 'WDir')
         self.workingDir_txtField.setText(data['value'])
 
-    def get_google_creds(self):
+    def get_google_creds_json(self):
         t = Settings()
         data = t.get_property('backend', 'GCreds')
         self.credentials_txtField.setText(data['value'])
