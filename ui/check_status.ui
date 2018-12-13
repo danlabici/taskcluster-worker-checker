@@ -229,6 +229,9 @@
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectRows</enum>
      </property>
+     <property name="gridStyle">
+      <enum>Qt::DotLine</enum>
+     </property>
      <property name="sortingEnabled">
       <bool>true</bool>
      </property>
@@ -241,6 +244,21 @@
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>false</bool>
      </attribute>
+     <column>
+      <property name="text">
+       <string>New Column</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>New Column</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>New Column</string>
+      </property>
+     </column>
     </widget>
    </item>
    <item>

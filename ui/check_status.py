@@ -79,11 +79,11 @@ class CheckStatusWindow(QtWidgets.QFrame):
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
             elif (_ignore in member.ignore) and self.ignore_check.isChecked():
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time > member.idle) and self.ignore_check.isChecked() and self.lazy_check.isChecked():
+            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and self.ignore_check.isChecked() and self.lazy_check.isChecked():
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time > member.idle) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
+            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time > member.idle) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
+            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
             elif (_ignore in member.ignore) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.owner_check.isChecked():
                 self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
