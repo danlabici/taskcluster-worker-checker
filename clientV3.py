@@ -22,12 +22,12 @@ class MainWindow(QtWidgets.QMainWindow):
 
     def show_check_status_widget(self):
         self.qdock = CheckStatusWindow()
-        self.anim = QtCore.QPropertyAnimation(self.qdock, b"geometry")
-        self.anim.setDuration(200)
-        self.anim.setStartValue(QtCore.QRect(0, 0, 0, 0))
-        self.anim.setEndValue(QtCore.QRect(self.qdock.geometry()))
+        # self.anim = QtCore.QPropertyAnimation(self.qdock, b"geometry")
+        # self.anim.setDuration(200)
+        # self.anim.setStartValue(QtCore.QRect(0, 0, 0, 0))
+        # self.anim.setEndValue(QtCore.QRect(self.qdock.geometry()))
         self.mdiArea.addSubWindow(self.qdock)
-        self.anim.start()
+        # self.anim.start()
         self.qdock.showMaximized()
 
     def show_settings(self):
