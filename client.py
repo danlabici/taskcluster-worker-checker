@@ -61,9 +61,9 @@ def get_google_spreadsheet_data():
     auth_token = gspread.authorize(login_info)
 
     # Choose which sheets from the SpreadSheet we will work with.
-    moonshots_sheet_mdc1 = auth_token.open("Moonshot Master Inventory").get_worksheet(0)
-    moonshots_sheet_mdc2 = auth_token.open("Moonshot Master Inventory").get_worksheet(1)
-    osx_sheet_all_mdc = auth_token.open("Moonshot Master Inventory").get_worksheet(2)
+    moonshots_sheet_mdc1 = auth_token.open("Moonshot Master Inventory").worksheet("MDC_1")
+    moonshots_sheet_mdc2 = auth_token.open("Moonshot Master Inventory").worksheet("MDC_2")
+    osx_sheet_all_mdc = auth_token.open("Moonshot Master Inventory").worksheet("OSX")
 
     # Read the Data from the sheets
     moonshots_mdc1 = moonshots_sheet_mdc1.get_all_records()
