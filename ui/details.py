@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtCore import pyqtSlot
 import os
 from datetime import timedelta
-from ui.modules import open_json, VmMachine, TrayIcon
+from ui.modules import open_json, Machine, TrayIcon
 
 class MachineDetails(QtWidgets.QDialog):
     def __init__(self):
@@ -23,7 +23,7 @@ class MachineDetails(QtWidgets.QDialog):
                 ilo = machine_data.get(machine)["ilo"]
             except KeyError:
                 ilo = "N/A"
-            t = VmMachine(machine)
+            t = Machine(machine)
             t.insert_data(machine_data.get(machine)["ignore"],
                           machine_data.get(machine)["notes"],
                           machine_data.get(machine)["serial"],

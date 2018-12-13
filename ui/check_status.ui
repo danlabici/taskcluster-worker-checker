@@ -180,12 +180,12 @@
       <widget class="QComboBox" name="ignore_combo">
        <item>
         <property name="text">
-         <string>No</string>
+         <string>Yes</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>Yes</string>
+         <string>No</string>
         </property>
        </item>
       </widget>
@@ -244,21 +244,6 @@
      <attribute name="horizontalHeaderStretchLastSection">
       <bool>false</bool>
      </attribute>
-     <column>
-      <property name="text">
-       <string>New Column</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>New Column</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>New Column</string>
-      </property>
-     </column>
     </widget>
    </item>
    <item>

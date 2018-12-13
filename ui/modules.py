@@ -112,7 +112,7 @@ class GetDataThread(QtCore.QThread):
         self.finished.emit()
 
 
-class VmMachine(QtCore.QObject):
+class Machine(QtCore.QObject):
     def __init__(self, hostname):
         QtCore.QObject.__init__(self)
         if hostname == "":
