@@ -128,13 +128,14 @@ class Machine(QtCore.QObject):
         self.ilo = ""
 
     def __repr__(self):
-        return {self.hostname: {"ignore": self.ignore,
-                                  "notes": self.notes,
-                                  "serial": self.serial,
-                                  "owner": self.owner,
-                                  "reason": self.reason,
-                                  "idle": self.idle,
-                                  "ilo": self.ilo}}
+        return "Hostname: {},Ignore: {},Notes: {},SN: {},Owner: {},Reason: {},Idle: {},Ilo: {}".format(self.hostname,
+                                                                                                       self.ignore,
+                                                                                                       self.notes,
+                                                                                                       self.serial,
+                                                                                                       self.owner,
+                                                                                                       self.reason,
+                                                                                                       self.idle,
+                                                                                                       self.ilo)
 
     def insert_data(self, ignore, notes, serial, owner, reason, idle, ilo):
         if ignore == "":
