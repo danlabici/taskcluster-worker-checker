@@ -149,10 +149,13 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
     def display_more_info(self):
         row_id = self.select_row_table()
-        dialog1 = MachineDetails()
-        self.filterData.connect(dialog1.display_info)
-        self.filterData.emit(row_id)
-        dialog1.exec()
+        for member in self.objects:
+            if (row_id in member.hostname):
+                dialog1 = MachineDetails(hostname=member.hostname, idle=member.idle, ilo=member.ilo,
+                                         serial=member.serial, notes=member.notes, owner=member.owner,
+                                         ignore=member.ignore, reason=member.reason)
+                dialog1.exec()
+                break
 
     def select_row_table(self):
         index = self.tableWidget.selectionModel().selectedRows()[0]
@@ -160,7 +163,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         return id_us
 
     def filter_by_field(self):
-        elf.tableWidget.setRowCount(0)
+        self.tableWidget.setRowCount(0)
         _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
         _lazy = self.lazy_spin.value() * 3600
         for member in self.objects:
