@@ -29,7 +29,6 @@ class MachineDetails(QtWidgets.QDialog):
                           machine_data.get(machine)["serial"],
                           machine_data.get(machine)["owner"],
                           machine_data.get(machine)["reason"],
-                          idle_data.get(_idle)["idle"],
                           ilo)
             self.objects.append(t)
 

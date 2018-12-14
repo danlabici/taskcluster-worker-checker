@@ -14,7 +14,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         TrayIcon().messageInfo("Status", "Tray opened", 1)
         self.thread1 = GetDataThread()
         self.thread1.newValue.connect(self.message_board_history)
-        self.thread1.finished.connect(self.start_processing_no_lazy)
+        self.thread1.finished.connect(self.start_processing)
         self.process_btn.pressed.connect(self.get_all_machines)
         self.thread1.addList.connect(self.add_lista)
         self.lazy_spin.setEnabled(False)
@@ -31,8 +31,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
     def add_lista(self):
         self.objects.clear()
         machine_data = open_json("google_dict.json")
-        idle_data = open_json("heroku_dict.json")
-        for machine, _idle in zip(machine_data, idle_data):
+        for machine in machine_data:
             try:
                 ilo = machine_data.get(machine)["ilo"]
             except KeyError:
@@ -43,12 +42,11 @@ class CheckStatusWindow(QtWidgets.QFrame):
                           machine_data.get(machine)["serial"],
                           machine_data.get(machine)["owner"],
                           machine_data.get(machine)["reason"],
-                          idle_data.get(_idle)["idle"],
                           ilo)
             self.objects.append(t)
         self.message_board_history("Machines updated and loaded in memory.")
 
-    def start_processing_no_lazy(self):
+    def start_processing(self):
         self.tableWidget.setRowCount(0)
         _name_filter = str(self.machine_combo.currentText()).partition("-")[0]
         _lazy_time = self.lazy_spin.value() * 3600
@@ -106,7 +104,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
         if option == QtWidgets.QMessageBox.Yes:
             self.thread1.start(1)
         else:
-            self.start_processing_no_lazy()
+            self.start_processing()
     
     def list_objects_on_table(self, host, idle, ilo, serial, notes):
         self.tableWidget.setColumnCount(5)
