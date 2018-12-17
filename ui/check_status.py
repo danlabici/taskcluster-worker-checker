@@ -56,6 +56,7 @@ class CheckStatusWindow(QtWidgets.QFrame):
             new_list = [ member for member in self.objects if _name_filter not in member.hostname ]
         else:
             new_list = [member for member in self.objects if _name_filter in member.hostname]
+
         if self.owner_check.isChecked():
             new_list = [ member for member in self.objects if (_owner_name in member.owner) or  (_owner_name in member.notes) ]
 
@@ -64,6 +65,9 @@ class CheckStatusWindow(QtWidgets.QFrame):
 
         if self.ignore_check.isChecked():
             new_list = [member for member in self.objects if (_ignore in member.ignore) ]
+
+        if self.ignore_check.isChecked() and self.lazy_check.isChecked():
+            new_list = [member for member in self.objects if (_ignore in member.ignore) and (_lazy_time < member.idle) ]
 
         if self.owner_check.isChecked() and self.lazy_check.isChecked():
             new_list = [member for member in self.objects if ((_owner_name in member.owner) or (_owner_name in member.notes)) and (_lazy_time < member.idle) ]
