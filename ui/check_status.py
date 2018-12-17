@@ -52,50 +52,30 @@ class CheckStatusWindow(QtWidgets.QFrame):
         _lazy_time = self.lazy_spin.value() * 3600
         _owner_name = self.filter_line.displayText()
         _ignore = self.ignore_combo.currentText()
-        for member in self.objects:
-            if (_name_filter in member.hostname) and (self.ignore_check.isChecked() is False) and (self.lazy_check.isChecked() is False) and (self.owner_check.isChecked() is False):
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and self.ignore_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time < member.idle) and self.ignore_check.isChecked() and self.lazy_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_ignore in member.ignore) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_lazy_time < member.idle) and (_owner_name in member.owner) and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_lazy_time < member.idle) and (_owner_name in member.notes) and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_name_filter in member.hostname) and (_lazy_time < member.idle) and self.lazy_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif _name_filter == "All" and (self.ignore_check.isChecked() is False) and (self.lazy_check.isChecked() is False) and (self.owner_check.isChecked() is False):
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and self.ignore_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and self.ignore_check.isChecked() and self.lazy_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_lazy_time < member.idle) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_owner_name in member.owner) and self.ignore_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_ignore in member.ignore) and (_owner_name in member.notes) and self.ignore_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_lazy_time < member.idle) and (_owner_name in member.owner) and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_lazy_time < member.idle) and (_owner_name in member.notes) and self.lazy_check.isChecked() and self.owner_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            elif (_lazy_time < member.idle) and self.lazy_check.isChecked():
-                self.list_objects_on_table(member.hostname, member.idle, member.ilo, member.serial, member.notes)
-            else:
-                pass
+        if _name_filter == "All":
+            new_list = [ member for member in self.objects if _name_filter not in member.hostname ]
+        else:
+            new_list = [member for member in self.objects if _name_filter in member.hostname]
+        if self.owner_check.isChecked():
+            new_list = [ member for member in self.objects if (_owner_name in member.owner) or  (_owner_name in member.notes) ]
 
+        if self.lazy_check.isChecked():
+            new_list = [member for member in self.objects if (_lazy_time < member.idle) ]
+
+        if self.ignore_check.isChecked():
+            new_list = [member for member in self.objects if (_ignore in member.ignore) ]
+
+        if self.owner_check.isChecked() and self.lazy_check.isChecked():
+            new_list = [member for member in self.objects if ((_owner_name in member.owner) or (_owner_name in member.notes)) and (_lazy_time < member.idle) ]
+
+        if self.owner_check.isChecked() and self.ignore_check.isChecked():
+            new_list = [member for member in self.objects if ((_owner_name in member.owner) or (_owner_name in member.notes)) and (_ignore in member.ignore) ]
+
+        if self.owner_check.isChecked() and self.lazy_check.isChecked() and self.ignore_check.isChecked():
+            new_list = [member for member in self.objects if ((_owner_name in member.owner) or (_owner_name in member.notes)) and (_ignore in member.ignore) and (_lazy_time < member.idle) ]
+
+        for x in new_list:
+            self.list_objects_on_table(x.hostname, x.idle, x.ilo, x.serial, x.notes)
         self.message_board_history("Showing list of machines based on name filter.")
 
     def get_all_machines(self):

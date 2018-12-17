@@ -180,12 +180,12 @@
       <widget class="QComboBox" name="ignore_combo">
        <item>
         <property name="text">
-         <string>Yes</string>
+         <string>No</string>
         </property>
        </item>
        <item>
         <property name="text">
-         <string>No</string>
+         <string>Yes</string>
         </property>
        </item>
       </widget>
