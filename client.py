@@ -26,7 +26,7 @@ linux = configuration.LINUX
 yosemite = configuration.YOSEMITE
 
 
-def get_heroku_last_seen():
+def get_heroku_data():
     start = datetime.now()
     verbose = configuration.VERBOSE
     url = "http://releng-hardware.herokuapp.com/machines"
@@ -36,9 +36,9 @@ def get_heroku_last_seen():
     for value in data:
         idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
         _idle = int(idle.total_seconds())
-        heroku_machines.update(
-            {value["machine"].lower(): {"lastseen": value["lastseen"], "idle": _idle,
-                                        "datacenter": value["datacenter"]}})
+        heroku_machines.update({value["machine"].lower(): {
+            "lastseen": value["lastseen"], "idle": _idle, "datacenter": value["datacenter"],
+            "status": value["machines-last-status"], "taskid": value["machines-last-taskid"]}})
 
     save_json("heroku_dict.json", heroku_machines)
     end = datetime.now()
@@ -147,7 +147,7 @@ def remove_fqdn_from_machine_name():
         print("Removing the FQDN took:", end - start)
 
 
-def add_idle_to_google_dict():
+def add_heroku_data_to_google_dict():
     start = datetime.now()
     verbose = configuration.VERSION
     heroku_data = open_json("heroku_dict.json")
@@ -155,7 +155,9 @@ def add_idle_to_google_dict():
 
     shared_keys = set(heroku_data).intersection(google_data)
     for key in shared_keys:
-        machine_idle = {"idle": heroku_data.get(key)["idle"]}
+        machine_idle = {"idle": heroku_data.get(key)["idle"],
+                        "status": heroku_data.get(key)["status"],
+                        "taskid": heroku_data.get(key)["taskid"]}
         google_data[key].update(machine_idle)
 
     save_json("google_dict.json", google_data)
@@ -176,11 +178,12 @@ def output_problem_machines(workerType):
 
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO",
+                             "Serial", "Other Notes"]
     else:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
-                             "Ownership Notes", " Other Notes", "Ignored?"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
+                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
@@ -189,7 +192,24 @@ def output_problem_machines(workerType):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+        try:
+            status = machine_data.get(machine)["status"]
+        except KeyError:
+            status = "-"
+        try:
+            taskid = machine_data.get(machine)["taskid"]
+        except KeyError:
+            taskid = "-"
 
+        if status is not None:
+            if "completed_completed" in status:
+                status = "Completed"
+            elif "running_unresolved" in status:
+                status = "Running"
+            else:
+                pass
+        else:
+            pass
         if notes == "":
             notes = "No notes available."
         else:
@@ -222,35 +242,35 @@ def output_problem_machines(workerType):
             if idle > timedelta(hours=lazy_time) and ignore == "No":
                 if workerType == "ALL":
                     if not verbose:
-                        table.add_row([hostname, idle, ilo, serial, notes])
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
-                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 count_up()
 
                 if workerType == "t-w1064-ms" and workerType in str(machine):
                     if not verbose:
-                        table.add_row([hostname, idle, ilo, serial, notes])
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
-                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 count_up()
 
                 if workerType == "t-linux64-ms" and workerType in str(machine):
                     if not verbose:
-                        table.add_row([hostname, idle, ilo, serial, notes])
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
-                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 count_up()
 
                 if workerType == "t-yosemite-r7" and workerType in machine:
@@ -283,10 +303,10 @@ def output_single_machine(single_machine):
     start = datetime.now()
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
-    get_heroku_last_seen()
+    get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
+    add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
     table = PrettyTable()
@@ -337,10 +357,10 @@ def output_loaned_machines(**loaner):
     number_of_machines = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
-    get_heroku_last_seen()
+    get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
+    add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
     if not verbose:
@@ -413,10 +433,10 @@ def output_machines_with_notes():
     number_of_machines = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
-    get_heroku_last_seen()
+    get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
+    add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
     table = PrettyTable()
@@ -505,10 +525,10 @@ def run_logic(workerType):
     This is the main order in which the tool will run all the functions needed to return the result.
       - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
     """
-    get_heroku_last_seen()
+    get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
+    add_heroku_data_to_google_dict()
     output_problem_machines(workerType=workerType)
 
 
@@ -518,10 +538,10 @@ def dev_run_logic():
     This will also skip the MainMenu of the CLI application
     :return: Fresh data.
     """
-    get_heroku_last_seen()
+    get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
-    add_idle_to_google_dict()
+    add_heroku_data_to_google_dict()
     output_problem_machines(workerType=workerType)
 
 
