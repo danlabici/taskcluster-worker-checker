@@ -275,13 +275,13 @@ def output_problem_machines(workerType):
 
                 if workerType == "t-yosemite-r7" and workerType in machine:
                     if not verbose:
-                        table.add_row([hostname, idle, ilo, serial, notes])
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up()
                     else:
                         _verbose_google_dict = open_json("verbose_google_dict.json")
                         for key in _verbose_google_dict:
                             if machine in str(key):
-                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 count_up()
 
     print(table)
@@ -320,6 +320,22 @@ def output_single_machine(single_machine):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
         ignore = machine_data.get(machine)["ignore"]
+        try:
+            status = machine_data.get(machine)["status"]
+        except KeyError:
+            status = "-"
+        try:
+            taskid = machine_data.get(machine)["taskid"]
+        except KeyError:
+            taskid = "-"
+
+        if status is not None:
+            if "completed_completed" in status:
+                status = "Completed"
+            elif "running_unresolved" in status:
+                status = "Running"
+            else:
+                pass
 
         if ignore == "Yes":
             ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
@@ -339,7 +355,7 @@ def output_single_machine(single_machine):
 
         if machine:
             if single_machine in str(machine):
-                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                table.add_row([hostname, idle, status, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
 
@@ -365,12 +381,12 @@ def output_loaned_machines(**loaner):
 
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Other Notes",
-                             "Ignored?"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO", "Serial",
+                             "Other Notes", "Ignored?"]
     else:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
-                             "Ownership Notes", " Other Notes", "Ignored?"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
+                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
@@ -379,7 +395,22 @@ def output_loaned_machines(**loaner):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+        try:
+            status = machine_data.get(machine)["status"]
+        except KeyError:
+            status = "-"
+        try:
+            taskid = machine_data.get(machine)["taskid"]
+        except KeyError:
+            taskid = "-"
 
+        if status is not None:
+            if "completed_completed" in status:
+                status = "Completed"
+            elif "running_unresolved" in status:
+                status = "Running"
+            else:
+                pass
         if ignore == "Yes":
             ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
         else:
@@ -401,19 +432,19 @@ def output_loaned_machines(**loaner):
                 if owner:
                     if loaner.get(value) == "":
                         if not verbose:
-                            table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                            table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
                             number_of_machines += 1
                         else:
-                            table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                            table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                             number_of_machines += 1
 
                     else:
                         if str(loaner.get(value)).lower() == str(owner).lower():
                             if not verbose:
-                                table.add_row([hostname, idle, ilo, serial, notes, ignore])
+                                table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
                                 number_of_machines += 1
                             else:
-                                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 number_of_machines += 1
 
     print(table)
@@ -440,8 +471,8 @@ def output_machines_with_notes():
     machine_data = open_json("google_dict.json")
 
     table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
-                         "Ownership Notes", " Other Notes", "Ignored?"]
+    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task", "ILO",
+                         "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
 
     for machine in machine_data:
         hostname = machine
@@ -450,7 +481,22 @@ def output_machines_with_notes():
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
+        try:
+            status = machine_data.get(machine)["status"]
+        except KeyError:
+            status = "-"
+        try:
+            taskid = machine_data.get(machine)["taskid"]
+        except KeyError:
+            taskid = "-"
 
+        if status is not None:
+            if "completed_completed" in status:
+                status = "Completed"
+            elif "running_unresolved" in status:
+                status = "Running"
+            else:
+                pass
         if ignore == "Yes":
             ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
         else:
@@ -469,7 +515,7 @@ def output_machines_with_notes():
 
         if machine:
             if notes is not "No notes available.":
-                table.add_row([hostname, idle, ilo, serial, owner, reason, notes, ignore])
+                table.add_row([hostname, idle, status, ilo, serial, owner, reason, notes, ignore])
                 number_of_machines += 1
             else:
                 pass
@@ -499,7 +545,7 @@ def write_html_data(*args):
             table .tg-mb3i{background-color:#D2E4FC;text-align:right;vertical-align:top}
             table .tg-lqy6{text-align:right;vertical-align:top}
             table .tg-0lax{text-align:left;vertical-align:top}
-        </style> 
+        </style>
     </head>
     """
 
