@@ -137,7 +137,7 @@ class Machine(QtCore.QObject):
                                                                                                        self.idle,
                                                                                                        self.ilo)
 
-    def insert_data(self, ignore, notes, serial, owner, reason, idle, ilo):
+    def insert_data(self, ignore, notes, serial, owner, reason, ilo):
         if ignore == "":
             self.ignore = "N/A"
         else:
@@ -158,11 +158,18 @@ class Machine(QtCore.QObject):
             self.reason = "N/A"
         else:
             self.reason = reason
-        if idle == "":
-            self.idle = "N/A"
+        if self.get_idle(self.hostname) is None:
+            self.idle = 1
         else:
-            self.idle = idle
+            self.idle = self.get_idle(self.hostname)
         self.ilo = ilo
+
+    def get_idle(self, name):
+        idle_data = open_json("heroku_dict.json")
+        for member in idle_data:
+            if str(name).partition('.')[0] == member:
+                return idle_data.get(member)["idle"]
+                break
 
 
 class Cryptograph(QtCore.QObject):
