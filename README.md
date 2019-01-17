@@ -28,6 +28,8 @@ Script doesn't mind the order in which you set the options/arguments.
 
 `-l`  - Used to set custom Lazy timer. Default Lazy Timer is set to 6 hours. Usage: `-l 10` or `-l 2`
 
+`-m`  - Used to skip the menu. For example `-m 14` will check OSX workers. `-m 2` will go to check a specific machine.
+
 `-p`  - Used to set persistent menu.
 
 `-o`  - Used to output the resulting table in a HTML file, called index.html

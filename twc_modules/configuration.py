@@ -1,5 +1,5 @@
 # TWC Settings
-VERSION = "1.4.5"
+VERSION = "1.5.0"
 LAZY = int(6)
 ARGLEN = int(0)
 VERBOSE = False
@@ -8,7 +8,7 @@ OUTPUTFILE = False
 OPENHTML = False
 TRAVISCI = False
 WORKERTYPE = "ALL"
-
+CHOICE = int(0)
 WINDOWS = "t-w1064-ms"
 LINUX = "t-linux64-ms"
 YOSEMITE = "t-yosemite-r7"

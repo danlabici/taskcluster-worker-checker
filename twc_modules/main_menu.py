@@ -36,21 +36,23 @@ def run_menu(*arg):
         print("==== Generated HTML will automatically open at the end of the program  ====")
 
     # Insert a new line between run arguments and the main menu.
-    if configuration.ARGLEN > 0:
+    if configuration.ARGLEN == 0:
         print("\n")
 
-    print("1. Check Machine(s) Status\n"
-          "2. Check a Specific Machine\n"
-          "3. List Machines Loaned by User\n"
-          "4. List Machines with Added Notes\n"
-          "5. TaskCluster Worker Checker HELP Docs\n\n"
-          "0. Exit application.")
-    try:
-        choice = int(input())
-    except ValueError:
-        print("\n\nInvalid Choice!\n"
-              "Restarting script!\n\n")
-        run_menu()
+    choice = configuration.CHOICE
+    if choice == 0:
+        print("1. Check Machine(s) Status\n"
+              "2. Check a Specific Machine\n"
+              "3. List Machines Loaned by User\n"
+              "4. List Machines with Added Notes\n"
+              "5. TaskCluster Worker Checker HELP Docs\n\n"
+              "0. Exit application.")
+        try:
+            choice = int(input())
+        except ValueError:
+            print("\n\nInvalid Choice!\n"
+                  "Restarting script!\n\n")
+            run_menu()
 
     if choice == 1:
         print("1. Check ALL WorkerTypes\n"

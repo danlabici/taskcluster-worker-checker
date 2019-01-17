@@ -587,6 +587,16 @@ if __name__ == "__main__":
         except ValueError as e:
             print("Expecting integer for the Lazy Time value, but got:\n", e)
             exit(-1)
+
+    if "-m" in sys.argv:
+        choise_index = sys.argv.index("-m") + 1
+        choise = sys.argv[choise_index]
+        try:
+            configuration.CHOICE = int(choise)
+        except ValueError as e:
+            print("Expecting integer for the Lazy Time value, but got:\n", e)
+            exit(-1)
+
     if "-o" in sys.argv:
         configuration.OUTPUTFILE = True
 
