@@ -166,6 +166,32 @@ def add_heroku_data_to_google_dict():
         print("Adding IDLE times to Google Data took:", end - start)
 
 
+def status_cleaner(status):
+    if status is not None:
+        if "completed_completed" in status:
+            status = "Completed"
+        elif "running_unresolved" in status:
+            status = "Running"
+        elif "failed_failed" in status:
+            status = "Failed"
+        else:
+            pass
+    else:
+        pass
+    return status
+
+
+def table_header_moonshots(verbose, lazy_time):
+    if not verbose:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO",
+                             "Serial", "Other Notes"]
+    else:
+        table = PrettyTable()
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
+                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
+    return table
+
 def output_problem_machines(workerType):
     start = datetime.now()
     number_of_machines = 0
@@ -176,14 +202,7 @@ def output_problem_machines(workerType):
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
 
-    if not verbose:
-        table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO",
-                             "Serial", "Other Notes"]
-    else:
-        table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
-                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
+    table = table_header_moonshots(verbose, lazy_time)
 
     for machine in machine_data:
         hostname = machine
@@ -201,15 +220,8 @@ def output_problem_machines(workerType):
         except KeyError:
             taskid = "-"
 
-        if status is not None:
-            if "completed_completed" in status:
-                status = "Completed"
-            elif "running_unresolved" in status:
-                status = "Running"
-            else:
-                pass
-        else:
-            pass
+        status = status_cleaner(status)
+
         if notes == "":
             notes = "No notes available."
         else:
