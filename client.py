@@ -8,7 +8,6 @@ try:
     import gspread
     import requests
     from prettytable import PrettyTable
-    from sty import fg, bg, ef, rs, Rule
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
     print("Detected missing modules!\n"
@@ -25,6 +24,10 @@ windows = configuration.WINDOWS
 linux = configuration.LINUX
 yosemite = configuration.YOSEMITE
 
+number_of_machines = 0
+number_of_windows = 0
+number_of_linux = 0
+number_of_osx = 0
 
 def get_heroku_data():
     start = datetime.now()
@@ -149,7 +152,7 @@ def remove_fqdn_from_machine_name():
 
 def add_heroku_data_to_google_dict():
     start = datetime.now()
-    verbose = configuration.VERSION
+    verbose = configuration.VERBOSE
     heroku_data = open_json("heroku_dict.json")
     google_data = open_json("google_dict.json")
 
@@ -166,7 +169,19 @@ def add_heroku_data_to_google_dict():
         print("Adding IDLE times to Google Data took:", end - start)
 
 
-def status_cleaner(status):
+def taskId(machine_data, machine):
+    try:
+        taskid = machine_data.get(machine)["taskid"]
+    except KeyError:
+        taskid = "-"
+    return taskid
+
+
+def status_cleaner(machine_data, machine):
+    try:
+        status = machine_data.get(machine)["status"]
+    except KeyError:
+        status = "-"
     if status is not None:
         if "completed_completed" in status:
             status = "Completed"
@@ -181,7 +196,7 @@ def status_cleaner(status):
     return status
 
 
-def table_header_moonshots(verbose, lazy_time):
+def twc_table_header(verbose, lazy_time):
     if not verbose:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO",
@@ -192,35 +207,105 @@ def table_header_moonshots(verbose, lazy_time):
                              "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
     return table
 
+
+def count_up_all(print_machine_numbers, machine):
+    global number_of_machines, number_of_windows, number_of_linux, number_of_osx
+
+    if "t-w1064-ms" in str(machine):
+        number_of_windows += 1
+    elif "t-linux64-ms" in str(machine):
+        number_of_linux += 1
+    elif "t-yosemite-r7" in str(machine):
+        number_of_osx += 1
+    else:
+        pass
+
+    if print_machine_numbers:
+        print("Total Lazy Workers:", number_of_windows + number_of_linux + number_of_osx)
+        print("Windows   Machines:", number_of_windows)
+        print("Linux     Machines:", number_of_linux)
+        print("OSX       Machines:", number_of_osx)
+
+
+def twc_insert_table_row(**kwargs):
+    verbose = kwargs.get("verbose")
+    table = kwargs.get("table")
+    workerType = kwargs.get("workerType")
+    machine = kwargs.get("machine")
+    hostname = machine
+    idle = kwargs.get("idle")
+    status = kwargs.get("status")
+    taskid = kwargs.get("taskid")
+    ilo = kwargs.get("ilo")
+    serial = kwargs.get("serial")
+    owner = kwargs.get("owner")
+    reason = kwargs.get("reason")
+    notes = kwargs.get("notes")
+    ignore = kwargs.get("ignore")
+
+    if workerType == "ALL":
+        if not verbose:
+            table.add_row([hostname, idle, status, ilo, serial, notes])
+            count_up_all(print_machine_numbers=False, machine=machine)
+        else:
+            _verbose_google_dict = open_json("verbose_google_dict.json")
+            for key in _verbose_google_dict:
+                if machine in str(key):
+                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    count_up_all(print_machine_numbers=False, machine=machine)
+
+    if workerType == "t-w1064-ms" and workerType in str(machine):
+        if not verbose:
+            table.add_row([hostname, idle, status, ilo, serial, notes])
+            count_up_all(print_machine_numbers=False, machine=machine)
+        else:
+            _verbose_google_dict = open_json("verbose_google_dict.json")
+            for key in _verbose_google_dict:
+                if machine in str(key):
+                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    count_up_all(print_machine_numbers=False, machine=machine)
+
+    if workerType == "t-linux64-ms" and workerType in str(machine):
+        if not verbose:
+            table.add_row([hostname, idle, status, ilo, serial, notes])
+            count_up_all(print_machine_numbers=False, machine=machine)
+        else:
+            _verbose_google_dict = open_json("verbose_google_dict.json")
+            for key in _verbose_google_dict:
+                if machine in str(key):
+                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    count_up_all(print_machine_numbers=False, machine=machine)
+
+    if workerType == "t-yosemite-r7" and workerType in machine:
+        if not verbose:
+            table.add_row([hostname, idle, status, ilo, serial, notes])
+            count_up_all(print_machine_numbers=False, machine=machine)
+        else:
+            _verbose_google_dict = open_json("verbose_google_dict.json")
+            for key in _verbose_google_dict:
+                if machine in str(key):
+                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    count_up_all(print_machine_numbers=False, machine=machine)
+
+    return table
+
+
 def output_problem_machines(workerType):
-    start = datetime.now()
-    number_of_machines = 0
-    number_of_windows = 0
-    number_of_linux = 0
-    number_of_osx = 0
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
 
-    table = table_header_moonshots(verbose, lazy_time)
+    table = twc_table_header(verbose, lazy_time)
 
     for machine in machine_data:
-        hostname = machine
         ignore = machine_data.get(machine)["ignore"]
         notes = machine_data.get(machine)["notes"]
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
-        try:
-            status = machine_data.get(machine)["status"]
-        except KeyError:
-            status = "-"
-        try:
-            taskid = machine_data.get(machine)["taskid"]
-        except KeyError:
-            taskid = "-"
 
-        status = status_cleaner(status)
+        taskid = taskId(machine_data, machine)
+        status = status_cleaner(machine_data, machine)
 
         if notes == "":
             notes = "No notes available."
@@ -233,82 +318,31 @@ def output_problem_machines(workerType):
         except KeyError:
             ilo = "-"
 
-        def count_up():
-            nonlocal number_of_machines, number_of_windows, number_of_linux, number_of_osx
-
-            number_of_machines += 1
-
-            if "t-w1064-ms" in str(machine):
-                number_of_windows += 1
-            elif "t-linux64-ms" in str(machine):
-                number_of_linux += 1
-            elif "t-yosemite-r7" in str(machine):
-                number_of_osx += 1
-            else:
-                pass
-
-            return number_of_machines, number_of_windows, number_of_linux, number_of_osx
-
         if machine:
+            key_data = {"workerType": workerType,
+                        "machine": machine,
+                        "verbose": verbose,
+                        "table": table,
+                        "idle": idle,
+                        "status": status,
+                        "taskid": taskid,
+                        "ilo": ilo,
+                        "serial": serial,
+                        "owner": owner,
+                        "reason": reason,
+                        "notes": notes,
+                        "ignore": ignore,
+                        }
 
             if idle > timedelta(hours=lazy_time) and ignore == "No":
-                if workerType == "ALL":
-                    if not verbose:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
-                        count_up()
-                    else:
-                        _verbose_google_dict = open_json("verbose_google_dict.json")
-                        for key in _verbose_google_dict:
-                            if machine in str(key):
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up()
-
-                if workerType == "t-w1064-ms" and workerType in str(machine):
-                    if not verbose:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
-                        count_up()
-                    else:
-                        _verbose_google_dict = open_json("verbose_google_dict.json")
-                        for key in _verbose_google_dict:
-                            if machine in str(key):
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up()
-
-                if workerType == "t-linux64-ms" and workerType in str(machine):
-                    if not verbose:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
-                        count_up()
-                    else:
-                        _verbose_google_dict = open_json("verbose_google_dict.json")
-                        for key in _verbose_google_dict:
-                            if machine in str(key):
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up()
-
-                if workerType == "t-yosemite-r7" and workerType in machine:
-                    if not verbose:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
-                        count_up()
-                    else:
-                        _verbose_google_dict = open_json("verbose_google_dict.json")
-                        for key in _verbose_google_dict:
-                            if machine in str(key):
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up()
+                twc_insert_table_row(**key_data)
 
     print(table)
-    print("Total Lazy Workers:", number_of_machines)
-    if workerType == "ALL":
-        print("Windows   Machines:", number_of_windows)
-        print("Linux     Machines:", number_of_linux)
-        print("OSX       Machines:", number_of_osx)
-
+    count_up_all(print_machine_numbers=True, machine=None)
     if configuration.OUTPUTFILE:
         write_html_data(table)
 
-    end = datetime.now()
-    if verbose:
-        print("Printing the missing machines took:", end - start)
+    print("Last Completed Run: " + str(datetime.strftime(datetime.now(), "%H:%M  %d-%b-%Y")))
 
 
 def output_single_machine(single_machine):
@@ -321,9 +355,7 @@ def output_single_machine(single_machine):
     add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
-    table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO", "Serial", "Owner",
-                         "Ownership Notes", " Other Notes", "Ignored?"]
+    table = twc_table_header(verbose=True, lazy_time=lazy_time)
 
     for machine in machine_data:
         hostname = machine
@@ -332,27 +364,9 @@ def output_single_machine(single_machine):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
         ignore = machine_data.get(machine)["ignore"]
-        try:
-            status = machine_data.get(machine)["status"]
-        except KeyError:
-            status = "-"
-        try:
-            taskid = machine_data.get(machine)["taskid"]
-        except KeyError:
-            taskid = "-"
 
-        if status is not None:
-            if "completed_completed" in status:
-                status = "Completed"
-            elif "running_unresolved" in status:
-                status = "Running"
-            else:
-                pass
-
-        if ignore == "Yes":
-            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
-        else:
-            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+        taskid = status_cleaner(machine_data, machine)[0]
+        status = status_cleaner(machine_data, machine)[1]
 
         if notes == "":
             notes = "No notes available."
@@ -367,7 +381,7 @@ def output_single_machine(single_machine):
 
         if machine:
             if single_machine in str(machine):
-                table.add_row([hostname, idle, status, ilo, serial, owner, reason, notes, ignore])
+                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
 
@@ -391,14 +405,7 @@ def output_loaned_machines(**loaner):
     add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
-    if not verbose:
-        table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO", "Serial",
-                             "Other Notes", "Ignored?"]
-    else:
-        table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
-                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
+    table = twc_table_header(verbose, lazy_time)
 
     for machine in machine_data:
         hostname = machine
@@ -407,26 +414,9 @@ def output_loaned_machines(**loaner):
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
-        try:
-            status = machine_data.get(machine)["status"]
-        except KeyError:
-            status = "-"
-        try:
-            taskid = machine_data.get(machine)["taskid"]
-        except KeyError:
-            taskid = "-"
 
-        if status is not None:
-            if "completed_completed" in status:
-                status = "Completed"
-            elif "running_unresolved" in status:
-                status = "Running"
-            else:
-                pass
-        if ignore == "Yes":
-            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
-        else:
-            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+        taskid = status_cleaner(machine_data, machine)[0]
+        status = status_cleaner(machine_data, machine)[1]
 
         if notes == "":
             notes = "No notes available."
@@ -456,7 +446,8 @@ def output_loaned_machines(**loaner):
                                 table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
                                 number_of_machines += 1
                             else:
-                                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row(
+                                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 number_of_machines += 1
 
     print(table)
@@ -482,9 +473,7 @@ def output_machines_with_notes():
     add_heroku_data_to_google_dict()
     machine_data = open_json("google_dict.json")
 
-    table = PrettyTable()
-    table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task", "ILO",
-                         "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
+    table = twc_table_header(verbose=True, lazy_time=lazy_time)
 
     for machine in machine_data:
         hostname = machine
@@ -493,26 +482,9 @@ def output_machines_with_notes():
         serial = machine_data.get(machine)["serial"]
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
-        try:
-            status = machine_data.get(machine)["status"]
-        except KeyError:
-            status = "-"
-        try:
-            taskid = machine_data.get(machine)["taskid"]
-        except KeyError:
-            taskid = "-"
 
-        if status is not None:
-            if "completed_completed" in status:
-                status = "Completed"
-            elif "running_unresolved" in status:
-                status = "Running"
-            else:
-                pass
-        if ignore == "Yes":
-            ignore = fg.red + ef.bold + ignore + rs.bold_dim + fg.rs
-        else:
-            ignore = fg.green + ef.bold + ignore + rs.bold_dim + fg.rs
+        taskid = status_cleaner(machine_data, machine)[0]
+        status = status_cleaner(machine_data, machine)[1]
 
         if notes == "":
             notes = "No notes available."
@@ -527,7 +499,7 @@ def output_machines_with_notes():
 
         if machine:
             if notes is not "No notes available.":
-                table.add_row([hostname, idle, status, ilo, serial, owner, reason, notes, ignore])
+                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                 number_of_machines += 1
             else:
                 pass
