@@ -365,8 +365,8 @@ def output_single_machine(single_machine):
         reason = machine_data.get(machine)["reason"]
         ignore = machine_data.get(machine)["ignore"]
 
-        taskid = status_cleaner(machine_data, machine)[0]
-        status = status_cleaner(machine_data, machine)[1]
+        taskid = taskId(machine_data, machine)
+        status = status_cleaner(machine_data, machine)
 
         if notes == "":
             notes = "No notes available."
@@ -415,8 +415,8 @@ def output_loaned_machines(**loaner):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = status_cleaner(machine_data, machine)[0]
-        status = status_cleaner(machine_data, machine)[1]
+        taskid = taskId(machine_data, machine)
+        status = status_cleaner(machine_data, machine)
 
         if notes == "":
             notes = "No notes available."
@@ -483,8 +483,8 @@ def output_machines_with_notes():
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = status_cleaner(machine_data, machine)[0]
-        status = status_cleaner(machine_data, machine)[1]
+        taskid = taskId(machine_data, machine)
+        status = status_cleaner(machine_data, machine)
 
         if notes == "":
             notes = "No notes available."
