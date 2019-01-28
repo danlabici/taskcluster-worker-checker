@@ -37,7 +37,11 @@ def get_heroku_data():
     data = json.loads(requests.get(url, headers=headers).text)
     heroku_machines = {}
     for value in data:
-        idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
+        try:
+            idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
+        except ValueError:
+            idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S")
+            print(value["machine"], " - Has Time Issues")
         _idle = int(idle.total_seconds())
         heroku_machines.update({value["machine"].lower(): {
             "lastseen": value["lastseen"], "idle": _idle, "datacenter": value["datacenter"],
