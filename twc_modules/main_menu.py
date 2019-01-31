@@ -24,6 +24,11 @@ def run_menu(*arg):
     print("Welcome to CiDuty's TaskCluster Worker Checker.\n"
           "You can use the options below to investigate the machines which you want.\n"
           "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
+
+    if configuration.AUTOREBOOT:
+        password = str(input("Please input the MoonShot Password:"))
+        configuration.PASSWORD = password
+
     if configuration.LAZY != 6:
         print("==== Custom Lazy Time of:", configuration.LAZY, " ====")
     if configuration.VERBOSE:
@@ -34,6 +39,10 @@ def run_menu(*arg):
         print("==== Output will be saved in:",  str(os.path.dirname(os.path.realpath("index.html"))), "====")
     if configuration.OUTPUTFILE and configuration.OPENHTML:
         print("==== Generated HTML will automatically open at the end of the program  ====")
+    if configuration.AUTOREBOOT:
+        print("======================================")
+        print("====  AUTOREBOOT Mode Activated!  ====")
+        print("======================================")
 
     # Insert a new line between run arguments and the main menu.
     if configuration.ARGLEN == 0:

@@ -14,3 +14,5 @@ LINUX = "t-linux64-ms"
 YOSEMITE = "t-yosemite-r7"
 ALLWORKERS = "ALL"
 SINGLE = False
+AUTOREBOOT = False
+PASSWORD = None
