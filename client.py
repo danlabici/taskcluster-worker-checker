@@ -5,6 +5,7 @@ import json
 import time
 import ctypes
 import signal
+import win32gui, win32con, win32com.client
 from pynput.keyboard import Key, Controller
 from subprocess import Popen
 from datetime import datetime, timedelta
@@ -564,25 +565,66 @@ def write_html_data(*args):
         os.system("start" + " index.html")
 
 
+def force_ilo_active_window(focus_ilo):
+    toplist = []
+    winlist = []
+    shell = win32com.client.Dispatch("WScript.Shell")
+
+    def enum_callback(hwnd, results):
+        winlist.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+    win32gui.EnumWindows(enum_callback, toplist)
+    focused_app = win32gui.GetWindowText(win32gui.GetForegroundWindow())
+    restore_app = [(hwnd, title) for hwnd, title in winlist if focused_app.lower() in title.lower()]
+    ilo_app = [(hwnd, title) for hwnd, title in winlist if 'iLO Integrated Remote Console'.lower() in title.lower()]
+    ilo_app = ilo_app[0]
+    restore_app = restore_app[0]
+
+    shell.SendKeys('%')
+    win32gui.SetForegroundWindow(ilo_app[0])
+
+    if focus_ilo:
+        if restore_app == ilo_app:
+            pass
+        else:
+            shell.SendKeys('%')
+            win32gui.ShowWindow(ilo_app[0], win32con.SW_RESTORE)
+            time.sleep(1)
+
+    if not focus_ilo:
+        shell.SendKeys('%')
+        win32gui.SetForegroundWindow(restore_app[0])
+    return True
+
+
 def auto_reboot():
     if len(machines_to_reboot) > 0:
-        ilo = (2957, 475)
-        password = (2993, 531)
-        connect_btn = (2779, 620)
-        power_dropdown = (2530, 260)
-        cold_boot = (2530, 325)
         cursor = ctypes.windll.user32
         keyboard = Controller()
         for entry in machines_to_reboot:
             if entry[1] is not "-":
+
+                x, y = pyautogui.position()
+                if x < 1980:  # Main Screen Coordinates
+                    ilo = (1080, 475)
+                    password = (1080, 525)
+                    connect_btn = (855, 620)
+                    power_dropdown = (610, 260)
+                    cold_boot = (610, 325)
+                else:  # Second Screen Coordinates
+                    ilo = (2957, 475)
+                    password = (2993, 531)
+                    connect_btn = (2779, 620)
+                    power_dropdown = (2530, 260)
+                    cold_boot = (2530, 325)
+
                 proc_id = []
                 hp_app = Popen("C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe")
-                time.sleep(2)
-                print("Process Successfully started with PID:", hp_app.pid)
+                time.sleep(1)
                 proc_id.append(hp_app.pid)
 
-                print("Reboot Process Starting for machine:", entry[0])
                 # IP:Port Position
+                # force_ilo_active_window(focus_ilo=True)
                 x, y = pyautogui.position()
                 cursor.SetCursorPos(ilo[0], ilo[1])
                 pyautogui.click()
@@ -607,19 +649,21 @@ def auto_reboot():
                 cursor.SetCursorPos(connect_btn[0], connect_btn[1])
                 pyautogui.click()
                 cursor.SetCursorPos(x, y)
+                # force_ilo_active_window(focus_ilo=False)
 
                 # Power Dropdown
                 time.sleep(5)
                 x, y = pyautogui.position()
                 cursor.SetCursorPos(power_dropdown[0], power_dropdown[1])
+                force_ilo_active_window(focus_ilo=True)
                 pyautogui.click()
                 cursor.SetCursorPos(x, y)
 
                 # Cold Reboot
-                time.sleep(1)
                 x, y = pyautogui.position()
                 cursor.SetCursorPos(cold_boot[0], cold_boot[1])
                 pyautogui.click()
+                force_ilo_active_window(focus_ilo=False)
                 cursor.SetCursorPos(x, y)
 
                 # Close the process
