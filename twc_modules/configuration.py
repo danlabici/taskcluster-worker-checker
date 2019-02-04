@@ -1,5 +1,5 @@
 # TWC Settings
-VERSION = "1.6.3"
+VERSION = "1.7.0"
 LAZY = int(6)
 ARGLEN = int(0)
 VERBOSE = False
@@ -16,3 +16,4 @@ ALLWORKERS = "ALL"
 SINGLE = False
 AUTOREBOOT = False
 PASSWORD = None
+PING = False

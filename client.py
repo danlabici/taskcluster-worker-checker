@@ -5,8 +5,9 @@ import json
 import time
 import ctypes
 import signal
-from subprocess import Popen
 from datetime import datetime, timedelta
+import platform
+import subprocess
 
 try:
     import gspread
@@ -259,42 +260,91 @@ def twc_insert_table_row(**kwargs):
     ignore = kwargs.get("ignore")
 
     if workerType == "ALL":
-        if not verbose:
-            table.add_row([hostname, idle, status, ilo, serial, notes])
-            count_up_all(print_machine_numbers=False, machine=machine)
-        else:
-            _verbose_google_dict = open_json("verbose_google_dict.json")
-            for key in _verbose_google_dict:
-                if machine in str(key):
-                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                    count_up_all(print_machine_numbers=False, machine=machine)
-        machines_to_reboot.append((hostname, ilo))
+        _verbose_google_dict = open_json("verbose_google_dict.json")
+        for key in _verbose_google_dict:
+            if machine in str(key):
+                if not verbose:
+                    if "t-yosemite-r7" in str(machine):
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        count_up_all(print_machine_numbers=False, machine=machine)
+
+                    if (configuration.PING == True) and (ping_host(key) == False):
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        count_up_all(print_machine_numbers=False, machine=machine)
+                        machines_to_reboot.append((hostname, ilo))
+
+                    if (not configuration.PING) and ("t-yosemite-r7" not in str(machine)):
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        count_up_all(print_machine_numbers=False, machine=machine)
+                        machines_to_reboot.append((hostname, ilo))
+                else:
+                    if machine in str(key):
+                        if "t-yosemite-r7" in str(machine):
+                            table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+
+                        if configuration.PING:
+                            print("Trying to ping:", key)
+                            result = ping_host(key)
+                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
+                            if not result:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
+                            if not configuration.PING:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
 
     if workerType == "t-w1064-ms" and workerType in str(machine):
-        if not verbose:
-            table.add_row([hostname, idle, status, ilo, serial, notes])
-            count_up_all(print_machine_numbers=False, machine=machine)
-        else:
-            _verbose_google_dict = open_json("verbose_google_dict.json")
-            for key in _verbose_google_dict:
-                if machine in str(key):
-                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                    count_up_all(print_machine_numbers=False, machine=machine)
-        machines_to_reboot.append((hostname, ilo))
+        _verbose_google_dict = open_json("verbose_google_dict.json")
+        for key in _verbose_google_dict:
+            if machine in str(key):
+                if not verbose:
+                    if (configuration.PING == True) and (ping_host(key) == False):
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        count_up_all(print_machine_numbers=False, machine=machine)
+                        machines_to_reboot.append((hostname, ilo))
+                else:
+                    if machine in str(key):
+                        if configuration.PING:
+                            print("Trying to ping:", key)
+                            result = ping_host(key)
+                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
+                            if not result:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
+                            if not configuration.PING:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
 
     if workerType == "t-linux64-ms" and workerType in str(machine):
-        if not verbose:
-            table.add_row([hostname, idle, status, ilo, serial, notes])
-            count_up_all(print_machine_numbers=False, machine=machine)
-        else:
-            _verbose_google_dict = open_json("verbose_google_dict.json")
-            for key in _verbose_google_dict:
-                if machine in str(key):
-                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                    count_up_all(print_machine_numbers=False, machine=machine)
-        machines_to_reboot.append((hostname, ilo))
+        _verbose_google_dict = open_json("verbose_google_dict.json")
+        for key in _verbose_google_dict:
+            if machine in str(key):
+                if not verbose:
+                    if (configuration.PING == True) and (ping_host(key) == False):
+                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        count_up_all(print_machine_numbers=False, machine=machine)
+                        machines_to_reboot.append((hostname, ilo))
+                else:
+                    if machine in str(key):
+                        if configuration.PING:
+                            print("Trying to ping:", key)
+                            result = ping_host(key)
+                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
+                            if not result:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
+                            if not configuration.PING:
+                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                count_up_all(print_machine_numbers=False, machine=machine)
+                                machines_to_reboot.append((hostname, ilo))
 
-    if workerType == "t-yosemite-r7" and workerType in machine:
+    if workerType == "t-yosemite-r7" and workerType in str(machine):
         if not verbose:
             table.add_row([hostname, idle, status, ilo, serial, notes])
             count_up_all(print_machine_numbers=False, machine=machine)
@@ -599,6 +649,19 @@ def force_ilo_active_window(focus_ilo):
     return True
 
 
+def ping_host(host):
+    """
+    Returns True if host responds to a ping request
+    """
+    # Ping parameters as function of OS
+    ping_retries = "-n 3" if platform.system().lower() == "windows" else "-c 3"
+    ping_wait_time = "-w 5" if platform.system().lower() == "windows" else "-W 5"
+    args = "ping " + " " + ping_retries + " " + ping_wait_time + " " + host
+    need_sh = False if platform.system().lower() == "windows" else True
+
+    return subprocess.call(args=args, shell=need_sh, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
+
+
 def auto_reboot():
     if len(machines_to_reboot) > 0:
         cursor = ctypes.windll.user32
@@ -621,7 +684,7 @@ def auto_reboot():
                     cold_boot = (2530, 325)
 
                 proc_id = []
-                hp_app = Popen("C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe")
+                hp_app = subprocess.Popen("C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe")
                 time.sleep(1)
                 proc_id.append(hp_app.pid)
 
@@ -748,6 +811,17 @@ if __name__ == "__main__":
             configuration.AUTOREBOOT = False
         else:
             configuration.AUTOREBOOT = True
+
+    if "-ping" in sys.argv:
+        print("Testing for VPN connection")
+        result = ping_host("rejh1.srv.releng.mdc1.mozilla.com")
+        if result:
+            print("Connection Successful!")
+            configuration.PING = True
+        else:
+            print("VPN seems to be off \n"
+                  "Script Stopped from running!")
+            exit(0)
 
     if "-tc" in sys.argv:
         configuration.TRAVISCI = True

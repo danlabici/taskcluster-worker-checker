@@ -38,6 +38,8 @@ Script doesn't mind the order in which you set the options/arguments.
 
 `-rb` - Automatically reboots the Moonshots (Windows/Linux). You will need iLO to present on the PC. __**Works only on WINDOWS host machines!**__
 
+`-ping` - Automatically tests if you are behind VPN and pings the machines. Script will output **ONLY** machines that **DON'T** respond to ping. OSX machines are ignored.
+
 `-ct` - Used to set flag for TravisCI testing.
 
 
