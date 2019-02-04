@@ -287,14 +287,14 @@ def twc_insert_table_row(**kwargs):
                             print("Trying to ping:", key)
                             result = ping_host(key)
                             print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
-                            if not result:
+                            if result == False:
                                 table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 machines_to_reboot.append((hostname, ilo))
-                            if not configuration.PING:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                        if configuration.PING == False:
+                            table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+                            machines_to_reboot.append((hostname, ilo))
 
     if workerType == "t-w1064-ms" and workerType in str(machine):
         _verbose_google_dict = open_json("verbose_google_dict.json")
@@ -733,8 +733,8 @@ def auto_reboot():
 
                 # Close the process
                 os.kill(int(proc_id[0]), signal.SIGTERM)
-
-                print("Restart Process for " + str(entry[0]) + " finished.")
+                if configuration.VERBOSE:
+                    print("Restart Process for " + str(entry[0]) + " finished.")
     else:
         print("No machines to reboot! Closing application.")
         exit(0)
