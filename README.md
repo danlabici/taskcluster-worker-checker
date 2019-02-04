@@ -36,7 +36,7 @@ Script doesn't mind the order in which you set the options/arguments.
 
 `-a`  - If `-o` is provided, the file will automatically open in your default browser.
 
-`-rb` - Automatically reboots the Moonshots (Windows/Linux). You will need iLO to present on the PC. __**Works only on WINDOWS host makine!**__
+`-rb` - Automatically reboots the Moonshots (Windows/Linux). You will need iLO to present on the PC. __**Works only on WINDOWS host machines!**__
 
 `-ct` - Used to set flag for TravisCI testing.
 
