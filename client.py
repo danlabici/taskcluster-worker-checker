@@ -5,8 +5,6 @@ import json
 import time
 import ctypes
 import signal
-import win32gui, win32con, win32com.client
-from pynput.keyboard import Key, Controller
 from subprocess import Popen
 from datetime import datetime, timedelta
 
@@ -14,6 +12,11 @@ import pyautogui as pyautogui
 
 try:
     import gspread
+    if (sys.platform == "linux") or (sys.platform == "linux2"):
+        pass
+    else:
+        import win32gui, win32con, win32com.client
+    from pynput.keyboard import Key, Controller
     import requests
     from prettytable import PrettyTable
     from oauth2client.service_account import ServiceAccountCredentials
@@ -740,7 +743,12 @@ if __name__ == "__main__":
         configuration.ARGLEN = len(sys.argv) - 1  # We subtract 1 as that's the client.py argument.
 
     if "-rb" in sys.argv:
-        configuration.AUTOREBOOT = True
+        if (sys.platform == "linux") or (sys.platform == "linux2"):
+            print("Call HP and ask for iLO on Linux. \n"
+                  "Till that point, auto-reboot only works on Windows.")
+            configuration.AUTOREBOOT = False
+        else:
+            configuration.AUTOREBOOT = True
 
     if "-tc" in sys.argv:
         configuration.TRAVISCI = True
