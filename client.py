@@ -8,15 +8,14 @@ import signal
 from subprocess import Popen
 from datetime import datetime, timedelta
 
-import pyautogui as pyautogui
-
 try:
     import gspread
     if (sys.platform == "linux") or (sys.platform == "linux2"):
         pass
     else:
         import win32gui, win32con, win32com.client
-    from pynput.keyboard import Key, Controller
+        from pynput.keyboard import Key, Controller
+        import pyautogui as pyautogui
     import requests
     from prettytable import PrettyTable
     from oauth2client.service_account import ServiceAccountCredentials
