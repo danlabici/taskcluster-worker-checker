@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Taskcluster Worker Checker"""
 import os
 import sys
 import json
@@ -11,13 +12,14 @@ import subprocess
 
 try:
     import gspread
-
     if (sys.platform == "linux") or (sys.platform == "linux2"):
         pass
     else:
-        import win32gui, win32con, win32com.client
+        import win32gui
+        import win32con
+        import win32com.client
         from pynput.keyboard import Key, Controller
-        import pyautogui as pyautogui
+        import pyautogui
     import requests
     from prettytable import PrettyTable
     from oauth2client.service_account import ServiceAccountCredentials
@@ -29,26 +31,27 @@ except ImportError:
 
 from twc_modules import configuration, main_menu
 
-timenow = datetime.utcnow()
-twc_version = configuration.VERSION
-workerType = configuration.WORKERTYPE
-windows = configuration.WINDOWS
-linux = configuration.LINUX
-yosemite = configuration.YOSEMITE
+TIMENOW = datetime.utcnow()
+TWC_VERSION = configuration.VERSION
+WORKERTYPE = configuration.WORKERTYPE
+WINDOWS = configuration.WINDOWS
+LINUX = configuration.LINUX
+YOSEMITE = configuration.YOSEMITE
 
-number_of_machines = 0
-number_of_windows = 0
-number_of_linux = 0
-number_of_osx = 0
-machines_to_reboot = []
+NUMBER_OF_MACHINES = 0
+NUMBER_OF_WINDOWS = 0
+NUMBER_OF_LINUX = 0
+NUMBER_OF_OSX = 0
+MACHINES_TO_REBOOT = []
 
 
 def get_heroku_data():
+    """Collects data from Heroku JSON"""
     start = datetime.now()
     verbose = configuration.VERBOSE
 
     url = "http://releng-hardware.herokuapp.com/machines"
-    headers = {"user-agent": "ciduty-twc/{}".format(twc_version)}
+    headers = {"user-agent": "ciduty-twc/{}".format(TWC_VERSION)}
     if configuration.DEVMODE:
         data = open_json("machines.json")
     else:
@@ -56,9 +59,9 @@ def get_heroku_data():
     heroku_machines = {}
     for value in data:
         try:
-            idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
+            idle = TIMENOW - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S.%f")
         except ValueError:
-            idle = timenow - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S")
+            idle = TIMENOW - datetime.strptime(value["lastseen"], "%Y-%m-%dT%H:%M:%S")
             print(value["machine"], " - Has Time Issues")
         _idle = int(idle.total_seconds())
         heroku_machines.update({value["machine"].lower(): {
@@ -73,6 +76,7 @@ def get_heroku_data():
 
 
 def get_google_spreadsheet_data():
+    """Collects data from Google SpreadSheets"""
     start = datetime.now()
     verbose = configuration.VERBOSE
     # Define READONLY scopes needed for the CLI
@@ -80,8 +84,8 @@ def get_google_spreadsheet_data():
               "https://www.googleapis.com/auth/drive.readonly"]
 
     # Setup Credentials
-    ENV_CREDS = "ciduty-twc.json"
-    login_info = ServiceAccountCredentials.from_json_keyfile_name(ENV_CREDS, scopes)
+    env_creds = "ciduty-twc.json"
+    login_info = ServiceAccountCredentials.from_json_keyfile_name(env_creds, scopes)
 
     # Authenticate / Login
     auth_token = gspread.authorize(login_info)
@@ -141,18 +145,24 @@ def get_google_spreadsheet_data():
 
 
 def open_json(file_name):
-    with open("json_data/{}".format(file_name)) as f:
-        data = json.load(f)
+    """open data from json files"""
+    with open("json_data/{}".format(file_name)) as file:
+        data = json.load(file)
     return data
 
 
 def save_json(file_name, data):
-    with open("json_data/{}".format(file_name), 'w') as f:
-        json.dump(data, f, indent=2, sort_keys=True)
-        f.close()
+    """Save data to json file"""
+    with open("json_data/{}".format(file_name), 'w') as file:
+        json.dump(data, file, indent=2, sort_keys=True)
+        file.close()
 
 
 def remove_fqdn_from_machine_name():
+    """
+    Removes the FQDN for non-verbose mode.
+    :return:
+    """
     start = datetime.now()
     verbose = configuration.VERBOSE
     # Update Machine-Key from FQDN to Hostname
@@ -172,6 +182,10 @@ def remove_fqdn_from_machine_name():
 
 
 def add_heroku_data_to_google_dict():
+    """
+    Concatinates the data from Heroku to Google data
+    :return:
+    """
     start = datetime.now()
     verbose = configuration.VERBOSE
     heroku_data = open_json("heroku_dict.json")
@@ -190,7 +204,10 @@ def add_heroku_data_to_google_dict():
         print("Adding IDLE times to Google Data took:", end - start)
 
 
-def taskId(machine_data, machine):
+def task_id(machine_data, machine):
+    """
+    Helper function for taskIDs handling.
+    """
     try:
         taskid = machine_data.get(machine)["taskid"]
     except KeyError:
@@ -199,6 +216,9 @@ def taskId(machine_data, machine):
 
 
 def status_cleaner(machine_data, machine):
+    """
+    Cleans the machine last know status.
+    """
     try:
         status = machine_data.get(machine)["status"]
     except KeyError:
@@ -218,6 +238,12 @@ def status_cleaner(machine_data, machine):
 
 
 def twc_table_header(verbose, lazy_time):
+    """
+    Generates the header for the table.
+    :param verbose:
+    :param lazy_time:
+    :return:
+    """
     if not verbose:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time),
@@ -233,28 +259,34 @@ def twc_table_header(verbose, lazy_time):
 
 
 def count_up_all(print_machine_numbers, machine):
-    global number_of_machines, number_of_windows, number_of_linux, number_of_osx
+    """
+    Counts the total of machines that are broken.
+    """
+    global NUMBER_OF_MACHINES, NUMBER_OF_WINDOWS, NUMBER_OF_LINUX, NUMBER_OF_OSX
 
     if "t-w1064-ms" in str(machine):
-        number_of_windows += 1
+        NUMBER_OF_WINDOWS += 1
     elif "t-linux64-ms" in str(machine):
-        number_of_linux += 1
+        NUMBER_OF_LINUX += 1
     elif "t-yosemite-r7" in str(machine):
-        number_of_osx += 1
+        NUMBER_OF_OSX += 1
     else:
         pass
 
     if print_machine_numbers:
-        print("Total Lazy Workers:", number_of_windows + number_of_linux + number_of_osx)
-        print("Windows   Machines:", number_of_windows)
-        print("Linux     Machines:", number_of_linux)
-        print("OSX       Machines:", number_of_osx)
+        print("Total Lazy Workers:", NUMBER_OF_WINDOWS + NUMBER_OF_LINUX + NUMBER_OF_OSX)
+        print("Windows   Machines:", NUMBER_OF_WINDOWS)
+        print("Linux     Machines:", NUMBER_OF_LINUX)
+        print("OSX       Machines:", NUMBER_OF_OSX)
 
 
 def twc_insert_table_row(**kwargs):
+    """
+    With twc_table_header() adds rows data.
+    """
     verbose = kwargs.get("verbose")
     table = kwargs.get("table")
-    workerType = kwargs.get("workerType")
+    worker_type = kwargs.get("workerType")
     machine = kwargs.get("machine")
     hostname = machine
     idle = kwargs.get("idle")
@@ -267,7 +299,7 @@ def twc_insert_table_row(**kwargs):
     notes = kwargs.get("notes")
     ignore = kwargs.get("ignore")
 
-    if workerType == "ALL":
+    if worker_type == "ALL":
         _verbose_google_dict = open_json("verbose_google_dict.json")
         for key in _verbose_google_dict:
             if machine in str(key):
@@ -279,12 +311,12 @@ def twc_insert_table_row(**kwargs):
                     if configuration.PING and not ping_host(key):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
-                        machines_to_reboot.append((hostname, ilo))
+                        MACHINES_TO_REBOOT.append((hostname, ilo))
 
                     if (not configuration.PING) and ("t-yosemite-r7" not in str(machine)):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
-                        machines_to_reboot.append((hostname, ilo))
+                        MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
                         if configuration.PING:
@@ -297,15 +329,15 @@ def twc_insert_table_row(**kwargs):
                                     [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                      ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                                MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not configuration.PING:
                             table.add_row(
                                 [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                  ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
-                            machines_to_reboot.append((hostname, ilo))
+                            MACHINES_TO_REBOOT.append((hostname, ilo))
 
-    if workerType == "t-w1064-ms" and workerType in str(machine):
+    if worker_type == "t-w1064-ms" and worker_type in str(machine):
         _verbose_google_dict = open_json("verbose_google_dict.json")
         for key in _verbose_google_dict:
             if machine in str(key):
@@ -315,11 +347,11 @@ def twc_insert_table_row(**kwargs):
                         if not result:
                             table.add_row([hostname, idle, status, ilo, serial, notes])
                             count_up_all(print_machine_numbers=False, machine=machine)
-                            machines_to_reboot.append((hostname, ilo))
+                            MACHINES_TO_REBOOT.append((hostname, ilo))
                     else:
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
-                        machines_to_reboot.append((hostname, ilo))
+                        MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
                         if configuration.PING:
@@ -331,15 +363,15 @@ def twc_insert_table_row(**kwargs):
                                     [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                      ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                                MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not configuration.PING:
                             table.add_row(
                                 [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                  ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
-                            machines_to_reboot.append((hostname, ilo))
+                            MACHINES_TO_REBOOT.append((hostname, ilo))
 
-    if workerType == "t-linux64-ms" and workerType in str(machine):
+    if worker_type == "t-linux64-ms" and worker_type in str(machine):
         _verbose_google_dict = open_json("verbose_google_dict.json")
         for key in _verbose_google_dict:
             if machine in str(key):
@@ -349,11 +381,11 @@ def twc_insert_table_row(**kwargs):
                         if not result:
                             table.add_row([hostname, idle, status, ilo, serial, notes])
                             count_up_all(print_machine_numbers=False, machine=machine)
-                            machines_to_reboot.append((hostname, ilo))
+                            MACHINES_TO_REBOOT.append((hostname, ilo))
                     else:
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
-                        machines_to_reboot.append((hostname, ilo))
+                        MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
                         if configuration.PING:
@@ -364,14 +396,14 @@ def twc_insert_table_row(**kwargs):
                                 table.add_row([key, idle, status, taskid, ilo, serial,
                                                owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                                MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not configuration.PING:
                             table.add_row([key, idle, status, taskid, ilo, serial,
                                            owner, reason, notes, ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
-                            machines_to_reboot.append((hostname, ilo))
+                            MACHINES_TO_REBOOT.append((hostname, ilo))
 
-    if workerType == "t-yosemite-r7" and workerType in str(machine):
+    if worker_type == "t-yosemite-r7" and worker_type in str(machine):
         if not verbose:
             table.add_row([hostname, idle, status, ilo, serial, notes])
             count_up_all(print_machine_numbers=False, machine=machine)
@@ -386,7 +418,13 @@ def twc_insert_table_row(**kwargs):
     return table
 
 
-def output_problem_machines(workerType):
+def output_problem_machines(worker_type):
+    """
+    Main logic for menu -m 11
+    This functions takes care of outputing Windows, Linux and OSX machines
+    :param worker_type:
+    :return:
+    """
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
     machine_data = open_json("google_dict.json")
@@ -400,7 +438,7 @@ def output_problem_machines(workerType):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = taskId(machine_data, machine)
+        taskid = task_id(machine_data, machine)
         status = status_cleaner(machine_data, machine)
 
         if notes == "":
@@ -415,7 +453,7 @@ def output_problem_machines(workerType):
             ilo = "-"
 
         if machine:
-            key_data = {"workerType": workerType,
+            key_data = {"workerType": worker_type,
                         "machine": machine,
                         "verbose": verbose,
                         "table": table,
@@ -445,6 +483,11 @@ def output_problem_machines(workerType):
 
 
 def output_single_machine(single_machine):
+    """
+    Outputs a single machine that is set by the user.
+    :param single_machine:
+    :return:
+    """
     start = datetime.now()
     verbose = configuration.VERBOSE
     lazy_time = configuration.LAZY
@@ -464,7 +507,7 @@ def output_single_machine(single_machine):
         reason = machine_data.get(machine)["reason"]
         ignore = machine_data.get(machine)["ignore"]
 
-        taskid = taskId(machine_data, machine)
+        taskid = task_id(machine_data, machine)
         status = status_cleaner(machine_data, machine)
 
         if notes == "":
@@ -495,6 +538,11 @@ def output_single_machine(single_machine):
 
 
 def output_loaned_machines(**loaner):
+    """
+    Outputs loaned machines.
+    :param loaner:
+    :return:
+    """
     start = datetime.now()
     number_of_machines = 0
     verbose = configuration.VERBOSE
@@ -515,7 +563,7 @@ def output_loaned_machines(**loaner):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = taskId(machine_data, machine)
+        taskid = task_id(machine_data, machine)
         status = status_cleaner(machine_data, machine)
 
         if notes == "":
@@ -566,6 +614,7 @@ def output_loaned_machines(**loaner):
 
 
 def output_machines_with_notes():
+    """Outputs all machines that have notes in Google Spreadsheet"""
     start = datetime.now()
     number_of_machines = 0
     verbose = configuration.VERBOSE
@@ -586,7 +635,7 @@ def output_machines_with_notes():
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = taskId(machine_data, machine)
+        taskid = task_id(machine_data, machine)
         status = status_cleaner(machine_data, machine)
 
         if notes == "":
@@ -601,7 +650,7 @@ def output_machines_with_notes():
             ilo = "-"
 
         if machine:
-            if notes is not "No notes available.":
+            if notes != "No notes available.":
                 table.add_row(
                     [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                 number_of_machines += 1
@@ -621,7 +670,12 @@ def output_machines_with_notes():
 
 
 def write_html_data(*args):
-    x = args[0]
+    """
+    Writes the HTML page with the output.
+    :param args:
+    :return:
+    """
+    options = args[0]
     default_html = """
     <head>
         <style type="text/css">
@@ -638,19 +692,22 @@ def write_html_data(*args):
     """
 
     # Delete old data and insert the styling.
-    with open("index.html", "w+") as f:
-        f.write(default_html)
+    with open("index.html", "w+") as file:
+        file.write(default_html)
 
     # Append the table.
-    with open("index.html", "a") as f:
-        f.write(x.get_html_string())
-        f.close()
+    with open("index.html", "a") as file:
+        file.write(options.get_html_string())
+        file.close()
 
     if configuration.OPENHTML:
         os.system("start" + " index.html")
 
 
 def force_ilo_active_window(focus_ilo):
+    """
+    Check if iLO is focused. If not, focuse the window.
+    """
     toplist = []
     winlist = []
     shell = win32com.client.Dispatch("WScript.Shell")
@@ -698,88 +755,131 @@ def ping_host(host):
 
 
 def auto_reboot():
-    ilo_location = configuration.ILO
-    if machines_to_reboot:
+    """
+    Automatically reboots moonshot machines
+    """
+    if MACHINES_TO_REBOOT:
+        ilo_location = configuration.ILO
         cursor = ctypes.windll.user32
         keyboard = Controller()
-        for entry in machines_to_reboot:
-            if entry[1] is not "-":
-                x, y = pyautogui.position()
-                if x < 1980:  # Main Screen Coordinates
-                    ilo = (1080, 475)
-                    password = (1080, 525)
-                    connect_btn = (855, 620)
-                    power_dropdown = (610, 260)
-                    cold_boot = (610, 325)
-                else:  # Second Screen Coordinates
-                    ilo = (2957, 475)
-                    password = (2993, 531)
-                    connect_btn = (2779, 620)
-                    power_dropdown = (2530, 260)
-                    cold_boot = (2530, 325)
+        proc_id = []
 
-                proc_id = []
-                hp_app = subprocess.Popen(ilo_location)
-                time.sleep(1)
-                proc_id.append(hp_app.pid)
+        def launch_ilo():
+            """
+            Launches iLO and keeps track of it's PID.
+            """
+            hp_app = subprocess.Popen(ilo_location)
+            time.sleep(1)
+            proc_id.append(hp_app.pid)
 
-                # IP:Port Position
-                # force_ilo_active_window(focus_ilo=True)
-                x, y = pyautogui.position()
-                cursor.SetCursorPos(ilo[0], ilo[1])
-                pyautogui.click()
-                with keyboard.pressed(Key.ctrl):
-                    keyboard.press('a')
-                    keyboard.release('a')
-                keyboard.press(Key.backspace)
-                # Insert ILO IP:PORT
-                keyboard.type(entry[1])
-                cursor.SetCursorPos(x, y)
+        def insert_ip_port():
+            """
+            Moves the mouse, clicks, deletes all data and
+            inserts the IP and Port for the machine.
+            """
+            old_x, old_y = pyautogui.position()
+            cursor.SetCursorPos(ilo[0], ilo[1])
+            pyautogui.click()
+            with keyboard.pressed(Key.ctrl):
+                keyboard.press('a')
+                keyboard.release('a')
+            keyboard.press(Key.backspace)
+            keyboard.type(entry[1])
+            cursor.SetCursorPos(old_x, old_y)
 
-                # Password Position
-                x, y = pyautogui.position()
-                cursor.SetCursorPos(password[0], password[1])
-                pyautogui.click()
-                cursor.SetCursorPos(x, y)
-                # Insert Password
-                keyboard.type(str(configuration.PASSWORD))
+        def insert_password():
+            """
+            Moves the mouse, clicks, and inserts the password for the machine.
+            """
+            # Password Position
+            old_x, old_y = pyautogui.position()
+            cursor.SetCursorPos(password[0], password[1])
+            pyautogui.click()
+            cursor.SetCursorPos(old_x, old_y)
+            # Insert Password
+            keyboard.type(str(configuration.PASSWORD))
 
-                # Connect Button Position
-                x, y = pyautogui.position()
-                cursor.SetCursorPos(connect_btn[0], connect_btn[1])
-                pyautogui.click()
-                cursor.SetCursorPos(x, y)
-                # force_ilo_active_window(focus_ilo=False)
+        def click_connect_btn():
+            """
+            Moves the mouse and clicks the connect button.
+            """
+            old_x, old_y = pyautogui.position()
+            cursor.SetCursorPos(connect_btn[0], connect_btn[1])
+            pyautogui.click()
+            cursor.SetCursorPos(old_x, old_y)
 
-                # Power Dropdown
-                time.sleep(5)
-                x, y = pyautogui.position()
-                cursor.SetCursorPos(power_dropdown[0], power_dropdown[1])
-                force_ilo_active_window(focus_ilo=True)
-                pyautogui.click()
-                cursor.SetCursorPos(x, y)
+        def click_power_dropdown():
+            """
+            Waits 5 seconds for iLO to connect, Moves the mouse and clicks
+            the power drop-down menu.
+            """
+            time.sleep(5)
+            old_x, old_y = pyautogui.position()
+            cursor.SetCursorPos(power_dropdown[0], power_dropdown[1])
+            force_ilo_active_window(focus_ilo=True)
+            pyautogui.click()
+            cursor.SetCursorPos(old_x, old_y)
 
-                # Cold Reboot
-                x, y = pyautogui.position()
-                cursor.SetCursorPos(cold_boot[0], cold_boot[1])
-                pyautogui.click()
-                force_ilo_active_window(focus_ilo=False)
-                cursor.SetCursorPos(x, y)
+        def click_cold_reboot():
+            """
+            Moves the mouse and clicks the cold reboot button.
+            """
+            old_x, old_y = pyautogui.position()
+            cursor.SetCursorPos(cold_boot[0], cold_boot[1])
+            pyautogui.click()
+            force_ilo_active_window(focus_ilo=False)
+            cursor.SetCursorPos(old_x, old_y)
+            time.sleep(1)
 
-                # Close the process
-                os.kill(int(proc_id[0]), signal.SIGTERM)
-                if configuration.VERBOSE:
-                    print("Restart Process for " + str(entry[0]) + " finished.")
+        def close_ilo():
+            """
+            Closes iLO based on the PID saved during the launch process.
+            """
+            os.kill(int(proc_id[0]), signal.SIGTERM)
+            proc_id.pop(0)
+            if configuration.VERBOSE:
+                print("Restart Process for " + str(entry[0]) + " finished.")
+
+        for entry in MACHINES_TO_REBOOT:
+            old_x = pyautogui.position()[0]
+            if old_x < 1980:  # Main Screen Coordinates
+                ilo = (1080, 475)
+                password = (1080, 525)
+                connect_btn = (855, 620)
+                power_dropdown = (610, 260)
+                cold_boot = (610, 325)
+
+            else:  # Second Screen Coordinates
+                ilo = (2957, 475)
+                password = (2993, 531)
+                connect_btn = (2779, 620)
+                power_dropdown = (2530, 260)
+                cold_boot = (2530, 325)
+
+            if entry[1] != "-":
+                # Run logic for reboot.
+                launch_ilo()
+                insert_ip_port()
+                insert_password()
+                click_connect_btn()
+                click_power_dropdown()
+                click_cold_reboot()
+                close_ilo()
+
     else:
         print("No machines to reboot! Closing application.")
         exit(0)
 
 
 def push_to_git():
+    """
+
+    :return:
+    """
     pass
 
 
-def run_logic(workerType):
+def run_logic(worker_type):
     """
     This is the main order in which the tool will run all the functions needed to return the result.
       - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here
@@ -788,7 +888,7 @@ def run_logic(workerType):
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
     add_heroku_data_to_google_dict()
-    output_problem_machines(workerType=workerType)
+    output_problem_machines(worker_type=worker_type)
 
 
 def dev_run_logic():
@@ -801,7 +901,7 @@ def dev_run_logic():
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
     add_heroku_data_to_google_dict()
-    output_problem_machines(workerType=workerType)
+    output_problem_machines(worker_type=WORKERTYPE)
 
 
 if __name__ == "__main__":
@@ -810,19 +910,19 @@ if __name__ == "__main__":
             configuration.VERBOSE = True
 
         if "-l" in sys.argv:
-            lazy_time_index = sys.argv.index("-l") + 1
-            lazy_time = sys.argv[lazy_time_index]
+            LAZY_TIME_INDEX = sys.argv.index("-l") + 1
+            LAZY_TIME = sys.argv[LAZY_TIME_INDEX]
             try:
-                configuration.LAZY = int(lazy_time)
+                configuration.LAZY = int(LAZY_TIME)
             except ValueError as err:
                 print("Expecting integer for the Lazy Time value, but got:\n", err)
                 exit(-1)
 
         if "-m" in sys.argv:
-            choise_index = sys.argv.index("-m") + 1
-            choise = sys.argv[choise_index]
+            CHOICE_INDEX = sys.argv.index("-m") + 1
+            CHOICE = sys.argv[CHOICE_INDEX]
             try:
-                configuration.CHOICE = int(choise)
+                configuration.CHOICE = int(CHOICE)
             except ValueError as err:
                 print("Expecting integer for the Lazy Time value, but got:\n", err)
                 exit(-1)
