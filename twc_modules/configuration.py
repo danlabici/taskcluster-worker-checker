@@ -1,5 +1,5 @@
 # TWC Settings
-VERSION = "1.7.1"
+VERSION = "1.7.2"
 LAZY = int(6)
 ARGLEN = int(0)
 VERBOSE = False
@@ -17,3 +17,5 @@ SINGLE = False
 AUTOREBOOT = False
 PASSWORD = None
 PING = False
+DEVMODE = False
+ILO = "C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe"

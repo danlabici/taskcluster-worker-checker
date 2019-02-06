@@ -11,6 +11,7 @@ import subprocess
 
 try:
     import gspread
+
     if (sys.platform == "linux") or (sys.platform == "linux2"):
         pass
     else:
@@ -41,12 +42,17 @@ number_of_linux = 0
 number_of_osx = 0
 machines_to_reboot = []
 
+
 def get_heroku_data():
     start = datetime.now()
     verbose = configuration.VERBOSE
+
     url = "http://releng-hardware.herokuapp.com/machines"
     headers = {"user-agent": "ciduty-twc/{}".format(twc_version)}
-    data = json.loads(requests.get(url, headers=headers).text)
+    if configuration.DEVMODE:
+        data = open_json("machines.json")
+    else:
+        data = json.loads(requests.get(url, headers=headers).text)
     heroku_machines = {}
     for value in data:
         try:
@@ -70,7 +76,8 @@ def get_google_spreadsheet_data():
     start = datetime.now()
     verbose = configuration.VERBOSE
     # Define READONLY scopes needed for the CLI
-    scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly", "https://www.googleapis.com/auth/drive.readonly"]
+    scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly",
+              "https://www.googleapis.com/auth/drive.readonly"]
 
     # Setup Credentials
     ENV_CREDS = "ciduty-twc.json"
@@ -90,43 +97,41 @@ def get_google_spreadsheet_data():
     osx_all_mdc = osx_sheet_all_mdc.get_all_records()
 
     # Construct dictionaries with all data that we need.
-    moonshots_google_data_mdc1 = {entry["Hostname"]:
-        {
-            "prefix": entry["Hostname prefix"],
-            "chassis": entry["Chassis"],
-            "serial": entry["Cartridge Serial"],
-            "cartridge": entry["Cartridge #"],
-            "ilo": entry["ilo ip:port"],
-            "owner": entry["Ownership"],
-            "reason": entry["Ownership Reason"],
-            "notes": entry["NOTES"],
-            "ignore": entry["CiDuty CLI Ignore"]
-        } for entry in moonshots_mdc1}
+    moonshots_google_data_mdc1 = {entry["Hostname"]: {
+        "prefix": entry["Hostname prefix"],
+        "chassis": entry["Chassis"],
+        "serial": entry["Cartridge Serial"],
+        "cartridge": entry["Cartridge #"],
+        "ilo": entry["ilo ip:port"],
+        "owner": entry["Ownership"],
+        "reason": entry["Ownership Reason"],
+        "notes": entry["NOTES"],
+        "ignore": entry["CiDuty CLI Ignore"]
+    } for entry in moonshots_mdc1}
 
-    moonshots_google_data_mdc2 = {entry["Hostname"]:
-        {
-            "prefix": entry["Hostname prefix"],
-            "chassis": entry["Chassis"],
-            "serial": entry["Cartridge Serial"],
-            "cartridge": entry["Cartridge #"],
-            "ilo": entry["ilo ip:port"],
-            "owner": entry["Ownership"],
-            "reason": entry["Ownership Reason"],
-            "notes": entry["NOTES"],
-            "ignore": entry["CiDuty CLI Ignore"]
-        } for entry in moonshots_mdc2}
+    moonshots_google_data_mdc2 = {entry["Hostname"]: {
+        "prefix": entry["Hostname prefix"],
+        "chassis": entry["Chassis"],
+        "serial": entry["Cartridge Serial"],
+        "cartridge": entry["Cartridge #"],
+        "ilo": entry["ilo ip:port"],
+        "owner": entry["Ownership"],
+        "reason": entry["Ownership Reason"],
+        "notes": entry["NOTES"],
+        "ignore": entry["CiDuty CLI Ignore"]
+    } for entry in moonshots_mdc2}
 
-    osx_google_data = {entry["Hostname"]:
-        {
-            "serial": entry["Serial"],
-            "warranty": entry["Warranty End Date"],
-            "owner": entry["Ownership"],
-            "reason": entry["Ownership Reason"],
-            "notes": entry["Notes"],
-            "ignore": entry["CiDuty CLI Ignore"]
-        } for entry in osx_all_mdc}
+    osx_google_data = {entry["Hostname"]: {
+        "serial": entry["Serial"],
+        "warranty": entry["Warranty End Date"],
+        "owner": entry["Ownership"],
+        "reason": entry["Ownership Reason"],
+        "notes": entry["Notes"],
+        "ignore": entry["CiDuty CLI Ignore"]
+    } for entry in osx_all_mdc}
 
-    all_google_machine_data = {**moonshots_google_data_mdc1, **moonshots_google_data_mdc2, **osx_google_data}
+    all_google_machine_data = {**moonshots_google_data_mdc1, **moonshots_google_data_mdc2,
+                               **osx_google_data}
     save_json('google_dict.json', all_google_machine_data)
     end = datetime.now()
     if verbose:
@@ -215,12 +220,15 @@ def status_cleaner(machine_data, machine):
 def twc_table_header(verbose, lazy_time):
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "ILO",
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time),
+                             "Machine Status", "ILO",
                              "Serial", "Other Notes"]
     else:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "Machine Status", "Last Task",
-                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes", "Ignored?"]
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time),
+                             "Machine Status", "Last Task",
+                             "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes",
+                             "Ignored?"]
     return table
 
 
@@ -268,7 +276,7 @@ def twc_insert_table_row(**kwargs):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
 
-                    if (configuration.PING == True) and (ping_host(key) == False):
+                    if configuration.PING and not ping_host(key):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         machines_to_reboot.append((hostname, ilo))
@@ -279,20 +287,21 @@ def twc_insert_table_row(**kwargs):
                         machines_to_reboot.append((hostname, ilo))
                 else:
                     if machine in str(key):
-                        if "t-yosemite-r7" in str(machine):
-                            table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                            count_up_all(print_machine_numbers=False, machine=machine)
-
                         if configuration.PING:
                             print("Trying to ping:", key)
                             result = ping_host(key)
-                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
-                            if result == False:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                            print("Ping {}: {}".format(("Failed" if not result else "Succeeded"),
+                                                       key))
+                            if not result:
+                                table.add_row(
+                                    [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                     ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 machines_to_reboot.append((hostname, ilo))
-                        if configuration.PING == False:
-                            table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                        if not configuration.PING:
+                            table.add_row(
+                                [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                 ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             machines_to_reboot.append((hostname, ilo))
 
@@ -301,31 +310,47 @@ def twc_insert_table_row(**kwargs):
         for key in _verbose_google_dict:
             if machine in str(key):
                 if not verbose:
-                    if (configuration.PING == True) and (ping_host(key) == False):
+                    if configuration.PING:
+                        result = ping_host(key)
+                        if not result:
+                            table.add_row([hostname, idle, status, ilo, serial, notes])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+                            machines_to_reboot.append((hostname, ilo))
+                    else:
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         machines_to_reboot.append((hostname, ilo))
                 else:
                     if machine in str(key):
                         if configuration.PING:
-                            print("Trying to ping:", key)
+                            print("Trying to ping:" + key)
                             result = ping_host(key)
-                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
+
                             if not result:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row(
+                                    [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                     ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 machines_to_reboot.append((hostname, ilo))
-                            if not configuration.PING:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                        if not configuration.PING:
+                            table.add_row(
+                                [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                 ignore])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+                            machines_to_reboot.append((hostname, ilo))
 
     if workerType == "t-linux64-ms" and workerType in str(machine):
         _verbose_google_dict = open_json("verbose_google_dict.json")
         for key in _verbose_google_dict:
             if machine in str(key):
                 if not verbose:
-                    if (configuration.PING == True) and (ping_host(key) == False):
+                    if configuration.PING:
+                        result = ping_host(key)
+                        if not result:
+                            table.add_row([hostname, idle, status, ilo, serial, notes])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+                            machines_to_reboot.append((hostname, ilo))
+                    else:
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         machines_to_reboot.append((hostname, ilo))
@@ -334,15 +359,17 @@ def twc_insert_table_row(**kwargs):
                         if configuration.PING:
                             print("Trying to ping:", key)
                             result = ping_host(key)
-                            print("Ping {}: {}".format(("Failed" if result == False else "Succeeded"), key))
+
                             if not result:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                table.add_row([key, idle, status, taskid, ilo, serial,
+                                               owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 machines_to_reboot.append((hostname, ilo))
-                            if not configuration.PING:
-                                table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
-                                count_up_all(print_machine_numbers=False, machine=machine)
-                                machines_to_reboot.append((hostname, ilo))
+                        if not configuration.PING:
+                            table.add_row([key, idle, status, taskid, ilo, serial,
+                                           owner, reason, notes, ignore])
+                            count_up_all(print_machine_numbers=False, machine=machine)
+                            machines_to_reboot.append((hostname, ilo))
 
     if workerType == "t-yosemite-r7" and workerType in str(machine):
         if not verbose:
@@ -352,7 +379,8 @@ def twc_insert_table_row(**kwargs):
             _verbose_google_dict = open_json("verbose_google_dict.json")
             for key in _verbose_google_dict:
                 if machine in str(key):
-                    table.add_row([key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    table.add_row(
+                        [key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                     count_up_all(print_machine_numbers=False, machine=machine)
 
     return table
@@ -452,7 +480,8 @@ def output_single_machine(single_machine):
 
         if machine:
             if single_machine in str(machine):
-                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                table.add_row(
+                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
 
@@ -508,7 +537,9 @@ def output_loaned_machines(**loaner):
                             table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
                             number_of_machines += 1
                         else:
-                            table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                            table.add_row(
+                                [hostname, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                 ignore])
                             number_of_machines += 1
 
                     else:
@@ -518,7 +549,8 @@ def output_loaned_machines(**loaner):
                                 number_of_machines += 1
                             else:
                                 table.add_row(
-                                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                                    [hostname, idle, status, taskid, ilo, serial, owner, reason,
+                                     notes, ignore])
                                 number_of_machines += 1
 
     print(table)
@@ -570,7 +602,8 @@ def output_machines_with_notes():
 
         if machine:
             if notes is not "No notes available.":
-                table.add_row([hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                table.add_row(
+                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
                 number_of_machines += 1
             else:
                 pass
@@ -628,7 +661,8 @@ def force_ilo_active_window(focus_ilo):
     win32gui.EnumWindows(enum_callback, toplist)
     focused_app = win32gui.GetWindowText(win32gui.GetForegroundWindow())
     restore_app = [(hwnd, title) for hwnd, title in winlist if focused_app.lower() in title.lower()]
-    ilo_app = [(hwnd, title) for hwnd, title in winlist if 'iLO Integrated Remote Console'.lower() in title.lower()]
+    ilo_app = [(hwnd, title) for hwnd, title in winlist if
+               'iLO Integrated Remote Console'.lower() in title.lower()]
     ilo_app = ilo_app[0]
     restore_app = restore_app[0]
 
@@ -659,16 +693,17 @@ def ping_host(host):
     args = "ping " + " " + ping_retries + " " + ping_wait_time + " " + host
     need_sh = False if platform.system().lower() == "windows" else True
 
-    return subprocess.call(args=args, shell=need_sh, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT) == 0
+    return subprocess.call(args=args, shell=need_sh, stdout=subprocess.DEVNULL,
+                           stderr=subprocess.STDOUT) == 0
 
 
 def auto_reboot():
-    if len(machines_to_reboot) > 0:
+    ilo_location = configuration.ILO
+    if machines_to_reboot:
         cursor = ctypes.windll.user32
         keyboard = Controller()
         for entry in machines_to_reboot:
             if entry[1] is not "-":
-
                 x, y = pyautogui.position()
                 if x < 1980:  # Main Screen Coordinates
                     ilo = (1080, 475)
@@ -684,7 +719,7 @@ def auto_reboot():
                     cold_boot = (2530, 325)
 
                 proc_id = []
-                hp_app = subprocess.Popen("C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe")
+                hp_app = subprocess.Popen(ilo_location)
                 time.sleep(1)
                 proc_id.append(hp_app.pid)
 
@@ -747,7 +782,7 @@ def push_to_git():
 def run_logic(workerType):
     """
     This is the main order in which the tool will run all the functions needed to return the result.
-      - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here.
+      - If new features are added, which needs to run WITHOUT a parameter, it needs to be added here
     """
     get_heroku_data()
     get_google_spreadsheet_data()
@@ -758,8 +793,8 @@ def run_logic(workerType):
 
 def dev_run_logic():
     """
-    When debugging and you change how data is stored/manipulated, use this function to always recreate the files.
-    This will also skip the MainMenu of the CLI application
+    When debugging and you change how data is stored/manipulated, use this function to always
+    recreate the files. This will also skip the MainMenu of the CLI application
     :return: Fresh data.
     """
     get_heroku_data()
@@ -770,62 +805,76 @@ def dev_run_logic():
 
 
 if __name__ == "__main__":
-    if "-v" in sys.argv:
-        configuration.VERBOSE = True
+    try:
+        if "-v" in sys.argv:
+            configuration.VERBOSE = True
 
-    if "-l" in sys.argv:
-        lazy_time_index = sys.argv.index("-l") + 1
-        lazy_time = sys.argv[lazy_time_index]
-        try:
-            configuration.LAZY = int(lazy_time)
-        except ValueError as e:
-            print("Expecting integer for the Lazy Time value, but got:\n", e)
-            exit(-1)
+        if "-l" in sys.argv:
+            lazy_time_index = sys.argv.index("-l") + 1
+            lazy_time = sys.argv[lazy_time_index]
+            try:
+                configuration.LAZY = int(lazy_time)
+            except ValueError as err:
+                print("Expecting integer for the Lazy Time value, but got:\n", err)
+                exit(-1)
 
-    if "-m" in sys.argv:
-        choise_index = sys.argv.index("-m") + 1
-        choise = sys.argv[choise_index]
-        try:
-            configuration.CHOICE = int(choise)
-        except ValueError as e:
-            print("Expecting integer for the Lazy Time value, but got:\n", e)
-            exit(-1)
+        if "-m" in sys.argv:
+            choise_index = sys.argv.index("-m") + 1
+            choise = sys.argv[choise_index]
+            try:
+                configuration.CHOICE = int(choise)
+            except ValueError as err:
+                print("Expecting integer for the Lazy Time value, but got:\n", err)
+                exit(-1)
 
-    if "-o" in sys.argv:
-        configuration.OUTPUTFILE = True
+        if "-o" in sys.argv:
+            configuration.OUTPUTFILE = True
 
-    if "-o" and "-a" in sys.argv:
-        configuration.OPENHTML = True
+        if "-o" and "-a" in sys.argv:
+            configuration.OPENHTML = True
 
-    if "-p" in sys.argv:
-        configuration.PERSISTENT = True
-        main_menu.menu_persistent()
+        if "-p" in sys.argv:
+            configuration.PERSISTENT = True
+            main_menu.menu_persistent()
 
-    if len(sys.argv) > int(1):
-        configuration.ARGLEN = len(sys.argv) - 1  # We subtract 1 as that's the client.py argument.
+        if len(sys.argv) > int(1):
+            configuration.ARGLEN = len(
+                sys.argv) - 1  # We subtract 1 as that's the client.py argument.
 
-    if "-rb" in sys.argv:
-        if (sys.platform == "linux") or (sys.platform == "linux2"):
-            print("Call HP and ask for iLO on Linux. \n"
-                  "Till that point, auto-reboot only works on Windows.")
-            configuration.AUTOREBOOT = False
+        if "-rb" in sys.argv:
+            if (sys.platform == "linux") or (sys.platform == "linux2"):
+                print("Call HP and ask for iLO on Linux. \n"
+                      "Till that point, auto-reboot only works on Windows.")
+                configuration.AUTOREBOOT = False
+            if "-v" not in sys.argv:
+                print("To autoreboot, you need `-v` in arguments.")
+                exit(0)
+            else:
+                configuration.AUTOREBOOT = True
+
+        if "-ping" in sys.argv:
+            print("Testing for VPN connection")
+            RESULT = ping_host("rejh1.srv.releng.mdc1.mozilla.com")
+            if RESULT:
+                print("Connection Successful!")
+                configuration.PING = True
+            else:
+                print("VPN seems to be off \n"
+                      "Script Stopped from running!")
+                exit(0)
+
+        if "-dev" in sys.argv:
+            try:
+                open_json("machines.json")
+                configuration.DEVMODE = True
+            except FileNotFoundError:
+                configuration.DEVMODE = False
+
+        if "-tc" in sys.argv:
+            configuration.TRAVISCI = True
+            print("TravisCI Testing Begins!")
+            dev_run_logic()
         else:
-            configuration.AUTOREBOOT = True
-
-    if "-ping" in sys.argv:
-        print("Testing for VPN connection")
-        result = ping_host("rejh1.srv.releng.mdc1.mozilla.com")
-        if result:
-            print("Connection Successful!")
-            configuration.PING = True
-        else:
-            print("VPN seems to be off \n"
-                  "Script Stopped from running!")
-            exit(0)
-
-    if "-tc" in sys.argv:
-        configuration.TRAVISCI = True
-        print("TravisCI Testing Begins!")
-        dev_run_logic()
-    else:
-        main_menu.run_menu()
+            main_menu.run_menu()
+    except (KeyboardInterrupt, SystemExit):
+        exit(0)
