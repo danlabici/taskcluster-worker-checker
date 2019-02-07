@@ -883,6 +883,19 @@ def run_logic(worker_type):
     output_problem_machines(worker_type=worker_type)
 
 
+def travisci_run_logic():
+    """
+    When debugging and you change how data is stored/manipulated, use this function to always
+    recreate the files. This will also skip the MainMenu of the CLI application
+    :return: Fresh data.
+    """
+    get_heroku_data()
+    get_google_spreadsheet_data()
+    remove_fqdn_from_machine_name()
+    add_heroku_data_to_google_dict()
+    output_problem_machines(worker_type=WORKERTYPE)
+
+
 if __name__ == "__main__":
     try:
         if "-v" in sys.argv:
@@ -952,7 +965,7 @@ if __name__ == "__main__":
         if "-tc" in sys.argv:
             configuration.TRAVISCI = True
             print("TravisCI Testing Begins!")
-            dev_run_logic()
+            travisci_run_logic()
         else:
             main_menu.run_menu()
     except (KeyboardInterrupt, SystemExit):
