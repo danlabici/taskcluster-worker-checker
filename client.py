@@ -871,14 +871,6 @@ def auto_reboot():
         exit(0)
 
 
-def push_to_git():
-    """
-
-    :return:
-    """
-    pass
-
-
 def run_logic(worker_type):
     """
     This is the main order in which the tool will run all the functions needed to return the result.
@@ -889,19 +881,6 @@ def run_logic(worker_type):
     remove_fqdn_from_machine_name()
     add_heroku_data_to_google_dict()
     output_problem_machines(worker_type=worker_type)
-
-
-def dev_run_logic():
-    """
-    When debugging and you change how data is stored/manipulated, use this function to always
-    recreate the files. This will also skip the MainMenu of the CLI application
-    :return: Fresh data.
-    """
-    get_heroku_data()
-    get_google_spreadsheet_data()
-    remove_fqdn_from_machine_name()
-    add_heroku_data_to_google_dict()
-    output_problem_machines(worker_type=WORKERTYPE)
 
 
 if __name__ == "__main__":
