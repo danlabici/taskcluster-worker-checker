@@ -55,7 +55,11 @@ def get_heroku_data():
     if configuration.DEVMODE:
         data = open_json("machines.json")
     else:
-        data = json.loads(requests.get(url, headers=headers).text)
+        try:
+            data = json.loads(requests.get(url, headers=headers).text)
+        except json.JSONDecodeError:
+            print("Request Failed, Retrying...")
+            get_heroku_data()
     heroku_machines = {}
     for value in data:
         try:
