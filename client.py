@@ -817,7 +817,7 @@ def auto_reboot():
             Waits 5 seconds for iLO to connect, Moves the mouse and clicks
             the power drop-down menu.
             """
-            time.sleep(5)
+            time.sleep(7)
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(power_dropdown[0], power_dropdown[1])
             force_ilo_active_window(focus_ilo=True)
