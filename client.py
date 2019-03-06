@@ -21,6 +21,8 @@ try:
         from pynput.keyboard import Key, Controller
         import pyautogui
     import requests
+    import uuid
+    import cryptography
     from prettytable import PrettyTable
     from oauth2client.service_account import ServiceAccountCredentials
 except ImportError:
