@@ -1,5 +1,5 @@
 # TWC Settings
-VERSION = "1.7.5"
+VERSION = "1.7.6"
 LAZY = int(6)
 ARGLEN = int(0)
 VERBOSE = False
