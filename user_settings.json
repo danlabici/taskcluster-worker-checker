@@ -1,27 +1,57 @@
 {
   "reboot": {
     "ilo_location": "C:\\Program Files (x86)\\Hewlett-Packard\\HP iLO Integrated Remote Console\\HPLOCONS.exe",
-    "password": "",
+    "password": "wpbCmMKlwq3CpA==",
     "sleep_timers": {
-      "launch_ilo": "1",
-      "power_dropdown": "7",
-      "cold_reboot": "1",
-      "close_ilo": "5"
+      "launch_ilo": 1,
+      "power_dropdown": 7,
+      "cold_reboot": 1,
+      "close_ilo": 0
     },
     "click_cords": {
       "display1": {
-        "ilo": "1080,475",
-        "password": "1080, 525",
-        "connect_btn": "855, 620",
-        "power_dropdown": "610, 260",
-        "cold_boot": "610, 325"
+        "ilo": [
+          1080,
+          475
+        ],
+        "password": [
+          1080,
+          525
+        ],
+        "connect_btn": [
+          855,
+          620
+        ],
+        "power_dropdown": [
+          610,
+          260
+        ],
+        "cold_boot": [
+          610,
+          325
+        ]
       },
       "display2": {
-        "ilo": "2957, 475",
-        "password": "2993, 531",
-        "connect_btn": "2779, 620",
-        "power_dropdown": "2530, 260",
-        "cold_boot": "2530, 325"
+        "ilo": [
+          2957,
+          475
+        ],
+        "password": [
+          2993,
+          531
+        ],
+        "connect_btn": [
+          2779,
+          620
+        ],
+        "power_dropdown": [
+          2530,
+          260
+        ],
+        "cold_boot": [
+          2530,
+          325
+        ]
       }
     }
   }
