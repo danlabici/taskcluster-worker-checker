@@ -1,6 +1,7 @@
 {
   "reboot": {
-    "ilo_location": "C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe",
+    "ilo_location": "C:\\Program Files (x86)\\Hewlett-Packard\\HP iLO Integrated Remote Console\\HPLOCONS.exe",
+    "password": "",
     "sleep_timers": {
       "launch_ilo": "1",
       "power_dropdown": "7",
