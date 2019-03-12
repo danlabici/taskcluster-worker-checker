@@ -1,7 +1,7 @@
 {
   "reboot": {
     "ilo_location": "",
-    "password": "",
+    
     "sleep_timers": {
       "launch_ilo": 1,
       "power_dropdown": 7,
