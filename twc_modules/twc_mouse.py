@@ -1,9 +1,6 @@
 from pynput.mouse import Listener
 
 
-waiting_for_action = True
-
-
 def on_click(*args):
     print("You have clicked at x:{}  y:{}".format(args[0], args[1]))
     return False
@@ -26,3 +23,6 @@ def save_question(*args):
         return False
     else:
         mouse_listener(*args)
+
+
+mouse_listener()
