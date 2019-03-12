@@ -765,7 +765,8 @@ def auto_reboot():
     Automatically reboots moonshot machines
     """
     if MACHINES_TO_REBOOT:
-        ilo_location = configuration.ILO
+        from twc_modules.user_conf_manager import UserConfigurator
+        ilo_location = UserConfigurator().dec_ilo_path()
         cursor = ctypes.windll.user32
         keyboard = Controller()
         proc_id = []

@@ -1,4 +1,5 @@
-from twc_modules import configuration, user_conf_manager
+from twc_modules import configuration
+from twc_modules.user_conf_manager import UserConfigurator
 from client import run_logic, output_single_machine, output_loaned_machines, output_machines_with_notes
 import os
 windows = configuration.WINDOWS
@@ -25,7 +26,7 @@ def run_menu(*arg):
           "You can use the options below to investigate the machines which you want.\n"
           "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
 
-    password = user_conf_manager.FileHandler()
+    password = UserConfigurator().dec_ilo_password()
 
     if password == "":
         pwd = str(input("Please input the MoonShot Password:"))
@@ -33,8 +34,6 @@ def run_menu(*arg):
         configuration.PASSWORD = password.dec_ilo_password()
     else:
         configuration.PASSWORD = password.dec_ilo_password()
-        print("Password is:", configuration.PASSWORD)
-        exit(0)
 
     if configuration.LAZY != 6:
         print("==== Custom Lazy Time of:", configuration.LAZY, " ====")
