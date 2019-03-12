@@ -26,14 +26,15 @@ def run_menu(*arg):
           "You can use the options below to investigate the machines which you want.\n"
           "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
 
-    password = UserConfigurator().dec_ilo_password()
+    config = UserConfigurator()
+    password = config.dec_ilo_password()
 
     if password == "":
         pwd = str(input("Please input the MoonShot Password:"))
-        password.enc_ilo_password(pwd)
-        configuration.PASSWORD = password.dec_ilo_password()
+        config.enc_ilo_password(pwd)
+        configuration.PASSWORD = password
     else:
-        configuration.PASSWORD = password.dec_ilo_password()
+        configuration.PASSWORD = password
 
     if configuration.LAZY != 6:
         print("==== Custom Lazy Time of:", configuration.LAZY, " ====")

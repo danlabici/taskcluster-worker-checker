@@ -42,11 +42,7 @@ class Cryptograph():
 class FileHandler(Cryptograph):
     def __init__(self):
         Cryptograph.__init__(self)
-        try:
-            if os.path.isfile(os.path.join(os.pardir, "user_settings.json")):
-                self.filename = os.path.join(os.pardir, "user_settings.json")
-        except FileNotFoundError:
-            self.filename = os.path.join("user_settings.json")
+        self.filename = os.path.join("user_settings.json")
 
         self.data = self.read_conf()
 
@@ -176,7 +172,3 @@ class UserConfigurator(SleepTimers, ClickCords):
     def __init__(self):
         SleepTimers.__init__(self)
         ClickCords.__init__(self)
-
-
-a = UserConfigurator()
-print(a.dec_ilo_path())
