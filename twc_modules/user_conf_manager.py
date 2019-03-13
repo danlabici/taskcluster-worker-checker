@@ -23,12 +23,12 @@ class Cryptograph():
             self._mac_addr_c = self._mac_addr[i % len(self._mac_addr)]
             enc_c = chr((ord(clear[i]) + ord(self._mac_addr_c)) % 256)
             enc.append(enc_c)
-        return base64.urlsafe_b64encode("".join(enc).encode())._decode()
+        return base64.urlsafe_b64encode("".join(enc).encode()).decode()
 
     def _decode(self, enc):
         """Decode a string based on a key, in this case mac address"""
         dec = []
-        enc = base64.urlsafe_b64decode(enc)._decode()
+        enc = base64.urlsafe_b64decode(enc).decode()
         for i in range(len(enc)):
             self._mac_addr_c = self._mac_addr[i % len(self._mac_addr)]
             dec_c = chr((256 + ord(enc[i]) - ord(self._mac_addr_c)) % 256)
