@@ -3,10 +3,11 @@ import uuid
 import base64
 import binascii
 import os
-import pyautogui
+
 
 try:
     import win32api  # Only works on Windows.
+    import pyautogui  # Only works on Windows.
 except ImportError:
     pass
 
