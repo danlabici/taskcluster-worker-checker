@@ -27,11 +27,11 @@ def run_menu(*arg):
           "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
 
     config = UserConfigurator()
-    password = config.dec_ilo_password()
+    password = config.read_ilo_password()
 
     if password == "":
         pwd = str(input("Please input the MoonShot Password:"))
-        config.enc_ilo_password(pwd)
+        config.save_ilo_password(pwd)
         configuration.PASSWORD = password
     else:
         configuration.PASSWORD = password

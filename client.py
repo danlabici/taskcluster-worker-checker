@@ -768,14 +768,14 @@ def auto_reboot():
         from twc_modules.user_conf_manager import UserConfigurator
 
         config = UserConfigurator()
-        ilo_location = config.dec_ilo_path()
+        ilo_location = config.read_ilo_path()
         if ilo_location == "":
             ilo_loc = str(input("Please input iLO location: \n"
                                 "eg: C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe \n"))
-            config.enc_ilo_path(ilo_loc)
-            configuration.ILO = config.dec_ilo_path()
+            config.save_ilo_path(ilo_loc)
+            configuration.ILO = config.read_ilo_path()
         else:
-            configuration.ILO = config.dec_ilo_path()
+            configuration.ILO = config.read_ilo_path()
         ilo_location = configuration.ILO
         cursor = ctypes.windll.user32
         keyboard = Controller()
