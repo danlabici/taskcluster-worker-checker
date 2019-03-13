@@ -90,11 +90,11 @@ class SleepTimers(FileHandler):
         FileHandler.__init__(self)
         self._data = self._read_conf()
 
-    def set_timer(self, key, value):
+    def save_sleep_timer(self, key, value):
         self._data["reboot"]["sleep_timers"][key] = value
         self._write_conf(self._data)
 
-    def get_timer(self, key):
+    def read_sleep_timer(self, key):
         return int(self._data["reboot"]["sleep_timers"][key])
 
 
@@ -165,11 +165,11 @@ class ClickCords(FileHandler, GetDisplayData):
             elif 0 < cursor_x <= self._primary_display_x:
                 return "display1"
 
-    def set_click_cords(self, display, key, value):
+    def save_click_cords(self, display, key, value):
         self._data["reboot"]["click_cords"][display][key] = value
         self._write_conf(self._data)
 
-    def get_click_cords(self, display, key):
+    def read_click_cords(self, display, key):
         return self._data["reboot"]["click_cords"][display][key]
 
 
