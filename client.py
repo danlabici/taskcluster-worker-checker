@@ -31,14 +31,14 @@ except ImportError:
           "pip3 install -r requirements.txt")
     exit(0)
 
-from twc_modules import configuration, main_menu
+from twc_modules import run_flags, main_menu
 
 TIMENOW = datetime.utcnow()
-TWC_VERSION = configuration.VERSION
-WORKERTYPE = configuration.WORKERTYPE
-WINDOWS = configuration.WINDOWS
-LINUX = configuration.LINUX
-YOSEMITE = configuration.YOSEMITE
+TWC_VERSION = run_flags.VERSION
+WORKERTYPE = run_flags.WORKERTYPE
+WINDOWS = run_flags.WINDOWS
+LINUX = run_flags.LINUX
+YOSEMITE = run_flags.YOSEMITE
 
 NUMBER_OF_MACHINES = 0
 NUMBER_OF_WINDOWS = 0
@@ -50,11 +50,11 @@ MACHINES_TO_REBOOT = []
 def get_heroku_data():
     """Collects data from Heroku JSON"""
     start = datetime.now()
-    verbose = configuration.VERBOSE
+    verbose = run_flags.VERBOSE
 
     url = "http://releng-hardware.herokuapp.com/machines"
     headers = {"user-agent": "ciduty-twc/{}".format(TWC_VERSION)}
-    if configuration.DEVMODE:
+    if run_flags.DEVMODE:
         data = open_json("machines.json")
     else:
         try:
@@ -84,7 +84,7 @@ def get_heroku_data():
 def get_google_spreadsheet_data():
     """Collects data from Google SpreadSheets"""
     start = datetime.now()
-    verbose = configuration.VERBOSE
+    verbose = run_flags.VERBOSE
     # Define READONLY scopes needed for the CLI
     scopes = ["https://www.googleapis.com/auth/spreadsheets.readonly",
               "https://www.googleapis.com/auth/drive.readonly"]
@@ -170,7 +170,7 @@ def remove_fqdn_from_machine_name():
     :return:
     """
     start = datetime.now()
-    verbose = configuration.VERBOSE
+    verbose = run_flags.VERBOSE
     # Update Machine-Key from FQDN to Hostname
     _google_dict = open_json('google_dict.json')
     for key in list(_google_dict):
@@ -193,7 +193,7 @@ def add_heroku_data_to_google_dict():
     :return:
     """
     start = datetime.now()
-    verbose = configuration.VERBOSE
+    verbose = run_flags.VERBOSE
     heroku_data = open_json("heroku_dict.json")
     google_data = open_json("google_dict.json")
 
@@ -314,18 +314,18 @@ def twc_insert_table_row(**kwargs):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
 
-                    if configuration.PING and not ping_host(key):
+                    if run_flags.PING and not ping_host(key):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
 
-                    if (not configuration.PING) and ("t-yosemite-r7" not in str(machine)):
+                    if (not run_flags.PING) and ("t-yosemite-r7" not in str(machine)):
                         table.add_row([hostname, idle, status, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
-                        if configuration.PING:
+                        if run_flags.PING:
                             print("Trying to ping:", key)
                             result = ping_host(key)
                             print("Ping {}: {}".format(("Failed" if not result else "Succeeded"),
@@ -336,7 +336,7 @@ def twc_insert_table_row(**kwargs):
                                      ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
-                        if not configuration.PING:
+                        if not run_flags.PING:
                             table.add_row(
                                 [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                  ignore])
@@ -348,7 +348,7 @@ def twc_insert_table_row(**kwargs):
         for key in _verbose_google_dict:
             if machine in str(key):
                 if not verbose:
-                    if configuration.PING:
+                    if run_flags.PING:
                         result = ping_host(key)
                         if not result:
                             table.add_row([hostname, idle, status, ilo, serial, notes])
@@ -360,7 +360,7 @@ def twc_insert_table_row(**kwargs):
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
-                        if configuration.PING:
+                        if run_flags.PING:
                             print("Trying to ping:" + key)
                             result = ping_host(key)
 
@@ -370,7 +370,7 @@ def twc_insert_table_row(**kwargs):
                                      ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
-                        if not configuration.PING:
+                        if not run_flags.PING:
                             table.add_row(
                                 [key, idle, status, taskid, ilo, serial, owner, reason, notes,
                                  ignore])
@@ -382,7 +382,7 @@ def twc_insert_table_row(**kwargs):
         for key in _verbose_google_dict:
             if machine in str(key):
                 if not verbose:
-                    if configuration.PING:
+                    if run_flags.PING:
                         result = ping_host(key)
                         if not result:
                             table.add_row([hostname, idle, status, ilo, serial, notes])
@@ -394,7 +394,7 @@ def twc_insert_table_row(**kwargs):
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
                     if machine in str(key):
-                        if configuration.PING:
+                        if run_flags.PING:
                             print("Trying to ping:", key)
                             result = ping_host(key)
 
@@ -403,7 +403,7 @@ def twc_insert_table_row(**kwargs):
                                                owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
-                        if not configuration.PING:
+                        if not run_flags.PING:
                             table.add_row([key, idle, status, taskid, ilo, serial,
                                            owner, reason, notes, ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
@@ -431,8 +431,8 @@ def output_problem_machines(worker_type):
     :param worker_type:
     :return:
     """
-    verbose = configuration.VERBOSE
-    lazy_time = configuration.LAZY
+    verbose = run_flags.VERBOSE
+    lazy_time = run_flags.LAZY
     machine_data = open_json("google_dict.json")
 
     table = twc_table_header(verbose, lazy_time)
@@ -479,12 +479,12 @@ def output_problem_machines(worker_type):
 
     print(table)
     count_up_all(print_machine_numbers=True, machine=None)
-    if configuration.OUTPUTFILE:
+    if run_flags.OUTPUTFILE:
         write_html_data(table)
 
     print("Last Completed Run: " + str(datetime.strftime(datetime.now(), "%H:%M  %d-%b-%Y")))
 
-    if configuration.AUTOREBOOT:
+    if run_flags.AUTOREBOOT:
         auto_reboot()
 
 
@@ -495,8 +495,8 @@ def output_single_machine(single_machine):
     :return:
     """
     start = datetime.now()
-    verbose = configuration.VERBOSE
-    lazy_time = configuration.LAZY
+    verbose = run_flags.VERBOSE
+    lazy_time = run_flags.LAZY
     get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
@@ -534,7 +534,7 @@ def output_single_machine(single_machine):
 
     print(table)
 
-    if configuration.OUTPUTFILE:
+    if run_flags.OUTPUTFILE:
         write_html_data(table)
 
     end = datetime.now()
@@ -551,8 +551,8 @@ def output_loaned_machines(**loaner):
     """
     start = datetime.now()
     number_of_machines = 0
-    verbose = configuration.VERBOSE
-    lazy_time = configuration.LAZY
+    verbose = run_flags.VERBOSE
+    lazy_time = run_flags.LAZY
     get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
@@ -610,7 +610,7 @@ def output_loaned_machines(**loaner):
     print(table)
     print("Total number of loaned machines:", number_of_machines)
 
-    if configuration.OUTPUTFILE:
+    if run_flags.OUTPUTFILE:
         write_html_data(table)
 
     end = datetime.now()
@@ -623,8 +623,8 @@ def output_machines_with_notes():
     """Outputs all machines that have notes in Google Spreadsheet"""
     start = datetime.now()
     number_of_machines = 0
-    verbose = configuration.VERBOSE
-    lazy_time = configuration.LAZY
+    verbose = run_flags.VERBOSE
+    lazy_time = run_flags.LAZY
     get_heroku_data()
     get_google_spreadsheet_data()
     remove_fqdn_from_machine_name()
@@ -666,7 +666,7 @@ def output_machines_with_notes():
     print(table)
     print("Total number of machines with notes:", number_of_machines)
 
-    if configuration.OUTPUTFILE:
+    if run_flags.OUTPUTFILE:
         write_html_data(table)
 
     end = datetime.now()
@@ -706,7 +706,7 @@ def write_html_data(*args):
         file.write(options.get_html_string())
         file.close()
 
-    if configuration.OPENHTML:
+    if run_flags.OPENHTML:
         os.system("start" + " index.html")
 
 
@@ -773,10 +773,10 @@ def auto_reboot():
             ilo_loc = str(input("Please input iLO location: \n"
                                 "eg: C:\Program Files (x86)\Hewlett-Packard\HP iLO Integrated Remote Console\HPLOCONS.exe \n"))
             config.save_ilo_path(ilo_loc)
-            configuration.ILO = config.read_ilo_path()
+            run_flags.ILO = config.read_ilo_path()
         else:
-            configuration.ILO = config.read_ilo_path()
-        ilo_location = configuration.ILO
+            run_flags.ILO = config.read_ilo_path()
+        ilo_location = run_flags.ILO
         cursor = ctypes.windll.user32
         keyboard = Controller()
         proc_id = []
@@ -814,7 +814,7 @@ def auto_reboot():
             pyautogui.click()
             cursor.SetCursorPos(old_x, old_y)
             # Insert Password
-            keyboard.type(str(configuration.PASSWORD))
+            keyboard.type(str(run_flags.PASSWORD))
 
         def click_connect_btn():
             """
@@ -854,7 +854,7 @@ def auto_reboot():
             """
             os.kill(int(proc_id[0]), signal.SIGTERM)
             proc_id.pop(0)
-            if configuration.VERBOSE:
+            if run_flags.VERBOSE:
                 print("Restart Process for " + str(entry[0]) + " finished.")
 
         for entry in MACHINES_TO_REBOOT:
@@ -916,13 +916,13 @@ def travisci_run_logic():
 if __name__ == "__main__":
     try:
         if "-v" in sys.argv:
-            configuration.VERBOSE = True
+            run_flags.VERBOSE = True
 
         if "-l" in sys.argv:
             LAZY_TIME_INDEX = sys.argv.index("-l") + 1
             LAZY_TIME = sys.argv[LAZY_TIME_INDEX]
             try:
-                configuration.LAZY = int(LAZY_TIME)
+                run_flags.LAZY = int(LAZY_TIME)
             except ValueError as err:
                 print("Expecting integer for the Lazy Time value, but got:\n", err)
                 exit(-1)
@@ -931,42 +931,42 @@ if __name__ == "__main__":
             CHOICE_INDEX = sys.argv.index("-m") + 1
             CHOICE = sys.argv[CHOICE_INDEX]
             try:
-                configuration.CHOICE = int(CHOICE)
+                run_flags.CHOICE = int(CHOICE)
             except ValueError as err:
                 print("Expecting integer for the Lazy Time value, but got:\n", err)
                 exit(-1)
 
         if "-o" in sys.argv:
-            configuration.OUTPUTFILE = True
+            run_flags.OUTPUTFILE = True
 
         if "-o" and "-a" in sys.argv:
-            configuration.OPENHTML = True
+            run_flags.OPENHTML = True
 
         if "-p" in sys.argv:
-            configuration.PERSISTENT = True
+            run_flags.PERSISTENT = True
             main_menu.menu_persistent()
 
         if len(sys.argv) > int(1):
-            configuration.ARGLEN = len(
+            run_flags.ARGLEN = len(
                 sys.argv) - 1  # We subtract 1 as that's the client.py argument.
 
         if "-rb" in sys.argv:
             if (sys.platform == "linux") or (sys.platform == "linux2"):
                 print("Call HP and ask for iLO on Linux. \n"
                       "Till that point, auto-reboot only works on Windows.")
-                configuration.AUTOREBOOT = False
+                run_flags.AUTOREBOOT = False
             if "-v" not in sys.argv:
                 print("To autoreboot, you need `-v` in arguments.")
                 exit(0)
             else:
-                configuration.AUTOREBOOT = True
+                run_flags.AUTOREBOOT = True
 
         if "-ping" in sys.argv:
             print("Testing for VPN connection")
             RESULT = ping_host("rejh1.srv.releng.mdc1.mozilla.com")
             if RESULT:
                 print("Connection Successful!")
-                configuration.PING = True
+                run_flags.PING = True
             else:
                 print("VPN seems to be off \n"
                       "Script Stopped from running!")
@@ -975,12 +975,12 @@ if __name__ == "__main__":
         if "-dev" in sys.argv:
             try:
                 open_json("machines.json")
-                configuration.DEVMODE = True
+                run_flags.DEVMODE = True
             except FileNotFoundError:
-                configuration.DEVMODE = False
+                run_flags.DEVMODE = False
 
         if "-tc" in sys.argv:
-            configuration.TRAVISCI = True
+            run_flags.TRAVISCI = True
             print("TravisCI Testing Begins!")
             travisci_run_logic()
         else:

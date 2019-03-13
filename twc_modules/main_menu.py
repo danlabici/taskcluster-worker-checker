@@ -1,11 +1,11 @@
-from twc_modules import configuration
+from twc_modules import run_flags
 from twc_modules.user_conf_manager import UserConfigurator
 from client import run_logic, output_single_machine, output_loaned_machines, output_machines_with_notes
 import os
-windows = configuration.WINDOWS
-linux = configuration.LINUX
-yosemite = configuration.YOSEMITE
-all = configuration.ALLWORKERS
+windows = run_flags.WINDOWS
+linux = run_flags.LINUX
+yosemite = run_flags.YOSEMITE
+all = run_flags.ALLWORKERS
 
 def run_menu(*arg):
     """
@@ -24,7 +24,7 @@ def run_menu(*arg):
     """
     print("Welcome to CiDuty's TaskCluster Worker Checker.\n"
           "You can use the options below to investigate the machines which you want.\n"
-          "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(configuration.VERSION))
+          "TWC version: {} || Github: https://github.com/Akhliskun/taskcluster-worker-checker\n".format(run_flags.VERSION))
 
     config = UserConfigurator()
     password = config.read_ilo_password()
@@ -32,30 +32,30 @@ def run_menu(*arg):
     if password == "":
         pwd = str(input("Please input the MoonShot Password:"))
         config.save_ilo_password(pwd)
-        configuration.PASSWORD = password
+        run_flags.PASSWORD = password
     else:
-        configuration.PASSWORD = password
+        run_flags.PASSWORD = password
 
-    if configuration.LAZY != 6:
-        print("==== Custom Lazy Time of:", configuration.LAZY, " ====")
-    if configuration.VERBOSE:
+    if run_flags.LAZY != 6:
+        print("==== Custom Lazy Time of:", run_flags.LAZY, " ====")
+    if run_flags.VERBOSE:
         print("==== Verbose Mode Activated  ====")
-    if configuration.PERSISTENT:
+    if run_flags.PERSISTENT:
         print("==== Persistent Menu Activated  ====")
-    if configuration.OUTPUTFILE:
+    if run_flags.OUTPUTFILE:
         print("==== Output will be saved in:",  str(os.path.dirname(os.path.realpath("index.html"))), "====")
-    if configuration.OUTPUTFILE and configuration.OPENHTML:
+    if run_flags.OUTPUTFILE and run_flags.OPENHTML:
         print("==== Generated HTML will automatically open at the end of the program  ====")
-    if configuration.AUTOREBOOT:
+    if run_flags.AUTOREBOOT:
         print("======================================")
         print("====  AUTOREBOOT Mode Activated!  ====")
         print("======================================")
 
     # Insert a new line between run arguments and the main menu.
-    if configuration.ARGLEN == 0:
+    if run_flags.ARGLEN == 0:
         print("\n")
 
-    choice = configuration.CHOICE
+    choice = run_flags.CHOICE
     if choice == 0:
         print("1. Check Machine(s) Status\n"
               "2. Check a Specific Machine\n"
@@ -139,7 +139,7 @@ def run_menu(*arg):
 
     if choice == 0:
         print("Closing CLI application.\n")
-        configuration.PERSISTENT = False
+        run_flags.PERSISTENT = False
         menu_persistent()
     else:
         print("\n\nInvalid Choice!\n"
@@ -148,7 +148,7 @@ def run_menu(*arg):
 
 
 def menu_persistent():
-    while configuration.PERSISTENT:
+    while run_flags.PERSISTENT:
         run_menu()
     else:
         exit(0)
