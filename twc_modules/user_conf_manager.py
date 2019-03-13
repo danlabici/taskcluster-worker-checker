@@ -3,8 +3,12 @@ import uuid
 import base64
 import binascii
 import os
-import win32api
 import pyautogui
+
+try:
+    import win32api  # Only works on Windows.
+except ImportError:
+    pass
 
 
 class Cryptograph():
