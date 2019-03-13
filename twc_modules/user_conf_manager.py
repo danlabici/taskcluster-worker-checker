@@ -14,102 +14,102 @@ except ImportError:
 
 class Cryptograph():
     def __init__(self):
-        self.mac_addr = str(uuid.getnode())
+        self._mac_addr = str(uuid.getnode())
 
-    def encode(self, clear):
+    def _encode(self, clear):
         """Encode a string based on a key, in this case mac address"""
         enc = []
         for i in range(len(clear)):
-            self.mac_addr_c = self.mac_addr[i % len(self.mac_addr)]
-            enc_c = chr((ord(clear[i]) + ord(self.mac_addr_c)) % 256)
+            self._mac_addr_c = self._mac_addr[i % len(self._mac_addr)]
+            enc_c = chr((ord(clear[i]) + ord(self._mac_addr_c)) % 256)
             enc.append(enc_c)
-        return base64.urlsafe_b64encode("".join(enc).encode()).decode()
+        return base64.urlsafe_b64encode("".join(enc).encode())._decode()
 
-    def decode(self, enc):
+    def _decode(self, enc):
         """Decode a string based on a key, in this case mac address"""
         dec = []
-        enc = base64.urlsafe_b64decode(enc).decode()
+        enc = base64.urlsafe_b64decode(enc)._decode()
         for i in range(len(enc)):
-            self.mac_addr_c = self.mac_addr[i % len(self.mac_addr)]
-            dec_c = chr((256 + ord(enc[i]) - ord(self.mac_addr_c)) % 256)
+            self._mac_addr_c = self._mac_addr[i % len(self._mac_addr)]
+            dec_c = chr((256 + ord(enc[i]) - ord(self._mac_addr_c)) % 256)
             dec.append(dec_c)
         return "".join(dec)
 
-    def encoding(self, value):
+    def _encoding(self, value):
         """Returns encoded string"""
-        return self.encode(value)
+        return self._encode(value)
 
-    def decoding(self, value):
+    def _decoding(self, value):
         """Returns decoded string"""
-        return self.decode(value)
+        return self._decode(value)
 
 
 class FileHandler(Cryptograph):
     def __init__(self):
         Cryptograph.__init__(self)
-        self.filename = os.path.join("user_settings.json")
+        self._filename = os.path.join(os.pardir, "user_settings.json")
 
-        self.data = self.read_conf()
+        self._data = self._read_conf()
 
-    def read_conf(self):
-        with open(self.filename, "r") as file:
-            self.data = json.load(file)
-            return self.data
+    def _read_conf(self):
+        with open(self._filename, "r") as file:
+            self._data = json.load(file)
+            return self._data
 
-    def write_conf(self, data):
-        with open(self.filename, "w") as file:
+    def _write_conf(self, data):
+        with open(self._filename, "w") as file:
             json.dump(data, file, indent=2)
 
-    def enc_ilo_path(self, path):
-        self.data["reboot"]["ilo_location"] = self.encoding(path)
-        self.write_conf(self.data)
+    def save_ilo_path(self, path):
+        self._data["reboot"]["ilo_location"] = self._encoding(path)
+        self._write_conf(self._data)
 
-    def dec_ilo_path(self):
+    def read_ilo_path(self):
         try:
-            return str(self.decoding(self.data["reboot"]["ilo_location"]))
+            return str(self._decoding(self._data["reboot"]["ilo_location"]))
         except binascii.Error:
             print("Encoding iLO Installation Path is invalid!\n"
                   "Please provide it again for re-encryption.")
-            self.enc_ilo_path(input())
+            self.save_ilo_path(input())
 
-    def enc_ilo_password(self, pwd):
-        self.data["reboot"]["password"] = self.encoding(pwd)
-        self.write_conf(self.data)
+    def save_ilo_password(self, pwd):
+        self._data["reboot"]["password"] = self._encoding(pwd)
+        self._write_conf(self._data)
 
-    def dec_ilo_password(self):
+    def read_ilo_password(self):
         try:
-            return str(self.decoding(self.data["reboot"]["password"]))
+            return str(self._decoding(self._data["reboot"]["password"]))
         except binascii.Error:
             print("Invalid Password encoding!\n"
                   "Please provide it again for re-encryption.")
-            self.enc_ilo_password(input())
+            self.save_ilo_password(input())
 
 
 class SleepTimers(FileHandler):
     def __init__(self):
         FileHandler.__init__(self)
-        self.data = self.read_conf()
+        self._data = self._read_conf()
 
     def set_timer(self, key, value):
-        self.data["reboot"]["sleep_timers"][key] = value
-        self.write_conf(self.data)
+        self._data["reboot"]["sleep_timers"][key] = value
+        self._write_conf(self._data)
 
     def get_timer(self, key):
-        return int(self.data["reboot"]["sleep_timers"][key])
+        return int(self._data["reboot"]["sleep_timers"][key])
 
 
 class GetDisplayData:
     def __init__(self):
-        self.display_count = int()
-        self.primary_display_x, self.primary_display_y = self.get_primary_display_size
+        self._display_count = int()
+        self._primary_display_x, self._primary_display_y = self._get_primary_display_size
 
     @property
     def get_display_count(self):
-        self.display_count = len(win32api.EnumDisplayMonitors())
-        return self.display_count
+        self._display_count = len(win32api.EnumDisplayMonitors())
+        return self._display_count
 
     @property
-    def get_primary_display_size(self):
+    def _get_primary_display_size(self):
         return pyautogui.size()
 
 
@@ -117,7 +117,7 @@ class ClickCords(FileHandler, GetDisplayData):
     def __init__(self):
         FileHandler.__init__(self)
         GetDisplayData.__init__(self)
-        self.data = self.read_conf()
+        self._data = self._read_conf()
 
     def which_display(self, cursor_x):
         """
@@ -158,19 +158,19 @@ class ClickCords(FileHandler, GetDisplayData):
         if self.get_display_count > 2:
             return "display1"
         else:
-            if cursor_x > self.primary_display_x:
+            if cursor_x > self._primary_display_x:
                 return "display2"
             elif cursor_x < int(0):
                 return "display2"
-            elif 0 < cursor_x <= self.primary_display_x:
+            elif 0 < cursor_x <= self._primary_display_x:
                 return "display1"
 
     def set_click_cords(self, display, key, value):
-        self.data["reboot"]["click_cords"][display][key] = value
-        self.write_conf(self.data)
+        self._data["reboot"]["click_cords"][display][key] = value
+        self._write_conf(self._data)
 
     def get_click_cords(self, display, key):
-        return self.data["reboot"]["click_cords"][display][key]
+        return self._data["reboot"]["click_cords"][display][key]
 
 
 class UserConfigurator(SleepTimers, ClickCords):
