@@ -97,7 +97,7 @@ class SleepTimers(FileHandler):
         self._data = self._read_conf()
 
     def save_sleep_timer(self, key, value):
-        self._data["reboot"]["sleep_timers"][key] = value
+        self._data["reboot"]["sleep_timers"][key] = int(value)
         self._write_conf(self._data)
 
     def read_sleep_timer(self, key):

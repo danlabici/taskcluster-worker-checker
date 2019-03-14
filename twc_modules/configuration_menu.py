@@ -28,7 +28,7 @@ class WizardMenu(UserConfigurator, MouseListener):
         self.invalid_choice = "Invalid choice."
         self.cursor_current_x = int()
         self.cursor_current_y = int()
-
+        self.steps_to_run = list()
 
     def welcome_menu(self):
         print("Welcome to TWC User Settings Wizard. \n"
@@ -75,7 +75,7 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.welcome_menu()
 
         elif self.user_choice == 0:
-            pass
+            main_menu.run_menu()
 
         else:
             print(self.invalid_choice)
@@ -133,8 +133,10 @@ class WizardMenu(UserConfigurator, MouseListener):
     def click_menu(self):
         print("In this step we will configure the automated click locations for the tool. \n"
               "Those locations are used for the TWC to know where to click. \n"
-              "Until all 10 steps are done __KEEP IT ON THE SAME SCREEN__\n"
-              "The Wizard __WILL TELL YOU__ when to swap the screens, if needed.")
+              "Until all 5 steps are done __KEEP IT ON THE SAME SCREEN__\n"
+              "The Wizard __WILL TELL YOU__ when to swap the screens, if needed.\n"
+              "If you use __TWO SCREENS__ you will need to run this menu twice! \n"
+              "Once for each screen!")
         self.ilo_iphost_textfield()
 
     def ilo_iphost_textfield(self):
@@ -227,7 +229,32 @@ class WizardMenu(UserConfigurator, MouseListener):
 
     # Only Timer Locations
     def timer_menu(self):
-        self.steps_to_run = []
+        keys_to_update = [("launch_ilo", "Delay in seconds before taking the first action.\n"
+                                         "Default: 1 second"),
+                          ("ip_port", "Delay in seconds before typing the ILO:Port\n"
+                                      "Default: 0 seconds"),
+                          ("password", "Delay in seconds before typing the Password\n"
+                                       "Default: 0 seconds"),
+                          ("click_connect", "Delay in seconds before clicking on Connect button\n"
+                                            "Default: 0 seconds"),
+                          ("power_dropdown", "Delay in seconds before click on Power Switch dropdown\n"
+                                             "Default: 7 seconds"),
+                          ("cold_reboot", "Delay in seconds before clicking on Cold Boot \n"
+                                          "Default: 1 second"),
+                          ("close_ilo", "Delay in seconds before closing the iLO session\n"
+                                        "Default: 10")]
+
+        for key, description in keys_to_update:
+            self.set_timers(key, description)
+
+    def set_timers(self, key, description):
+        print(description)
+        value = input()
+        if value == "0" or int(value):
+            self.save_sleep_timer(key, value)
+        else:
+            print("Not an int! Restarting this step!")
+            self.set_timers(key, description)
 
     # Change user_setting.json back to Default Values
     def default_settings(self):
@@ -237,6 +264,3 @@ class WizardMenu(UserConfigurator, MouseListener):
     # Exit menu
     def wizard_exit(self):
         pass
-
-a = WizardMenu()
-a.welcome_menu()

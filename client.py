@@ -786,7 +786,7 @@ def auto_reboot():
             Launches iLO and keeps track of it's PID.
             """
             hp_app = subprocess.Popen(ilo_location)
-            time.sleep(1)
+            time.sleep(1)  # launch_ilo
             proc_id.append(hp_app.pid)
 
         def insert_ip_port():
@@ -797,6 +797,7 @@ def auto_reboot():
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(ilo[0], ilo[1])
             pyautogui.click()
+            time.sleep(0)  # ip_port
             with keyboard.pressed(Key.ctrl):
                 keyboard.press('a')
                 keyboard.release('a')
@@ -812,6 +813,7 @@ def auto_reboot():
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(password[0], password[1])
             pyautogui.click()
+            time.sleep(0)  # password
             cursor.SetCursorPos(old_x, old_y)
             # Insert Password
             keyboard.type(str(run_flags.PASSWORD))
@@ -822,6 +824,7 @@ def auto_reboot():
             """
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(connect_btn[0], connect_btn[1])
+            time.sleep(0)  # click_connect
             pyautogui.click()
             cursor.SetCursorPos(old_x, old_y)
 
@@ -830,7 +833,7 @@ def auto_reboot():
             Waits 5 seconds for iLO to connect, Moves the mouse and clicks
             the power drop-down menu.
             """
-            time.sleep(7)
+            time.sleep(7)  # power_dropdown
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(power_dropdown[0], power_dropdown[1])
             force_ilo_active_window(focus_ilo=True)
@@ -843,15 +846,16 @@ def auto_reboot():
             """
             old_x, old_y = pyautogui.position()
             cursor.SetCursorPos(cold_boot[0], cold_boot[1])
+            time.sleep(1)  # cold_reboot
             pyautogui.click()
             force_ilo_active_window(focus_ilo=False)
             cursor.SetCursorPos(old_x, old_y)
-            time.sleep(1)
 
         def close_ilo():
             """
             Closes iLO based on the PID saved during the launch process.
             """
+            time.sleep(1)  # close_ilo
             os.kill(int(proc_id[0]), signal.SIGTERM)
             proc_id.pop(0)
             if run_flags.VERBOSE:

@@ -1,5 +1,6 @@
 from twc_modules import run_flags
 from twc_modules.user_conf_manager import UserConfigurator
+from twc_modules.configuration_menu import WizardMenu
 from client import run_logic, output_single_machine, output_loaned_machines, output_machines_with_notes
 import os
 windows = run_flags.WINDOWS
@@ -61,7 +62,8 @@ def run_menu(*arg):
               "2. Check a Specific Machine\n"
               "3. List Machines Loaned by User\n"
               "4. List Machines with Added Notes\n"
-              "5. TaskCluster Worker Checker HELP Docs\n\n"
+              "5. TWC Configuration Wizard\n"
+              "9. TaskCluster Worker Checker HELP Docs\n\n"
               "0. Exit application.")
         try:
             choice = int(input())
@@ -134,6 +136,9 @@ def run_menu(*arg):
         menu_persistent()
 
     if choice == 5:
+        WizardMenu().welcome_menu()
+
+    if choice == 9:
         print("Logic not implemented yet!")
         menu_persistent()
 
