@@ -63,12 +63,15 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.ilo_data()
             self.click_menu()
             self.timer_menu()
+            self.wizard_exit()
 
         elif self.user_choice == 2:
             self.click_menu()
+            self.wizard_exit()
 
         elif self.user_choice == 3:
             self.timer_menu()
+            self.wizard_exit()
 
         elif self.user_choice == 4:
             print("Not implemented yet.")
@@ -263,4 +266,6 @@ class WizardMenu(UserConfigurator, MouseListener):
 
     # Exit menu
     def wizard_exit(self):
-        pass
+        print("Completed the configuration of menu.\n"
+              "Exiting application.")
+        exit(0)
