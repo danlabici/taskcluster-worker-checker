@@ -47,7 +47,13 @@ class Cryptograph():
 class FileHandler(Cryptograph):
     def __init__(self):
         Cryptograph.__init__(self)
-        self._filename = os.path.join(os.pardir, "user_settings.json")
+
+        # For some reason try/except FileNotFound doesn't work, so we do it manually.
+        check_file = os.path.isfile("user_settings.json")
+        if check_file:
+            self._filename = "user_settings.json"
+        else:
+            self._filename = os.path.join(os.pardir, "user_settings.json")
 
         self._data = self._read_conf()
 
