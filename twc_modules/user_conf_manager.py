@@ -4,15 +4,19 @@ import base64
 import binascii
 import os
 
-
 try:
     import win32api  # Only works on Windows.
     import pyautogui  # Only works on Windows.
 except ImportError:
-    pass
+    def handleImportError():
+        print("You are trying to run this from a UNIX based machine or you have missing deps.\n"
+              "Please run on WINDOWS: pip install -r requirements.txt")
+        exit(0)
+
+    win32 = pyautogui = pynput = handleImportError()
 
 
-class Cryptograph():
+class Cryptograph:
     def __init__(self):
         self._mac_addr = str(uuid.getnode())
 
@@ -107,7 +111,7 @@ class SleepTimers(FileHandler):
 class GetDisplayData:
     def __init__(self):
         self._display_count = int()
-        self._primary_display_x, self._primary_display_y = self._get_primary_display_size
+        self._primary_display_x, _ = self._get_primary_display_size
 
     @property
     def get_display_count(self):
@@ -181,5 +185,4 @@ class ClickCords(FileHandler, GetDisplayData):
 
 class UserConfigurator(SleepTimers, ClickCords):
     def __init__(self):
-        SleepTimers.__init__(self)
-        ClickCords.__init__(self)
+        super().__init__()
