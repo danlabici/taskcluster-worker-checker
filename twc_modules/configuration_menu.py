@@ -1,6 +1,7 @@
 from twc_modules import main_menu
 from twc_modules.user_conf_manager import UserConfigurator
 from pynput.mouse import Listener
+import time
 
 
 class MouseListener():
@@ -20,10 +21,21 @@ class MouseListener():
             listener.join()
 
 
-class WizardMenu(UserConfigurator, MouseListener):
+class TickRate():
+    def __init__(self):
+        self.waiting = False
+
+    def wait_time(self, seconds):
+        self.waiting = True
+        time.sleep(seconds)
+        self.waiting = False
+
+
+class WizardMenu(UserConfigurator, MouseListener, TickRate):
     def __init__(self):
         UserConfigurator.__init__(self)
         MouseListener.__init__(self)
+        TickRate.__init__(self)
         self.user_choice = int()
         self.invalid_choice = "Invalid choice."
         self.cursor_current_x = int()
@@ -61,16 +73,16 @@ class WizardMenu(UserConfigurator, MouseListener):
     def run_steps(self):
         if self.user_choice == 1:
             self.ilo_data()
-            self.click_menu()
-            self.timer_menu()
+            self.click_logic()
+            self.timer_logic()
             self.wizard_exit()
 
         elif self.user_choice == 2:
-            self.click_menu()
+            self.click_logic()
             self.wizard_exit()
 
         elif self.user_choice == 3:
-            self.timer_menu()
+            self.timer_logic()
             self.wizard_exit()
 
         elif self.user_choice == 4:
@@ -133,14 +145,18 @@ class WizardMenu(UserConfigurator, MouseListener):
             exit(0)
 
     # Only Click Locations
-    def click_menu(self):
+    def click_logic(self):
         print("In this step we will configure the automated click locations for the tool. \n"
               "Those locations are used for the TWC to know where to click. \n"
               "Until all 5 steps are done __KEEP IT ON THE SAME SCREEN__\n"
               "The Wizard __WILL TELL YOU__ when to swap the screens, if needed.\n"
               "If you use __TWO SCREENS__ you will need to run this menu twice! \n"
               "Once for each screen!")
-        self.ilo_iphost_textfield()
+
+    # ToDo: Abstract the loops.
+
+    def set_clicks(self, key, description):
+        pass
 
     def ilo_iphost_textfield(self):
         print("Please Launch iLO on your PC and click on the\n"
@@ -154,8 +170,10 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.save_click_cords(display=self.which_display(self.current_cursor_x_position()),
                                   key="ilo",
                                   value=[self.cursor_x, self.cursor_y])
+            save_choice = None
         else:
             self.cursor_x, self.cursor_y = 0, 0
+            save_choice = None
             self.ilo_iphost_textfield()
 
         self.ilo_password_textfield()
@@ -172,8 +190,10 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.save_click_cords(display=self.which_display(self.current_cursor_x_position()),
                                   key="password",
                                   value=[self.cursor_x, self.cursor_y])
+            save_choice = None
         else:
             self.cursor_x, self.cursor_y = 0, 0
+            save_choice = None
             self.ilo_password_textfield()
 
         self.ilo_connect_button()
@@ -190,8 +210,10 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.save_click_cords(display=self.which_display(self.current_cursor_x_position()),
                                   key="connect_btn",
                                   value=[self.cursor_x, self.cursor_y])
+            save_choice = None
         else:
             self.cursor_x, self.cursor_y = 0, 0
+            save_choice = None
             self.ilo_connect_button()
 
         self.ilo_power_dropdown()
@@ -208,8 +230,10 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.save_click_cords(display=self.which_display(self.current_cursor_x_position()),
                                   key="power_dropdown",
                                   value=[self.cursor_x, self.cursor_y])
+            save_choice = None
         else:
             self.cursor_x, self.cursor_y = 0, 0
+            save_choice = None
             self.ilo_power_dropdown()
 
         self.ilo_cold_boot()
@@ -226,12 +250,14 @@ class WizardMenu(UserConfigurator, MouseListener):
             self.save_click_cords(display=self.which_display(self.current_cursor_x_position()),
                                   key="cold_boot",
                                   value=[self.cursor_x, self.cursor_y])
+            save_choice = None
         else:
             self.cursor_x, self.cursor_y = 0, 0
+            save_choice = None
             self.ilo_cold_boot()
 
     # Only Timer Locations
-    def timer_menu(self):
+    def timer_logic(self):
         keys_to_update = [("launch_ilo", "Delay in seconds before taking the first action.\n"
                                          "Default: 1 second"),
                           ("ip_port", "Delay in seconds before typing the ILO:Port\n"
