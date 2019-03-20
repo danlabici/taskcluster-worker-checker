@@ -30,7 +30,7 @@ except ImportError:
           "Please Run and Restart the application:\n"
           "pip3 install -r requirements.txt")
     exit(0)
-
+from twc_modules.OSXreboot import OSXreboot
 from twc_modules import run_flags, main_menu
 
 TIMENOW = datetime.utcnow()
@@ -485,7 +485,16 @@ def output_problem_machines(worker_type):
     print("Last Completed Run: " + str(datetime.strftime(datetime.now(), "%H:%M  %d-%b-%Y")))
 
     if run_flags.AUTOREBOOT:
-        auto_reboot()
+        if worker_type == "t-w1064-ms":
+            auto_reboot()
+        elif worker_type == "t-yosemite-r7":
+            for worker in table._rows:
+                worker = str(worker[0][:17])
+                link = OSXreboot(worker).create_link()
+                OSXreboot(link).launch_browser()
+                # OSXreboot(link).click_reboot()    # sign in issues
+        else:
+            print("Reboot Linux Machines")
 
 
 def output_single_machine(single_machine):
