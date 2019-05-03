@@ -71,8 +71,7 @@ def get_heroku_data():
             print(value["machine"], " - Has Time Issues")
         _idle = int(idle.total_seconds())
         heroku_machines.update({value["machine"].lower(): {
-            "lastseen": value["lastseen"], "idle": _idle, "datacenter": value["datacenter"],
-            "status": value["machines-last-status"], "taskid": value["machines-last-taskid"]}})
+            "lastseen": value["lastseen"], "idle": _idle, "datacenter": value["datacenter"]}})
 
     save_json("heroku_dict.json", heroku_machines)
     end = datetime.now()
@@ -199,48 +198,13 @@ def add_heroku_data_to_google_dict():
 
     shared_keys = set(heroku_data).intersection(google_data)
     for key in shared_keys:
-        machine_idle = {"idle": heroku_data.get(key)["idle"],
-                        "status": heroku_data.get(key)["status"],
-                        "taskid": heroku_data.get(key)["taskid"]}
+        machine_idle = {"idle": heroku_data.get(key)["idle"]}
         google_data[key].update(machine_idle)
 
     save_json("google_dict.json", google_data)
     end = datetime.now()
     if verbose:
         print("Adding IDLE times to Google Data took:", end - start)
-
-
-def task_id(machine_data, machine):
-    """
-    Helper function for taskIDs handling.
-    """
-    try:
-        taskid = machine_data.get(machine)["taskid"]
-    except KeyError:
-        taskid = "-"
-    return taskid
-
-
-def status_cleaner(machine_data, machine):
-    """
-    Cleans the machine last know status.
-    """
-    try:
-        status = machine_data.get(machine)["status"]
-    except KeyError:
-        status = "-"
-    if status is not None:
-        if "completed_completed" in status:
-            status = "Completed"
-        elif "running_unresolved" in status:
-            status = "Running"
-        elif "failed_failed" in status:
-            status = "Failed"
-        else:
-            pass
-    else:
-        pass
-    return status
 
 
 def twc_table_header(verbose, lazy_time):
@@ -252,13 +216,11 @@ def twc_table_header(verbose, lazy_time):
     """
     if not verbose:
         table = PrettyTable()
-        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time),
-                             "Machine Status", "ILO",
+        table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time), "ILO",
                              "Serial", "Other Notes"]
     else:
         table = PrettyTable()
         table.field_names = ["Hostname", "IDLE Time ( >{} hours)".format(lazy_time),
-                             "Machine Status", "Last Task",
                              "ILO", "Serial", "Owner", "Ownership Notes", " Other Notes",
                              "Ignored?"]
     return table
@@ -296,8 +258,6 @@ def twc_insert_table_row(**kwargs):
     machine = kwargs.get("machine")
     hostname = machine
     idle = kwargs.get("idle")
-    status = kwargs.get("status")
-    taskid = kwargs.get("taskid")
     ilo = kwargs.get("ilo")
     serial = kwargs.get("serial")
     owner = kwargs.get("owner")
@@ -311,16 +271,16 @@ def twc_insert_table_row(**kwargs):
             if machine in str(key):
                 if not verbose:
                     if "t-yosemite-r7" in str(machine):
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
 
                     if run_flags.PING and not ping_host(key):
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
 
                     if (not run_flags.PING) and ("t-yosemite-r7" not in str(machine)):
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
@@ -332,13 +292,12 @@ def twc_insert_table_row(**kwargs):
                                                        key))
                             if not result:
                                 table.add_row(
-                                    [key, idle, status, taskid, ilo, serial, owner, reason, notes,
-                                     ignore])
+                                    [key, idle, ilo, serial, owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not run_flags.PING:
                             table.add_row(
-                                [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                [key, idle, ilo, serial, owner, reason, notes,
                                  ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
@@ -351,11 +310,11 @@ def twc_insert_table_row(**kwargs):
                     if run_flags.PING:
                         result = ping_host(key)
                         if not result:
-                            table.add_row([hostname, idle, status, ilo, serial, notes])
+                            table.add_row([hostname, idle, ilo, serial, notes])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
                     else:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
@@ -366,14 +325,13 @@ def twc_insert_table_row(**kwargs):
 
                             if not result:
                                 table.add_row(
-                                    [key, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                    [key, idle, ilo, serial, owner, reason, notes,
                                      ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not run_flags.PING:
                             table.add_row(
-                                [key, idle, status, taskid, ilo, serial, owner, reason, notes,
-                                 ignore])
+                                [key, idle, ilo, serial, owner, reason, notes, ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
 
@@ -385,11 +343,11 @@ def twc_insert_table_row(**kwargs):
                     if run_flags.PING:
                         result = ping_host(key)
                         if not result:
-                            table.add_row([hostname, idle, status, ilo, serial, notes])
+                            table.add_row([hostname, idle, ilo, serial, notes])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
                     else:
-                        table.add_row([hostname, idle, status, ilo, serial, notes])
+                        table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
                 else:
@@ -399,26 +357,24 @@ def twc_insert_table_row(**kwargs):
                             result = ping_host(key)
 
                             if not result:
-                                table.add_row([key, idle, status, taskid, ilo, serial,
-                                               owner, reason, notes, ignore])
+                                table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
                                 count_up_all(print_machine_numbers=False, machine=machine)
                                 MACHINES_TO_REBOOT.append((hostname, ilo))
                         if not run_flags.PING:
-                            table.add_row([key, idle, status, taskid, ilo, serial,
-                                           owner, reason, notes, ignore])
+                            table.add_row([key, idle, ilo, serial, owner, reason, notes, ignore])
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
 
     if worker_type == "t-yosemite-r7" and worker_type in str(machine):
         if not verbose:
-            table.add_row([hostname, idle, status, ilo, serial, notes])
+            table.add_row([hostname, idle, ilo, serial, notes])
             count_up_all(print_machine_numbers=False, machine=machine)
         else:
             _verbose_google_dict = open_json("verbose_google_dict.json")
             for key in _verbose_google_dict:
                 if machine in str(key):
                     table.add_row(
-                        [key, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                        [key, idle, ilo, serial, owner, reason, notes, ignore])
                     count_up_all(print_machine_numbers=False, machine=machine)
 
     return table
@@ -444,9 +400,6 @@ def output_problem_machines(worker_type):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = task_id(machine_data, machine)
-        status = status_cleaner(machine_data, machine)
-
         if notes == "":
             notes = "No notes available."
         else:
@@ -464,8 +417,6 @@ def output_problem_machines(worker_type):
                         "verbose": verbose,
                         "table": table,
                         "idle": idle,
-                        "status": status,
-                        "taskid": taskid,
                         "ilo": ilo,
                         "serial": serial,
                         "owner": owner,
@@ -513,9 +464,6 @@ def output_single_machine(single_machine):
         reason = machine_data.get(machine)["reason"]
         ignore = machine_data.get(machine)["ignore"]
 
-        taskid = task_id(machine_data, machine)
-        status = status_cleaner(machine_data, machine)
-
         if notes == "":
             notes = "No notes available."
         else:
@@ -530,7 +478,7 @@ def output_single_machine(single_machine):
         if machine:
             if single_machine in str(machine):
                 table.add_row(
-                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    [hostname, idle, ilo, serial, owner, reason, notes, ignore])
 
     print(table)
 
@@ -569,9 +517,6 @@ def output_loaned_machines(**loaner):
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = task_id(machine_data, machine)
-        status = status_cleaner(machine_data, machine)
-
         if notes == "":
             notes = "No notes available."
         else:
@@ -588,23 +533,22 @@ def output_loaned_machines(**loaner):
                 if owner:
                     if loaner.get(value) == "":
                         if not verbose:
-                            table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
+                            table.add_row([hostname, idle, ilo, serial, notes, ignore])
                             number_of_machines += 1
                         else:
                             table.add_row(
-                                [hostname, idle, status, taskid, ilo, serial, owner, reason, notes,
+                                [hostname, idle, ilo, serial, owner, reason, notes,
                                  ignore])
                             number_of_machines += 1
 
                     else:
                         if str(loaner.get(value)).lower() == str(owner).lower():
                             if not verbose:
-                                table.add_row([hostname, idle, status, ilo, serial, notes, ignore])
+                                table.add_row([hostname, idle, ilo, serial, notes, ignore])
                                 number_of_machines += 1
                             else:
                                 table.add_row(
-                                    [hostname, idle, status, taskid, ilo, serial, owner, reason,
-                                     notes, ignore])
+                                    [hostname, idle, ilo, serial, owner, reason, notes, ignore])
                                 number_of_machines += 1
 
     print(table)
@@ -641,9 +585,6 @@ def output_machines_with_notes():
         owner = machine_data.get(machine)["owner"]
         reason = machine_data.get(machine)["reason"]
 
-        taskid = task_id(machine_data, machine)
-        status = status_cleaner(machine_data, machine)
-
         if notes == "":
             notes = "No notes available."
         else:
@@ -658,7 +599,7 @@ def output_machines_with_notes():
         if machine:
             if notes != "No notes available.":
                 table.add_row(
-                    [hostname, idle, status, taskid, ilo, serial, owner, reason, notes, ignore])
+                    [hostname, idle, ilo, serial, owner, reason, notes, ignore])
                 number_of_machines += 1
             else:
                 pass
