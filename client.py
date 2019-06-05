@@ -236,7 +236,7 @@ def count_up_all(print_machine_numbers, machine):
         NUMBER_OF_WINDOWS += 1
     elif "t-linux64-ms" in str(machine):
         NUMBER_OF_LINUX += 1
-    elif "t-yosemite-r7" in str(machine):
+    elif "t-mojave-r7" in str(machine):
         NUMBER_OF_OSX += 1
     else:
         pass
@@ -270,7 +270,7 @@ def twc_insert_table_row(**kwargs):
         for key in _verbose_google_dict:
             if machine in str(key):
                 if not verbose:
-                    if "t-yosemite-r7" in str(machine):
+                    if "t-mojave-r7" in str(machine):
                         table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
 
@@ -279,7 +279,7 @@ def twc_insert_table_row(**kwargs):
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
 
-                    if (not run_flags.PING) and ("t-yosemite-r7" not in str(machine)):
+                    if (not run_flags.PING) and ("t-mojave-r7" not in str(machine)):
                         table.add_row([hostname, idle, ilo, serial, notes])
                         count_up_all(print_machine_numbers=False, machine=machine)
                         MACHINES_TO_REBOOT.append((hostname, ilo))
@@ -365,7 +365,7 @@ def twc_insert_table_row(**kwargs):
                             count_up_all(print_machine_numbers=False, machine=machine)
                             MACHINES_TO_REBOOT.append((hostname, ilo))
 
-    if worker_type == "t-yosemite-r7" and worker_type in str(machine):
+    if worker_type == "t-mojave-r7" and worker_type in str(machine):
         if not verbose:
             table.add_row([hostname, idle, ilo, serial, notes])
             count_up_all(print_machine_numbers=False, machine=machine)
